@@ -68,11 +68,16 @@ public class MainPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sidebarMain.setBackground(new java.awt.Color(0, 0, 204));
+        sidebarMain.setBackground(new java.awt.Color(102, 102, 255));
 
         btnNewVenta.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         btnNewVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_receive_cash_30px.png"))); // NOI18N
         btnNewVenta.setText("Nueva Venta");
+        btnNewVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewVentaActionPerformed(evt);
+            }
+        });
 
         btnProductos.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_empty_box_30px.png"))); // NOI18N
@@ -90,7 +95,7 @@ public class MainPage extends javax.swing.JFrame {
         btnInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_upload_link_document_30px.png"))); // NOI18N
         btnInformes.setText("Informes");
 
-        logoCont.setBackground(new java.awt.Color(0, 0, 204));
+        logoCont.setBackground(new java.awt.Color(102, 102, 255));
         logoCont.setPreferredSize(new java.awt.Dimension(120, 120));
         logoCont.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -128,7 +133,7 @@ public class MainPage extends javax.swing.JFrame {
 
         getContentPane().add(sidebarMain, java.awt.BorderLayout.WEST);
 
-        header.setBackground(new java.awt.Color(0, 0, 204));
+        header.setBackground(new java.awt.Color(102, 102, 255));
 
         mainTitle.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         mainTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,16 +144,16 @@ public class MainPage extends javax.swing.JFrame {
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addGap(119, 119, 119)
+                .addGap(135, 135, 135)
                 .addComponent(mainTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(820, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(mainTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         getContentPane().add(header, java.awt.BorderLayout.NORTH);
@@ -374,6 +379,10 @@ public class MainPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNewVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNewVentaActionPerformed
 
     /**
      * @param args the command line arguments

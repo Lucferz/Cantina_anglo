@@ -314,14 +314,6 @@ public class Login2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLoginMouseClicked
 
-    private void labelNewUserBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelNewUserBtnMouseEntered
-        changebgColor(btnNewUser, new Color(240,126,128));
-    }//GEN-LAST:event_labelNewUserBtnMouseEntered
-
-    private void labelNewUserBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelNewUserBtnMouseExited
-       changebgColor(btnNewUser, new Color(186,79,84));
-    }//GEN-LAST:event_labelNewUserBtnMouseExited
-
     private void loginUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginUsernameActionPerformed
@@ -344,6 +336,14 @@ public class Login2 extends javax.swing.JFrame {
     private void loginPasswActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPasswActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginPasswActionPerformed
+
+    private void labelNewUserBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelNewUserBtnMouseExited
+        changebgColor(btnNewUser, new Color(186,79,84));
+    }//GEN-LAST:event_labelNewUserBtnMouseExited
+
+    private void labelNewUserBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelNewUserBtnMouseEntered
+        changebgColor(btnNewUser, new Color(240,126,128));
+    }//GEN-LAST:event_labelNewUserBtnMouseEntered
 
     /**
      * @param args the command line arguments

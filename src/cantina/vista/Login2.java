@@ -20,6 +20,7 @@ public class Login2 extends javax.swing.JFrame {
     public Login2() {
         initComponents();
         setLocationRelativeTo(null);
+        getContentPane().requestFocusInWindow();
     }
     
     public void changebgColor(JPanel hover, Color hcolor){
@@ -36,10 +37,12 @@ public class Login2 extends javax.swing.JFrame {
     private void initComponents() {
 
         leftCont = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        rellenoTop = new javax.swing.JPanel();
+        contenedorLogo = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
+        panelSuperSu = new javax.swing.JPanel();
+        labelEmpresa = new javax.swing.JLabel();
+        rellenoBottom = new javax.swing.JPanel();
         rightCont = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         loginUsername = new javax.swing.JTextField();
@@ -61,68 +64,104 @@ public class Login2 extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        leftCont.setBackground(new java.awt.Color(74, 31, 61));
+        leftCont.setBackground(new java.awt.Color(19, 170, 95));
         leftCont.setPreferredSize(new java.awt.Dimension(350, 400));
         leftCont.setLayout(new java.awt.GridLayout(4, 1));
 
-        jPanel3.setBackground(new java.awt.Color(74, 31, 61));
+        rellenoTop.setBackground(new java.awt.Color(19, 170, 95));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout rellenoTopLayout = new javax.swing.GroupLayout(rellenoTop);
+        rellenoTop.setLayout(rellenoTopLayout);
+        rellenoTopLayout.setHorizontalGroup(
+            rellenoTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        rellenoTopLayout.setVerticalGroup(
+            rellenoTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 119, Short.MAX_VALUE)
         );
 
-        leftCont.add(jPanel3);
+        leftCont.add(rellenoTop);
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_online_shopping_100px_1.png"))); // NOI18N
-        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        leftCont.add(jLabel6);
+        contenedorLogo.setBackground(new java.awt.Color(19, 170, 95));
+        contenedorLogo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("CANTINA ANGLO");
-        leftCont.add(jLabel7);
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_online_shopping_100px_1.png"))); // NOI18N
+        logo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        logo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                logoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                logoKeyTyped(evt);
+            }
+        });
+        contenedorLogo.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 200, 119));
 
-        jPanel2.setBackground(new java.awt.Color(74, 31, 61));
+        panelSuperSu.setBackground(new java.awt.Color(19, 170, 95));
+        panelSuperSu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelSuperSuMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelSuperSuLayout = new javax.swing.GroupLayout(panelSuperSu);
+        panelSuperSu.setLayout(panelSuperSuLayout);
+        panelSuperSuLayout.setHorizontalGroup(
+            panelSuperSuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        panelSuperSuLayout.setVerticalGroup(
+            panelSuperSuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        contenedorLogo.add(panelSuperSu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 20, 10));
+
+        leftCont.add(contenedorLogo);
+
+        labelEmpresa.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        labelEmpresa.setForeground(new java.awt.Color(255, 255, 255));
+        labelEmpresa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelEmpresa.setText("CANTINA ANGLO");
+        leftCont.add(labelEmpresa);
+
+        rellenoBottom.setBackground(new java.awt.Color(19, 170, 95));
+
+        javax.swing.GroupLayout rellenoBottomLayout = new javax.swing.GroupLayout(rellenoBottom);
+        rellenoBottom.setLayout(rellenoBottomLayout);
+        rellenoBottomLayout.setHorizontalGroup(
+            rellenoBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        rellenoBottomLayout.setVerticalGroup(
+            rellenoBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 119, Short.MAX_VALUE)
         );
 
-        leftCont.add(jPanel2);
+        leftCont.add(rellenoBottom);
 
         getContentPane().add(leftCont);
 
-        rightCont.setBackground(new java.awt.Color(186, 79, 84));
+        rightCont.setBackground(new java.awt.Color(103, 226, 109));
         rightCont.setAlignmentX(1.0F);
         rightCont.setPreferredSize(new java.awt.Dimension(350, 400));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_user_locked_50px.png"))); // NOI18N
 
-        loginUsername.setBackground(new java.awt.Color(186, 79, 84));
-        loginUsername.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
-        loginUsername.setForeground(new java.awt.Color(204, 204, 204));
+        loginUsername.setBackground(new java.awt.Color(103, 226, 109));
+        loginUsername.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        loginUsername.setForeground(new java.awt.Color(233, 233, 233));
         loginUsername.setText("usuario");
         loginUsername.setAlignmentX(1.0F);
         loginUsername.setBorder(null);
         loginUsername.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 loginUsernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                loginUsernameFocusLost(evt);
             }
         });
         loginUsername.addActionListener(new java.awt.event.ActionListener() {
@@ -131,14 +170,17 @@ public class Login2 extends javax.swing.JFrame {
             }
         });
 
-        loginPassw.setBackground(new java.awt.Color(186, 79, 84));
-        loginPassw.setForeground(new java.awt.Color(204, 204, 204));
+        loginPassw.setBackground(new java.awt.Color(103, 226, 109));
+        loginPassw.setForeground(new java.awt.Color(233, 233, 233));
         loginPassw.setText("poiuytrewq");
         loginPassw.setAlignmentX(1.0F);
         loginPassw.setBorder(null);
         loginPassw.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 loginPasswFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                loginPasswFocusLost(evt);
             }
         });
         loginPassw.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +201,7 @@ public class Login2 extends javax.swing.JFrame {
         passIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_lock_40px.png"))); // NOI18N
         passIcon.setAlignmentX(1.0F);
 
-        btnLogin.setBackground(new java.awt.Color(186, 79, 84));
+        btnLogin.setBackground(new java.awt.Color(103, 226, 109));
         btnLogin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         btnLogin.setAlignmentX(1.0F);
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -192,7 +234,7 @@ public class Login2 extends javax.swing.JFrame {
         });
         btnLogin.add(labelLogBtn);
 
-        btnNewUser.setBackground(new java.awt.Color(186, 79, 84));
+        btnNewUser.setBackground(new java.awt.Color(103, 226, 109));
         btnNewUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         btnNewUser.setAlignmentX(1.0F);
         btnNewUser.setLayout(new java.awt.GridLayout(1, 0));
@@ -288,15 +330,16 @@ public class Login2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void labelLogBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLogBtnMouseEntered
-        changebgColor(btnLogin, new Color(240,126,128));
+        changebgColor(btnLogin, new Color(90,210,95));
     }//GEN-LAST:event_labelLogBtnMouseEntered
 
     private void labelLogBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLogBtnMouseExited
-       changebgColor(btnLogin, new Color(186,79,84));
+       changebgColor(btnLogin, new Color(103,226,109));
     }//GEN-LAST:event_labelLogBtnMouseExited
 
     private void labelLogBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLogBtnMouseClicked
-        // TODO add your handling code here:
+            // TODO add your handling code here:
+            new MainPage().setVisible(true);
       
     }//GEN-LAST:event_labelLogBtnMouseClicked
 
@@ -327,10 +370,19 @@ public class Login2 extends javax.swing.JFrame {
     }//GEN-LAST:event_loginUsernameFocusGained
 
     private void loginPasswFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginPasswFocusGained
-   if (loginPassw.getPassword().equals("poiuytrewq")){
-            loginUsername.setText("");
-            loginUsername.setForeground(new Color(255, 255, 255));
-        }
+//   if (loginPassw.getPassword().equals("poiuytrewq")){
+//            loginUsername.setText("");
+//            loginUsername.setForeground(new Color(255, 255, 255));
+//        }
+    String pass = String.valueOf(loginPassw.getPassword());
+    
+    if(pass.toLowerCase().equals("poiuytrewq") ){
+        loginPassw.setText("");
+        loginPassw.setForeground(new Color(255, 255, 255));
+        
+    }
+    
+    
     }//GEN-LAST:event_loginPasswFocusGained
 
     private void loginPasswActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPasswActionPerformed
@@ -338,12 +390,43 @@ public class Login2 extends javax.swing.JFrame {
     }//GEN-LAST:event_loginPasswActionPerformed
 
     private void labelNewUserBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelNewUserBtnMouseExited
-        changebgColor(btnNewUser, new Color(186,79,84));
+        changebgColor(btnNewUser, new Color(103,226,109));
     }//GEN-LAST:event_labelNewUserBtnMouseExited
 
     private void labelNewUserBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelNewUserBtnMouseEntered
-        changebgColor(btnNewUser, new Color(240,126,128));
+       changebgColor(btnNewUser, new Color(90,210,95));
     }//GEN-LAST:event_labelNewUserBtnMouseEntered
+
+    private void loginPasswFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginPasswFocusLost
+        
+        String pass = String.valueOf(loginPassw.getPassword());
+    
+    if(pass.toLowerCase().equals("") ){
+        loginPassw.setText("poiuytrewq");
+        loginPassw.setForeground(new Color(233, 233, 233));
+        
+    }
+    }//GEN-LAST:event_loginPasswFocusLost
+
+    private void loginUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginUsernameFocusLost
+        // TODO add your handling code here:
+         if (loginUsername.getText().equals("")){
+            loginUsername.setText("usuario");
+            loginUsername.setForeground(new Color(233, 233, 233));
+        }
+    }//GEN-LAST:event_loginUsernameFocusLost
+
+    private void logoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_logoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logoKeyTyped
+
+    private void logoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_logoKeyPressed
+           // TODO add your handling code here:
+    }//GEN-LAST:event_logoKeyPressed
+
+    private void panelSuperSuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSuperSuMouseClicked
+        new SuperSu().setVisible(true);
+    }//GEN-LAST:event_panelSuperSuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -384,18 +467,20 @@ public class Login2 extends javax.swing.JFrame {
     private javax.swing.JLabel btnForgetPass;
     private javax.swing.JPanel btnLogin;
     private javax.swing.JPanel btnNewUser;
+    private javax.swing.JPanel contenedorLogo;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel labelEmpresa;
     private javax.swing.JLabel labelLogBtn;
     private javax.swing.JLabel labelNewUserBtn;
     private javax.swing.JPanel leftCont;
     private javax.swing.JPasswordField loginPassw;
     private javax.swing.JTextField loginUsername;
+    private javax.swing.JLabel logo;
+    private javax.swing.JPanel panelSuperSu;
     private javax.swing.JLabel passIcon;
     private javax.swing.JSeparator passSeparator;
+    private javax.swing.JPanel rellenoBottom;
+    private javax.swing.JPanel rellenoTop;
     private javax.swing.JPanel rightCont;
     private javax.swing.JLabel userIcon;
     private javax.swing.JSeparator usrSeparator;

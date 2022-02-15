@@ -17,6 +17,7 @@ public class MainPage extends javax.swing.JFrame {
     public MainPage() {
         initComponents();
         setLocationRelativeTo(null);
+      
     }
 
     /**
@@ -68,7 +69,7 @@ public class MainPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sidebarMain.setBackground(new java.awt.Color(102, 102, 255));
+        sidebarMain.setBackground(new java.awt.Color(103, 226, 109));
 
         btnNewVenta.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         btnNewVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_receive_cash_30px.png"))); // NOI18N
@@ -95,7 +96,7 @@ public class MainPage extends javax.swing.JFrame {
         btnInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_upload_link_document_30px.png"))); // NOI18N
         btnInformes.setText("Informes");
 
-        logoCont.setBackground(new java.awt.Color(102, 102, 255));
+        logoCont.setBackground(new java.awt.Color(103, 226, 109));
         logoCont.setPreferredSize(new java.awt.Dimension(120, 120));
         logoCont.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -133,7 +134,7 @@ public class MainPage extends javax.swing.JFrame {
 
         getContentPane().add(sidebarMain, java.awt.BorderLayout.WEST);
 
-        header.setBackground(new java.awt.Color(102, 102, 255));
+        header.setBackground(new java.awt.Color(103, 226, 109));
 
         mainTitle.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
         mainTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,6 +158,8 @@ public class MainPage extends javax.swing.JFrame {
         );
 
         getContentPane().add(header, java.awt.BorderLayout.NORTH);
+
+        panelNuevaVenta.setBackground(new java.awt.Color(103, 226, 109));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

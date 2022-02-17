@@ -40,7 +40,7 @@ public class loginDAOMySQL extends ControladorAbstract implements loginDAO {
                 l.setPass(rs.getString("pass"));
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            System.out.println(e.toString());
         }
         return l;
     }

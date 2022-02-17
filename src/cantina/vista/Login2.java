@@ -32,14 +32,14 @@ public class Login2 extends javax.swing.JFrame {
         String pass = String.valueOf(loginPassw.getPassword());
         if(!"".equals(nombre) || !"".equals(pass)){            
             lg = login.log(nombre, pass);
-            if (lg.getNombre()!=null){
+            try{     
+                if(lg.getNombre()!=null && lg.getPass()!=null){
                 MainPage main = new MainPage();
                 main.setVisible(true);
                 dispose();
-            }else{
-                JOptionPane.showMessageDialog(null, 
-                        "Los datos de incio de sesion "
-                                + "no son validos");
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Los datos de inicio de sesion son incorrectos");
             }
         }
     }

@@ -1,134 +1,246 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Feb 17, 2022 at 09:10 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-
-CREATE database IF NOT EXISTS `cantina_anglo` DEFAULT CHARACTER SET utf8mb4;
-USE `cantina_anglo` ;
-
--- -----------------------------------------------------
--- Table `cantina_anglo`.`roles`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `cantina_anglo`.`roles` ;
-
-CREATE TABLE IF NOT EXISTS `cantina_anglo`.`roles` (
-  `idrole` INT NOT NULL AUTO_INCREMENT,
-  `rol` VARCHAR(30) NOT NULL,
-  `desc` VARCHAR(250) NULL,
-  `estado` TINYINT(1) UNSIGNED NULL,
-  PRIMARY KEY (`idrole`))
-ENGINE = InnoDB;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
--- -----------------------------------------------------
--- Table `cantina_anglo`.`usuarios`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `cantina_anglo`.`usuarios` ;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-CREATE TABLE IF NOT EXISTS `cantina_anglo`.`usuarios` (
-  `idusuario` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) NOT NULL,
-  `estado` TINYINT(1) UNSIGNED NOT NULL,
-  `pass` VARCHAR(40) NULL,
-  `fk_roles` INT NOT NULL,
-  PRIMARY KEY (`idusuario`),
-  INDEX `fk_usuarios_roles_idx` (`fk_roles` ASC) ,
-  CONSTRAINT `fk_usuarios_roles`
-    FOREIGN KEY (`fk_roles`)
-    REFERENCES `cantina_anglo`.`roles` (`idrole`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+--
+-- Database: `cantina_anglo`
+--
 
+-- --------------------------------------------------------
 
--- -----------------------------------------------------
--- Table `cantina_anglo`.`ventas`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `cantina_anglo`.`ventas` ;
+--
+-- Table structure for table `articulos`
+--
 
-CREATE TABLE IF NOT EXISTS `cantina_anglo`.`ventas` (
-  `idventa` INT NOT NULL AUTO_INCREMENT,
-  `fecha` DATETIME NULL,
-  `total` INT NULL,
-  `fk_usuario` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`idventa`),
-  INDEX `fk_ventas_usuarios1_idx` (`fk_usuario` ASC) ,
-  CONSTRAINT `fk_ventas_usuarios1`
-    FOREIGN KEY (`fk_usuario`)
-    REFERENCES `cantina_anglo`.`usuarios` (`idusuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE `articulos` (
+  `idarticulo` int(11) NOT NULL,
+  `codigo` varchar(50) DEFAULT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `precio_venta` int(10) UNSIGNED NOT NULL,
+  `costo` int(10) UNSIGNED DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `estado` tinyint(1) UNSIGNED DEFAULT 1,
+  `fk_categorias` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
 
--- -----------------------------------------------------
--- Table `cantina_anglo`.`categorias`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `cantina_anglo`.`categorias` ;
+--
+-- Table structure for table `categorias`
+--
 
-CREATE TABLE IF NOT EXISTS `cantina_anglo`.`categorias` (
-  `idcategoria` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) NOT NULL,
-  `descripcion` VARCHAR(200) NULL,
-  `estado` TINYINT(1) UNSIGNED NULL,
-  PRIMARY KEY (`idcategoria`))
-ENGINE = InnoDB;
+CREATE TABLE `categorias` (
+  `idcategoria` int(10) UNSIGNED NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `descripcion` varchar(200) DEFAULT NULL,
+  `estado` tinyint(1) UNSIGNED DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
 
--- -----------------------------------------------------
--- Table `cantina_anglo`.`articulos`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `cantina_anglo`.`articulos` ;
+--
+-- Table structure for table `detalle_venta`
+--
 
-CREATE TABLE IF NOT EXISTS `cantina_anglo`.`articulos` (
-  `idarticulo` INT NOT NULL AUTO_INCREMENT,
-  `codigo` VARCHAR(50) NULL,
-  `nombre` VARCHAR(100) NOT NULL,
-  `precio_venta` INT UNSIGNED NOT NULL,
-  `costo` INT UNSIGNED NULL,
-  `stock` INT NULL,
-  `descripcion` VARCHAR(255) NULL,
-  `estado` TINYINT(1) UNSIGNED NULL,
-  `fk_categorias` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`idarticulo`),
-  INDEX `fk_articulos_categorias1_idx` (`fk_categorias` ASC) ,
-  UNIQUE INDEX `codigo_UNIQUE` (`codigo` ASC) ,
-  CONSTRAINT `fk_articulos_categorias1`
-    FOREIGN KEY (`fk_categorias`)
-    REFERENCES `cantina_anglo`.`categorias` (`idcategoria`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE `detalle_venta` (
+  `iddetalle_venta` int(11) NOT NULL,
+  `fk_articulos` int(11) NOT NULL,
+  `fk_venta` int(11) NOT NULL,
+  `cantidad` int(10) UNSIGNED DEFAULT NULL,
+  `precio` int(10) UNSIGNED DEFAULT NULL,
+  `descuento` int(10) UNSIGNED DEFAULT NULL,
+  `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
 
--- -----------------------------------------------------
--- Table `cantina_anglo`.`detalle_venta`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `cantina_anglo`.`detalle_venta` ;
+--
+-- Table structure for table `roles`
+--
 
-CREATE TABLE IF NOT EXISTS `cantina_anglo`.`detalle_venta` (
-  `iddetalle_venta` INT NOT NULL AUTO_INCREMENT,
-  `fk_articulos` INT NOT NULL,
-  `fk_venta` INT NOT NULL,
-  `cantidad` INT UNSIGNED NULL,
-  `precio` INT UNSIGNED NULL,
-  `descuento` INT UNSIGNED NULL,
-  PRIMARY KEY (`iddetalle_venta`),
-  INDEX `fk_detalle_venta_articulos1_idx` (`fk_articulos` ASC) ,
-  INDEX `fk_detalle_venta_ventas1_idx` (`fk_venta` ASC) ,
-  CONSTRAINT `fk_detalle_venta_articulos1`
-    FOREIGN KEY (`fk_articulos`)
-    REFERENCES `cantina_anglo`.`articulos` (`idarticulo`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_detalle_venta_ventas1`
-    FOREIGN KEY (`fk_venta`)
-    REFERENCES `cantina_anglo`.`ventas` (`idventa`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+CREATE TABLE `roles` (
+  `idrole` int(11) NOT NULL,
+  `rol` varchar(30) NOT NULL,
+  `desc` varchar(250) DEFAULT NULL,
+  `estado` tinyint(1) UNSIGNED DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `roles`
+--
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+INSERT INTO `roles` (`idrole`, `rol`, `desc`, `estado`) VALUES
+(1, 'ADMIN', 'Administrador del sistema, tiene todas las opciones disponibles', 1),
+(2, 'VENDEDOR', 'Puede realizar ventas, anularlas, cargar productos nuevos y acutalizar el stock', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `idusuario` int(10) UNSIGNED NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
+  `pass` varchar(40) DEFAULT NULL,
+  `fk_roles` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`idusuario`, `nombre`, `estado`, `pass`, `fk_roles`) VALUES
+(1, 'Lucas', 1, '1234', 1),
+(2, 'Dani', 1, '1234', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ventas`
+--
+
+CREATE TABLE `ventas` (
+  `idventa` int(11) NOT NULL,
+  `fecha` datetime DEFAULT NULL,
+  `total` int(11) DEFAULT NULL,
+  `fk_usuario` int(10) UNSIGNED NOT NULL,
+  `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `articulos`
+--
+ALTER TABLE `articulos`
+  ADD PRIMARY KEY (`idarticulo`),
+  ADD UNIQUE KEY `codigo_UNIQUE` (`codigo`),
+  ADD KEY `fk_articulos_categorias1_idx` (`fk_categorias`);
+
+--
+-- Indexes for table `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`idcategoria`);
+
+--
+-- Indexes for table `detalle_venta`
+--
+ALTER TABLE `detalle_venta`
+  ADD PRIMARY KEY (`iddetalle_venta`),
+  ADD KEY `fk_detalle_venta_articulos1_idx` (`fk_articulos`),
+  ADD KEY `fk_detalle_venta_ventas1_idx` (`fk_venta`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`idrole`);
+
+--
+-- Indexes for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`idusuario`),
+  ADD KEY `fk_usuarios_roles_idx` (`fk_roles`);
+
+--
+-- Indexes for table `ventas`
+--
+ALTER TABLE `ventas`
+  ADD PRIMARY KEY (`idventa`),
+  ADD KEY `fk_ventas_usuarios1_idx` (`fk_usuario`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `articulos`
+--
+ALTER TABLE `articulos`
+  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `idcategoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `detalle_venta`
+--
+ALTER TABLE `detalle_venta`
+  MODIFY `iddetalle_venta` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `idrole` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `idusuario` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `articulos`
+--
+ALTER TABLE `articulos`
+  ADD CONSTRAINT `fk_articulos_categorias1` FOREIGN KEY (`fk_categorias`) REFERENCES `categorias` (`idcategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `detalle_venta`
+--
+ALTER TABLE `detalle_venta`
+  ADD CONSTRAINT `fk_detalle_venta_articulos1` FOREIGN KEY (`fk_articulos`) REFERENCES `articulos` (`idarticulo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_detalle_venta_ventas1` FOREIGN KEY (`fk_venta`) REFERENCES `ventas` (`idventa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `fk_usuarios_roles` FOREIGN KEY (`fk_roles`) REFERENCES `roles` (`idrole`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `ventas`
+--
+ALTER TABLE `ventas`
+  ADD CONSTRAINT `fk_ventas_usuarios1` FOREIGN KEY (`fk_usuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

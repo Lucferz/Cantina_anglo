@@ -5,7 +5,10 @@
  */
 package cantina.vista;
 
+import cantina.controlador.loginDAOMySQL;
+import cantina.modelo.login;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -17,12 +20,29 @@ public class Login2 extends javax.swing.JFrame {
     /**
      * Creates new form Login2
      */
+    login lg = new login();
+    loginDAOMySQL login = new loginDAOMySQL();
     public Login2() {
         initComponents();
         setLocationRelativeTo(null);
         getContentPane().requestFocusInWindow();
     }
-    
+    public void validar(){
+        String nombre = loginUsername.getText();
+        String pass = String.valueOf(loginPassw.getPassword());
+        if(!"".equals(nombre) || !"".equals(pass)){            
+            lg = login.log(nombre, pass);
+            if (lg.getNombre()!=null){
+                MainPage main = new MainPage();
+                main.setVisible(true);
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, 
+                        "Los datos de incio de sesion "
+                                + "no son validos");
+            }
+        }
+    }
     public void changebgColor(JPanel hover, Color hcolor){
     hover.setBackground(hcolor);
 }
@@ -257,7 +277,7 @@ public class Login2 extends javax.swing.JFrame {
         btnForgetPass.setForeground(new java.awt.Color(255, 255, 255));
         btnForgetPass.setText("Contraseña olvidada?");
         btnForgetPass.setAlignmentX(1.0F);
-        btnForgetPass.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnForgetPass.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout rightContLayout = new javax.swing.GroupLayout(rightCont);
         rightCont.setLayout(rightContLayout);
@@ -339,8 +359,9 @@ public class Login2 extends javax.swing.JFrame {
 
     private void labelLogBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLogBtnMouseClicked
             // TODO add your handling code here:
-            new MainPage().setVisible(true);
-      
+            //new MainPage().setVisible(true);
+            validar();
+            
     }//GEN-LAST:event_labelLogBtnMouseClicked
 
     private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered

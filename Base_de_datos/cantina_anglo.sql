@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `cantina_anglo`.`usuarios` (
   `pass` VARCHAR(40) NULL,
   `fk_roles` INT NOT NULL,
   PRIMARY KEY (`idusuario`),
-  INDEX `fk_usuarios_roles_idx` (`fk_roles` ASC) VISIBLE,
+  INDEX `fk_usuarios_roles_idx` (`fk_roles` ASC) ,
   CONSTRAINT `fk_usuarios_roles`
     FOREIGN KEY (`fk_roles`)
     REFERENCES `cantina_anglo`.`roles` (`idrole`)
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `cantina_anglo`.`ventas` (
   `total` INT NULL,
   `fk_usuario` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`idventa`),
-  INDEX `fk_ventas_usuarios1_idx` (`fk_usuario` ASC) VISIBLE,
+  INDEX `fk_ventas_usuarios1_idx` (`fk_usuario` ASC) ,
   CONSTRAINT `fk_ventas_usuarios1`
     FOREIGN KEY (`fk_usuario`)
     REFERENCES `cantina_anglo`.`usuarios` (`idusuario`)
@@ -91,8 +91,8 @@ CREATE TABLE IF NOT EXISTS `cantina_anglo`.`articulos` (
   `estado` TINYINT(1) UNSIGNED NULL,
   `fk_categorias` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`idarticulo`),
-  INDEX `fk_articulos_categorias1_idx` (`fk_categorias` ASC) VISIBLE,
-  UNIQUE INDEX `codigo_UNIQUE` (`codigo` ASC) VISIBLE,
+  INDEX `fk_articulos_categorias1_idx` (`fk_categorias` ASC) ,
+  UNIQUE INDEX `codigo_UNIQUE` (`codigo` ASC) ,
   CONSTRAINT `fk_articulos_categorias1`
     FOREIGN KEY (`fk_categorias`)
     REFERENCES `cantina_anglo`.`categorias` (`idcategoria`)
@@ -114,8 +114,8 @@ CREATE TABLE IF NOT EXISTS `cantina_anglo`.`detalle_venta` (
   `precio` INT UNSIGNED NULL,
   `descuento` INT UNSIGNED NULL,
   PRIMARY KEY (`iddetalle_venta`),
-  INDEX `fk_detalle_venta_articulos1_idx` (`fk_articulos` ASC) VISIBLE,
-  INDEX `fk_detalle_venta_ventas1_idx` (`fk_venta` ASC) VISIBLE,
+  INDEX `fk_detalle_venta_articulos1_idx` (`fk_articulos` ASC) ,
+  INDEX `fk_detalle_venta_ventas1_idx` (`fk_venta` ASC) ,
   CONSTRAINT `fk_detalle_venta_articulos1`
     FOREIGN KEY (`fk_articulos`)
     REFERENCES `cantina_anglo`.`articulos` (`idarticulo`)

@@ -39,7 +39,7 @@ private static Connection connection=null;
 		try {
 			Class.forName("org.gjt.mm.mysql.Driver");//el nombre del jdbDrive que tiene relacion con la base utilizada
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantina_anglo"
-					, "root", "");
+					, "root", "mysql");
 		} catch (Exception e) {
 			throw new RuntimeException("Error de conexion a base de datos", e);
 		}			

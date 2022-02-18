@@ -8,6 +8,7 @@ package cantina.vista;
 import cantina.controlador.loginDAOMySQL;
 import cantina.modelo.login;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -39,7 +40,12 @@ public class Login2 extends javax.swing.JFrame {
                 dispose();
                 }
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Los datos de inicio de sesion son incorrectos");
+                //JOptionPane.showMessageDialog(null, "Los datos de inicio de sesion son incorrectos");
+                JOptionPane.showMessageDialog(null, 
+                              "Los datos de inicio de sesion son incorrectos", 
+                              "Verifica tus datos", 
+                              JOptionPane.WARNING_MESSAGE);
+                
             }
         }
     }
@@ -82,6 +88,17 @@ public class Login2 extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(700, 500));
         setPreferredSize(new java.awt.Dimension(800, 478));
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         leftCont.setBackground(new java.awt.Color(19, 170, 95));
@@ -174,6 +191,7 @@ public class Login2 extends javax.swing.JFrame {
         loginUsername.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         loginUsername.setForeground(new java.awt.Color(233, 233, 233));
         loginUsername.setText("usuario");
+        loginUsername.setToolTipText("Ingresa aquí tu nombre de usuario");
         loginUsername.setAlignmentX(1.0F);
         loginUsername.setBorder(null);
         loginUsername.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -189,10 +207,16 @@ public class Login2 extends javax.swing.JFrame {
                 loginUsernameActionPerformed(evt);
             }
         });
+        loginUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                loginUsernameKeyReleased(evt);
+            }
+        });
 
         loginPassw.setBackground(new java.awt.Color(103, 226, 109));
         loginPassw.setForeground(new java.awt.Color(233, 233, 233));
         loginPassw.setText("poiuytrewq");
+        loginPassw.setToolTipText("Escribe aquí tu contraseña");
         loginPassw.setAlignmentX(1.0F);
         loginPassw.setBorder(null);
         loginPassw.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -206,6 +230,11 @@ public class Login2 extends javax.swing.JFrame {
         loginPassw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginPasswActionPerformed(evt);
+            }
+        });
+        loginPassw.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                loginPasswKeyReleased(evt);
             }
         });
 
@@ -445,6 +474,32 @@ public class Login2 extends javax.swing.JFrame {
     private void panelSuperSuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSuperSuMouseClicked
         new SuperSu().setVisible(true);
     }//GEN-LAST:event_panelSuperSuMouseClicked
+
+    private void loginUsernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginUsernameKeyReleased
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+            loginPassw.requestFocus();
+    }//GEN-LAST:event_loginUsernameKeyReleased
+
+    private void loginPasswKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginPasswKeyReleased
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+             validar();
+    }//GEN-LAST:event_loginPasswKeyReleased
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyReleased
+
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+        // TODO add your handling code here:
+          
+    }//GEN-LAST:event_formKeyTyped
 
     /**
      * @param args the command line arguments

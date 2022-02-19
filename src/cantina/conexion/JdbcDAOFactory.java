@@ -3,6 +3,7 @@ package cantina.conexion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class JdbcDAOFactory extends DAOFactory {
 
@@ -41,7 +42,11 @@ private static Connection connection=null;
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cantina_anglo"
 					, "root", "mysql");
 		} catch (Exception e) {
-			throw new RuntimeException("Error de conexion a base de datos", e);
+			//throw new RuntimeException("Error de conexion a base de datos", e);
+                        JOptionPane.showMessageDialog(null, "Error de coneccion:\n"+e+
+                                "\n\nVerificar que el servicio de MySQL este activo e intente"
+                                        + " de nuevo", "Error de conexion a la BD", 0);
+                        
 		}			
 	}
 	

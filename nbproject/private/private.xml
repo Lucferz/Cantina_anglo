@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/Cantina_anglo/src/cantina/datos/ArticulosDAO.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/Cantina_anglo/src/cantina/controlador/ArticulosControl.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/Cantina_anglo/src/cantina/datos/DetalleVentaDAO.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/Cantina_anglo/src/cantina/controlador/DetalleVentaControl.java</file>
+        </group>
     </open-files>
 </project-private>

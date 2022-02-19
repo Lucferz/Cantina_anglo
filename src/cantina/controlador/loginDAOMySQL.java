@@ -8,13 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-//import java.util.ArrayList;
-//import java.util.List;
 /**
  *
  * @author Lucas
  */
-public class loginDAOMySQL extends ControladorAbstract implements loginDAO {
+public class loginDAOMySQL extends ControladorAbstract {
     
     public loginDAOMySQL() {
 		super();
@@ -24,10 +22,9 @@ public class loginDAOMySQL extends ControladorAbstract implements loginDAO {
 		super(con);
 	}
 
-    @Override
     public login log(String usuario, String pass) {
         login l = null;
-        String sql = "SELECT * FROM usuarios WHERE nombre = ? AND pass = ?";
+        String sql = "SELECT * FROM usuarios WHERE nombre = ? AND pass = ? AND estado = 1";
         try {
             PreparedStatement ps = this.connection.prepareStatement(sql);
             ps.setString(1, usuario);
@@ -40,7 +37,7 @@ public class loginDAOMySQL extends ControladorAbstract implements loginDAO {
                 l.setPass(rs.getString("pass"));
             }
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            JOptionPane.showMessageDialog(null, e);
         }
         return l;
     }

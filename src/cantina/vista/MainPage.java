@@ -79,21 +79,27 @@ public class MainPage extends javax.swing.JFrame {
         panelProductos = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         panelContEntradaProductos = new javax.swing.JPanel();
-        jPanel14 = new javax.swing.JPanel();
-        labT2Cod = new javax.swing.JLabel();
-        labT2Desc = new javax.swing.JLabel();
-        labT2Cant = new javax.swing.JLabel();
-        labT2Precio = new javax.swing.JLabel();
-        fieldT2Cod = new javax.swing.JTextField();
-        fieldT2Desc = new javax.swing.JTextField();
-        fieldT2Cant = new javax.swing.JTextField();
-        fieldT2Precio = new javax.swing.JTextField();
-        jPanel13 = new javax.swing.JPanel();
+        contSidebarT2 = new javax.swing.JPanel();
+        contBtnProductos = new javax.swing.JPanel();
         btnRefreshProductos = new javax.swing.JButton();
         btnBorrarProducto = new javax.swing.JButton();
         btnGuardarProducto = new javax.swing.JButton();
         btnAddProducto = new javax.swing.JButton();
         btnExportProduc = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        contInsertProd = new javax.swing.JPanel();
+        labT2Cod = new javax.swing.JLabel();
+        labT2Desc = new javax.swing.JLabel();
+        labT2StockDisp = new javax.swing.JLabel();
+        labT2PrecioCosto = new javax.swing.JLabel();
+        fieldT2Cod = new javax.swing.JTextField();
+        fieldT2Desc = new javax.swing.JTextField();
+        fieldT2Cant = new javax.swing.JTextField();
+        fieldT2PrecioCosto = new javax.swing.JTextField();
+        labT2PrecioVenta = new javax.swing.JLabel();
+        fieldT2PrecioVenta = new javax.swing.JTextField();
+        labT2PrecioVenta1 = new javax.swing.JLabel();
+        checkBoxProductoDisponible = new javax.swing.JCheckBox();
         contenedorTablat2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -114,6 +120,7 @@ public class MainPage extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1110, 580));
 
         sidebarMain.setBackground(new java.awt.Color(103, 226, 109));
+        sidebarMain.setPreferredSize(new java.awt.Dimension(135, 600));
 
         btnNewVenta.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         btnNewVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_receive_cash_30px.png"))); // NOI18N
@@ -213,7 +220,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(btnConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnInformes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         getContentPane().add(sidebarMain, java.awt.BorderLayout.WEST);
@@ -231,7 +238,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addComponent(mainTitle)
-                .addContainerGap(1534, Short.MAX_VALUE))
+                .addContainerGap(843, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,6 +377,8 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 7, 0, 7);
         contPanelEntrada.add(jPanel6, gridBagConstraints);
 
+        fieldPrecUnit.setEditable(false);
+
         jLabel4.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel4.setText("Precio Unitario");
 
@@ -402,6 +411,8 @@ public class MainPage extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel6.setText("Prec. Total");
 
+        fieldPrecTotal.setEditable(false);
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -430,6 +441,8 @@ public class MainPage extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel5.setText("Stock Disponible");
+
+        fieldStock.setEditable(false);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -562,7 +575,7 @@ public class MainPage extends javax.swing.JFrame {
         contCierreVentaLayout.setHorizontalGroup(
             contCierreVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contCierreVentaLayout.createSequentialGroup()
-                .addContainerGap(916, Short.MAX_VALUE)
+                .addContainerGap(225, Short.MAX_VALUE)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -584,76 +597,13 @@ public class MainPage extends javax.swing.JFrame {
 
         jSplitPane1.setDividerSize(0);
 
-        panelContEntradaProductos.setLayout(new java.awt.GridBagLayout());
+        contSidebarT2.setMinimumSize(new java.awt.Dimension(332, 200));
+        contSidebarT2.setPreferredSize(new java.awt.Dimension(332, 580));
+        contSidebarT2.setLayout(new java.awt.GridBagLayout());
 
-        labT2Cod.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        labT2Cod.setText("Código:");
-
-        labT2Desc.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        labT2Desc.setText("Descripción:");
-
-        labT2Cant.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        labT2Cant.setText("Cantidad:");
-
-        labT2Precio.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        labT2Precio.setText("Precio:");
-
-        fieldT2Cod.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        fieldT2Cod.setText("312321");
-
-        fieldT2Desc.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        fieldT2Desc.setText("Suco de fruta");
-
-        fieldT2Cant.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-
-        fieldT2Precio.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labT2Cod)
-                    .addComponent(labT2Desc)
-                    .addComponent(labT2Cant)
-                    .addComponent(labT2Precio))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldT2Precio)
-                    .addComponent(fieldT2Cant)
-                    .addComponent(fieldT2Cod)
-                    .addComponent(fieldT2Desc, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labT2Cod)
-                    .addComponent(fieldT2Cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labT2Desc)
-                    .addComponent(fieldT2Desc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labT2Cant)
-                    .addComponent(fieldT2Cant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labT2Precio)
-                    .addComponent(fieldT2Precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.ipadx = 130;
-        gridBagConstraints.ipady = 20;
-        panelContEntradaProductos.add(jPanel14, gridBagConstraints);
+        contBtnProductos.setMaximumSize(new java.awt.Dimension(330, 175));
+        contBtnProductos.setMinimumSize(new java.awt.Dimension(330, 175));
+        contBtnProductos.setPreferredSize(new java.awt.Dimension(330, 175));
 
         btnRefreshProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_edit_property_30px.png"))); // NOI18N
         btnRefreshProductos.setText("ACTUALIZAR");
@@ -667,46 +617,180 @@ public class MainPage extends javax.swing.JFrame {
 
         btnAddProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_add_30px.png"))); // NOI18N
         btnAddProducto.setText("AGREGAR");
+        btnAddProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddProductoActionPerformed(evt);
+            }
+        });
 
         btnExportProduc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_spreadsheet_file_30px.png"))); // NOI18N
         btnExportProduc.setText("EXPORTAR");
 
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
+        javax.swing.GroupLayout contBtnProductosLayout = new javax.swing.GroupLayout(contBtnProductos);
+        contBtnProductos.setLayout(contBtnProductosLayout);
+        contBtnProductosLayout.setHorizontalGroup(
+            contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contBtnProductosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnExportProduc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardarProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBorrarProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnRefreshProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAddProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGuardarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnExportProduc, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                    .addComponent(btnBorrarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAddProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRefreshProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
+        contBtnProductosLayout.setVerticalGroup(
+            contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contBtnProductosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarProducto)
                     .addComponent(btnRefreshProductos))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrarProducto)
                     .addComponent(btnAddProducto))
                 .addGap(18, 18, 18)
                 .addComponent(btnExportProduc)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.weighty = 0.5;
-        panelContEntradaProductos.add(jPanel13, gridBagConstraints);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
+        gridBagConstraints.weightx = 0.2;
+        gridBagConstraints.weighty = 0.3;
+        contSidebarT2.add(contBtnProductos, gridBagConstraints);
+
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane4.setMinimumSize(new java.awt.Dimension(264, 250));
+        jScrollPane4.setPreferredSize(new java.awt.Dimension(264, 250));
+        jScrollPane4.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                jScrollPane4ComponentResized(evt);
+            }
+        });
+
+        labT2Cod.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        labT2Cod.setText("Código:");
+
+        labT2Desc.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        labT2Desc.setText("Descripción:");
+
+        labT2StockDisp.setFont(new java.awt.Font("Roboto Black", 0, 13)); // NOI18N
+        labT2StockDisp.setText("Stock disponible:");
+
+        labT2PrecioCosto.setFont(new java.awt.Font("Roboto Black", 0, 13)); // NOI18N
+        labT2PrecioCosto.setText("Precio de Costo:");
+
+        fieldT2Cod.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        fieldT2Cod.setText("312321");
+
+        fieldT2Desc.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        fieldT2Desc.setText("Empanada ");
+
+        fieldT2Cant.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+
+        fieldT2PrecioCosto.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+
+        labT2PrecioVenta.setFont(new java.awt.Font("Roboto Black", 0, 13)); // NOI18N
+        labT2PrecioVenta.setText("Precio de Venta:");
+
+        fieldT2PrecioVenta.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+
+        labT2PrecioVenta1.setFont(new java.awt.Font("Roboto Black", 0, 13)); // NOI18N
+        labT2PrecioVenta1.setText("Estado de Producto:");
+
+        checkBoxProductoDisponible.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        checkBoxProductoDisponible.setText("Disponible");
+
+        javax.swing.GroupLayout contInsertProdLayout = new javax.swing.GroupLayout(contInsertProd);
+        contInsertProd.setLayout(contInsertProdLayout);
+        contInsertProdLayout.setHorizontalGroup(
+            contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contInsertProdLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labT2Cod)
+                    .addComponent(labT2Desc)
+                    .addComponent(labT2StockDisp)
+                    .addComponent(labT2PrecioCosto)
+                    .addComponent(labT2PrecioVenta)
+                    .addComponent(labT2PrecioVenta1))
+                .addGap(18, 18, 18)
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldT2Desc, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(fieldT2Cant)
+                    .addComponent(fieldT2PrecioCosto)
+                    .addComponent(fieldT2PrecioVenta)
+                    .addComponent(fieldT2Cod)
+                    .addGroup(contInsertProdLayout.createSequentialGroup()
+                        .addComponent(checkBoxProductoDisponible)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        contInsertProdLayout.setVerticalGroup(
+            contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contInsertProdLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labT2Cod)
+                    .addComponent(fieldT2Cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labT2Desc)
+                    .addComponent(fieldT2Desc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labT2StockDisp)
+                    .addComponent(fieldT2Cant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labT2PrecioCosto)
+                    .addComponent(fieldT2PrecioCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labT2PrecioVenta)
+                    .addComponent(fieldT2PrecioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labT2PrecioVenta1)
+                    .addComponent(checkBoxProductoDisponible))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        jScrollPane4.setViewportView(contInsertProd);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weightx = 0.8;
+        gridBagConstraints.weighty = 0.8;
+        contSidebarT2.add(jScrollPane4, gridBagConstraints);
+
+        javax.swing.GroupLayout panelContEntradaProductosLayout = new javax.swing.GroupLayout(panelContEntradaProductos);
+        panelContEntradaProductos.setLayout(panelContEntradaProductosLayout);
+        panelContEntradaProductosLayout.setHorizontalGroup(
+            panelContEntradaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(contSidebarT2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        panelContEntradaProductosLayout.setVerticalGroup(
+            panelContEntradaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContEntradaProductosLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         jSplitPane1.setLeftComponent(panelContEntradaProductos);
 
@@ -731,12 +815,12 @@ public class MainPage extends javax.swing.JFrame {
         contenedorTablat2.setLayout(contenedorTablat2Layout);
         contenedorTablat2Layout.setHorizontalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1461, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
         );
         contenedorTablat2Layout.setVerticalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorTablat2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -771,7 +855,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(panelVentasLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(panelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1691, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
                     .addGroup(panelVentasLayout.createSequentialGroup()
                         .addComponent(btnGenerarResumenVentas)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -784,7 +868,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(btnGenerarResumenVentas)
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_list_30px.png")), panelVentas); // NOI18N
@@ -815,7 +899,7 @@ public class MainPage extends javax.swing.JFrame {
                         .addGap(294, 294, 294)
                         .addComponent(jLabel9))
                     .addComponent(jLabel11))
-                .addContainerGap(1052, Short.MAX_VALUE))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -829,7 +913,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11))
-                .addContainerGap(406, Short.MAX_VALUE))
+                .addContainerGap(354, Short.MAX_VALUE))
         );
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_settings_30px.png")), jPanel4); // NOI18N
@@ -838,11 +922,11 @@ public class MainPage extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1731, Short.MAX_VALUE)
+            .addGap(0, 1040, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 582, Short.MAX_VALUE)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_upload_link_document_30px.png")), jPanel5); // NOI18N
@@ -912,6 +996,14 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btnAddProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddProductoActionPerformed
+
+    private void jScrollPane4ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jScrollPane4ComponentResized
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPane4ComponentResized
+
     /**
      * @param args the command line arguments
      */
@@ -961,9 +1053,13 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnRefreshProductos;
     private javax.swing.JButton btnVentas;
+    private javax.swing.JCheckBox checkBoxProductoDisponible;
+    private javax.swing.JPanel contBtnProductos;
     private javax.swing.JPanel contCierreVenta;
+    private javax.swing.JPanel contInsertProd;
     private javax.swing.JPanel contMainVenta;
     private javax.swing.JPanel contPanelEntrada;
+    private javax.swing.JPanel contSidebarT2;
     private javax.swing.JPanel contenedorTablat2;
     private javax.swing.JTextField fieldCant;
     private javax.swing.JTextField fieldCod;
@@ -974,7 +1070,8 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTextField fieldT2Cant;
     private javax.swing.JTextField fieldT2Cod;
     private javax.swing.JTextField fieldT2Desc;
-    private javax.swing.JTextField fieldT2Precio;
+    private javax.swing.JTextField fieldT2PrecioCosto;
+    private javax.swing.JTextField fieldT2PrecioVenta;
     private javax.swing.JTextField fieldTotalPagar;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
@@ -996,8 +1093,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1009,16 +1104,19 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labCod;
-    private javax.swing.JLabel labT2Cant;
     private javax.swing.JLabel labT2Cod;
     private javax.swing.JLabel labT2Desc;
-    private javax.swing.JLabel labT2Precio;
+    private javax.swing.JLabel labT2PrecioCosto;
+    private javax.swing.JLabel labT2PrecioVenta;
+    private javax.swing.JLabel labT2PrecioVenta1;
+    private javax.swing.JLabel labT2StockDisp;
     private javax.swing.JPanel logoCont;
     private javax.swing.JLabel mainLogo;
     private javax.swing.JLabel mainTitle;

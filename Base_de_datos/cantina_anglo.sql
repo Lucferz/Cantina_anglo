@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2022 at 09:10 PM
+-- Generation Time: Feb 20, 2022 at 06:17 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -30,12 +30,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `articulos` (
   `idarticulo` int(11) NOT NULL,
   `codigo` varchar(50) DEFAULT NULL,
-  `nombre` varchar(100) NOT NULL,
   `precio_venta` int(10) UNSIGNED NOT NULL,
   `costo` int(10) UNSIGNED DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
-  `estado` tinyint(1) UNSIGNED DEFAULT 1,
+  `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
   `fk_categorias` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -49,7 +48,7 @@ CREATE TABLE `categorias` (
   `idcategoria` int(10) UNSIGNED NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
-  `estado` tinyint(1) UNSIGNED DEFAULT 1
+  `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -78,7 +77,7 @@ CREATE TABLE `roles` (
   `idrole` int(11) NOT NULL,
   `rol` varchar(30) NOT NULL,
   `desc` varchar(250) DEFAULT NULL,
-  `estado` tinyint(1) UNSIGNED DEFAULT 1
+  `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

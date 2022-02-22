@@ -705,10 +705,8 @@ public class MainPage extends javax.swing.JFrame {
         labT2PrecioCosto.setText("Precio de Costo:");
 
         fieldT2Cod.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        fieldT2Cod.setText("312321");
 
         fieldT2Desc.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        fieldT2Desc.setText("Empanada ");
 
         fieldT2Cant.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
 
@@ -1077,9 +1075,13 @@ public class MainPage extends javax.swing.JFrame {
             Articulos a = null; 
             a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
                     estado, precioVenta, stock, cat);
-            if (descripcion != null && precioVenta != null && stock != null) {
-                ac.insertar(a);
-            }
+            ac.insertar(a);
+            fieldT2Cod.setText(null);
+            fieldT2Desc.setText(null);
+            fieldT2Cant.setText(null);
+            fieldT2PrecioCosto.setText(null);
+            fieldT2PrecioVenta.setText(null);
+            jComboBox2Categorias.setSelectedIndex(0);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Hubo un error en la carga del articulo, por favor intente de nuevo\n"+e,
                     "Error en la carga",2);

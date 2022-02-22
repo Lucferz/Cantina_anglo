@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -26,6 +27,15 @@ public class CategoriasDAO {
         return res;
     }
     
+    public DefaultComboBoxModel Obt_Cat(){
+        DefaultComboBoxModel Lista = new DefaultComboBoxModel();
+        Lista.addElement("Seleccione una categoria");
+        TypedQuery<Categorias> query = em.createNamedQuery("Categorias.findAll", Categorias.class);
+        List<Categorias> res = query.getResultList();
+        Lista.addElement(res);
+        return Lista;
+    }
+    
     public Categorias buscar (Categorias c){
         c= em.find(Categorias.class, c.getIdcategoria());
         return c;
@@ -38,6 +48,14 @@ public class CategoriasDAO {
     
     public void modificar (Categorias c){
         em.getTransaction().begin();
+        em.merge(c);
+        em.getTransaction().commit();
+    }
+    
+    public void desactivar(Categorias c){
+        em.getTransaction().begin();
+        c = em.find(Categorias.class, c.getIdcategoria());
+        c.setEstado(false);
         em.merge(c);
         em.getTransaction().commit();
     }

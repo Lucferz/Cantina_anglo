@@ -5,19 +5,26 @@
  */
 package cantina.vista;
 
+import cantina.controlador.ArticulosControl;
+import cantina.controlador.CategoriasControlador;
+import cantina.modelo.Articulos;
+import static cantina.modelo.Articulos_.fkCategorias;
+import cantina.modelo.Categorias;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author danie
  */
 public class MainPage extends javax.swing.JFrame {
-
+    CategoriasControlador cc = new CategoriasControlador();
     /**
      * Creates new form MainPage
      */
     public MainPage() {
         initComponents();
         setLocationRelativeTo(null);
-      
+        this.jComboBox2Categorias.setModel(cc.Obt_Cat());
     }
 
     /**
@@ -100,6 +107,9 @@ public class MainPage extends javax.swing.JFrame {
         fieldT2PrecioVenta = new javax.swing.JTextField();
         labT2PrecioVenta1 = new javax.swing.JLabel();
         checkBoxProductoDisponible = new javax.swing.JCheckBox();
+        labT2Categorias = new javax.swing.JLabel();
+        jComboBox2Categorias = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
         contenedorTablat2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -614,6 +624,11 @@ public class MainPage extends javax.swing.JFrame {
         btnGuardarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_save_as_30px_2.png"))); // NOI18N
         btnGuardarProducto.setText("GUARDAR");
         btnGuardarProducto.setToolTipText("Guarda los datos en un nuevo registro");
+        btnGuardarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarProductoActionPerformed(evt);
+            }
+        });
 
         btnAddProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_add_30px.png"))); // NOI18N
         btnAddProducto.setText("AGREGAR");
@@ -710,6 +725,18 @@ public class MainPage extends javax.swing.JFrame {
         checkBoxProductoDisponible.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         checkBoxProductoDisponible.setText("Disponible");
 
+        labT2Categorias.setFont(new java.awt.Font("Roboto Black", 0, 13)); // NOI18N
+        labT2Categorias.setText("Categorias:");
+
+        jComboBox2Categorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton3.setText("+");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout contInsertProdLayout = new javax.swing.GroupLayout(contInsertProd);
         contInsertProd.setLayout(contInsertProdLayout);
         contInsertProdLayout.setHorizontalGroup(
@@ -722,17 +749,22 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(labT2StockDisp)
                     .addComponent(labT2PrecioCosto)
                     .addComponent(labT2PrecioVenta)
-                    .addComponent(labT2PrecioVenta1))
-                .addGap(18, 18, 18)
+                    .addComponent(labT2PrecioVenta1)
+                    .addGroup(contInsertProdLayout.createSequentialGroup()
+                        .addComponent(labT2Categorias)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)))
+                .addGap(24, 24, 24)
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldT2Desc, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(fieldT2Desc, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                     .addComponent(fieldT2Cant)
                     .addComponent(fieldT2PrecioCosto)
                     .addComponent(fieldT2PrecioVenta)
                     .addComponent(fieldT2Cod)
                     .addGroup(contInsertProdLayout.createSequentialGroup()
                         .addComponent(checkBoxProductoDisponible)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jComboBox2Categorias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         contInsertProdLayout.setVerticalGroup(
@@ -762,7 +794,12 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labT2PrecioVenta1)
                     .addComponent(checkBoxProductoDisponible))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labT2Categorias)
+                    .addComponent(jComboBox2Categorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         jScrollPane4.setViewportView(contInsertProd);
@@ -1004,6 +1041,48 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jScrollPane4ComponentResized
 
+    private void btnGuardarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProductoActionPerformed
+        // TODO add your handling code here:
+        try{
+            Integer idarticulo = null;
+            ArticulosControl ac = new ArticulosControl();
+            Integer precioVenta = null;
+            Integer precioCosto = null;
+            Integer stock = null;
+            String Codigo = fieldT2Cod.getText();
+            String descripcion = fieldT2Desc.getText();
+            String stockStr = fieldT2Cant.getText();
+            String precioCStr = fieldT2PrecioCosto.getText();
+            String precioVStr = fieldT2PrecioVenta.getText();
+            Categorias categoria = (Categorias) jComboBox2Categorias.getSelectedItem();
+            
+            
+            if (stockStr != null) {
+                stock = Integer.parseInt(stockStr);
+            }
+            if (precioCStr != null) {
+                precioCosto = Integer.parseInt(precioCStr);
+            }
+            if (precioVStr !=null){
+                precioVenta = Integer.parseInt(precioVStr);
+            }
+            
+            Articulos a; 
+            a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
+                    rootPaneCheckingEnabled, precioVenta, stock, (Categorias) categoria);
+            if (descripcion != null && precioVenta != null && stock != null) {
+                ac.insertar(a);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Hubo un error en la carga del articulo, por favor intente de nuevo\n"+e,
+                    "Error en la carga",2);
+        }
+    }//GEN-LAST:event_btnGuardarProductoActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1076,6 +1155,8 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jComboBox2Categorias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1111,6 +1192,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labCod;
+    private javax.swing.JLabel labT2Categorias;
     private javax.swing.JLabel labT2Cod;
     private javax.swing.JLabel labT2Desc;
     private javax.swing.JLabel labT2PrecioCosto;

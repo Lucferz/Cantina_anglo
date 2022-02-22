@@ -1086,7 +1086,7 @@ public class MainPage extends javax.swing.JFrame {
             flag =1;
         }
         if (flag == 0){
-            JOptionPane.showInternalMessageDialog(null, "Articulo guardado");
+            JOptionPane.showMessageDialog(null, "Articulo guardado");
         }
     }//GEN-LAST:event_btnGuardarProductoActionPerformed
 

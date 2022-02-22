@@ -42,7 +42,7 @@ public class Login2 extends javax.swing.JFrame {
             }catch(Exception e){
                 //JOptionPane.showMessageDialog(null, "Los datos de inicio de sesion son incorrectos");
                 JOptionPane.showMessageDialog(null, 
-                              "Los datos de inicio de sesion son incorrectos", 
+                              "Los datos de inicio de sesion son incorrectos"+e, 
                               "Verifica tus datos", 
                               JOptionPane.WARNING_MESSAGE);
                 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2022 at 06:17 PM
+-- Generation Time: Feb 22, 2022 at 08:44 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -50,6 +50,13 @@ CREATE TABLE `categorias` (
   `descripcion` varchar(200) DEFAULT NULL,
   `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `categorias`
+--
+
+INSERT INTO `categorias` (`idcategoria`, `nombre`, `descripcion`, `estado`) VALUES
+(1, 'categoria 1', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -184,7 +191,7 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `idcategoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idcategoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `detalle_venta`

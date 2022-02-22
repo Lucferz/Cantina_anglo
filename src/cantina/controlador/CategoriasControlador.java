@@ -24,6 +24,9 @@ public class CategoriasControlador {
     public Categorias buscar (Categorias c){
         return new CategoriasDAO().buscar(c);
     }
+    public Categorias buscarId(Integer id){
+        return new CategoriasDAO().buscarId(id);
+    }
     public void insertar (Categorias c){
         new CategoriasDAO().insertar(c);
     }

@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Categorias.findByIdcategoria", query = "SELECT c FROM Categorias c WHERE c.idcategoria = :idcategoria")
     , @NamedQuery(name = "Categorias.findByNombre", query = "SELECT c FROM Categorias c WHERE c.nombre = :nombre")
     , @NamedQuery(name = "Categorias.findByDescripcion", query = "SELECT c FROM Categorias c WHERE c.descripcion = :descripcion")
-    , @NamedQuery(name = "Categorias.findAllNombres", query = "SELECT c.nombre FROM Categorias c")
+    , @NamedQuery(name = "Categorias.findNameByEstado", query = "SELECT c.nombre FROM Categorias c WHERE c.estado = 1")
     , @NamedQuery(name = "Categorias.findByEstado", query = "SELECT c FROM Categorias c WHERE c.estado = :estado")})
 public class Categorias implements Serializable {
 
@@ -66,6 +66,11 @@ public class Categorias implements Serializable {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
+    }
+
+    public Categorias(Integer idcategoria, String nombre) {
+        this.idcategoria = idcategoria;
+        this.nombre = nombre;
     }
     
 

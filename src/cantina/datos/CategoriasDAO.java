@@ -30,7 +30,7 @@ public class CategoriasDAO {
     public DefaultComboBoxModel Obt_Cat(){
         DefaultComboBoxModel Lista = new DefaultComboBoxModel();
         Lista.addElement("Seleccione una categoria");
-        TypedQuery<Categorias> query = em.createNamedQuery("Categorias.findAll", Categorias.class);
+        TypedQuery<Categorias> query = em.createNamedQuery("Categorias.findNameByEstado", Categorias.class);
         List<Categorias> res = query.getResultList();
         Lista.addElement(res);
         return Lista;
@@ -40,6 +40,12 @@ public class CategoriasDAO {
         c= em.find(Categorias.class, c.getIdcategoria());
         return c;
     }
+    
+    public Categorias buscarId (Integer id){
+        Categorias c= em.find(Categorias.class, id);
+        return c;
+    }
+    
     public void insertar (Categorias c){
         em.getTransaction().begin();
         em.persist(c);

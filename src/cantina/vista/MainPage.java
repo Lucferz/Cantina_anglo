@@ -1043,6 +1043,7 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnGuardarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProductoActionPerformed
         // TODO add your handling code here:
+        int flag = 0;
         try{
             Integer idarticulo = null;
             ArticulosControl ac = new ArticulosControl();
@@ -1054,9 +1055,15 @@ public class MainPage extends javax.swing.JFrame {
             String stockStr = fieldT2Cant.getText();
             String precioCStr = fieldT2PrecioCosto.getText();
             String precioVStr = fieldT2PrecioVenta.getText();
-            Categorias categoria = (Categorias) jComboBox2Categorias.getSelectedItem();
-            
-            
+            Integer categoria= null;
+            Categorias cat=null;
+            Boolean estado = true;
+                    
+            if (jComboBox2Categorias.getSelectedIndex() != 0){
+                categoria = jComboBox2Categorias.getSelectedIndex();
+                cat = new CategoriasControlador().buscarId(categoria);
+            }
+                        
             if (stockStr != null) {
                 stock = Integer.parseInt(stockStr);
             }
@@ -1067,15 +1074,19 @@ public class MainPage extends javax.swing.JFrame {
                 precioVenta = Integer.parseInt(precioVStr);
             }
             
-            Articulos a; 
+            Articulos a = null; 
             a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
-                    rootPaneCheckingEnabled, precioVenta, stock, (Categorias) categoria);
+                    estado, precioVenta, stock, cat);
             if (descripcion != null && precioVenta != null && stock != null) {
                 ac.insertar(a);
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Hubo un error en la carga del articulo, por favor intente de nuevo\n"+e,
                     "Error en la carga",2);
+            flag =1;
+        }
+        if (flag == 0){
+            JOptionPane.showInternalMessageDialog(null, "Articulo guardado");
         }
     }//GEN-LAST:event_btnGuardarProductoActionPerformed
 

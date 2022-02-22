@@ -8,6 +8,7 @@ package cantina.controlador;
 import cantina.datos.CategoriasDAO;
 import cantina.modelo.Categorias;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -17,6 +18,9 @@ public class CategoriasControlador {
     public List<Categorias> listar(){
         return new CategoriasDAO().listar();
     }
+    public DefaultComboBoxModel Obt_Cat(){
+        return new CategoriasDAO().Obt_Cat();
+    }    
     public Categorias buscar (Categorias c){
         return new CategoriasDAO().buscar(c);
     }

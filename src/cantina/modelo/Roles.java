@@ -59,12 +59,11 @@ public class Roles implements Serializable {
         this.idrole = idrole;
     }
 
-    public Roles(Integer idrole, String rol, String desc, Boolean estado, List<Usuarios> usuariosList) {
+    public Roles(Integer idrole, String rol, String desc, Boolean estado) {
         this.idrole = idrole;
         this.rol = rol;
         this.desc = desc;
         this.estado = estado;
-        this.usuariosList = usuariosList;
     }
     
     

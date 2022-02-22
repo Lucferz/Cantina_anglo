@@ -68,12 +68,11 @@ public class Ventas implements Serializable {
         this.idventa = idventa;
     }
 
-    public Ventas(Integer idventa, Date fecha, Integer total, boolean estado, List<DetalleVenta> detalleVentaList, Usuarios fkUsuario) {
+    public Ventas(Integer idventa, Date fecha, Integer total, boolean estado, Usuarios fkUsuario) {
         this.idventa = idventa;
         this.fecha = fecha;
         this.total = total;
         this.estado = estado;
-        this.detalleVentaList = detalleVentaList;
         this.fkUsuario = fkUsuario;
     }
     

@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Categorias.findByIdcategoria", query = "SELECT c FROM Categorias c WHERE c.idcategoria = :idcategoria")
     , @NamedQuery(name = "Categorias.findByNombre", query = "SELECT c FROM Categorias c WHERE c.nombre = :nombre")
     , @NamedQuery(name = "Categorias.findByDescripcion", query = "SELECT c FROM Categorias c WHERE c.descripcion = :descripcion")
+    , @NamedQuery(name = "Categorias.findAllNombres", query = "SELECT c.nombre FROM Categorias c")
     , @NamedQuery(name = "Categorias.findByEstado", query = "SELECT c FROM Categorias c WHERE c.estado = :estado")})
 public class Categorias implements Serializable {
 
@@ -47,8 +48,9 @@ public class Categorias implements Serializable {
     private String nombre;
     @Column(name = "descripcion")
     private String descripcion;
+    @Basic(optional = false)
     @Column(name = "estado")
-    private Boolean estado;
+    private boolean estado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkCategorias")
     private List<Articulos> articulosList;
 
@@ -59,19 +61,18 @@ public class Categorias implements Serializable {
         this.idcategoria = idcategoria;
     }
 
-    public Categorias(Integer idcategoria, String nombre, String descripcion, Boolean estado, List<Articulos> articulosList) {
+    public Categorias(Integer idcategoria, String nombre, String descripcion, boolean estado) {
         this.idcategoria = idcategoria;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
-        this.articulosList = articulosList;
     }
     
-    
 
-    public Categorias(Integer idcategoria, String nombre) {
+    public Categorias(Integer idcategoria, String nombre, boolean estado) {
         this.idcategoria = idcategoria;
         this.nombre = nombre;
+        this.estado = estado;
     }
 
     public Integer getIdcategoria() {
@@ -98,11 +99,11 @@ public class Categorias implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Boolean getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 

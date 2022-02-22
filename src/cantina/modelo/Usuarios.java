@@ -65,12 +65,11 @@ public class Usuarios implements Serializable {
         this.idusuario = idusuario;
     }
 
-    public Usuarios(Integer idusuario, String nombre, boolean estado, String pass, List<Ventas> ventasList, Roles fkRoles) {
+    public Usuarios(Integer idusuario, String nombre, boolean estado, String pass, Roles fkRoles) {
         this.idusuario = idusuario;
         this.nombre = nombre;
         this.estado = estado;
         this.pass = pass;
-        this.ventasList = ventasList;
         this.fkRoles = fkRoles;
     }
     

@@ -11,6 +11,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,7 +27,27 @@ public class ArticulosDAO {
         List<Articulos> res = query.getResultList();
         return res;
     }
-    
+    public void cargar_tabla_arti(JTable table){
+        String [] titulos = {"ID","CODIGO", "DESCRIPCION","STOCK","PRECIO_VENTA","PRECIO_cOSTO"};
+       DefaultTableModel model = new DefaultTableModel(null, titulos);
+       try{
+           List<Articulos> datos = listar();
+           String [] datosArti = new String[6];
+          for(Articulos tba : datos){
+              datosArti[0]=tba.getIdarticulo()+"";
+              datosArti[1]=tba.getCodigo()+"";
+              datosArti[2]=tba.getDescripcion()+"";
+              datosArti[3]=tba.getStock()+"";
+              datosArti[4]=tba.getPrecioVenta()+"";
+              datosArti[5]=tba.getCosto()+"";
+              model.addRow(datosArti);
+           }
+          table.setModel(model);
+       }catch(Exception e){
+           
+       }
+   }
+        
     public Articulos buscarId (Articulos a){
         a =em.find(Articulos.class, a.getIdarticulo());
         return a;

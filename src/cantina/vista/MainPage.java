@@ -627,6 +627,11 @@ public class MainPage extends javax.swing.JFrame {
 
         btnBorrarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_eraser_30px.png"))); // NOI18N
         btnBorrarProducto.setText("BORRAR");
+        btnBorrarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarProductoActionPerformed(evt);
+            }
+        });
 
         btnGuardarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_save_as_30px_2.png"))); // NOI18N
         btnGuardarProducto.setText("GUARDAR");
@@ -1096,6 +1101,11 @@ public class MainPage extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnBorrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProductoActionPerformed
+        // TODO add your handling code here:
+        //ac.eliminarIdLogico(WIDTH);
+    }//GEN-LAST:event_btnBorrarProductoActionPerformed
 
     /**
      * @param args the command line arguments

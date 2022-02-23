@@ -42,8 +42,8 @@ public class ArticulosControl {
     public void eliminarCod (Articulos a){
         new ArticulosDAO().eliminarCod(a);
     }
-    public void eliminarIdLogico(Articulos a){
-        new ArticulosDAO().eliminarIdLogico(a);
+    public void eliminarIdLogico(Integer id){
+        new ArticulosDAO().eliminarIdLogico(id);
     }
     
     public void eliminarCodLogico(Articulos a){

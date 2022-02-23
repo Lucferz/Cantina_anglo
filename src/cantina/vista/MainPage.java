@@ -237,7 +237,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(btnConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnInformes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         getContentPane().add(sidebarMain, java.awt.BorderLayout.WEST);
@@ -759,18 +759,16 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(labT2Categorias)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3)))
-                .addGap(24, 24, 24)
-                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldT2Desc, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .addComponent(fieldT2Cant)
-                    .addComponent(fieldT2PrecioCosto)
-                    .addComponent(fieldT2PrecioVenta)
-                    .addComponent(fieldT2Cod)
-                    .addGroup(contInsertProdLayout.createSequentialGroup()
-                        .addComponent(checkBoxProductoDisponible)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jComboBox2Categorias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(0, 0, 0)
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(fieldT2PrecioVenta, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldT2PrecioCosto, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldT2Cant, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldT2Desc, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkBoxProductoDisponible, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldT2Cod, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox2Categorias, 0, 165, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         contInsertProdLayout.setVerticalGroup(
             contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -830,7 +828,7 @@ public class MainPage extends javax.swing.JFrame {
             panelContEntradaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelContEntradaProductosLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -855,7 +853,7 @@ public class MainPage extends javax.swing.JFrame {
         contenedorTablat2Layout.setVerticalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorTablat2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -903,7 +901,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(btnGenerarResumenVentas)
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_list_30px.png")), panelVentas); // NOI18N
@@ -948,7 +946,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11))
-                .addContainerGap(354, Short.MAX_VALUE))
+                .addContainerGap(406, Short.MAX_VALUE))
         );
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_settings_30px.png")), jPanel4); // NOI18N
@@ -961,7 +959,7 @@ public class MainPage extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 582, Short.MAX_VALUE)
         );
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_upload_link_document_30px.png")), jPanel5); // NOI18N

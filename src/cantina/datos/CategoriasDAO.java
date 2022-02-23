@@ -32,7 +32,9 @@ public class CategoriasDAO {
         Lista.addElement("Seleccione una categoria");
         TypedQuery<Categorias> query = em.createNamedQuery("Categorias.findNameByEstado", Categorias.class);
         List<Categorias> res = query.getResultList();
-        Lista.addElement(res);
+        for (int i=0; i< res.size();i++){
+            Lista.addElement(res.get(i));
+        }
         return Lista;
     }
     

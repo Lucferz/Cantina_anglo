@@ -27,3 +27,6 @@ hs_err_pid*
 
 #Ignora la carpeta nbproject
 nbproject
+
+#Ignora la carpeta build
+build

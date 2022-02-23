@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2022 at 08:44 PM
+-- Generation Time: Feb 23, 2022 at 02:36 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -38,6 +38,17 @@ CREATE TABLE `articulos` (
   `fk_categorias` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `articulos`
+--
+
+INSERT INTO `articulos` (`idarticulo`, `codigo`, `precio_venta`, `costo`, `stock`, `descripcion`, `estado`, `fk_categorias`) VALUES
+(1, '7842714004690', 3000, 1500, 1, 'caja', 1, 1),
+(2, '3123211234', 4000, 2000, 2, 'Empanada ', 1, 1),
+(3, '123456789', 4000, 2500, 5, 'Pancho', 1, 1),
+(4, '123654987', 1000, 100, 20, 'Turron', 1, 1),
+(5, '321654987', 6000, 3000, 5, 'Pan dulce', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -56,7 +67,8 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`idcategoria`, `nombre`, `descripcion`, `estado`) VALUES
-(1, 'categoria 1', NULL, 1);
+(1, 'categoria 1', NULL, 1),
+(2, 'categoria 2', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -185,13 +197,13 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT for table `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `idcategoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idcategoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `detalle_venta`

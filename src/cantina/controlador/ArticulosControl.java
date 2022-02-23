@@ -8,6 +8,7 @@ package cantina.controlador;
 import cantina.datos.ArticulosDAO;
 import cantina.modelo.Articulos;
 import java.util.List;
+import javax.swing.JTable;
 
 /**
  *
@@ -17,7 +18,9 @@ public class ArticulosControl {
     public List<Articulos> listar(){
         return new ArticulosDAO().listar();
     }
-    
+    public void cargar_tabla_arti(JTable table){
+        new ArticulosDAO().cargar_tabla_arti(table);
+    }
     public Articulos buscarId (Articulos a){
         return new ArticulosDAO().buscarId(a);
     }

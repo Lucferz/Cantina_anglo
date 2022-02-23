@@ -1,0 +1,9 @@
+--------------
+dani--
+* Agregar boton de informe general resumido, concatenando los demas informes
+
+----------
+lucas--
+
+
+----------

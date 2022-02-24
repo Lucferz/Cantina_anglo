@@ -289,6 +289,7 @@ public class MainPage extends javax.swing.JFrame {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                fieldCodInputMethodTextChanged(evt);
             }
         });
 
@@ -681,15 +682,11 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnGuardarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                     .addComponent(btnBorrarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contBtnProductosLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnActualizarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contBtnProductosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnExportProduc, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addGap(20, 20, 20)
+                .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnActualizarProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                    .addComponent(btnExportProduc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         contBtnProductosLayout.setVerticalGroup(
             contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -702,7 +699,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrarProducto)
                     .addComponent(btnExportProduc))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -1071,55 +1068,6 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jScrollPane4ComponentResized
 
-    private void btnGuardarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProductoActionPerformed
-        // TODO add your handling code here:
-        int flag = 0;
-        try{
-            Integer idarticulo = null;
-            ArticulosControl ac = new ArticulosControl();
-            Integer precioVenta = null;
-            Integer precioCosto = null;
-            Integer stock = null;
-            String Codigo = fieldT2Cod.getText();
-            String descripcion = fieldT2Desc.getText();
-            String stockStr = fieldT2Cant.getText();
-            String precioCStr = fieldT2PrecioCosto.getText();
-            String precioVStr = fieldT2PrecioVenta.getText();
-            Integer categoria= null;
-            Categorias cat=null;
-            Boolean estado = true;
-                    
-            if (jComboBox2Categorias.getSelectedIndex() != 0){
-                categoria = jComboBox2Categorias.getSelectedIndex();
-                cat = new CategoriasControlador().buscarId(categoria);
-            }
-                        
-            if (stockStr != null) {
-                stock = Integer.parseInt(stockStr);
-            }
-            if (precioCStr != null) {
-                precioCosto = Integer.parseInt(precioCStr);
-            }
-            if (precioVStr !=null){
-                precioVenta = Integer.parseInt(precioVStr);
-            }
-            
-            Articulos a = null; 
-            a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
-                    estado, precioVenta, stock, cat);
-            ac.insertar(a);
-            LimpiarProd();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Hubo un error en la carga del articulo, por favor intente de nuevo\n"+e,
-                    "Error en la carga",2);
-            flag =1;
-        }
-        if (flag == 0){
-            JOptionPane.showMessageDialog(null, "Articulo guardado");
-        }
-        MostrarTabArti();
-    }//GEN-LAST:event_btnGuardarProductoActionPerformed
-
     private void BtnAddCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddCategoriaActionPerformed
         // TODO add your handling code here:
         boolean flag = false;
@@ -1143,6 +1091,71 @@ public class MainPage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BtnAddCategoriaActionPerformed
 
+    private void jTableArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableArticulosMouseClicked
+        // TODO add your handling code here:
+        int fila = jTableArticulos.rowAtPoint(evt.getPoint());
+        fieldT2Id.setText(jTableArticulos.getValueAt(fila, 0).toString());
+        fieldT2Cod.setText(jTableArticulos.getValueAt(fila, 1).toString());
+        fieldT2Desc.setText(jTableArticulos.getValueAt(fila, 2).toString());
+        fieldT2Cant.setText(jTableArticulos.getValueAt(fila, 3).toString());
+        fieldT2PrecioCosto.setText(jTableArticulos.getValueAt(fila, 4).toString());
+        fieldT2PrecioVenta.setText(jTableArticulos.getValueAt(fila, 5).toString());
+//        jComboBox2Categorias.setSelectedItem(jTableArticulos.getValueAt(fila, 6).toString());
+    }//GEN-LAST:event_jTableArticulosMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnGuardarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProductoActionPerformed
+        // TODO add your handling code here:
+        int flag = 0;
+        try{
+            Integer idarticulo = null;
+            ArticulosControl ac = new ArticulosControl();
+            Integer precioVenta = null;
+            Integer precioCosto = null;
+            Integer stock = null;
+            String Codigo = fieldT2Cod.getText();
+            String descripcion = fieldT2Desc.getText();
+            String stockStr = fieldT2Cant.getText();
+            String precioCStr = fieldT2PrecioCosto.getText();
+            String precioVStr = fieldT2PrecioVenta.getText();
+            Integer categoria= null;
+            Categorias cat=null;
+            Boolean estado = true;
+
+            if (jComboBox2Categorias.getSelectedIndex() != 0){
+                categoria = jComboBox2Categorias.getSelectedIndex();
+                cat = new CategoriasControlador().buscarId(categoria);
+            }
+
+            if (stockStr != null) {
+                stock = Integer.parseInt(stockStr);
+            }
+            if (precioCStr != null) {
+                precioCosto = Integer.parseInt(precioCStr);
+            }
+            if (precioVStr !=null){
+                precioVenta = Integer.parseInt(precioVStr);
+            }
+
+            Articulos a = null;
+            a = new Articulos(idarticulo, Codigo, precioCosto, descripcion,
+                estado, precioVenta, stock, cat);
+            ac.insertar(a);
+            LimpiarProd();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Hubo un error en la carga del articulo, por favor intente de nuevo\n"+e,
+                "Error en la carga",2);
+            flag =1;
+        }
+        if (flag == 0){
+            JOptionPane.showMessageDialog(null, "Articulo guardado");
+        }
+        MostrarTabArti();
+    }//GEN-LAST:event_btnGuardarProductoActionPerformed
+
     private void btnBorrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProductoActionPerformed
         // TODO add your handling code here:
         try{
@@ -1161,22 +1174,10 @@ public class MainPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBorrarProductoActionPerformed
 
-    private void jTableArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableArticulosMouseClicked
-        // TODO add your handling code here:
-        int fila = jTableArticulos.rowAtPoint(evt.getPoint());
-        fieldT2Id.setText(jTableArticulos.getValueAt(fila, 0).toString());
-        fieldT2Cod.setText(jTableArticulos.getValueAt(fila, 1).toString());
-        fieldT2Desc.setText(jTableArticulos.getValueAt(fila, 2).toString());
-        fieldT2Cant.setText(jTableArticulos.getValueAt(fila, 3).toString());
-        fieldT2PrecioCosto.setText(jTableArticulos.getValueAt(fila, 4).toString());
-        fieldT2PrecioVenta.setText(jTableArticulos.getValueAt(fila, 5).toString());
-//        jComboBox2Categorias.setSelectedItem(jTableArticulos.getValueAt(fila, 6).toString());
-    }//GEN-LAST:event_jTableArticulosMouseClicked
-
     private void btnActualizarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarProductosActionPerformed
         // TODO add your handling code here:
         if (!"".equals(fieldT2Cod.getText())){
-            
+
             String[] options = new String[2];
             options[0] = "SÍ";
             options[1] = "NO";
@@ -1184,7 +1185,7 @@ public class MainPage extends javax.swing.JFrame {
 
             //int pregunta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de Modificar este producto?");
             if (pregunta==0){
-                
+
                 try{
                     Integer idarticulo = Integer.parseInt(fieldT2Id.getText());
                     ArticulosControl ac = new ArticulosControl();
@@ -1195,29 +1196,25 @@ public class MainPage extends javax.swing.JFrame {
                     String descripcion = fieldT2Desc.getText();
                     Integer categoria= jComboBox2Categorias.getSelectedIndex();;
                     Categorias cat = new CategoriasControlador().buscarId(categoria);;
-                    Boolean estado = true; 
+                    Boolean estado = true;
                     if (!"".equals(fieldT2PrecioVenta.getText()) && !"".equals(fieldT2Cod.getText()) && !"".equals(fieldT2Cant.getText())
-                            && !"".equals(fieldT2Desc.getText()) && null!=cat){
-                        Articulos a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
-                                estado, precioVenta, stock, cat);
+                        && !"".equals(fieldT2Desc.getText()) && null!=cat){
+                        Articulos a = new Articulos(idarticulo, Codigo, precioCosto, descripcion,
+                            estado, precioVenta, stock, cat);
                         ac.modificar(a);
                         LimpiarProd();
                         MostrarTabArti();
                     }else{
                         JOptionPane.showMessageDialog(null, "Algunos de los campos obligatorios estan vacios",
-                                "Error en la Actualizacion", 1);
+                            "Error en la Actualizacion", 1);
                     }
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(null, "Hubo un error en la Modificacion del articulo, "
-                            + "por favor intente de nuevo\n"+e.getMessage(), "Error en la Modificacion",2);
+                        + "por favor intente de nuevo\n"+e.getMessage(), "Error en la Modificacion",2);
                 }
             }
         }
     }//GEN-LAST:event_btnActualizarProductosActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void LimpiarProd(){
         fieldT2Id.setText("");

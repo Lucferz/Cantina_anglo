@@ -916,18 +916,12 @@
                                           <Component id="btnGuardarProducto" pref="146" max="32767" attributes="0"/>
                                           <Component id="btnBorrarProducto" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                              <Component id="btnActualizarProductos" min="-2" pref="146" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="btnExportProduc" min="-2" pref="146" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                          </Group>
+                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="btnActualizarProductos" pref="146" max="32767" attributes="0"/>
+                                          <Component id="btnExportProduc" max="32767" attributes="0"/>
                                       </Group>
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -944,7 +938,7 @@
                                           <Component id="btnBorrarProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnExportProduc" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="89" max="32767" attributes="0"/>
+                                      <EmptySpace pref="49" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>

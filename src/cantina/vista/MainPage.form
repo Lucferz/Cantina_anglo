@@ -24,7 +24,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,122,0,0,4,-100"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,117,0,0,4,-100"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -69,7 +69,7 @@
                   <Component id="btnConfig" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnInformes" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace pref="131" max="32767" attributes="0"/>
+                  <EmptySpace pref="129" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -870,7 +870,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                              <Component id="contSidebarT2" pref="509" max="32767" attributes="0"/>
+                              <Component id="contSidebarT2" pref="507" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1031,32 +1031,30 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="labT2Cod" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="labT2Desc" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="labT2StockDisp" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="labT2PrecioCosto" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="labT2PrecioVenta" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="labT2PrecioVenta1" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="labT2Categorias" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Component id="BtnAddCategoria" min="-2" max="-2" attributes="0"/>
                                               </Group>
+                                              <Component id="labT2Cod1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labT2Cod" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="fieldT2Desc" alignment="0" pref="184" max="32767" attributes="0"/>
-                                              <Component id="fieldT2Cant" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="fieldT2PrecioCosto" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="fieldT2PrecioVenta" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="fieldT2Cod" alignment="0" max="32767" attributes="0"/>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="checkBoxProductoDisponible" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="fieldT2Id" min="-2" pref="165" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="fieldT2PrecioVenta" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="fieldT2PrecioCosto" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="fieldT2Cant" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="fieldT2Desc" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="jComboBox2Categorias" pref="165" max="32767" attributes="0"/>
                                               </Group>
-                                              <Component id="jComboBox2Categorias" max="32767" attributes="0"/>
+                                              <Component id="fieldT2Cod" min="-2" pref="165" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <EmptySpace pref="20" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1066,40 +1064,40 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="labT2Cod" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="fieldT2Id" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="labT2Cod1" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="fieldT2Cod" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="labT2Desc" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="fieldT2Desc" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="labT2StockDisp" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="fieldT2Cant" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="labT2PrecioCosto" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="fieldT2PrecioCosto" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="labT2PrecioVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="fieldT2PrecioVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="labT2PrecioVenta1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="checkBoxProductoDisponible" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="labT2Categorias" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jComboBox2Categorias" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="BtnAddCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="86" max="32767" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1110,7 +1108,7 @@
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Roboto Black" size="14" style="0"/>
                                     </Property>
-                                    <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
+                                    <Property name="text" type="java.lang.String" value="ID Producto:"/>
                                   </Properties>
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="labT2Desc">
@@ -1180,22 +1178,6 @@
                                     </Property>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JLabel" name="labT2PrecioVenta1">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Roboto Black" size="13" style="0"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Estado de Producto:"/>
-                                  </Properties>
-                                </Component>
-                                <Component class="javax.swing.JCheckBox" name="checkBoxProductoDisponible">
-                                  <Properties>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Roboto" size="12" style="1"/>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Disponible"/>
-                                  </Properties>
-                                </Component>
                                 <Component class="javax.swing.JLabel" name="labT2Categorias">
                                   <Properties>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1227,6 +1209,22 @@
                                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAddCategoriaActionPerformed"/>
                                   </Events>
                                 </Component>
+                                <Component class="javax.swing.JTextField" name="fieldT2Id">
+                                  <Properties>
+                                    <Property name="editable" type="boolean" value="false"/>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Roboto Light" size="14" style="1"/>
+                                    </Property>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="labT2Cod1">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Roboto Black" size="14" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
+                                  </Properties>
+                                </Component>
                               </SubComponents>
                             </Container>
                           </SubComponents>
@@ -1251,7 +1249,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPane2" pref="514" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" pref="512" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1324,7 +1322,7 @@
                       <Component id="btnGenerarResumenVentas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jScrollPane3" min="-2" pref="415" max="-2" attributes="0"/>
-                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1402,7 +1400,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="527" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="525" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1427,7 +1425,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="527" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="525" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

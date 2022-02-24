@@ -122,11 +122,11 @@ public class MainPage extends javax.swing.JFrame {
         fieldT2PrecioCosto = new javax.swing.JTextField();
         labT2PrecioVenta = new javax.swing.JLabel();
         fieldT2PrecioVenta = new javax.swing.JTextField();
-        labT2PrecioVenta1 = new javax.swing.JLabel();
-        checkBoxProductoDisponible = new javax.swing.JCheckBox();
         labT2Categorias = new javax.swing.JLabel();
         jComboBox2Categorias = new javax.swing.JComboBox<>();
         BtnAddCategoria = new javax.swing.JButton();
+        fieldT2Id = new javax.swing.JTextField();
+        labT2Cod1 = new javax.swing.JLabel();
         contenedorTablat2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableArticulos = new javax.swing.JTable();
@@ -242,7 +242,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(btnConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnInformes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         getContentPane().add(sidebarMain, java.awt.BorderLayout.WEST);
@@ -723,7 +723,7 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         labT2Cod.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        labT2Cod.setText("Código:");
+        labT2Cod.setText("ID Producto:");
 
         labT2Desc.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         labT2Desc.setText("Descripción:");
@@ -747,12 +747,6 @@ public class MainPage extends javax.swing.JFrame {
 
         fieldT2PrecioVenta.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
 
-        labT2PrecioVenta1.setFont(new java.awt.Font("Roboto Black", 0, 13)); // NOI18N
-        labT2PrecioVenta1.setText("Estado de Producto:");
-
-        checkBoxProductoDisponible.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        checkBoxProductoDisponible.setText("Disponible");
-
         labT2Categorias.setFont(new java.awt.Font("Roboto Black", 0, 13)); // NOI18N
         labT2Categorias.setText("Categorias:");
 
@@ -765,6 +759,12 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
+        fieldT2Id.setEditable(false);
+        fieldT2Id.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+
+        labT2Cod1.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        labT2Cod1.setText("Código:");
+
         javax.swing.GroupLayout contInsertProdLayout = new javax.swing.GroupLayout(contInsertProd);
         contInsertProd.setLayout(contInsertProdLayout);
         contInsertProdLayout.setHorizontalGroup(
@@ -772,28 +772,26 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(contInsertProdLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labT2Cod)
                     .addComponent(labT2Desc)
                     .addComponent(labT2StockDisp)
                     .addComponent(labT2PrecioCosto)
                     .addComponent(labT2PrecioVenta)
-                    .addComponent(labT2PrecioVenta1)
                     .addGroup(contInsertProdLayout.createSequentialGroup()
                         .addComponent(labT2Categorias)
                         .addGap(18, 18, 18)
-                        .addComponent(BtnAddCategoria)))
-                .addGap(24, 24, 24)
+                        .addComponent(BtnAddCategoria))
+                    .addComponent(labT2Cod1)
+                    .addComponent(labT2Cod))
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldT2Desc, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .addComponent(fieldT2Cant)
-                    .addComponent(fieldT2PrecioCosto)
-                    .addComponent(fieldT2PrecioVenta)
-                    .addComponent(fieldT2Cod)
-                    .addGroup(contInsertProdLayout.createSequentialGroup()
-                        .addComponent(checkBoxProductoDisponible)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jComboBox2Categorias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(fieldT2Id, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(fieldT2PrecioVenta, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(fieldT2PrecioCosto, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(fieldT2Cant, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(fieldT2Desc, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jComboBox2Categorias, 0, 165, Short.MAX_VALUE))
+                    .addComponent(fieldT2Cod, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         contInsertProdLayout.setVerticalGroup(
             contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -801,33 +799,33 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labT2Cod)
+                    .addComponent(fieldT2Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labT2Cod1)
                     .addComponent(fieldT2Cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(30, 30, 30)
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labT2Desc)
                     .addComponent(fieldT2Desc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(30, 30, 30)
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labT2StockDisp)
                     .addComponent(fieldT2Cant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(30, 30, 30)
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labT2PrecioCosto)
                     .addComponent(fieldT2PrecioCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(30, 30, 30)
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labT2PrecioVenta)
                     .addComponent(fieldT2PrecioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labT2PrecioVenta1)
-                    .addComponent(checkBoxProductoDisponible))
-                .addGap(35, 35, 35)
+                .addGap(30, 30, 30)
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labT2Categorias)
                     .addComponent(jComboBox2Categorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnAddCategoria))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane4.setViewportView(contInsertProd);
@@ -853,7 +851,7 @@ public class MainPage extends javax.swing.JFrame {
             panelContEntradaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelContEntradaProductosLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -883,7 +881,7 @@ public class MainPage extends javax.swing.JFrame {
         contenedorTablat2Layout.setVerticalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorTablat2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -931,7 +929,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(btnGenerarResumenVentas)
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_list_30px.png")), panelVentas); // NOI18N
@@ -944,7 +942,7 @@ public class MainPage extends javax.swing.JFrame {
         );
         panelConfigLayout.setVerticalGroup(
             panelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 527, Short.MAX_VALUE)
+            .addGap(0, 525, Short.MAX_VALUE)
         );
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_settings_30px.png")), panelConfig); // NOI18N
@@ -957,7 +955,7 @@ public class MainPage extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 527, Short.MAX_VALUE)
+            .addGap(0, 525, Short.MAX_VALUE)
         );
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_upload_link_document_30px.png")), jPanel5); // NOI18N
@@ -1107,10 +1105,10 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnBorrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProductoActionPerformed
         // TODO add your handling code here:
-        if (!"".equals(fieldT2Id.getText())){
+        if (!"".equals(fieldT2Cod.getText())){
             int pregunta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar este producto?");
             if (pregunta==0){
-                int id = Integer.parseInt(fieldT2Id.getText());
+                int id = Integer.parseInt(fieldT2Cod.getText());
                 ac.eliminarIdLogico(id);
                 LimpiarTable();
                 LimpiarProd();
@@ -1133,12 +1131,12 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnActualizarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarProductosActionPerformed
         // TODO add your handling code here:
-        if (!"".equals(fieldT2Id.getText())){
+        if (!"".equals(fieldT2Cod.getText())){
             int pregunta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de Modificar este producto?");
             if (pregunta==0){
                 
                 try{
-                    Integer idarticulo = Integer.parseInt(fieldT2Id.getText());
+                    Integer idarticulo = Integer.parseInt(fieldT2Cod.getText());
                     ArticulosControl ac = new ArticulosControl();
                     Integer precioVenta = Integer.parseInt(fieldT2PrecioVenta.getText());;
                     Integer precioCosto = Integer.parseInt(fieldT2PrecioCosto.getText());
@@ -1231,7 +1229,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton btnNewVenta;
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnVentas;
-    private javax.swing.JCheckBox checkBoxProductoDisponible;
     private javax.swing.JPanel contBtnProductos;
     private javax.swing.JPanel contCierreVenta;
     private javax.swing.JPanel contInsertProd;
@@ -1249,6 +1246,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTextField fieldT2Cant;
     private javax.swing.JTextField fieldT2Cod;
     private javax.swing.JTextField fieldT2Desc;
+    private javax.swing.JTextField fieldT2Id;
     private javax.swing.JTextField fieldT2PrecioCosto;
     private javax.swing.JTextField fieldT2PrecioVenta;
     private javax.swing.JTextField fieldTotalPagar;
@@ -1286,10 +1284,10 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel labCod;
     private javax.swing.JLabel labT2Categorias;
     private javax.swing.JLabel labT2Cod;
+    private javax.swing.JLabel labT2Cod1;
     private javax.swing.JLabel labT2Desc;
     private javax.swing.JLabel labT2PrecioCosto;
     private javax.swing.JLabel labT2PrecioVenta;
-    private javax.swing.JLabel labT2PrecioVenta1;
     private javax.swing.JLabel labT2StockDisp;
     private javax.swing.JPanel logoCont;
     private javax.swing.JLabel mainLogo;

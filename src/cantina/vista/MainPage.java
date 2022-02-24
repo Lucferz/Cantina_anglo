@@ -1178,12 +1178,18 @@ public class MainPage extends javax.swing.JFrame {
                     Categorias cat = new CategoriasControlador().buscarId(categoria);;
                     Boolean estado = true;
                     Articulos a = null; 
-                    a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
-                            estado, precioVenta, stock, cat);
-                    ac.modificar(a);
-                    LimpiarTable();
-                    LimpiarProd();
-                    MostrarTabArti();
+                    if (!"".equals(fieldT2PrecioVenta.getText()) && !"".equals(fieldT2Cod.getText()) && !"".equals(fieldT2Cant.getText())
+                            && !"".equals(fieldT2Desc.getText()) && null!=cat){
+                        a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
+                                estado, precioVenta, stock, cat);
+                        ac.modificar(a);
+                        LimpiarTable();
+                        LimpiarProd();
+                        MostrarTabArti();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Algunos de los campos obligatorios estan vacios",
+                                "Error en la Actualizacion", 1);
+                    }
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(null, "Hubo un error en la Modificacion del articulo, "
                             + "por favor intente de nuevo\n"+e, "Error en la Modificacion",2);

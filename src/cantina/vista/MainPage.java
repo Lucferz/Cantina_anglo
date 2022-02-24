@@ -285,13 +285,6 @@ public class MainPage extends javax.swing.JFrame {
 
         contPanelEntrada.setLayout(new java.awt.GridBagLayout());
 
-        fieldCod.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-            }
-        });
-
         labCod.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labCod.setText("Cód. de Barras");
 

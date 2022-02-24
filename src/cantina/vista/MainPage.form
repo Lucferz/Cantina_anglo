@@ -308,9 +308,6 @@
                       </Layout>
                       <SubComponents>
                         <Component class="javax.swing.JTextField" name="fieldCod">
-                          <Events>
-                            <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="fieldCodInputMethodTextChanged"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="labCod">
                           <Properties>
@@ -457,6 +454,15 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="fieldCant">
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldCantActionPerformed"/>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldCantKeyPressed"/>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldCantKeyReleased"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldCantKeyTyped"/>
+                          </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fieldCant.setTransferHandler(null);"/>
+                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -638,6 +644,9 @@
                               <Image iconType="3" name="/cantina/vista/imgs/icons8_clear_symbol_30px.png"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseReleased"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -938,7 +947,7 @@
                                           <Component id="btnBorrarProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="btnExportProduc" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                                      <EmptySpace pref="89" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1028,18 +1037,24 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="labT2Desc" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="labT2StockDisp" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="labT2PrecioCosto" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="labT2PrecioVenta" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="labT2Desc" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="labT2PrecioCosto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="labT2PrecioVenta" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="labT2Cod1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="labT2Cod" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="labT2StockDisp" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                              </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="labT2Categorias" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="BtnAddCategoria" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="btnAddCategoria" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="labT2Cod1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="labT2Cod" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="fieldT2Id" min="-2" pref="165" max="-2" attributes="0"/>
@@ -1052,13 +1067,13 @@
                                               </Group>
                                               <Component id="fieldT2Cod" min="-2" pref="165" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                                          <EmptySpace pref="28" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="labT2Cod" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1090,12 +1105,14 @@
                                               <Component id="fieldT2PrecioVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="labT2Categorias" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jComboBox2Categorias" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="BtnAddCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="labT2Categorias" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jComboBox2Categorias" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="btnAddCategoria" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                          <EmptySpace pref="16" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1199,14 +1216,6 @@
                                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                                   </AuxValues>
                                 </Component>
-                                <Component class="javax.swing.JButton" name="BtnAddCategoria">
-                                  <Properties>
-                                    <Property name="text" type="java.lang.String" value="+"/>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAddCategoriaActionPerformed"/>
-                                  </Events>
-                                </Component>
                                 <Component class="javax.swing.JTextField" name="fieldT2Id">
                                   <Properties>
                                     <Property name="editable" type="boolean" value="false"/>
@@ -1223,6 +1232,21 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
                                   </Properties>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="btnAddCategoria">
+                                  <Properties>
+                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                      <Image iconType="3" name="/cantina/vista/imgs/icons8_add_25px.png"/>
+                                    </Property>
+                                    <Property name="toolTipText" type="java.lang.String" value="Clic aqu&#xed; para agregar una categor&#xed;a"/>
+                                    <Property name="alignmentY" type="float" value="5.0"/>
+                                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                                      <Color id="Cursor de Mano"/>
+                                    </Property>
+                                  </Properties>
+                                  <Events>
+                                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAddCategoriaMouseReleased"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>

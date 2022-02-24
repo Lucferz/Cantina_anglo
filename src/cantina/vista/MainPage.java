@@ -9,6 +9,7 @@ import cantina.controlador.ArticulosControl;
 import cantina.controlador.CategoriasControlador;
 import cantina.modelo.Articulos;
 import cantina.modelo.Categorias;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -125,9 +126,9 @@ public class MainPage extends javax.swing.JFrame {
         fieldT2PrecioVenta = new javax.swing.JTextField();
         labT2Categorias = new javax.swing.JLabel();
         jComboBox2Categorias = new javax.swing.JComboBox<>();
-        BtnAddCategoria = new javax.swing.JButton();
         fieldT2Id = new javax.swing.JTextField();
         labT2Cod1 = new javax.swing.JLabel();
+        btnAddCategoria = new javax.swing.JLabel();
         contenedorTablat2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableArticulos = new javax.swing.JTable();
@@ -285,14 +286,6 @@ public class MainPage extends javax.swing.JFrame {
 
         contPanelEntrada.setLayout(new java.awt.GridBagLayout());
 
-        fieldCod.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                fieldCodInputMethodTextChanged(evt);
-            }
-        });
-
         labCod.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labCod.setText("Cód. de Barras");
 
@@ -387,6 +380,23 @@ public class MainPage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel3.setText("Cantidad");
 
+        fieldCant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldCantActionPerformed(evt);
+            }
+        });
+        fieldCant.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fieldCantKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                fieldCantKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldCantKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -407,6 +417,8 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(fieldCant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        fieldCant.setTransferHandler(null);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
@@ -507,6 +519,11 @@ public class MainPage extends javax.swing.JFrame {
         contPanelEntrada.add(jPanel9, gridBagConstraints);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_clear_symbol_30px.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -699,7 +716,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrarProducto)
                     .addComponent(btnExportProduc))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -751,13 +768,6 @@ public class MainPage extends javax.swing.JFrame {
 
         jComboBox2Categorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        BtnAddCategoria.setText("+");
-        BtnAddCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAddCategoriaActionPerformed(evt);
-            }
-        });
-
         fieldT2Id.setEditable(false);
         fieldT2Id.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         fieldT2Id.setToolTipText("No te preocupes por este campo, se rellenará automáticamente.");
@@ -765,23 +775,37 @@ public class MainPage extends javax.swing.JFrame {
         labT2Cod1.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         labT2Cod1.setText("Código:");
 
+        btnAddCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_add_25px.png"))); // NOI18N
+        btnAddCategoria.setToolTipText("Clic aquí para agregar una categoría");
+        btnAddCategoria.setAlignmentY(5.0F);
+        btnAddCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAddCategoriaMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout contInsertProdLayout = new javax.swing.GroupLayout(contInsertProd);
         contInsertProd.setLayout(contInsertProdLayout);
         contInsertProdLayout.setHorizontalGroup(
             contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contInsertProdLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labT2Desc)
-                    .addComponent(labT2StockDisp)
-                    .addComponent(labT2PrecioCosto)
-                    .addComponent(labT2PrecioVenta)
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(contInsertProdLayout.createSequentialGroup()
+                        .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labT2Desc)
+                            .addComponent(labT2PrecioCosto)
+                            .addComponent(labT2PrecioVenta)
+                            .addComponent(labT2Cod1)
+                            .addComponent(labT2Cod)
+                            .addComponent(labT2StockDisp))
+                        .addGap(26, 26, 26))
                     .addGroup(contInsertProdLayout.createSequentialGroup()
                         .addComponent(labT2Categorias)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtnAddCategoria))
-                    .addComponent(labT2Cod1)
-                    .addComponent(labT2Cod))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAddCategoria)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fieldT2Id, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -791,7 +815,7 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(fieldT2Desc, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jComboBox2Categorias, 0, 165, Short.MAX_VALUE))
                     .addComponent(fieldT2Cod, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         contInsertProdLayout.setVerticalGroup(
             contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -821,11 +845,12 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(labT2PrecioVenta)
                     .addComponent(fieldT2PrecioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labT2Categorias)
-                    .addComponent(jComboBox2Categorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnAddCategoria))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labT2Categorias)
+                        .addComponent(jComboBox2Categorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAddCategoria))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jScrollPane4.setViewportView(contInsertProd);
@@ -1068,29 +1093,6 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jScrollPane4ComponentResized
 
-    private void BtnAddCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddCategoriaActionPerformed
-        // TODO add your handling code here:
-        boolean flag = false;
-        try{
-            String cat = JOptionPane.showInputDialog("Ingrese el nombre de la nueva Categoria");
-            Integer id =null;
-            Boolean estado = true;
-            if(!"".equals(cat) && null != cat){
-                Categorias c = new Categorias(id, cat, estado);
-                cc.insertar(c);
-                flag= true;
-            }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage(),"Error en la carga de la nueva Categoria", 1);
-        }
-        if (flag){
-            JOptionPane.showMessageDialog(null, "Categoria agregada");
-            MostrarComboCat();
-        }
-        
-        
-    }//GEN-LAST:event_BtnAddCategoriaActionPerformed
-
     private void jTableArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableArticulosMouseClicked
         // TODO add your handling code here:
         int fila = jTableArticulos.rowAtPoint(evt.getPoint());
@@ -1216,6 +1218,68 @@ public class MainPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnActualizarProductosActionPerformed
 
+    private void btnAddCategoriaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCategoriaMouseReleased
+        // TODO add your handling code here:
+           boolean flag = false;
+        try{
+            String cat = JOptionPane.showInputDialog("Ingrese el nombre de la nueva Categoria");
+            Integer id =null;
+            Boolean estado = true;
+            if(!"".equals(cat) && null != cat){
+                Categorias c = new Categorias(id, cat, estado);
+                cc.insertar(c);
+                flag= true;
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage(),"Error en la carga de la nueva Categoria", 1);
+        }
+        if (flag){
+            JOptionPane.showMessageDialog(null, "Categoria agregada");
+            MostrarComboCat();
+        }
+    }//GEN-LAST:event_btnAddCategoriaMouseReleased
+
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        // TODO add your handling code here:
+        fieldCant.setText("");
+        fieldCod.setText("");
+        fieldDesc.setText("");
+        fieldId.setText("");
+        fieldPrecTotal.setText("");
+        fieldPrecUnit.setText("");
+        fieldStock.setText("");
+        
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void fieldCantKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldCantKeyReleased
+        // TODO add your handling code here:
+       
+             
+         
+      
+    }//GEN-LAST:event_fieldCantKeyReleased
+
+    private void fieldCantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCantActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_fieldCantActionPerformed
+
+    private void fieldCantKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldCantKeyPressed
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_fieldCantKeyPressed
+
+    private void fieldCantKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldCantKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+      if (!((c >= '0') && (c <= '9') ||
+         (c == KeyEvent.VK_BACK_SPACE) ||
+         (c == KeyEvent.VK_DELETE))) {
+        getToolkit().beep();
+        evt.consume();
+      }
+    }//GEN-LAST:event_fieldCantKeyTyped
+
     private void LimpiarProd(){
         fieldT2Id.setText("");
         fieldT2Cod.setText("");
@@ -1263,8 +1327,8 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAddCategoria;
     private javax.swing.JButton btnActualizarProductos;
+    private javax.swing.JLabel btnAddCategoria;
     private javax.swing.JButton btnBorrarProducto;
     private javax.swing.JButton btnConfig;
     private javax.swing.JButton btnExportProduc;

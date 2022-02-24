@@ -105,7 +105,7 @@ public class MainPage extends javax.swing.JFrame {
         panelContEntradaProductos = new javax.swing.JPanel();
         contSidebarT2 = new javax.swing.JPanel();
         contBtnProductos = new javax.swing.JPanel();
-        btnRefreshProductos = new javax.swing.JButton();
+        btnActualizarProductos = new javax.swing.JButton();
         btnBorrarProducto = new javax.swing.JButton();
         btnGuardarProducto = new javax.swing.JButton();
         btnAddProducto = new javax.swing.JButton();
@@ -632,8 +632,13 @@ public class MainPage extends javax.swing.JFrame {
         contBtnProductos.setMinimumSize(new java.awt.Dimension(330, 175));
         contBtnProductos.setPreferredSize(new java.awt.Dimension(330, 175));
 
-        btnRefreshProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_edit_property_30px.png"))); // NOI18N
-        btnRefreshProductos.setText("ACTUALIZAR");
+        btnActualizarProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_edit_property_30px.png"))); // NOI18N
+        btnActualizarProductos.setText("ACTUALIZAR");
+        btnActualizarProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarProductosActionPerformed(evt);
+            }
+        });
 
         btnBorrarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_eraser_30px.png"))); // NOI18N
         btnBorrarProducto.setText("BORRAR");
@@ -676,7 +681,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAddProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRefreshProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                    .addComponent(btnActualizarProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         contBtnProductosLayout.setVerticalGroup(
@@ -685,7 +690,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarProducto)
-                    .addComponent(btnRefreshProductos))
+                    .addComponent(btnActualizarProductos))
                 .addGap(18, 18, 18)
                 .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrarProducto)
@@ -1155,6 +1160,38 @@ public class MainPage extends javax.swing.JFrame {
 //        jComboBox2Categorias.setSelectedItem(jTableArticulos.getValueAt(fila, 6).toString());
     }//GEN-LAST:event_jTableArticulosMouseClicked
 
+    private void btnActualizarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarProductosActionPerformed
+        // TODO add your handling code here:
+        if (!"".equals(fieldT2Id.getText())){
+            int pregunta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de Modificar este producto?");
+            if (pregunta==0){
+                
+                try{
+                    Integer idarticulo = Integer.parseInt(fieldT2Id.getText());
+                    ArticulosControl ac = new ArticulosControl();
+                    Integer precioVenta = Integer.parseInt(fieldT2PrecioVenta.getText());;
+                    Integer precioCosto = Integer.parseInt(fieldT2PrecioCosto.getText());
+                    Integer stock = Integer.parseInt(fieldT2Cant.getText());
+                    String Codigo = fieldT2Cod.getText();
+                    String descripcion = fieldT2Desc.getText();
+                    Integer categoria= jComboBox2Categorias.getSelectedIndex();;
+                    Categorias cat = new CategoriasControlador().buscarId(categoria);;
+                    Boolean estado = true;
+                    Articulos a = null; 
+                    a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
+                            estado, precioVenta, stock, cat);
+                    ac.modificar(a);
+                    LimpiarTable();
+                    LimpiarProd();
+                    MostrarTabArti();
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Hubo un error en la Modificacion del articulo, "
+                            + "por favor intente de nuevo\n"+e, "Error en la Modificacion",2);
+                }
+            }
+        }
+    }//GEN-LAST:event_btnActualizarProductosActionPerformed
+
     private void LimpiarProd(){
         fieldT2Cod.setText(null);
         fieldT2Desc.setText(null);
@@ -1202,6 +1239,7 @@ public class MainPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAddCategoria;
+    private javax.swing.JButton btnActualizarProductos;
     private javax.swing.JButton btnAddProducto;
     private javax.swing.JButton btnBorrarProducto;
     private javax.swing.JButton btnConfig;
@@ -1211,7 +1249,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton btnInformes;
     private javax.swing.JButton btnNewVenta;
     private javax.swing.JButton btnProductos;
-    private javax.swing.JButton btnRefreshProductos;
     private javax.swing.JButton btnVentas;
     private javax.swing.JCheckBox checkBoxProductoDisponible;
     private javax.swing.JPanel contBtnProductos;

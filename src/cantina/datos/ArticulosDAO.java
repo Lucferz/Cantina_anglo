@@ -37,15 +37,16 @@ public class ArticulosDAO {
            
        };
        try{
-           List<Articulos> datos = listar();
+           TypedQuery<Articulos> sql =em.createNamedQuery("Articulos.findEstadoTrue",Articulos.class);
+           List<Articulos> datos = sql.getResultList();
            String [] datosArti = new String[6];
           for(Articulos tba : datos){
               datosArti[0]=tba.getIdarticulo()+"";
               datosArti[1]=tba.getCodigo()+"";
               datosArti[2]=tba.getDescripcion()+"";
               datosArti[3]=tba.getStock()+"";
-              datosArti[4]=tba.getPrecioVenta()+"";
-              datosArti[5]=tba.getCosto()+"";
+              datosArti[4]=tba.getCosto()+"";
+              datosArti[5]=tba.getPrecioVenta()+"";
               model.addRow(datosArti);
            }
           table.setModel(model);
@@ -91,7 +92,7 @@ public class ArticulosDAO {
     public void eliminarIdLogico(Integer id){
         em.getTransaction().begin();
         Articulos a = em.find(Articulos.class, id);
-        a.setEstado(Boolean.FALSE);
+        a.setEstado(false);
         em.merge(a);
         em.getTransaction().commit();
     }

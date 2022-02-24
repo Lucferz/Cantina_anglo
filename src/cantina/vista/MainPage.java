@@ -12,6 +12,7 @@ import cantina.modelo.Categorias;
 import java.sql.ResultSet;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class MainPage extends javax.swing.JFrame {
     CategoriasControlador cc = new CategoriasControlador();
     ArticulosControl ac = new ArticulosControl();
-    DefaultTableModel model;
+    DefaultTableModel modelo;
     /**
      * Creates new form MainPage
      */
@@ -43,10 +44,11 @@ public class MainPage extends javax.swing.JFrame {
     }
    private void MostrarTabArti(){
        ac.cargar_tabla_arti(jTableArticulos);
+       modelo = (DefaultTableModel) jTableArticulos.getModel();
    }
    private void LimpiarTable(){
-       for (int i = 0; i < model.getRowCount() ; i++) {
-           model.removeRow(i);
+       for (int i = 0; i < modelo.getRowCount() ; i++) {
+           modelo.removeRow(i);
            i=i-1;
        }
    }
@@ -1105,22 +1107,26 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnBorrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProductoActionPerformed
         // TODO add your handling code here:
-        if (!"".equals(fieldT2Cod.getText())){
-            int pregunta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar este producto?");
-            if (pregunta==0){
-                int id = Integer.parseInt(fieldT2Cod.getText());
-                ac.eliminarIdLogico(id);
-                LimpiarTable();
-                LimpiarProd();
-                MostrarTabArti();
+        try{
+            if (!"".equals(fieldT2Id.getText())){
+                int pregunta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar este producto?");
+                if (pregunta==0){
+                    int id = Integer.parseInt(fieldT2Id.getText());
+                    ac.eliminarIdLogico(id);
+                    LimpiarTable();
+                    LimpiarProd();
+                    MostrarTabArti();
+                }
             }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: "+e.getMessage());
         }
     }//GEN-LAST:event_btnBorrarProductoActionPerformed
 
     private void jTableArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableArticulosMouseClicked
         // TODO add your handling code here:
         int fila = jTableArticulos.rowAtPoint(evt.getPoint());
-//        fieldT2Id.setText(JTableArticulos.getValueAt(fila,0).toString());
+        fieldT2Id.setText(jTableArticulos.getValueAt(fila, 0).toString());
         fieldT2Cod.setText(jTableArticulos.getValueAt(fila, 1).toString());
         fieldT2Desc.setText(jTableArticulos.getValueAt(fila, 2).toString());
         fieldT2Cant.setText(jTableArticulos.getValueAt(fila, 3).toString());
@@ -1136,7 +1142,7 @@ public class MainPage extends javax.swing.JFrame {
             if (pregunta==0){
                 
                 try{
-                    Integer idarticulo = Integer.parseInt(fieldT2Cod.getText());
+                    Integer idarticulo = Integer.parseInt(fieldT2Id.getText());
                     ArticulosControl ac = new ArticulosControl();
                     Integer precioVenta = Integer.parseInt(fieldT2PrecioVenta.getText());;
                     Integer precioCosto = Integer.parseInt(fieldT2PrecioCosto.getText());
@@ -1145,14 +1151,12 @@ public class MainPage extends javax.swing.JFrame {
                     String descripcion = fieldT2Desc.getText();
                     Integer categoria= jComboBox2Categorias.getSelectedIndex();;
                     Categorias cat = new CategoriasControlador().buscarId(categoria);;
-                    Boolean estado = true;
-                    Articulos a = null; 
+                    Boolean estado = true; 
                     if (!"".equals(fieldT2PrecioVenta.getText()) && !"".equals(fieldT2Cod.getText()) && !"".equals(fieldT2Cant.getText())
                             && !"".equals(fieldT2Desc.getText()) && null!=cat){
-                        a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
+                        Articulos a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
                                 estado, precioVenta, stock, cat);
                         ac.modificar(a);
-                        LimpiarTable();
                         LimpiarProd();
                         MostrarTabArti();
                     }else{
@@ -1161,7 +1165,7 @@ public class MainPage extends javax.swing.JFrame {
                     }
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(null, "Hubo un error en la Modificacion del articulo, "
-                            + "por favor intente de nuevo\n"+e, "Error en la Modificacion",2);
+                            + "por favor intente de nuevo\n"+e.getMessage(), "Error en la Modificacion",2);
                 }
             }
         }
@@ -1172,11 +1176,12 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldCodInputMethodTextChanged
 
     private void LimpiarProd(){
-        fieldT2Cod.setText(null);
-        fieldT2Desc.setText(null);
-        fieldT2Cant.setText(null);
-        fieldT2PrecioCosto.setText(null);
-        fieldT2PrecioVenta.setText(null);
+        fieldT2Id.setText("");
+        fieldT2Cod.setText("");
+        fieldT2Desc.setText("");
+        fieldT2Cant.setText("");
+        fieldT2PrecioCosto.setText("");
+        fieldT2PrecioVenta.setText("");
         jComboBox2Categorias.setSelectedIndex(0);
     }
     /**

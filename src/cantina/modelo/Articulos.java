@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Articulos.findByStock", query = "SELECT a FROM Articulos a WHERE a.stock = :stock")
     , @NamedQuery(name = "Articulos.listar", query = "SELECT a.idarticulo, a.codigo, a.descripcion, a.stock, a.precioVenta, a.costo FROM Articulos a")
     , @NamedQuery(name = "Articulos.findByDescripcion", query = "SELECT a FROM Articulos a WHERE a.descripcion = :descripcion")
+    , @NamedQuery(name = "Articulos.findEstadoTrue", query = "SELECT a FROM Articulos a WHERE a.estado = 1")
     , @NamedQuery(name = "Articulos.findByEstado", query = "SELECT a FROM Articulos a WHERE a.estado = :estado")})
 public class Articulos implements Serializable {
 
@@ -69,7 +70,7 @@ public class Articulos implements Serializable {
         this.idarticulo = idarticulo;
     }
 
-    public Articulos(Integer idarticulo, String codigo, Integer costo, String descripcion,  boolean estado, int precioVenta,  Integer stock,  Categorias fkCategorias) {
+    public Articulos(Integer idarticulo, String codigo, Integer costo, String descripcion,  boolean estado, Integer precioVenta,  Integer stock,  Categorias fkCategorias) {
         this.idarticulo = idarticulo;
         this.codigo = codigo;
         this.costo = costo;

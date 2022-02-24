@@ -28,8 +28,14 @@ public class ArticulosDAO {
         return res;
     }
     public void cargar_tabla_arti(JTable table){
-        String [] titulos = {"ID","CODIGO", "DESCRIPCION","STOCK","PRECIO_VENTA","PRECIO_COSTO"};
-       DefaultTableModel model = new DefaultTableModel(null, titulos);
+        String [] titulos = {"ID","CODIGO", "DESCRIPCION","STOCK","PRECIO_COSTO","PRECIO_VENTA"};
+       DefaultTableModel model = new DefaultTableModel(null, titulos){
+            @Override
+            public boolean isCellEditable(int i, int i1) {
+                return false;
+            }
+           
+       };
        try{
            List<Articulos> datos = listar();
            String [] datosArti = new String[6];

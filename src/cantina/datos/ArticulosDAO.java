@@ -60,8 +60,10 @@ public class ArticulosDAO {
         return a;
     }
     public Articulos buscarCod (String cod){
-        Articulos a =em.find(Articulos.class, cod);
-        return a;
+        TypedQuery<Articulos> sql = em.createNamedQuery("Articulos.findByCodigo", Articulos.class);
+        sql.setParameter("codigo", cod);
+        Articulos res = sql.getSingleResult();
+        return res;
     }
     
     public void insertar (Articulos a){

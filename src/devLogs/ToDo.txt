@@ -22,4 +22,10 @@ nuevamente.
 
 *Pooner en funcionamiento los botones de la pestaña de stock (Listo)
 
+
+
+-- Para version 1.1
+-Hacer que los productos agregados a la venta, se sumen si es que se trata del mismo producto
+en vez de agregar una fila nueva repetida.
+
 ----------

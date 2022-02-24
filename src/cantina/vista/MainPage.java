@@ -9,6 +9,7 @@ import cantina.controlador.ArticulosControl;
 import cantina.controlador.CategoriasControlador;
 import cantina.modelo.Articulos;
 import cantina.modelo.Categorias;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -31,6 +32,7 @@ public class MainPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         MostrarComboCat();
         MostrarTabArti();
+        fieldCod.requestFocus();
     }
 
     /**
@@ -284,6 +286,12 @@ public class MainPage extends javax.swing.JFrame {
         contMainVenta.setLayout(new java.awt.BorderLayout());
 
         contPanelEntrada.setLayout(new java.awt.GridBagLayout());
+
+        fieldCod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fieldCodKeyPressed(evt);
+            }
+        });
 
         labCod.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labCod.setText("Cód. de Barras");
@@ -1211,6 +1219,41 @@ public class MainPage extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void fieldCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldCodKeyPressed
+        // TODO add your handling code here:
+        try{
+            if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+                if(!"".equals(fieldCod.getText())){
+                    String cod = fieldCod.getText();
+                    Articulos a = ac.buscarCod(cod);
+                    if(a.getDescripcion() != null){
+                        fieldId.setText(a.getIdarticulo()+"");
+                        fieldDesc.setText(a.getDescripcion());
+                        fieldPrecUnit.setText(a.getPrecioVenta()+"");
+                        fieldStock.setText(a.getStock().toString());
+                        fieldCant.setText("1");
+                        int cantidad = Integer.parseInt(fieldCant.getText());
+                        int total = (a.getPrecioVenta() + cantidad);
+                        fieldPrecTotal.setText(total+"");
+                        
+                    }else{
+                        fieldId.setText("");
+                        fieldDesc.setText("");
+                        fieldCant.setText("");
+                        fieldPrecUnit.setText("");
+                        fieldStock.setText("");
+                        fieldCod.requestFocus();
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Escanee el codigo con el lector de codigo de barras o bien ingrese el id");
+                    fieldCod.requestFocus();
+                }
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_fieldCodKeyPressed
 
     private void LimpiarProd(){
         fieldT2Id.setText("");

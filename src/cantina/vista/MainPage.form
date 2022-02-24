@@ -309,7 +309,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JTextField" name="fieldCod">
                           <Events>
-                            <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="fieldCodInputMethodTextChanged"/>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldCodKeyPressed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="labCod">

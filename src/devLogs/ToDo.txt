@@ -5,6 +5,7 @@ dani--
 *Colocar rango de fecha en la parte de venta, para poder generar informes puntuales (Lucas puso aqui)
 *Crear un campo en la pestaña de productos para contener al id, y que sea intocable, solo para poder traerle
 se tiene que llamar fieldT2Id xfa jaja
+*Eliminar o el boton agregar o el de guardar xd
 ----------
 lucas--
 *Agregar en configuracion botones para editar los registros de las tablas

@@ -6,9 +6,7 @@
 package cantina.modelo;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,10 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,7 +28,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Categorias.findAll", query = "SELECT c FROM Categorias c")
     , @NamedQuery(name = "Categorias.findByIdcategoria", query = "SELECT c FROM Categorias c WHERE c.idcategoria = :idcategoria")
     , @NamedQuery(name = "Categorias.findByNombre", query = "SELECT c FROM Categorias c WHERE c.nombre = :nombre")
-    , @NamedQuery(name = "Categorias.findByDescripcion", query = "SELECT c FROM Categorias c WHERE c.descripcion = :descripcion")
     , @NamedQuery(name = "Categorias.findNameByEstado", query = "SELECT c.nombre FROM Categorias c WHERE c.estado = 1")
     , @NamedQuery(name = "Categorias.findByEstado", query = "SELECT c FROM Categorias c WHERE c.estado = :estado")})
 public class Categorias implements Serializable {
@@ -46,31 +41,15 @@ public class Categorias implements Serializable {
     @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
-    @Column(name = "descripcion")
-    private String descripcion;
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkCategorias")
-    private List<Articulos> articulosList;
 
     public Categorias() {
     }
 
     public Categorias(Integer idcategoria) {
         this.idcategoria = idcategoria;
-    }
-
-    public Categorias(Integer idcategoria, String nombre, String descripcion, boolean estado) {
-        this.idcategoria = idcategoria;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.estado = estado;
-    }
-
-    public Categorias(Integer idcategoria, String nombre) {
-        this.idcategoria = idcategoria;
-        this.nombre = nombre;
     }
     
 
@@ -96,29 +75,12 @@ public class Categorias implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     public boolean getEstado() {
         return estado;
     }
 
     public void setEstado(boolean estado) {
         this.estado = estado;
-    }
-
-    @XmlTransient
-    public List<Articulos> getArticulosList() {
-        return articulosList;
-    }
-
-    public void setArticulosList(List<Articulos> articulosList) {
-        this.articulosList = articulosList;
     }
 
     @Override
@@ -143,7 +105,7 @@ public class Categorias implements Serializable {
 
     @Override
     public String toString() {
-        return "Categorias{" + "idcategoria=" + idcategoria + ", nombre=" + nombre + ", descripcion=" + descripcion + ", estado=" + estado + ", articulosList=" + articulosList + '}';
+        return "Categorias{" + "idcategoria=" + idcategoria + ", nombre=" + nombre + ", estado=" + estado + '}';
     }
 
     

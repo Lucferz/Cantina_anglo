@@ -5,7 +5,7 @@ dani--
 *Colocar rango de fecha en la parte de venta, para poder generar informes puntuales (Lucas puso aqui)
 *Crear un campo en la pestaña de productos para contener al id, y que sea intocable, solo para poder traerle
 se tiene que llamar fieldT2Id xfa jaja
-*Eliminar o el boton agregar o el de guardar xd
+*Eliminar o el boton agregar xd
 ----------
 lucas--
 *Agregar en configuracion botones para editar los registros de las tablas
@@ -15,10 +15,12 @@ usuario y roles  de entrada; Administrar <tabla> de momento
 como si fuera que busco y llena los campos estaticos(no editable): codigo de barras, id,
  descripcion, Stock y precio unitario
 
-*Realizar la validacion de que no se pueda dar mas que el stock disponible
+*Realizar la validacion de que no se pueda dar mas que el stock disponible en ventas
 
 *Para tener en consideracion, cuando la venta se cierre la tabla de la pestaña, tiene que reiniciarse 
 nuevamente.
 
+*Pooner en funcionamiento los botones de la pestaña de stock (Listo, pero falta un campo que no se como
+poner jaja, lo 100to)
 
 ----------

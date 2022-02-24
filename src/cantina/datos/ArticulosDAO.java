@@ -28,7 +28,7 @@ public class ArticulosDAO {
         return res;
     }
     public void cargar_tabla_arti(JTable table){
-        String [] titulos = {"ID","CODIGO", "DESCRIPCION","STOCK","PRECIO_VENTA","PRECIO_cOSTO"};
+        String [] titulos = {"ID","CODIGO", "DESCRIPCION","STOCK","PRECIO_VENTA","PRECIO_COSTO"};
        DefaultTableModel model = new DefaultTableModel(null, titulos);
        try{
            List<Articulos> datos = listar();
@@ -82,9 +82,9 @@ public class ArticulosDAO {
         em.getTransaction().commit();
     }
     
-    public void eliminarIdLogico(Articulos a){
+    public void eliminarIdLogico(Integer id){
         em.getTransaction().begin();
-        a = em.find(Articulos.class, a.getIdarticulo());
+        Articulos a = em.find(Articulos.class, id);
         a.setEstado(Boolean.FALSE);
         em.merge(a);
         em.getTransaction().commit();

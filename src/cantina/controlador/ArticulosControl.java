@@ -21,11 +21,11 @@ public class ArticulosControl {
     public void cargar_tabla_arti(JTable table){
         new ArticulosDAO().cargar_tabla_arti(table);
     }
-    public Articulos buscarId (Articulos a){
-        return new ArticulosDAO().buscarId(a);
+    public Articulos buscarId (Integer id){
+        return new ArticulosDAO().buscarId(id);
     }
-    public Articulos buscarCod (Articulos a){
-        return new ArticulosDAO().buscarCod(a);
+    public Articulos buscarCod (String cod){
+        return new ArticulosDAO().buscarCod(cod);
     }
     
     public void insertar (Articulos a){

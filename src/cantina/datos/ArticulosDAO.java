@@ -54,12 +54,12 @@ public class ArticulosDAO {
        }
    }
         
-    public Articulos buscarId (Articulos a){
-        a =em.find(Articulos.class, a.getIdarticulo());
+    public Articulos buscarId (Integer id){
+        Articulos a =em.find(Articulos.class, id);
         return a;
     }
-    public Articulos buscarCod (Articulos a){
-        a =em.find(Articulos.class, a.getCodigo());
+    public Articulos buscarCod (String cod){
+        Articulos a =em.find(Articulos.class, cod);
         return a;
     }
     

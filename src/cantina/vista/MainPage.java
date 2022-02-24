@@ -72,7 +72,7 @@ public class MainPage extends javax.swing.JFrame {
         fieldCod = new javax.swing.JTextField();
         labCod = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        fieldId = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -279,6 +279,14 @@ public class MainPage extends javax.swing.JFrame {
 
         contPanelEntrada.setLayout(new java.awt.GridBagLayout());
 
+        fieldCod.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                fieldCodInputMethodTextChanged(evt);
+            }
+        });
+
         labCod.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labCod.setText("Cód. de Barras");
 
@@ -319,7 +327,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -329,7 +337,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1161,6 +1169,10 @@ public class MainPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnActualizarProductosActionPerformed
 
+    private void fieldCodInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_fieldCodInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldCodInputMethodTextChanged
+
     private void LimpiarProd(){
         fieldT2Cod.setText(null);
         fieldT2Desc.setText(null);
@@ -1230,6 +1242,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTextField fieldCant;
     private javax.swing.JTextField fieldCod;
     private javax.swing.JTextField fieldDesc;
+    private javax.swing.JTextField fieldId;
     private javax.swing.JTextField fieldPrecTotal;
     private javax.swing.JTextField fieldPrecUnit;
     private javax.swing.JTextField fieldStock;
@@ -1270,7 +1283,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTableArticulos;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labCod;
     private javax.swing.JLabel labT2Categorias;
     private javax.swing.JLabel labT2Cod;

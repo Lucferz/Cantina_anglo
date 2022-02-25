@@ -27,10 +27,8 @@ public class MainPage extends javax.swing.JFrame {
     CategoriasControlador cc = new CategoriasControlador();
     ArticulosControl ac = new ArticulosControl();
     DefaultTableModel modelo;
-<<<<<<< HEAD
     int item;
     int totalPagar=0;
-=======
      private int rolActual = 45;
 
     public int getRolActual() {
@@ -40,7 +38,6 @@ public class MainPage extends javax.swing.JFrame {
     public void setRolActual(int rolActual) {
         this.rolActual = rolActual;
     }
->>>>>>> 0401df3416ebbb06d0e06e01f030066b51defb7b
     /**
      * Creates new form MainPage
      */
@@ -506,27 +503,10 @@ public class MainPage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel3.setText("Cantidad");
 
-<<<<<<< HEAD
+        fieldCant.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         fieldCant.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fieldCantFocusGained(evt);
-=======
-        fieldCant.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        fieldCant.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldCantActionPerformed(evt);
-            }
-        });
-        fieldCant.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldCantKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                fieldCantKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldCantKeyTyped(evt);
->>>>>>> 0401df3416ebbb06d0e06e01f030066b51defb7b
             }
         });
 
@@ -655,16 +635,10 @@ public class MainPage extends javax.swing.JFrame {
         contPanelEntrada.add(jPanel9, gridBagConstraints);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_clear_symbol_30px.png"))); // NOI18N
-<<<<<<< HEAD
+        jButton1.setToolTipText("Limpiar los campos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
-=======
-        jButton1.setToolTipText("Limpiar los campos");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jButton1MouseReleased(evt);
->>>>>>> 0401df3416ebbb06d0e06e01f030066b51defb7b
             }
         });
 
@@ -693,12 +667,8 @@ public class MainPage extends javax.swing.JFrame {
 
         contMainVenta.add(contPanelEntrada, java.awt.BorderLayout.NORTH);
 
-<<<<<<< HEAD
+        jTableVentaItems.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jTableVentaItems.setModel(new javax.swing.table.DefaultTableModel(
-=======
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
->>>>>>> 0401df3416ebbb06d0e06e01f030066b51defb7b
             new Object [][] {
 
             },
@@ -1000,20 +970,11 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(labT2PrecioVenta)
                     .addComponent(fieldT2PrecioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-<<<<<<< HEAD
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labT2Categorias)
                     .addComponent(jComboBox2Categorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnAddCategoria))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-=======
-                .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labT2Categorias)
-                        .addComponent(jComboBox2Categorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAddCategoria))
                 .addGap(11, 11, 11))
->>>>>>> 0401df3416ebbb06d0e06e01f030066b51defb7b
         );
 
         jScrollPane4.setViewportView(contInsertProd);

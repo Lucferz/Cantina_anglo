@@ -6,10 +6,29 @@ dani--
 *Crear un campo en la pestaña de productos para contener al id, y que sea intocable, solo para poder traerle
 se tiene que llamar fieldT2Id xfa jaja  ///LISTO
 *Eliminar o el boton agregar xd //LISTO
+<<<<<<< HEAD
 *IDEA A DISCUSION: "Colocar un campo en la parte superior no editable, para que se
 muestre que usuario esta usando el sistema, asi podemos estirar de ese jTextField nomas
 esa informacion para registrar la venta en la BD.
 
+=======
+
+*Tengo ya la logica para filtrar funciones por rol, pero no consegui hacer que del resultset del loginDAO me mande el dato 
+    a la clase login2 (vista) para poder usar el numero de rol
+
+----****   QUE HICE CON EL LOGIN*****------
+1- Modifique el constructor default de MainPage para que reciba un numero entero (no consegui hacer de otra manera)
+2- Rescate de la validacion de inicio de sesion, la columna fk_role, mande a la clase Login2
+3- Ese nro entero de fkRole mande como parametro al MainPage al momento de inicializar la ventana 
+4- Con un IF en el constructor hice que dependiendo del rol se oculten algunas cosas
+    pd... puede que encuentres algun codigo basura (no provoca fallo pero no es esencial) 
+    en las clases de LoginDAO, UsuariosDAO, etc. porque mientras intentaba
+    recibir el parametro FkRole, (que no habia sido declarado en esas clases), 
+    le hice su respectiva declaracion, setters, getters 
+    
+
+***********************************************
+>>>>>>> 0401df3416ebbb06d0e06e01f030066b51defb7b
 ----------
 lucas--
 *Boton para eliminar articulos de la venta, creo que usare el boton que usaste para limpiar 

@@ -35,6 +35,10 @@ public class UsuariosDAO {
         u = em.find(Usuarios.class, u.getNombre());
         return u;
     }
+     public Usuarios buscarRol (Usuarios u){
+        u = em.find(Usuarios.class, u.getFkRoles());
+        return u;
+    }
     
     public void insertar(Usuarios u){
         em.getTransaction().begin();

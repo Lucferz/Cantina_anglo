@@ -915,7 +915,7 @@ public class MainPage extends javax.swing.JFrame {
         labT2Categorias.setFont(new java.awt.Font("Roboto Black", 0, 13)); // NOI18N
         labT2Categorias.setText("Categorias:");
 
-        jComboBox2Categorias.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+        jComboBox2Categorias.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jComboBox2Categorias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         fieldT2Id.setEditable(false);

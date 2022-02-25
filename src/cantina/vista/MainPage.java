@@ -11,6 +11,7 @@ import cantina.modelo.Articulos;
 import cantina.modelo.Categorias;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -24,6 +25,8 @@ public class MainPage extends javax.swing.JFrame {
     CategoriasControlador cc = new CategoriasControlador();
     ArticulosControl ac = new ArticulosControl();
     DefaultTableModel modelo;
+    int item;
+    int totalPagar=0;
     /**
      * Creates new form MainPage
      */
@@ -96,7 +99,7 @@ public class MainPage extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableVentaItems = new javax.swing.JTable();
         contCierreVenta = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -141,7 +144,7 @@ public class MainPage extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTableVentas = new javax.swing.JTable();
         panelConfig = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
 
@@ -387,6 +390,12 @@ public class MainPage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel3.setText("Cantidad");
 
+        fieldCant.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fieldCantFocusGained(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -507,6 +516,11 @@ public class MainPage extends javax.swing.JFrame {
         contPanelEntrada.add(jPanel9, gridBagConstraints);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_clear_symbol_30px.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -533,17 +547,25 @@ public class MainPage extends javax.swing.JFrame {
 
         contMainVenta.add(contPanelEntrada, java.awt.BorderLayout.NORTH);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableVentaItems.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "CODIGO", "DESCRIPCION", "CANTIDAD", "PRECIO", "TOTAL"
+                "Item Nº", "ID", "CODIGO", "DESCRIPCION", "CANTIDAD", "PRECIO", "TOTAL"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(40);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableVentaItems);
+        if (jTableVentaItems.getColumnModel().getColumnCount() > 0) {
+            jTableVentaItems.getColumnModel().getColumn(6).setPreferredWidth(40);
         }
 
         contMainVenta.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -921,7 +943,7 @@ public class MainPage extends javax.swing.JFrame {
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_pdf_30px.png"))); // NOI18N
         jButton5.setText("Año Actual");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTableVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -929,11 +951,11 @@ public class MainPage extends javax.swing.JFrame {
                 "ID", "VENDEDOR", "TOTAL"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
-        if (jTable3.getColumnModel().getColumnCount() > 0) {
-            jTable3.getColumnModel().getColumn(0).setPreferredWidth(20);
-            jTable3.getColumnModel().getColumn(1).setPreferredWidth(60);
-            jTable3.getColumnModel().getColumn(2).setPreferredWidth(60);
+        jScrollPane3.setViewportView(jTableVentas);
+        if (jTableVentas.getColumnModel().getColumnCount() > 0) {
+            jTableVentas.getColumnModel().getColumn(0).setPreferredWidth(20);
+            jTableVentas.getColumnModel().getColumn(1).setPreferredWidth(60);
+            jTableVentas.getColumnModel().getColumn(2).setPreferredWidth(60);
         }
 
         javax.swing.GroupLayout contBotonesVentasLayout = new javax.swing.GroupLayout(contBotonesVentas);
@@ -1232,18 +1254,11 @@ public class MainPage extends javax.swing.JFrame {
                         fieldDesc.setText(a.getDescripcion());
                         fieldPrecUnit.setText(a.getPrecioVenta()+"");
                         fieldStock.setText(a.getStock().toString());
-                        fieldCant.setText("1");
-                        int cantidad = Integer.parseInt(fieldCant.getText());
-                        int total = (a.getPrecioVenta() + cantidad);
-                        fieldPrecTotal.setText(total+"");
+                        fieldCant.requestFocus();
+                        
                         
                     }else{
-                        fieldId.setText("");
-                        fieldDesc.setText("");
-                        fieldCant.setText("");
-                        fieldPrecUnit.setText("");
-                        fieldStock.setText("");
-                        fieldCod.requestFocus();
+                        limpiarVenta();
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "Escanee el codigo con el lector de codigo de barras o bien ingrese el id");
@@ -1254,6 +1269,68 @@ public class MainPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_fieldCodKeyPressed
+
+    private void limpiarVenta(){
+        fieldCod.setText("");
+        fieldId.setText("");
+        fieldDesc.setText("");
+        fieldCant.setText("");
+        fieldPrecUnit.setText("");
+        fieldPrecTotal.setText("");
+        fieldStock.setText("");
+        fieldCod.requestFocus();
+    }
+    
+    private void fieldCantFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldCantFocusGained
+        // TODO add your handling code here:
+        try{
+            int stock= Integer.parseInt(fieldStock.getText());
+            String cod = fieldCod.getText();
+            int id = Integer.parseInt(fieldId.getText());
+            String desc = fieldDesc.getText();
+            fieldCant.setText("1");
+            int cantidad = Integer.parseInt(fieldCant.getText());
+            int precio = Integer.parseInt(fieldPrecUnit.getText());
+            int total = (precio * cantidad);
+            if(stock>0){
+                item ++;
+                ArrayList lista = new ArrayList();
+                modelo = (DefaultTableModel) jTableVentaItems.getModel();
+                lista.add(item);
+                lista.add(id);
+                lista.add(cod);
+                lista.add(desc);
+                lista.add(cantidad);
+                lista.add(precio);
+                lista.add(total);
+                Object [] obj = new Object[7];
+                for (int i=0; i<obj.length;i++){
+                    obj[i] = lista.get(i);
+                }
+                modelo.addRow(obj);
+                jTableVentaItems.setModel(modelo);
+                fieldPrecTotal.setText(total+"");
+                limpiarVenta();
+                totalPagar();
+            }else{
+                JOptionPane.showMessageDialog(null, "El Stock es insuficiente");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Eventfocus cant: "+e.getMessage());
+        }
+    }//GEN-LAST:event_fieldCantFocusGained
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try{
+            modelo = (DefaultTableModel) jTableVentaItems.getModel();
+            modelo.removeRow(jTableVentaItems.getSelectedRow());
+            totalPagar();
+            fieldCod.requestFocus();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ningun elemento seleccionado para remover\n"+e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void LimpiarProd(){
         fieldT2Id.setText("");
@@ -1367,9 +1444,9 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTableArticulos;
+    private javax.swing.JTable jTableVentaItems;
+    private javax.swing.JTable jTableVentas;
     private javax.swing.JLabel labCod;
     private javax.swing.JLabel labT2Categorias;
     private javax.swing.JLabel labT2Cod;
@@ -1389,4 +1466,14 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel sidebarMain;
     private javax.swing.JTabbedPane tabsPanel;
     // End of variables declaration//GEN-END:variables
+
+    private void totalPagar(){
+        totalPagar =0;
+        int numFila = jTableVentaItems.getRowCount();
+        for (int i = 0; i < numFila; i++) {
+            int cal = Integer.parseInt(String.valueOf(jTableVentaItems.getModel().getValueAt(i, 6)));
+            totalPagar += cal;
+        }
+        fieldTotalPagar.setText(String.valueOf(totalPagar));
+    }
 }

@@ -6,8 +6,17 @@ dani--
 *Crear un campo en la pestaña de productos para contener al id, y que sea intocable, solo para poder traerle
 se tiene que llamar fieldT2Id xfa jaja  ///LISTO
 *Eliminar o el boton agregar xd //LISTO
+*IDEA A DISCUSION: "Colocar un campo en la parte superior no editable, para que se
+muestre que usuario esta usando el sistema, asi podemos estirar de ese jTextField nomas
+esa informacion para registrar la venta en la BD.
+
 ----------
 lucas--
+*Boton para eliminar articulos de la venta, creo que usare el boton que usaste para limpiar 
+los campos, cree de paso un metodo para limpiar campos tambien, no se si hiciste, pero 
+como te dije, tuve que volver a una version anterior por un error que tuvo mi archivo
+main.form, lo siento vaquero //LISTO
+
 *Agregar en configuracion botones para editar los registros de las tablas
 usuario y roles  de entrada; Administrar <tabla> de momento
 

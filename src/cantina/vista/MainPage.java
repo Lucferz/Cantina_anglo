@@ -48,12 +48,18 @@ public class MainPage extends javax.swing.JFrame {
         //System.out.println("Rol en mainpage: "+ rolLogin);
        
         setLocationRelativeTo(null);
+         if(rolLogin == 1){
+             //SI ES ADMINISTRADOR SE LE PREGUNTA SI QUIERE INGRESAR COMO VENDEDOR, PARA EVITAR MOSTRAR DEMASIADAS OPCIONES
+             String[] options = new String[] {"Como Administrador", "Como Vendedor"};
+             int respuesta = JOptionPane.showOptionDialog(null, "Con qué privilegios desea acceder?", "Elegir modo de priviegio",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, options[0]);
+             if(respuesta == 1){
+                 modoVendedor();
+             }
+         }
          if(rolLogin == 2){
-             tabsPanel.removeTabAt(4);
-             tabsPanel.removeTabAt(3);
-             btnConfig.setVisible(false);
-             btnInformes.setVisible(false);
-           
+            modoVendedor();
         }
         MostrarComboCat();
         MostrarTabArti();
@@ -61,6 +67,13 @@ public class MainPage extends javax.swing.JFrame {
         ToolTipManager.sharedInstance().setInitialDelay(300);
          
          
+    }
+    
+    public void modoVendedor(){
+        tabsPanel.removeTabAt(4);
+        tabsPanel.removeTabAt(3);
+        btnConfig.setVisible(false);
+        btnInformes.setVisible(false);
     }
 
     /**
@@ -176,6 +189,7 @@ public class MainPage extends javax.swing.JFrame {
         panelConfig = new javax.swing.JPanel();
         panelInformes = new javax.swing.JPanel();
         panelCajero = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1110, 580));
@@ -895,6 +909,7 @@ public class MainPage extends javax.swing.JFrame {
         labT2PrecioVenta.setText("Precio de Venta:");
 
         fieldT2PrecioVenta.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        fieldT2PrecioVenta.setToolTipText("Recuerda usar valores redondeados para optimizar cobro.");
 
         labT2Categorias.setFont(new java.awt.Font("Roboto Black", 0, 13)); // NOI18N
         labT2Categorias.setText("Categorias:");
@@ -1152,18 +1167,35 @@ public class MainPage extends javax.swing.JFrame {
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_upload_link_document_30px.png")), panelInformes); // NOI18N
 
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1051, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 570, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout panelCajeroLayout = new javax.swing.GroupLayout(panelCajero);
         panelCajero.setLayout(panelCajeroLayout);
         panelCajeroLayout.setHorizontalGroup(
             panelCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1071, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCajeroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelCajeroLayout.setVerticalGroup(
             panelCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 592, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCajeroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        tabsPanel.addTab("tab6", panelCajero);
+        tabsPanel.addTab("Cajero", panelCajero);
 
         getContentPane().add(tabsPanel, java.awt.BorderLayout.CENTER);
         tabsPanel.getAccessibleContext().setAccessibleName("");
@@ -1577,6 +1609,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;

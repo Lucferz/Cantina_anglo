@@ -41,9 +41,9 @@ usuario y roles  de entrada; Administrar <tabla> de momento
 
 *Ver como hacer que al leer con el lector de codigo de barras traiga toda la informacion del articulo
 como si fuera que busco y llena los campos estaticos(no editable): codigo de barras, id,
- descripcion, Stock y precio unitario
+ descripcion, Stock y precio unitario // LISTO
 
-*Realizar la validacion de que no se pueda dar mas que el stock disponible en ventas
+*Realizar la validacion de que no se pueda dar mas que el stock disponible en ventas //LISTO
 
 *Para tener en consideracion, cuando la venta se cierre la tabla de la pestaña, tiene que reiniciarse 
 nuevamente.

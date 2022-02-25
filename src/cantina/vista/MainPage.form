@@ -561,14 +561,8 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldCantActionPerformed"/>
-                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldCantKeyPressed"/>
-                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldCantKeyReleased"/>
-                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldCantKeyTyped"/>
+                            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="fieldCantFocusGained"/>
                           </Events>
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="fieldCant.setTransferHandler(null);"/>
-                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -763,7 +757,7 @@
                             <Property name="toolTipText" type="java.lang.String" value="Limpiar los campos"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseReleased"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -782,22 +776,34 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable1">
+                    <Component class="javax.swing.JTable" name="jTableVentaItems">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Roboto" size="12" style="0"/>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="5" rowCount="0">
+                          <Table columnCount="7" rowCount="0">
+                            <Column editable="false" title="Item N&#xba;" type="java.lang.Object"/>
+                            <Column editable="true" title="ID" type="java.lang.Object"/>
                             <Column editable="true" title="CODIGO" type="java.lang.Object"/>
-                            <Column editable="true" title="DESCRIPCION" type="java.lang.Object"/>
-                            <Column editable="true" title="CANTIDAD" type="java.lang.Object"/>
-                            <Column editable="true" title="PRECIO" type="java.lang.Object"/>
-                            <Column editable="true" title="TOTAL" type="java.lang.Object"/>
+                            <Column editable="false" title="DESCRIPCION" type="java.lang.Object"/>
+                            <Column editable="false" title="CANTIDAD" type="java.lang.Object"/>
+                            <Column editable="false" title="PRECIO" type="java.lang.Object"/>
+                            <Column editable="false" title="TOTAL" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
@@ -1050,12 +1056,18 @@
                                           <Component id="btnGuardarProducto" pref="146" max="32767" attributes="0"/>
                                           <Component id="btnBorrarProducto" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="btnActualizarProductos" pref="146" max="32767" attributes="0"/>
-                                          <Component id="btnExportProduc" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                              <Component id="btnActualizarProductos" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="btnExportProduc" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1162,24 +1174,18 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="labT2Desc" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="labT2PrecioCosto" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="labT2PrecioVenta" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="labT2Cod1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="labT2Cod" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="labT2StockDisp" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                              </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="labT2Desc" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labT2StockDisp" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labT2PrecioCosto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labT2PrecioVenta" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="labT2Categorias" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="btnAddCategoria" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="BtnAddCategoria" min="-2" max="-2" attributes="0"/>
                                               </Group>
+                                              <Component id="labT2Cod1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labT2Cod" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="fieldT2Id" min="-2" pref="165" max="-2" attributes="0"/>
@@ -1192,13 +1198,13 @@
                                               </Group>
                                               <Component id="fieldT2Cod" min="-2" pref="165" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="28" max="32767" attributes="0"/>
+                                          <EmptySpace pref="20" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="labT2Cod" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1230,12 +1236,10 @@
                                               <Component id="fieldT2PrecioVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="labT2Categorias" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jComboBox2Categorias" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="btnAddCategoria" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="labT2Categorias" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jComboBox2Categorias" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="BtnAddCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                                       </Group>
@@ -1341,6 +1345,14 @@
                                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                                   </AuxValues>
                                 </Component>
+                                <Component class="javax.swing.JButton" name="BtnAddCategoria">
+                                  <Properties>
+                                    <Property name="text" type="java.lang.String" value="+"/>
+                                  </Properties>
+                                  <Events>
+                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAddCategoriaActionPerformed"/>
+                                  </Events>
+                                </Component>
                                 <Component class="javax.swing.JTextField" name="fieldT2Id">
                                   <Properties>
                                     <Property name="editable" type="boolean" value="false"/>
@@ -1357,21 +1369,6 @@
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
                                   </Properties>
-                                </Component>
-                                <Component class="javax.swing.JLabel" name="btnAddCategoria">
-                                  <Properties>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="3" name="/cantina/vista/imgs/icons8_add_25px.png"/>
-                                    </Property>
-                                    <Property name="toolTipText" type="java.lang.String" value="Clic aqu&#xed; para agregar una categor&#xed;a"/>
-                                    <Property name="alignmentY" type="float" value="5.0"/>
-                                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                                      <Color id="Cursor de Mano"/>
-                                    </Property>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAddCategoriaMouseReleased"/>
-                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -1565,7 +1562,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable3">
+                    <Component class="javax.swing.JTable" name="jTableVentas">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="3" rowCount="0">

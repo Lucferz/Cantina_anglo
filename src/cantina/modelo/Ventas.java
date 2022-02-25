@@ -68,20 +68,20 @@ public class Ventas implements Serializable {
         this.idventa = idventa;
     }
 
-    public Ventas(Integer idventa, Date fecha, Integer total, boolean estado, Usuarios fkUsuario) {
-        this.idventa = idventa;
-        this.fecha = fecha;
-        this.total = total;
-        this.estado = estado;
-        this.fkUsuario = fkUsuario;
-    }
-    
-    
-
     public Ventas(Integer idventa, boolean estado) {
         this.idventa = idventa;
         this.estado = estado;
     }
+
+    public Ventas(Integer idventa, Integer total, boolean estado, Usuarios fkUsuario) {
+        this.idventa = idventa;
+        this.total = total;
+        this.estado = estado;
+        this.fkUsuario = fkUsuario;
+    }
+
+    
+    
 
     public Integer getIdventa() {
         return idventa;
@@ -154,8 +154,10 @@ public class Ventas implements Serializable {
 
     @Override
     public String toString() {
-        return "Ventas{" + "idventa=" + idventa + ", fecha=" + fecha + ", total=" + total + ", estado=" + estado + ", detalleVentaList=" + detalleVentaList + ", fkUsuario=" + fkUsuario + '}';
+        return "Ventas{" + "idventa=" + idventa + ", fecha=" + fecha + ", total=" + total + ", estado=" + estado + ", fkUsuario=" + fkUsuario + '}';
     }
+
+    
 
     
     

@@ -6,7 +6,10 @@
 package cantina.modelo;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +17,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -24,12 +31,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "categorias")
 @XmlRootElement
+
 @NamedQueries({
     @NamedQuery(name = "Categorias.findAll", query = "SELECT c FROM Categorias c")
     , @NamedQuery(name = "Categorias.findByIdcategoria", query = "SELECT c FROM Categorias c WHERE c.idcategoria = :idcategoria")
     , @NamedQuery(name = "Categorias.findByNombre", query = "SELECT c FROM Categorias c WHERE c.nombre = :nombre")
     , @NamedQuery(name = "Categorias.findNameByEstado", query = "SELECT c.nombre FROM Categorias c WHERE c.estado = 1")
-    , @NamedQuery(name = "Categorias.findByEstado", query = "SELECT c FROM Categorias c WHERE c.estado = :estado")})
+    , @NamedQuery(name = "Categorias.findByEstado", query = "SELECT c FROM Categorias c WHERE c.estado = :estado")
+    , @NamedQuery(name = "Categorias.findByDateCategorias", query = "SELECT c FROM Categorias c WHERE c.dateCategorias = :dateCategorias")})
 public class Categorias implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,6 +53,12 @@ public class Categorias implements Serializable {
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
+    @Basic(optional = false)
+    @Column(name = "date_categorias")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCategorias;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkCategorias")
+    private List<Articulos> articulosList;
 
     public Categorias() {
     }
@@ -51,13 +66,13 @@ public class Categorias implements Serializable {
     public Categorias(Integer idcategoria) {
         this.idcategoria = idcategoria;
     }
-    
 
     public Categorias(Integer idcategoria, String nombre, boolean estado) {
         this.idcategoria = idcategoria;
         this.nombre = nombre;
         this.estado = estado;
     }
+    
 
     public Integer getIdcategoria() {
         return idcategoria;
@@ -83,6 +98,23 @@ public class Categorias implements Serializable {
         this.estado = estado;
     }
 
+    public Date getDateCategorias() {
+        return dateCategorias;
+    }
+
+    public void setDateCategorias(Date dateCategorias) {
+        this.dateCategorias = dateCategorias;
+    }
+
+    @XmlTransient
+    public List<Articulos> getArticulosList() {
+        return articulosList;
+    }
+
+    public void setArticulosList(List<Articulos> articulosList) {
+        this.articulosList = articulosList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -105,8 +137,10 @@ public class Categorias implements Serializable {
 
     @Override
     public String toString() {
-        return "Categorias{" + "idcategoria=" + idcategoria + ", nombre=" + nombre + ", estado=" + estado + '}';
+        return "Categorias{" + "idcategoria=" + idcategoria + ", nombre=" + nombre + ", estado=" + estado + ", dateCategorias=" + dateCategorias + '}';
     }
+
+    
 
     
     

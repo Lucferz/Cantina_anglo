@@ -6,6 +6,7 @@
 package cantina.modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -32,7 +35,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "DetalleVenta.findByCantidad", query = "SELECT d FROM DetalleVenta d WHERE d.cantidad = :cantidad")
     , @NamedQuery(name = "DetalleVenta.findByPrecio", query = "SELECT d FROM DetalleVenta d WHERE d.precio = :precio")
     , @NamedQuery(name = "DetalleVenta.findByDescuento", query = "SELECT d FROM DetalleVenta d WHERE d.descuento = :descuento")
-    , @NamedQuery(name = "DetalleVenta.findByEstado", query = "SELECT d FROM DetalleVenta d WHERE d.estado = :estado")})
+    , @NamedQuery(name = "DetalleVenta.findByEstado", query = "SELECT d FROM DetalleVenta d WHERE d.estado = :estado")
+    , @NamedQuery(name = "DetalleVenta.findByDatedetalleVenta", query = "SELECT d FROM DetalleVenta d WHERE d.datedetalleVenta = :datedetalleVenta")})
 public class DetalleVenta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,6 +54,10 @@ public class DetalleVenta implements Serializable {
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
+    @Basic(optional = false)
+    @Column(name = "date_detalleVenta")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datedetalleVenta;
     @JoinColumn(name = "fk_articulos", referencedColumnName = "idarticulo")
     @ManyToOne(optional = false)
     private Articulos fkArticulos;
@@ -64,6 +72,12 @@ public class DetalleVenta implements Serializable {
         this.iddetalleVenta = iddetalleVenta;
     }
 
+    public DetalleVenta(Integer iddetalleVenta, boolean estado, Date datedetalleVenta) {
+        this.iddetalleVenta = iddetalleVenta;
+        this.estado = estado;
+        this.datedetalleVenta = datedetalleVenta;
+    }
+
     public DetalleVenta(Integer iddetalleVenta, Integer cantidad, Integer precio, Integer descuento, boolean estado, Articulos fkArticulos, Ventas fkVenta) {
         this.iddetalleVenta = iddetalleVenta;
         this.cantidad = cantidad;
@@ -74,12 +88,6 @@ public class DetalleVenta implements Serializable {
         this.fkVenta = fkVenta;
     }
     
-    
-
-    public DetalleVenta(Integer iddetalleVenta, boolean estado) {
-        this.iddetalleVenta = iddetalleVenta;
-        this.estado = estado;
-    }
 
     public Integer getIddetalleVenta() {
         return iddetalleVenta;
@@ -121,6 +129,14 @@ public class DetalleVenta implements Serializable {
         this.estado = estado;
     }
 
+    public Date getDatedetalleVenta() {
+        return datedetalleVenta;
+    }
+
+    public void setDatedetalleVenta(Date datedetalleVenta) {
+        this.datedetalleVenta = datedetalleVenta;
+    }
+
     public Articulos getFkArticulos() {
         return fkArticulos;
     }
@@ -159,7 +175,7 @@ public class DetalleVenta implements Serializable {
 
     @Override
     public String toString() {
-        return "DetalleVenta{" + "iddetalleVenta=" + iddetalleVenta + ", cantidad=" + cantidad + ", precio=" + precio + ", descuento=" + descuento + ", estado=" + estado + ", fkArticulos=" + fkArticulos + ", fkVenta=" + fkVenta + '}';
+        return "DetalleVenta{" + "iddetalleVenta=" + iddetalleVenta + ", cantidad=" + cantidad + ", precio=" + precio + ", descuento=" + descuento + ", estado=" + estado + ", datedetalleVenta=" + datedetalleVenta + ", fkArticulos=" + fkArticulos + ", fkVenta=" + fkVenta + '}';
     }
 
     

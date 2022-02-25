@@ -6,6 +6,7 @@
 package cantina.modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -18,6 +19,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -33,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Roles.findByIdrole", query = "SELECT r FROM Roles r WHERE r.idrole = :idrole")
     , @NamedQuery(name = "Roles.findByRol", query = "SELECT r FROM Roles r WHERE r.rol = :rol")
     , @NamedQuery(name = "Roles.findByDesc", query = "SELECT r FROM Roles r WHERE r.desc = :desc")
-    , @NamedQuery(name = "Roles.findByEstado", query = "SELECT r FROM Roles r WHERE r.estado = :estado")})
+    , @NamedQuery(name = "Roles.findByEstado", query = "SELECT r FROM Roles r WHERE r.estado = :estado")
+    , @NamedQuery(name = "Roles.findByDateRol", query = "SELECT r FROM Roles r WHERE r.dateRol = :dateRol")})
 public class Roles implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,8 +51,13 @@ public class Roles implements Serializable {
     private String rol;
     @Column(name = "desc")
     private String desc;
+    @Basic(optional = false)
     @Column(name = "estado")
-    private Boolean estado;
+    private boolean estado;
+    @Basic(optional = false)
+    @Column(name = "date_rol")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateRol;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkRoles")
     private List<Usuarios> usuariosList;
 
@@ -59,19 +68,20 @@ public class Roles implements Serializable {
         this.idrole = idrole;
     }
 
-    public Roles(Integer idrole, String rol, String desc, Boolean estado) {
+    public Roles(Integer idrole, String rol, boolean estado, Date dateRol) {
+        this.idrole = idrole;
+        this.rol = rol;
+        this.estado = estado;
+        this.dateRol = dateRol;
+    }
+
+    public Roles(Integer idrole, String rol, String desc, boolean estado) {
         this.idrole = idrole;
         this.rol = rol;
         this.desc = desc;
         this.estado = estado;
     }
     
-    
-
-    public Roles(Integer idrole, String rol) {
-        this.idrole = idrole;
-        this.rol = rol;
-    }
 
     public Integer getIdrole() {
         return idrole;
@@ -97,12 +107,20 @@ public class Roles implements Serializable {
         this.desc = desc;
     }
 
-    public Boolean getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+    public Date getDateRol() {
+        return dateRol;
+    }
+
+    public void setDateRol(Date dateRol) {
+        this.dateRol = dateRol;
     }
 
     @XmlTransient
@@ -136,8 +154,10 @@ public class Roles implements Serializable {
 
     @Override
     public String toString() {
-        return "Roles{" + "idrole=" + idrole + ", rol=" + rol + ", desc=" + desc + ", estado=" + estado + ", usuariosList=" + usuariosList + '}';
+        return "Roles{" + "idrole=" + idrole + ", rol=" + rol + ", desc=" + desc + ", estado=" + estado + ", dateRol=" + dateRol + '}';
     }
+
+    
 
     
     

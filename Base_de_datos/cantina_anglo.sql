@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2022 at 02:36 PM
+-- Generation Time: Feb 25, 2022 at 03:45 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -35,19 +35,23 @@ CREATE TABLE `articulos` (
   `stock` int(11) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
   `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `fk_categorias` int(10) UNSIGNED NOT NULL
+  `fk_categorias` int(10) UNSIGNED NOT NULL,
+  `date_arti` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `articulos`
 --
 
-INSERT INTO `articulos` (`idarticulo`, `codigo`, `precio_venta`, `costo`, `stock`, `descripcion`, `estado`, `fk_categorias`) VALUES
-(1, '7842714004690', 3000, 1500, 1, 'caja', 1, 1),
-(2, '3123211234', 4000, 2000, 2, 'Empanada ', 1, 1),
-(3, '123456789', 4000, 2500, 5, 'Pancho', 1, 1),
-(4, '123654987', 1000, 100, 20, 'Turron', 1, 1),
-(5, '321654987', 6000, 3000, 5, 'Pan dulce', 1, 1);
+INSERT INTO `articulos` (`idarticulo`, `codigo`, `precio_venta`, `costo`, `stock`, `descripcion`, `estado`, `fk_categorias`, `date_arti`) VALUES
+(1, '7842714004690', 3000, 1500, 1, 'caja', 1, 1, '2022-02-25 00:00:00'),
+(2, '3123211234', 4000, 2000, 2, 'Empanada ', 1, 1, '2022-02-25 00:00:00'),
+(3, '123456789', 2500, 4000, 5, 'Pancho con queso', 1, 3, '2022-02-25 00:00:00'),
+(4, '123654987', 200, 1000, 20, 'Turron mani', 1, 4, '2022-02-25 00:00:00'),
+(5, '321654987', 3000, 6000, 5, 'Pan dulce', 1, 3, '2022-02-25 00:00:00'),
+(6, '951874632', 5000, 500, 10, 'Empanada', 1, 2, '2022-02-25 00:00:00'),
+(8, '89632563256', 2500, 500, 2, 'Algo', 1, 4, '2022-02-25 00:00:00'),
+(9, '3216548946', 2000, 500, 2, 'Prue', 1, 3, '2022-02-25 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -58,17 +62,19 @@ INSERT INTO `articulos` (`idarticulo`, `codigo`, `precio_venta`, `costo`, `stock
 CREATE TABLE `categorias` (
   `idcategoria` int(10) UNSIGNED NOT NULL,
   `nombre` varchar(45) NOT NULL,
-  `descripcion` varchar(200) DEFAULT NULL,
-  `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1
+  `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
+  `date_categorias` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `categorias`
 --
 
-INSERT INTO `categorias` (`idcategoria`, `nombre`, `descripcion`, `estado`) VALUES
-(1, 'categoria 1', NULL, 1),
-(2, 'categoria 2', NULL, 1);
+INSERT INTO `categorias` (`idcategoria`, `nombre`, `estado`, `date_categorias`) VALUES
+(1, 'categoria 1', 1, '2022-02-25 00:00:00'),
+(2, 'categoria 2', 1, '2022-02-25 00:00:00'),
+(3, 'Lacteos', 1, '2022-02-25 00:00:00'),
+(4, 'Dani', 1, '2022-02-25 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -83,7 +89,8 @@ CREATE TABLE `detalle_venta` (
   `cantidad` int(10) UNSIGNED DEFAULT NULL,
   `precio` int(10) UNSIGNED DEFAULT NULL,
   `descuento` int(10) UNSIGNED DEFAULT NULL,
-  `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1
+  `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
+  `date_detalleVenta` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -96,16 +103,17 @@ CREATE TABLE `roles` (
   `idrole` int(11) NOT NULL,
   `rol` varchar(30) NOT NULL,
   `desc` varchar(250) DEFAULT NULL,
-  `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1
+  `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
+  `date_rol` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `roles` (`idrole`, `rol`, `desc`, `estado`) VALUES
-(1, 'ADMIN', 'Administrador del sistema, tiene todas las opciones disponibles', 1),
-(2, 'VENDEDOR', 'Puede realizar ventas, anularlas, cargar productos nuevos y acutalizar el stock', 1);
+INSERT INTO `roles` (`idrole`, `rol`, `desc`, `estado`, `date_rol`) VALUES
+(1, 'ADMIN', 'Administrador del sistema, tiene todas las opciones disponibles', 1, '2022-02-25 00:00:00'),
+(2, 'VENDEDOR', 'Puede realizar ventas, anularlas, cargar productos nuevos y acutalizar el stock', 1, '2022-02-25 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -118,16 +126,18 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(45) NOT NULL,
   `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
   `pass` varchar(40) DEFAULT NULL,
-  `fk_roles` int(11) NOT NULL
+  `fk_roles` int(11) NOT NULL,
+  `date_user` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`idusuario`, `nombre`, `estado`, `pass`, `fk_roles`) VALUES
-(1, 'Lucas', 1, '1234', 1),
-(2, 'Dani', 1, '1234', 1);
+INSERT INTO `usuarios` (`idusuario`, `nombre`, `estado`, `pass`, `fk_roles`, `date_user`) VALUES
+(1, 'Lucas', 1, '1234', 1, '2022-02-25 00:00:00'),
+(2, 'Dani', 1, '1234', 1, '2022-02-25 00:00:00'),
+(3, 'Vendedor', 1, '1234', 2, '2022-02-25 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -137,7 +147,7 @@ INSERT INTO `usuarios` (`idusuario`, `nombre`, `estado`, `pass`, `fk_roles`) VAL
 
 CREATE TABLE `ventas` (
   `idventa` int(11) NOT NULL,
-  `fecha` datetime DEFAULT NULL,
+  `fecha` datetime DEFAULT current_timestamp(),
   `total` int(11) DEFAULT NULL,
   `fk_usuario` int(10) UNSIGNED NOT NULL,
   `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1
@@ -197,13 +207,13 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT for table `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `idcategoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idcategoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `detalle_venta`
@@ -221,7 +231,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuario` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idusuario` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ventas`

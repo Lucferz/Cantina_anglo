@@ -1332,7 +1332,7 @@ public class MainPage extends javax.swing.JFrame {
         fieldT2Cant.setText(jTableArticulos.getValueAt(fila, 3).toString());
         fieldT2PrecioCosto.setText(jTableArticulos.getValueAt(fila, 4).toString());
         fieldT2PrecioVenta.setText(jTableArticulos.getValueAt(fila, 5).toString());
-//        jComboBox2Categorias.setSelectedItem(jTableArticulos.getValueAt(fila, 6).toString());
+        jComboBox2Categorias.setSelectedItem(jTableArticulos.getValueAt(fila, 6).toString());
     }//GEN-LAST:event_jTableArticulosMouseClicked
 
     private void btnActualizarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarProductosActionPerformed

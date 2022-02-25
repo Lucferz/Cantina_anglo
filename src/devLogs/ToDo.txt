@@ -6,7 +6,15 @@ dani--
 *Crear un campo en la pestaña de productos para contener al id, y que sea intocable, solo para poder traerle
 se tiene que llamar fieldT2Id xfa jaja  ///LISTO
 *Eliminar o el boton agregar xd //LISTO
-<<<<<<< HEAD
+
+**Ajustar tamaños de columnas en las tablas, en la tabla productos se va a hacer por código.
+**Agregar en la parte de configuracion, opciones de administrador.
+
+**GESTION DE CAJA:
+    -Primero apertura de caja, con saldo inicial y nombre de cajero
+    -En cada venta se va a ir sumando a ese saldo inicial el dinero que se haya cobrado
+    -Calculo de vuelto segun dinero recibido (OPCIONAL) EN EL 1.1
+
 *IDEA A DISCUSION: "Colocar un campo en la parte superior no editable, para que se
 muestre que usuario esta usando el sistema, asi podemos estirar de ese jTextField nomas
 esa informacion para registrar la venta en la BD.
@@ -28,7 +36,7 @@ esa informacion para registrar la venta en la BD.
     
 
 ***********************************************
->>>>>>> 0401df3416ebbb06d0e06e01f030066b51defb7b
+
 ----------
 lucas--
 *Boton para eliminar articulos de la venta, creo que usare el boton que usaste para limpiar 

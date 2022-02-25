@@ -6,6 +6,7 @@
 package cantina.modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -20,6 +21,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -35,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuarios.findByIdusuario", query = "SELECT u FROM Usuarios u WHERE u.idusuario = :idusuario")
     , @NamedQuery(name = "Usuarios.findByNombre", query = "SELECT u FROM Usuarios u WHERE u.nombre = :nombre")
     , @NamedQuery(name = "Usuarios.findByEstado", query = "SELECT u FROM Usuarios u WHERE u.estado = :estado")
-    , @NamedQuery(name = "Usuarios.findByPass", query = "SELECT u FROM Usuarios u WHERE u.pass = :pass")})
+    , @NamedQuery(name = "Usuarios.findByPass", query = "SELECT u FROM Usuarios u WHERE u.pass = :pass")
+    , @NamedQuery(name = "Usuarios.findByDateUser", query = "SELECT u FROM Usuarios u WHERE u.dateUser = :dateUser")})
 public class Usuarios implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,6 +56,10 @@ public class Usuarios implements Serializable {
     private boolean estado;
     @Column(name = "pass")
     private String pass;
+    @Basic(optional = false)
+    @Column(name = "date_user")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateUser;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkUsuario")
     private List<Ventas> ventasList;
     @JoinColumn(name = "fk_roles", referencedColumnName = "idrole")
@@ -65,6 +73,13 @@ public class Usuarios implements Serializable {
         this.idusuario = idusuario;
     }
 
+    public Usuarios(Integer idusuario, String nombre, boolean estado, Date dateUser) {
+        this.idusuario = idusuario;
+        this.nombre = nombre;
+        this.estado = estado;
+        this.dateUser = dateUser;
+    }
+
     public Usuarios(Integer idusuario, String nombre, boolean estado, String pass, Roles fkRoles) {
         this.idusuario = idusuario;
         this.nombre = nombre;
@@ -72,14 +87,9 @@ public class Usuarios implements Serializable {
         this.pass = pass;
         this.fkRoles = fkRoles;
     }
-    
-    
 
-    public Usuarios(Integer idusuario, String nombre, boolean estado) {
-        this.idusuario = idusuario;
-        this.nombre = nombre;
-        this.estado = estado;
-    }
+    
+    
 
     public Integer getIdusuario() {
         return idusuario;
@@ -111,6 +121,14 @@ public class Usuarios implements Serializable {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public Date getDateUser() {
+        return dateUser;
+    }
+
+    public void setDateUser(Date dateUser) {
+        this.dateUser = dateUser;
     }
 
     @XmlTransient
@@ -152,8 +170,10 @@ public class Usuarios implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuarios{" + "idusuario=" + idusuario + ", nombre=" + nombre + ", estado=" + estado + ", pass=" + pass + ", ventasList=" + ventasList + ", fkRoles=" + fkRoles + '}';
+        return "Usuarios{" + "idusuario=" + idusuario + ", nombre=" + nombre + ", estado=" + estado + ", pass=" + pass + ", dateUser=" + dateUser + ", fkRoles=" + fkRoles + '}';
     }
+
+    
 
     
     

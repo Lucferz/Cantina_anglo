@@ -6,6 +6,7 @@
 package cantina.datos;
 
 import cantina.modelo.Articulos;
+import cantina.modelo.Categorias;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -28,7 +29,7 @@ public class ArticulosDAO {
         return res;
     }
     public void cargar_tabla_arti(JTable table){
-        String [] titulos = {"ID","CODIGO", "DESCRIPCION","STOCK","PRECIO_COSTO","PRECIO_VENTA"};
+        String [] titulos = {"ID","CODIGO", "DESCRIPCION","STOCK","PRECIO_COSTO","PRECIO_VENTA", "CATEGORIA"};
        DefaultTableModel model = new DefaultTableModel(null, titulos){
             @Override
             public boolean isCellEditable(int i, int i1) {
@@ -39,7 +40,7 @@ public class ArticulosDAO {
        try{
            TypedQuery<Articulos> sql =em.createNamedQuery("Articulos.findEstadoTrue",Articulos.class);
            List<Articulos> datos = sql.getResultList();
-           String [] datosArti = new String[6];
+           String [] datosArti = new String[7];
           for(Articulos tba : datos){
               datosArti[0]=tba.getIdarticulo()+"";
               datosArti[1]=tba.getCodigo()+"";
@@ -47,6 +48,8 @@ public class ArticulosDAO {
               datosArti[3]=tba.getStock()+"";
               datosArti[4]=tba.getCosto()+"";
               datosArti[5]=tba.getPrecioVenta()+"";
+              Categorias cat = tba.getFkCategorias();
+              datosArti[6]= cat.getNombre();
               model.addRow(datosArti);
            }
           table.setModel(model);

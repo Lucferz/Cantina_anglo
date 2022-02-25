@@ -6,7 +6,10 @@
 package cantina.modelo;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,8 +19,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,7 +43,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Articulos.listar", query = "SELECT a.idarticulo, a.codigo, a.descripcion, a.stock, a.precioVenta, a.costo FROM Articulos a")
     , @NamedQuery(name = "Articulos.findByDescripcion", query = "SELECT a FROM Articulos a WHERE a.descripcion = :descripcion")
     , @NamedQuery(name = "Articulos.findEstadoTrue", query = "SELECT a FROM Articulos a WHERE a.estado = 1")
-    , @NamedQuery(name = "Articulos.findByEstado", query = "SELECT a FROM Articulos a WHERE a.estado = :estado")})
+    , @NamedQuery(name = "Articulos.findByEstado", query = "SELECT a FROM Articulos a WHERE a.estado = :estado")
+    , @NamedQuery(name = "Articulos.findByDateArti", query = "SELECT a FROM Articulos a WHERE a.dateArti = :dateArti")})
 public class Articulos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,6 +67,12 @@ public class Articulos implements Serializable {
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
+    @Basic(optional = false)
+    @Column(name = "date_arti")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateArti;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkArticulos")
+    private List<DetalleVenta> detalleVentaList;
     @JoinColumn(name = "fk_categorias", referencedColumnName = "idcategoria")
     @ManyToOne(optional = false)
     private Categorias fkCategorias;
@@ -70,7 +84,14 @@ public class Articulos implements Serializable {
         this.idarticulo = idarticulo;
     }
 
-    public Articulos(Integer idarticulo, String codigo, Integer costo, String descripcion,  boolean estado, Integer precioVenta,  Integer stock,  Categorias fkCategorias) {
+    public Articulos(Integer idarticulo, int precioVenta, boolean estado, Date dateArti) {
+        this.idarticulo = idarticulo;
+        this.precioVenta = precioVenta;
+        this.estado = estado;
+        this.dateArti = dateArti;
+    }
+
+    public Articulos(Integer idarticulo, String codigo, Integer costo, String descripcion, Boolean estado, Integer precioVenta, Integer stock, Categorias fkCategorias ) {
         this.idarticulo = idarticulo;
         this.codigo = codigo;
         this.costo = costo;
@@ -79,13 +100,6 @@ public class Articulos implements Serializable {
         this.precioVenta = precioVenta;
         this.stock = stock;
         this.fkCategorias = fkCategorias;
-    }
-    
-
-    public Articulos(Integer idarticulo, int precioVenta, boolean estado) {
-        this.idarticulo = idarticulo;
-        this.precioVenta = precioVenta;
-        this.estado = estado;
     }
 
     public Integer getIdarticulo() {
@@ -144,6 +158,23 @@ public class Articulos implements Serializable {
         this.estado = estado;
     }
 
+    public Date getDateArti() {
+        return dateArti;
+    }
+
+    public void setDateArti(Date dateArti) {
+        this.dateArti = dateArti;
+    }
+
+    @XmlTransient
+    public List<DetalleVenta> getDetalleVentaList() {
+        return detalleVentaList;
+    }
+
+    public void setDetalleVentaList(List<DetalleVenta> detalleVentaList) {
+        this.detalleVentaList = detalleVentaList;
+    }
+
     public Categorias getFkCategorias() {
         return fkCategorias;
     }
@@ -174,8 +205,10 @@ public class Articulos implements Serializable {
 
     @Override
     public String toString() {
-        return "Articulos{" + "idarticulo=" + idarticulo + ", codigo=" + codigo + ", precioVenta=" + precioVenta + ", costo=" + costo + ", stock=" + stock + ", descripcion=" + descripcion + ", estado=" + estado + ", fkCategorias=" + fkCategorias + '}';
+        return "Articulos{" + "idarticulo=" + idarticulo + ", codigo=" + codigo + ", precioVenta=" + precioVenta + ", costo=" + costo + ", stock=" + stock + ", descripcion=" + descripcion + ", estado=" + estado + ", dateArti=" + dateArti + ", fkCategorias=" + fkCategorias + '}';
     }
+
+    
 
     
     

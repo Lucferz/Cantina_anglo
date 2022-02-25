@@ -15,15 +15,17 @@ public class login {
     private int id;
     private String nombre;
     private String pass;
+    private int fkRoles;
 
     public login() {
         super();
     }
 
-    public login(int id, String nombre, String pass) {
+    public login(int id, String nombre, String pass, int fkRoles) {
         this.id = id;
         this.nombre = nombre;
         this.pass = pass;
+        this.fkRoles = fkRoles;
     }
 
     public int getId() {
@@ -49,6 +51,16 @@ public class login {
     public void setPass(String pass) {
         this.pass = pass;
     }
+
+    public int getFkRoles() {
+        return fkRoles;
+    }
+
+    public void setFkRoles(int fkRoles) {
+        this.fkRoles = fkRoles;
+    }
+
+
 
     @Override
     public int hashCode() {

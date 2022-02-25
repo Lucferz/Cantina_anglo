@@ -27,6 +27,7 @@ public class Login2 extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         getContentPane().requestFocusInWindow();
+        
     }
     public void validar(){
         String nombre = loginUsername.getText();
@@ -35,9 +36,13 @@ public class Login2 extends javax.swing.JFrame {
             lg = login.log(nombre, pass);
             try{     
                 if(lg.getNombre()!=null && lg.getPass()!=null){
-                MainPage main = new MainPage();
-                main.setVisible(true);
-                dispose();
+                    MainPage main = new MainPage(lg.getFkRoles());
+                          
+                    main.setRolActual(lg.getFkRoles());
+                    //System.out.println("En validar, en la variable: "+ main.getRolActual());
+                    main.setVisible(true);
+                    dispose();
+                
                 }
             }catch(Exception e){
                 //JOptionPane.showMessageDialog(null, "Los datos de inicio de sesion son incorrectos");

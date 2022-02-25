@@ -10,10 +10,12 @@ import cantina.controlador.CategoriasControlador;
 import cantina.modelo.Articulos;
 import cantina.modelo.Categorias;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeListener;
 import java.sql.ResultSet;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.ToolTipManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,15 +26,38 @@ public class MainPage extends javax.swing.JFrame {
     CategoriasControlador cc = new CategoriasControlador();
     ArticulosControl ac = new ArticulosControl();
     DefaultTableModel modelo;
+     private int rolActual = 45;
+
+    public int getRolActual() {
+        return rolActual;
+    }
+
+    public void setRolActual(int rolActual) {
+        this.rolActual = rolActual;
+    }
     /**
      * Creates new form MainPage
      */
-    public MainPage() {
+    public MainPage(int rolLogin) {
+
         initComponents();
+        
+        //System.out.println("Rol en mainpage: "+ rolLogin);
+       
         setLocationRelativeTo(null);
+         if(rolLogin == 2){
+             tabsPanel.removeTabAt(3);
+             tabsPanel.removeTabAt(3);
+             btnConfig.setVisible(false);
+             btnInformes.setVisible(false);
+           
+        }
         MostrarComboCat();
         MostrarTabArti();
         fieldCod.requestFocus();
+        ToolTipManager.sharedInstance().setInitialDelay(300);
+         
+         
     }
 
     /**
@@ -59,13 +84,16 @@ public class MainPage extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         sidebarMain = new javax.swing.JPanel();
+        logoCont = new javax.swing.JPanel();
+        mainLogo = new javax.swing.JLabel();
+        contSidebarButtons = new javax.swing.JPanel();
         btnNewVenta = new javax.swing.JButton();
         btnProductos = new javax.swing.JButton();
         btnConfig = new javax.swing.JButton();
         btnVentas = new javax.swing.JButton();
         btnInformes = new javax.swing.JButton();
-        logoCont = new javax.swing.JPanel();
-        mainLogo = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
         mainTitle = new javax.swing.JLabel();
         tabsPanel = new javax.swing.JTabbedPane();
@@ -152,9 +180,21 @@ public class MainPage extends javax.swing.JFrame {
         sidebarMain.setBackground(new java.awt.Color(103, 226, 109));
         sidebarMain.setPreferredSize(new java.awt.Dimension(135, 600));
 
+        logoCont.setBackground(new java.awt.Color(103, 226, 109));
+        logoCont.setPreferredSize(new java.awt.Dimension(120, 120));
+        logoCont.setLayout(new java.awt.GridLayout(1, 0));
+
+        mainLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mainLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_online_shopping_100px_1.png"))); // NOI18N
+        logoCont.add(mainLogo);
+
+        contSidebarButtons.setBackground(new java.awt.Color(103, 226, 109));
+        contSidebarButtons.setLayout(new java.awt.GridBagLayout());
+
         btnNewVenta.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         btnNewVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_receive_cash_30px.png"))); // NOI18N
         btnNewVenta.setText("Nueva Venta");
+        btnNewVenta.setToolTipText("Ir a la pestaña Nueva Venta");
         btnNewVenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnNewVentaMouseClicked(evt);
@@ -168,10 +208,20 @@ public class MainPage extends javax.swing.JFrame {
                 btnNewVentaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 10);
+        contSidebarButtons.add(btnNewVenta, gridBagConstraints);
 
         btnProductos.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_empty_box_30px.png"))); // NOI18N
         btnProductos.setText("Productos");
+        btnProductos.setToolTipText("Ir a la pestaña Productos");
         btnProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnProductosMouseClicked(evt);
@@ -180,10 +230,20 @@ public class MainPage extends javax.swing.JFrame {
                 btnProductosMouseReleased(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
+        contSidebarButtons.add(btnProductos, gridBagConstraints);
 
         btnConfig.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_settings_30px.png"))); // NOI18N
         btnConfig.setText("Configuración");
+        btnConfig.setToolTipText("Ir a la pestaña Configuración");
         btnConfig.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnConfigMouseClicked(evt);
@@ -192,10 +252,20 @@ public class MainPage extends javax.swing.JFrame {
                 btnConfigMouseReleased(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
+        contSidebarButtons.add(btnConfig, gridBagConstraints);
 
         btnVentas.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_list_30px.png"))); // NOI18N
         btnVentas.setText("Ventas");
+        btnVentas.setToolTipText("Ir a la pestaña Ventas");
         btnVentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVentasMouseClicked(evt);
@@ -204,10 +274,20 @@ public class MainPage extends javax.swing.JFrame {
                 btnVentasMouseReleased(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
+        contSidebarButtons.add(btnVentas, gridBagConstraints);
 
         btnInformes.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         btnInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_upload_link_document_30px.png"))); // NOI18N
         btnInformes.setText("Informes");
+        btnInformes.setToolTipText("Ir a la pestaña Informes");
         btnInformes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnInformesMouseClicked(evt);
@@ -216,41 +296,67 @@ public class MainPage extends javax.swing.JFrame {
                 btnInformesMouseReleased(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
+        contSidebarButtons.add(btnInformes, gridBagConstraints);
 
-        logoCont.setBackground(new java.awt.Color(103, 226, 109));
-        logoCont.setPreferredSize(new java.awt.Dimension(120, 120));
-        logoCont.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel4.setBackground(new java.awt.Color(103, 226, 109));
 
-        mainLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        mainLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_online_shopping_100px_1.png"))); // NOI18N
-        logoCont.add(mainLogo);
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.weighty = 0.25;
+        contSidebarButtons.add(jPanel4, gridBagConstraints);
+
+        jPanel13.setBackground(new java.awt.Color(103, 226, 109));
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weighty = 0.25;
+        contSidebarButtons.add(jPanel13, gridBagConstraints);
 
         javax.swing.GroupLayout sidebarMainLayout = new javax.swing.GroupLayout(sidebarMain);
         sidebarMain.setLayout(sidebarMainLayout);
         sidebarMainLayout.setHorizontalGroup(
             sidebarMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnNewVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnConfig, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnInformes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(logoCont, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(contSidebarButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(logoCont, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
         );
         sidebarMainLayout.setVerticalGroup(
             sidebarMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidebarMainLayout.createSequentialGroup()
                 .addComponent(logoCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(btnNewVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnInformes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(contSidebarButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE))
         );
 
         getContentPane().add(sidebarMain, java.awt.BorderLayout.WEST);
@@ -287,14 +393,12 @@ public class MainPage extends javax.swing.JFrame {
 
         contPanelEntrada.setLayout(new java.awt.GridBagLayout());
 
-        fieldCod.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldCodKeyPressed(evt);
-            }
-        });
+        fieldCod.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        fieldCod.setToolTipText("Escanea el producto con tu lector");
 
         labCod.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labCod.setText("Cód. de Barras");
+        labCod.setToolTipText("Escanea el producto con tu lector");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -302,17 +406,19 @@ public class MainPage extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fieldCod)
-                    .addComponent(labCod, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labCod, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 35, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labCod)
                 .addGap(18, 18, 18)
+                .addComponent(labCod)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fieldCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -323,6 +429,9 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 15, 0, 7);
         contPanelEntrada.add(jPanel1, gridBagConstraints);
 
+        fieldId.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        fieldId.setToolTipText("Código único de producto en el inventario");
+
         jLabel12.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel12.setText("Id Producto");
 
@@ -331,18 +440,19 @@ public class MainPage extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(fieldId)
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -357,6 +467,9 @@ public class MainPage extends javax.swing.JFrame {
         jLabel2.setText("Descripción");
 
         fieldDesc.setEditable(false);
+        fieldDesc.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        fieldDesc.setToolTipText("Descripción del producto");
+        fieldDesc.setFocusable(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -365,16 +478,16 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(fieldDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fieldDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -387,6 +500,7 @@ public class MainPage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel3.setText("Cantidad");
 
+        fieldCant.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         fieldCant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldCantActionPerformed(evt);
@@ -411,16 +525,16 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(fieldCant, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldCant, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fieldCant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -433,6 +547,7 @@ public class MainPage extends javax.swing.JFrame {
         contPanelEntrada.add(jPanel6, gridBagConstraints);
 
         fieldPrecUnit.setEditable(false);
+        fieldPrecUnit.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel4.setText("Precio Unitario");
@@ -444,16 +559,16 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(fieldPrecUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(fieldPrecUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fieldPrecUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -467,6 +582,8 @@ public class MainPage extends javax.swing.JFrame {
         jLabel6.setText("Prec. Total");
 
         fieldPrecTotal.setEditable(false);
+        fieldPrecTotal.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        fieldPrecTotal.setToolTipText("Precio Unitario x Cantidad");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -475,16 +592,16 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(fieldPrecTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldPrecTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fieldPrecTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -498,6 +615,8 @@ public class MainPage extends javax.swing.JFrame {
         jLabel5.setText("Stock Disponible");
 
         fieldStock.setEditable(false);
+        fieldStock.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        fieldStock.setToolTipText("Cantidad restante de este producto en inventario");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -507,15 +626,15 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fieldStock, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldStock))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fieldStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -526,6 +645,7 @@ public class MainPage extends javax.swing.JFrame {
         contPanelEntrada.add(jPanel9, gridBagConstraints);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_clear_symbol_30px.png"))); // NOI18N
+        jButton1.setToolTipText("Limpiar los campos");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jButton1MouseReleased(evt);
@@ -557,6 +677,7 @@ public class MainPage extends javax.swing.JFrame {
 
         contMainVenta.add(contPanelEntrada, java.awt.BorderLayout.NORTH);
 
+        jTable1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -574,6 +695,7 @@ public class MainPage extends javax.swing.JFrame {
 
         contCierreVenta.setPreferredSize(new java.awt.Dimension(468, 80));
 
+        jButton2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_request_money_30px.png"))); // NOI18N
         jButton2.setText("Cerrar Venta");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -588,12 +710,12 @@ public class MainPage extends javax.swing.JFrame {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(13, 13, 13)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -601,6 +723,7 @@ public class MainPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         jLabel1.setText("Total a Cobrar:");
 
+        fieldTotalPagar.setEditable(false);
         fieldTotalPagar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         fieldTotalPagar.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         fieldTotalPagar.setText("21.500");
@@ -635,7 +758,7 @@ public class MainPage extends javax.swing.JFrame {
         contCierreVentaLayout.setHorizontalGroup(
             contCierreVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contCierreVentaLayout.createSequentialGroup()
-                .addContainerGap(256, Short.MAX_VALUE)
+                .addContainerGap(248, Short.MAX_VALUE)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -723,7 +846,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrarProducto)
                     .addComponent(btnExportProduc))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -732,8 +855,8 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
-        gridBagConstraints.weightx = 0.2;
-        gridBagConstraints.weighty = 0.3;
+        gridBagConstraints.weightx = 0.15;
+        gridBagConstraints.weighty = 0.15;
         contSidebarT2.add(contBtnProductos, gridBagConstraints);
 
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -857,7 +980,7 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(labT2Categorias)
                         .addComponent(jComboBox2Categorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnAddCategoria))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(11, 11, 11))
         );
 
         jScrollPane4.setViewportView(contInsertProd);
@@ -869,8 +992,8 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
-        gridBagConstraints.weightx = 0.8;
-        gridBagConstraints.weighty = 0.8;
+        gridBagConstraints.weightx = 0.85;
+        gridBagConstraints.weighty = 0.85;
         contSidebarT2.add(jScrollPane4, gridBagConstraints);
 
         javax.swing.GroupLayout panelContEntradaProductosLayout = new javax.swing.GroupLayout(panelContEntradaProductos);
@@ -889,6 +1012,7 @@ public class MainPage extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(panelContEntradaProductos);
 
+        jTableArticulos.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jTableArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1070,6 +1194,7 @@ public class MainPage extends javax.swing.JFrame {
     private void btnNewVentaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewVentaMouseReleased
         // TODO add your handling code here:
          tabsPanel.setSelectedIndex(0);   
+         fieldCod.requestFocus();
     }//GEN-LAST:event_btnNewVentaMouseReleased
 
     private void btnProductosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseReleased
@@ -1362,8 +1487,9 @@ public class MainPage extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new MainPage().setVisible(true);
+                new MainPage(0).setVisible(true);
             }
         });
     }
@@ -1386,6 +1512,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel contInsertProd;
     private javax.swing.JPanel contMainVenta;
     private javax.swing.JPanel contPanelEntrada;
+    private javax.swing.JPanel contSidebarButtons;
     private javax.swing.JPanel contSidebarT2;
     private javax.swing.JPanel contenedorTablat2;
     private javax.swing.JTextField fieldCant;
@@ -1422,8 +1549,10 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;

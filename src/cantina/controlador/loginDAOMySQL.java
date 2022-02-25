@@ -35,6 +35,8 @@ public class loginDAOMySQL extends ControladorAbstract {
                 l.setId(rs.getInt("idusuario"));
                 l.setNombre(rs.getString("nombre"));
                 l.setPass(rs.getString("pass"));
+                l.setFkRoles(rs.getInt("fk_roles"));
+                //JOptionPane.showMessageDialog(null, "Esto encontre: "+l.getFkRoles());
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);

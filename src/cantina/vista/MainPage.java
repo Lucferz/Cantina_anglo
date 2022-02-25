@@ -26,7 +26,7 @@ public class MainPage extends javax.swing.JFrame {
     CategoriasControlador cc = new CategoriasControlador();
     ArticulosControl ac = new ArticulosControl();
     DefaultTableModel modelo;
-     private int rolActual = 45;
+     private int rolActual;
 
     public int getRolActual() {
         return rolActual;
@@ -46,7 +46,7 @@ public class MainPage extends javax.swing.JFrame {
        
         setLocationRelativeTo(null);
          if(rolLogin == 2){
-             tabsPanel.removeTabAt(3);
+             tabsPanel.removeTabAt(4);
              tabsPanel.removeTabAt(3);
              btnConfig.setVisible(false);
              btnInformes.setVisible(false);
@@ -171,7 +171,8 @@ public class MainPage extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         panelConfig = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        panelInformes = new javax.swing.JPanel();
+        panelCajero = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1110, 580));
@@ -1144,18 +1145,31 @@ public class MainPage extends javax.swing.JFrame {
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_settings_30px.png")), panelConfig); // NOI18N
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelInformesLayout = new javax.swing.GroupLayout(panelInformes);
+        panelInformes.setLayout(panelInformesLayout);
+        panelInformesLayout.setHorizontalGroup(
+            panelInformesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1071, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelInformesLayout.setVerticalGroup(
+            panelInformesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 592, Short.MAX_VALUE)
         );
 
-        tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_upload_link_document_30px.png")), jPanel5); // NOI18N
+        tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_upload_link_document_30px.png")), panelInformes); // NOI18N
+
+        javax.swing.GroupLayout panelCajeroLayout = new javax.swing.GroupLayout(panelCajero);
+        panelCajero.setLayout(panelCajeroLayout);
+        panelCajeroLayout.setHorizontalGroup(
+            panelCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1071, Short.MAX_VALUE)
+        );
+        panelCajeroLayout.setVerticalGroup(
+            panelCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 592, Short.MAX_VALUE)
+        );
+
+        tabsPanel.addTab("tab6", panelCajero);
 
         getContentPane().add(tabsPanel, java.awt.BorderLayout.CENTER);
         tabsPanel.getAccessibleContext().setAccessibleName("");
@@ -1553,7 +1567,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -1577,8 +1590,10 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel logoCont;
     private javax.swing.JLabel mainLogo;
     private javax.swing.JLabel mainTitle;
+    private javax.swing.JPanel panelCajero;
     private javax.swing.JPanel panelConfig;
     private javax.swing.JPanel panelContEntradaProductos;
+    private javax.swing.JPanel panelInformes;
     private javax.swing.JPanel panelNuevaVenta;
     private javax.swing.JPanel panelProductos;
     private javax.swing.JPanel panelVentas;

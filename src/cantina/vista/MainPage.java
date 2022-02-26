@@ -12,7 +12,10 @@ import cantina.modelo.Categorias;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -414,6 +417,11 @@ public class MainPage extends javax.swing.JFrame {
 
         fieldCod.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         fieldCod.setToolTipText("Escanea el producto con tu lector");
+        fieldCod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fieldCodKeyPressed(evt);
+            }
+        });
 
         labCod.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         labCod.setText("Cód. de Barras");
@@ -942,7 +950,7 @@ public class MainPage extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_add_20px_1.png"))); // NOI18N
         jLabel8.setToolTipText("Agregar nueva categoría");
-        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jLabel8MouseReleased(evt);
@@ -1308,6 +1316,7 @@ public class MainPage extends javax.swing.JFrame {
             Integer categoria= null;
             Categorias cat=null;
             Boolean estado = true;
+            Date date = TimestampToDate();
                     
             if (jComboBox2Categorias.getSelectedIndex() != 0){
                 categoria = jComboBox2Categorias.getSelectedIndex();
@@ -1326,7 +1335,7 @@ public class MainPage extends javax.swing.JFrame {
             
             Articulos a = null; 
             a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
-                    estado, precioVenta, stock, cat);
+                    estado, precioVenta, stock, date, cat);
             ac.insertar(a);
             LimpiarProd();
         }catch(Exception e){
@@ -1393,10 +1402,11 @@ public class MainPage extends javax.swing.JFrame {
                     Integer categoria= jComboBox2Categorias.getSelectedIndex();;
                     Categorias cat = new CategoriasControlador().buscarId(categoria);;
                     Boolean estado = true; 
+                    Date date = TimestampToDate();
                     if (!"".equals(fieldT2PrecioVenta.getText()) && !"".equals(fieldT2Cod.getText()) && !"".equals(fieldT2Cant.getText())
                             && !"".equals(fieldT2Desc.getText()) && null!=cat){
                         Articulos a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
-                                estado, precioVenta, stock, cat);
+                                estado, precioVenta, stock,date, cat);
                         ac.modificar(a);
                         LimpiarProd();
                         MostrarTabArti();
@@ -1522,8 +1532,9 @@ public class MainPage extends javax.swing.JFrame {
             String cat = JOptionPane.showInputDialog("Ingrese el nombre de la nueva Categoria");
             Integer id =null;
             Boolean estado = true;
+            Date date = TimestampToDate();
             if(!"".equals(cat) && null != cat){
-                Categorias c = new Categorias(id, cat, estado);
+                Categorias c = new Categorias(id, cat, estado, date);
                 cc.insertar(c);
                 flag= true;
             }
@@ -1687,5 +1698,11 @@ public class MainPage extends javax.swing.JFrame {
             totalPagar += cal;
         }
         fieldTotalPagar.setText(String.valueOf(totalPagar));
+    }
+    
+    private Date TimestampToDate(){
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        Date date = new Date(ts.getTime());
+        return date;
     }
 }

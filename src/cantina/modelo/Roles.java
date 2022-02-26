@@ -54,7 +54,6 @@ public class Roles implements Serializable {
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
-    @Basic(optional = false)
     @Column(name = "date_rol")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateRol;
@@ -68,18 +67,18 @@ public class Roles implements Serializable {
         this.idrole = idrole;
     }
 
-    public Roles(Integer idrole, String rol, boolean estado, Date dateRol) {
+    public Roles(Integer idrole, String rol, boolean estado) {
         this.idrole = idrole;
         this.rol = rol;
         this.estado = estado;
-        this.dateRol = dateRol;
     }
 
-    public Roles(Integer idrole, String rol, String desc, boolean estado) {
+    public Roles(Integer idrole, String rol, String desc, boolean estado, Date dateRol) {
         this.idrole = idrole;
         this.rol = rol;
         this.desc = desc;
         this.estado = estado;
+        this.dateRol = dateRol;
     }
     
 
@@ -156,8 +155,6 @@ public class Roles implements Serializable {
     public String toString() {
         return "Roles{" + "idrole=" + idrole + ", rol=" + rol + ", desc=" + desc + ", estado=" + estado + ", dateRol=" + dateRol + '}';
     }
-
-    
 
     
     

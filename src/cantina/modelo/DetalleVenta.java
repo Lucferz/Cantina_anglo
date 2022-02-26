@@ -54,7 +54,6 @@ public class DetalleVenta implements Serializable {
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
-    @Basic(optional = false)
     @Column(name = "date_detalleVenta")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datedetalleVenta;
@@ -72,21 +71,22 @@ public class DetalleVenta implements Serializable {
         this.iddetalleVenta = iddetalleVenta;
     }
 
-    public DetalleVenta(Integer iddetalleVenta, boolean estado, Date datedetalleVenta) {
+    public DetalleVenta(Integer iddetalleVenta, boolean estado) {
         this.iddetalleVenta = iddetalleVenta;
         this.estado = estado;
-        this.datedetalleVenta = datedetalleVenta;
     }
 
-    public DetalleVenta(Integer iddetalleVenta, Integer cantidad, Integer precio, Integer descuento, boolean estado, Articulos fkArticulos, Ventas fkVenta) {
+    public DetalleVenta(Integer iddetalleVenta, Integer cantidad, Integer precio, Integer descuento, boolean estado, Date datedetalleVenta, Articulos fkArticulos, Ventas fkVenta) {
         this.iddetalleVenta = iddetalleVenta;
         this.cantidad = cantidad;
         this.precio = precio;
         this.descuento = descuento;
         this.estado = estado;
+        this.datedetalleVenta = datedetalleVenta;
         this.fkArticulos = fkArticulos;
         this.fkVenta = fkVenta;
     }
+    
     
 
     public Integer getIddetalleVenta() {

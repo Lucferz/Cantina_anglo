@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "articulos")
 @XmlRootElement
+
 @NamedQueries({
     @NamedQuery(name = "Articulos.findAll", query = "SELECT a FROM Articulos a")
     , @NamedQuery(name = "Articulos.findByIdarticulo", query = "SELECT a FROM Articulos a WHERE a.idarticulo = :idarticulo")
@@ -67,7 +68,6 @@ public class Articulos implements Serializable {
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
-    @Basic(optional = false)
     @Column(name = "date_arti")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateArti;
@@ -84,14 +84,13 @@ public class Articulos implements Serializable {
         this.idarticulo = idarticulo;
     }
 
-    public Articulos(Integer idarticulo, int precioVenta, boolean estado, Date dateArti) {
+    public Articulos(Integer idarticulo, int precioVenta, boolean estado) {
         this.idarticulo = idarticulo;
         this.precioVenta = precioVenta;
         this.estado = estado;
-        this.dateArti = dateArti;
     }
-
-    public Articulos(Integer idarticulo, String codigo, Integer costo, String descripcion, Boolean estado, Integer precioVenta, Integer stock, Categorias fkCategorias ) {
+    //idarticulo, Codigo, precioCosto, descripcion, estado, precioVenta, stock, date, cat)
+    public Articulos(Integer idarticulo, String codigo, Integer costo, String descripcion, boolean estado, Integer precioVenta, Integer stock, Date dateArti, Categorias fkCategorias){
         this.idarticulo = idarticulo;
         this.codigo = codigo;
         this.costo = costo;
@@ -99,6 +98,7 @@ public class Articulos implements Serializable {
         this.estado = estado;
         this.precioVenta = precioVenta;
         this.stock = stock;
+        this.dateArti = dateArti;
         this.fkCategorias = fkCategorias;
     }
 
@@ -205,11 +205,7 @@ public class Articulos implements Serializable {
 
     @Override
     public String toString() {
-        return "Articulos{" + "idarticulo=" + idarticulo + ", codigo=" + codigo + ", precioVenta=" + precioVenta + ", costo=" + costo + ", stock=" + stock + ", descripcion=" + descripcion + ", estado=" + estado + ", dateArti=" + dateArti + ", fkCategorias=" + fkCategorias + '}';
+        return "cantina.modelo.Articulos[ idarticulo=" + idarticulo + " ]";
     }
-
-    
-
-    
     
 }

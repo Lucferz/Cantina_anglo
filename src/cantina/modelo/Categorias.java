@@ -31,7 +31,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "categorias")
 @XmlRootElement
-
 @NamedQueries({
     @NamedQuery(name = "Categorias.findAll", query = "SELECT c FROM Categorias c")
     , @NamedQuery(name = "Categorias.findByIdcategoria", query = "SELECT c FROM Categorias c WHERE c.idcategoria = :idcategoria")
@@ -53,7 +52,6 @@ public class Categorias implements Serializable {
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
-    @Basic(optional = false)
     @Column(name = "date_categorias")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCategorias;
@@ -72,6 +70,14 @@ public class Categorias implements Serializable {
         this.nombre = nombre;
         this.estado = estado;
     }
+
+    public Categorias(Integer idcategoria, String nombre, boolean estado, Date dateCategorias) {
+        this.idcategoria = idcategoria;
+        this.nombre = nombre;
+        this.estado = estado;
+        this.dateCategorias = dateCategorias;
+    }
+    
     
 
     public Integer getIdcategoria() {
@@ -139,8 +145,6 @@ public class Categorias implements Serializable {
     public String toString() {
         return "Categorias{" + "idcategoria=" + idcategoria + ", nombre=" + nombre + ", estado=" + estado + ", dateCategorias=" + dateCategorias + '}';
     }
-
-    
 
     
     

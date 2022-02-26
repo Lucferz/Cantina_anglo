@@ -56,7 +56,6 @@ public class Usuarios implements Serializable {
     private boolean estado;
     @Column(name = "pass")
     private String pass;
-    @Basic(optional = false)
     @Column(name = "date_user")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateUser;
@@ -73,22 +72,20 @@ public class Usuarios implements Serializable {
         this.idusuario = idusuario;
     }
 
-    public Usuarios(Integer idusuario, String nombre, boolean estado, Date dateUser) {
+    public Usuarios(Integer idusuario, String nombre, boolean estado) {
         this.idusuario = idusuario;
         this.nombre = nombre;
         this.estado = estado;
-        this.dateUser = dateUser;
     }
 
-    public Usuarios(Integer idusuario, String nombre, boolean estado, String pass, Roles fkRoles) {
+    public Usuarios(Integer idusuario, String nombre, boolean estado, String pass, Date dateUser, Roles fkRoles) {
         this.idusuario = idusuario;
         this.nombre = nombre;
         this.estado = estado;
         this.pass = pass;
+        this.dateUser = dateUser;
         this.fkRoles = fkRoles;
     }
-
-    
     
 
     public Integer getIdusuario() {
@@ -172,8 +169,6 @@ public class Usuarios implements Serializable {
     public String toString() {
         return "Usuarios{" + "idusuario=" + idusuario + ", nombre=" + nombre + ", estado=" + estado + ", pass=" + pass + ", dateUser=" + dateUser + ", fkRoles=" + fkRoles + '}';
     }
-
-    
 
     
     

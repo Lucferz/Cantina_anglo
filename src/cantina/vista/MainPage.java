@@ -193,7 +193,48 @@ public class MainPage extends javax.swing.JFrame {
         panelConfig = new javax.swing.JPanel();
         panelInformes = new javax.swing.JPanel();
         panelCajero = new javax.swing.JPanel();
+        contBtnAbrir = new javax.swing.JPanel();
+        btnAbrirCaja = new javax.swing.JButton();
+        contValoresApertura = new javax.swing.JPanel();
+        saldoInicialApertCaja = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        contValoresCierre = new javax.swing.JPanel();
+        contBilletes = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        contBilletesCount = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jLabel15 = new javax.swing.JLabel();
+        jSpinner2 = new javax.swing.JSpinner();
+        jLabel16 = new javax.swing.JLabel();
+        jSpinner3 = new javax.swing.JSpinner();
+        jLabel17 = new javax.swing.JLabel();
+        jSpinner4 = new javax.swing.JSpinner();
+        jLabel18 = new javax.swing.JLabel();
+        jSpinner5 = new javax.swing.JSpinner();
+        jLabel19 = new javax.swing.JLabel();
+        jSpinner6 = new javax.swing.JSpinner();
+        contMonedas = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        contMonedasCount = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jSpinner7 = new javax.swing.JSpinner();
+        jLabel21 = new javax.swing.JLabel();
+        jSpinner9 = new javax.swing.JSpinner();
+        jLabel22 = new javax.swing.JLabel();
+        jSpinner8 = new javax.swing.JSpinner();
+        jLabel23 = new javax.swing.JLabel();
+        jSpinner10 = new javax.swing.JSpinner();
+        contTotal = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1110, 580));
@@ -378,7 +419,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(sidebarMainLayout.createSequentialGroup()
                 .addComponent(logoCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(contSidebarButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE))
+                .addComponent(contSidebarButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE))
         );
 
         getContentPane().add(sidebarMain, java.awt.BorderLayout.WEST);
@@ -396,7 +437,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addComponent(mainTitle)
-                .addContainerGap(874, Short.MAX_VALUE))
+                .addContainerGap(839, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -780,7 +821,7 @@ public class MainPage extends javax.swing.JFrame {
         contCierreVentaLayout.setHorizontalGroup(
             contCierreVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contCierreVentaLayout.createSequentialGroup()
-                .addContainerGap(248, Short.MAX_VALUE)
+                .addContainerGap(213, Short.MAX_VALUE)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -872,7 +913,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(contBtnProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrarProducto)
                     .addComponent(btnExportProduc))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -882,7 +923,7 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
         gridBagConstraints.weightx = 0.15;
-        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.weighty = 0.05;
         contSidebarT2.add(contBtnProductos, gridBagConstraints);
 
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -1037,7 +1078,7 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
         gridBagConstraints.weightx = 0.85;
-        gridBagConstraints.weighty = 0.85;
+        gridBagConstraints.weighty = 0.95;
         contSidebarT2.add(jScrollPane4, gridBagConstraints);
 
         javax.swing.GroupLayout panelContEntradaProductosLayout = new javax.swing.GroupLayout(panelContEntradaProductos);
@@ -1050,7 +1091,7 @@ public class MainPage extends javax.swing.JFrame {
             panelContEntradaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelContEntradaProductosLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1076,12 +1117,12 @@ public class MainPage extends javax.swing.JFrame {
         contenedorTablat2.setLayout(contenedorTablat2Layout);
         contenedorTablat2Layout.setHorizontalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
         );
         contenedorTablat2Layout.setVerticalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorTablat2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1150,16 +1191,16 @@ public class MainPage extends javax.swing.JFrame {
                                 .addComponent(jButton4)
                                 .addGap(10, 10, 10)
                                 .addComponent(jButton5)))
-                        .addContainerGap(465, Short.MAX_VALUE))
+                        .addContainerGap(430, Short.MAX_VALUE))
                     .addGroup(contBotonesVentasLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1007, Short.MAX_VALUE)
                         .addGap(19, 19, 19))))
         );
         contBotonesVentasLayout.setVerticalGroup(
             contBotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contBotonesVentasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel7)
                 .addGap(16, 16, 16)
@@ -1179,11 +1220,11 @@ public class MainPage extends javax.swing.JFrame {
         panelConfig.setLayout(panelConfigLayout);
         panelConfigLayout.setHorizontalGroup(
             panelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1071, Short.MAX_VALUE)
+            .addGap(0, 1036, Short.MAX_VALUE)
         );
         panelConfigLayout.setVerticalGroup(
             panelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 592, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_settings_30px.png")), panelConfig); // NOI18N
@@ -1192,42 +1233,326 @@ public class MainPage extends javax.swing.JFrame {
         panelInformes.setLayout(panelInformesLayout);
         panelInformesLayout.setHorizontalGroup(
             panelInformesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1071, Short.MAX_VALUE)
+            .addGap(0, 1036, Short.MAX_VALUE)
         );
         panelInformesLayout.setVerticalGroup(
             panelInformesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 592, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_upload_link_document_30px.png")), panelInformes); // NOI18N
+
+        panelCajero.setLayout(new java.awt.GridBagLayout());
+
+        btnAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnAbrirCaja.setText("ABRIR CAJA");
+        btnAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirCajaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout contBtnAbrirLayout = new javax.swing.GroupLayout(contBtnAbrir);
+        contBtnAbrir.setLayout(contBtnAbrirLayout);
+        contBtnAbrirLayout.setHorizontalGroup(
+            contBtnAbrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 99, Short.MAX_VALUE)
+            .addGroup(contBtnAbrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contBtnAbrirLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btnAbrirCaja)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        contBtnAbrirLayout.setVerticalGroup(
+            contBtnAbrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(contBtnAbrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contBtnAbrirLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btnAbrirCaja)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
+        panelCajero.add(contBtnAbrir, gridBagConstraints);
+
+        contValoresApertura.setBackground(new java.awt.Color(153, 153, 255));
+        contValoresApertura.setEnabled(false);
+
+        saldoInicialApertCaja.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        saldoInicialApertCaja.setText("150.000");
+
+        jLabel9.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
+        jLabel9.setText("Saldo Inicial:");
+
+        jButton7.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jButton7.setText("CONFIRMAR APERTURA");
+
+        javax.swing.GroupLayout contValoresAperturaLayout = new javax.swing.GroupLayout(contValoresApertura);
+        contValoresApertura.setLayout(contValoresAperturaLayout);
+        contValoresAperturaLayout.setHorizontalGroup(
+            contValoresAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contValoresAperturaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(contValoresAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contValoresAperturaLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(148, 148, 148)
+                        .addComponent(saldoInicialApertCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(235, 235, 235))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contValoresAperturaLayout.createSequentialGroup()
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(188, 188, 188))))
+        );
+        contValoresAperturaLayout.setVerticalGroup(
+            contValoresAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contValoresAperturaLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(contValoresAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9)
+                    .addComponent(saldoInicialApertCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.weighty = 0.3;
+        panelCajero.add(contValoresApertura, gridBagConstraints);
+
+        contValoresCierre.setBackground(new java.awt.Color(102, 102, 255));
+        contValoresCierre.setLayout(new javax.swing.BoxLayout(contValoresCierre, javax.swing.BoxLayout.LINE_AXIS));
+
+        contBilletes.setPreferredSize(new java.awt.Dimension(300, 250));
+
+        jLabel10.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel10.setText("Billetes");
+
+        contBilletesCount.setLayout(new java.awt.GridLayout(6, 2, 0, 5));
+
+        jLabel14.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel14.setText("2.000 Gs.");
+        contBilletesCount.add(jLabel14);
+
+        jSpinner1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        contBilletesCount.add(jSpinner1);
+
+        jLabel15.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel15.setText("5.000 Gs.");
+        contBilletesCount.add(jLabel15);
+
+        jSpinner2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        contBilletesCount.add(jSpinner2);
+
+        jLabel16.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel16.setText("10.000 Gs.");
+        contBilletesCount.add(jLabel16);
+
+        jSpinner3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        contBilletesCount.add(jSpinner3);
+
+        jLabel17.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel17.setText("20.000 Gs.");
+        contBilletesCount.add(jLabel17);
+
+        jSpinner4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        contBilletesCount.add(jSpinner4);
+
+        jLabel18.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel18.setText("50.000 Gs.");
+        contBilletesCount.add(jLabel18);
+
+        jSpinner5.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        contBilletesCount.add(jSpinner5);
+
+        jLabel19.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel19.setText("100.000 Gs.");
+        contBilletesCount.add(jLabel19);
+
+        jSpinner6.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        contBilletesCount.add(jSpinner6);
+
+        javax.swing.GroupLayout contBilletesLayout = new javax.swing.GroupLayout(contBilletes);
+        contBilletes.setLayout(contBilletesLayout);
+        contBilletesLayout.setHorizontalGroup(
+            contBilletesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contBilletesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contBilletesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addGroup(contBilletesLayout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(contBilletesCount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        contBilletesLayout.setVerticalGroup(
+            contBilletesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contBilletesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contBilletesCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        contValoresCierre.add(contBilletes);
+
+        contMonedas.setPreferredSize(new java.awt.Dimension(300, 250));
+        contMonedas.setRequestFocusEnabled(false);
+
+        jLabel11.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel11.setText("Monedas");
+
+        contMonedasCount.setLayout(new java.awt.GridLayout(4, 2, 0, 11));
+
+        jLabel20.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel20.setText("50 Gs.");
+        contMonedasCount.add(jLabel20);
+
+        jSpinner7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        contMonedasCount.add(jSpinner7);
+
+        jLabel21.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel21.setText("100 Gs.");
+        contMonedasCount.add(jLabel21);
+
+        jSpinner9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        contMonedasCount.add(jSpinner9);
+
+        jLabel22.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel22.setText("500 Gs.");
+        contMonedasCount.add(jLabel22);
+
+        jSpinner8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        contMonedasCount.add(jSpinner8);
+
+        jLabel23.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel23.setText("1.000 Gs.");
+        contMonedasCount.add(jLabel23);
+
+        jSpinner10.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        contMonedasCount.add(jSpinner10);
+
+        javax.swing.GroupLayout contMonedasLayout = new javax.swing.GroupLayout(contMonedas);
+        contMonedas.setLayout(contMonedasLayout);
+        contMonedasLayout.setHorizontalGroup(
+            contMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contMonedasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2)
+                    .addGroup(contMonedasLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(contMonedasCount, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        contMonedasLayout.setVerticalGroup(
+            contMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contMonedasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contMonedasCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        contValoresCierre.add(contMonedas);
+
+        jLabel24.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel24.setText("TOTAL:");
+
+        jTextField1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jTextField1.setText("493.500");
+
+        jLabel25.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel25.setText("Gs.");
+
+        jLabel26.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel26.setText("SALDO DE MUESTRA");
+
+        javax.swing.GroupLayout contTotalLayout = new javax.swing.GroupLayout(contTotal);
+        contTotal.setLayout(contTotalLayout);
+        contTotalLayout.setHorizontalGroup(
+            contTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contTotalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contTotalLayout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addGap(38, 38, 38)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel25))
+                    .addComponent(jLabel26))
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        contTotalLayout.setVerticalGroup(
+            contTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contTotalLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addGroup(contTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addGap(44, 44, 44))
+        );
+
+        contValoresCierre.add(contTotal);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 413;
+        gridBagConstraints.ipady = 24;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 0.5;
+        gridBagConstraints.insets = new java.awt.Insets(6, 10, 11, 10);
+        panelCajero.add(contValoresCierre, gridBagConstraints);
+
+        jButton6.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jButton6.setText("CERRAR CAJA");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1051, Short.MAX_VALUE)
+            .addGap(0, 111, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jButton6)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jButton6)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout panelCajeroLayout = new javax.swing.GroupLayout(panelCajero);
-        panelCajero.setLayout(panelCajeroLayout);
-        panelCajeroLayout.setHorizontalGroup(
-            panelCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCajeroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelCajeroLayout.setVerticalGroup(
-            panelCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCajeroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
+        panelCajero.add(jPanel5, gridBagConstraints);
 
         tabsPanel.addTab("Cajero", panelCajero);
 
@@ -1548,6 +1873,11 @@ public class MainPage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel8MouseReleased
 
+    private void btnAbrirCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirCajaActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnAbrirCajaActionPerformed
+
     private void LimpiarProd(){
         fieldT2Id.setText("");
         fieldT2Cod.setText("");
@@ -1596,6 +1926,7 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAbrirCaja;
     private javax.swing.JButton btnActualizarProductos;
     private javax.swing.JButton btnBorrarProducto;
     private javax.swing.JButton btnConfig;
@@ -1607,14 +1938,22 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnResumenVentasDiario;
     private javax.swing.JButton btnVentas;
+    private javax.swing.JPanel contBilletes;
+    private javax.swing.JPanel contBilletesCount;
     private javax.swing.JPanel contBotonesVentas;
+    private javax.swing.JPanel contBtnAbrir;
     private javax.swing.JPanel contBtnProductos;
     private javax.swing.JPanel contCierreVenta;
     private javax.swing.JPanel contInsertProd;
     private javax.swing.JPanel contMainVenta;
+    private javax.swing.JPanel contMonedas;
+    private javax.swing.JPanel contMonedasCount;
     private javax.swing.JPanel contPanelEntrada;
     private javax.swing.JPanel contSidebarButtons;
     private javax.swing.JPanel contSidebarT2;
+    private javax.swing.JPanel contTotal;
+    private javax.swing.JPanel contValoresApertura;
+    private javax.swing.JPanel contValoresCierre;
     private javax.swing.JPanel contenedorTablat2;
     private javax.swing.JTextField fieldCant;
     private javax.swing.JTextField fieldCod;
@@ -1636,17 +1975,35 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox2Categorias;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1664,10 +2021,23 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner10;
+    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner jSpinner3;
+    private javax.swing.JSpinner jSpinner4;
+    private javax.swing.JSpinner jSpinner5;
+    private javax.swing.JSpinner jSpinner6;
+    private javax.swing.JSpinner jSpinner7;
+    private javax.swing.JSpinner jSpinner8;
+    private javax.swing.JSpinner jSpinner9;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTableArticulos;
     private javax.swing.JTable jTableVentaItems;
     private javax.swing.JTable jTableVentas;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labCod;
     private javax.swing.JLabel labT2Categorias;
     private javax.swing.JLabel labT2Cod;
@@ -1686,6 +2056,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel panelNuevaVenta;
     private javax.swing.JPanel panelProductos;
     private javax.swing.JPanel panelVentas;
+    private javax.swing.JTextField saldoInicialApertCaja;
     private javax.swing.JPanel sidebarMain;
     private javax.swing.JTabbedPane tabsPanel;
     // End of variables declaration//GEN-END:variables

@@ -1410,10 +1410,11 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.weightx = 0.6;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 20);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
         contBilletesCount.add(jLabel14, gridBagConstraints);
 
         jSpinner1.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jSpinner1.setEditor(new javax.swing.JSpinner.NumberEditor(jSpinner1, "0"));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 2;
@@ -1431,7 +1432,7 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.weightx = 0.6;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 20);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         contBilletesCount.add(jLabel15, gridBagConstraints);
 
         jSpinner2.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -1453,7 +1454,7 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.weightx = 0.6;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 20);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         contBilletesCount.add(jLabel16, gridBagConstraints);
 
         jSpinner3.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -1475,7 +1476,7 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.weightx = 0.6;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 20);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         contBilletesCount.add(jLabel17, gridBagConstraints);
 
         jSpinner4.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -1497,7 +1498,7 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.weightx = 0.6;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 20);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         contBilletesCount.add(jLabel18, gridBagConstraints);
 
         jSpinner5.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -1520,7 +1521,7 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.weightx = 0.6;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 20);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
         contBilletesCount.add(jLabel19, gridBagConstraints);
 
         jSpinner6.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -1587,9 +1588,9 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weightx = 0.6;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 20);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         contMonedasCount.add(jLabel20, gridBagConstraints);
 
         jSpinner7.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -1597,10 +1598,10 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 10;
-        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.weightx = 0.4;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 20);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         contMonedasCount.add(jSpinner7, gridBagConstraints);
 
         jLabel21.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -1609,9 +1610,9 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weightx = 0.6;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 20);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         contMonedasCount.add(jLabel21, gridBagConstraints);
 
         jSpinner9.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -1619,10 +1620,10 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 10;
-        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.weightx = 0.4;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 20);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         contMonedasCount.add(jSpinner9, gridBagConstraints);
 
         jLabel22.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -1631,9 +1632,9 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weightx = 0.6;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 20);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         contMonedasCount.add(jLabel22, gridBagConstraints);
 
         jSpinner8.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -1641,10 +1642,10 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 10;
-        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.weightx = 0.4;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 20);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         contMonedasCount.add(jSpinner8, gridBagConstraints);
 
         jLabel23.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -1653,10 +1654,9 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 20;
-        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weightx = 0.6;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 20);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         contMonedasCount.add(jLabel23, gridBagConstraints);
 
         jSpinner10.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -1664,10 +1664,10 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 10;
-        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.weightx = 0.4;
         gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 20);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         contMonedasCount.add(jSpinner10, gridBagConstraints);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);

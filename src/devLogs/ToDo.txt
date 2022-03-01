@@ -33,7 +33,34 @@ esa informacion para registrar la venta en la BD.
     en las clases de LoginDAO, UsuariosDAO, etc. porque mientras intentaba
     recibir el parametro FkRole, (que no habia sido declarado en esas clases), 
     le hice su respectiva declaracion, setters, getters 
+
+---****COSAS QUE HICE*****---
+    * Que en los campos de la Tab PRODUCTOS donde deben ser numeros se valide solo numeros, (ya habia hecho eso pero se perdio
+        con algun merge aparentemente), pero ahora encontre una manera mucho mejor de hacer (reutilizando codigo)
+    * El contador de Billetes y monedas ya funciona y solo funciona con numeros >=0
+    * Despues de horas de research a lo idiota, encontre la manera de hacer que el numero se hermosee con comas, para que
+        sea mas facil leer (100000) -> 100,000 //pd. la solucion estaba frente a mis narices y yo pase horas haciendo todo 
+        tipo de cosas locas
     
+
+-----------------------------
+    
+-----PROBLEMAS DETECTADOS------
+Al dar clic en cantidad cuando no se rellenaron aun los campos correctos entra en un loop de errores, con un If que verifique 
+primero si los campos Cod e ID no estan vacios pude remediar parte del error... 
+    IDEA DE SOLUCION: que en el codigo que rellena los datos segun el codigo de barras o ID, en la parte final cuando todo
+        salio bien, active la propiedad de focusable() para que el usuario no pueda colocar el cursor en Cantidad antes
+        de que el producto haya sido reconocido en la BD...
+
+------------CONFUSION EN EL TEMA DE LA APERTURA DE CAJA----------
+    Tenemos que hacer que la venta solo funcione cuando la caja fue abierta, pensaba en usar un switch, (otra vez, switch nomas
+        luego conocia el man), pero necesitamos que la info persista aun cuando el programa fue cerrado. Asi que en alguna
+        parte de la BD tenemos que guardar el estado de caja. Para cuando alguien abra la caja y despues apague la PC, cuando
+        vuelva a la tarde, la caja debe seguir abierta y acumuando. 
+    Esa informacion de estado es la que voy a usar para habilitar/deshabilitar cada boton de ABRIR y CERRAR caja. Evitando
+        inconsistencias.
+
+
 
 ***********************************************
 

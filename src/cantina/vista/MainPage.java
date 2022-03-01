@@ -21,6 +21,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ToolTipManager;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JFormattedTextField;
+import java.text.NumberFormat;
 
 /**
  *
@@ -57,7 +59,9 @@ public class MainPage extends javax.swing.JFrame {
              int respuesta = JOptionPane.showOptionDialog(null, "Con qué privilegios desea acceder?", "Elegir modo de priviegio",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                 null, options, options[0]);
+             
              if(respuesta == 1){
+                 
                  modoVendedor();
              }
          }
@@ -102,6 +106,54 @@ public class MainPage extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        dialogCerrarCaja = new javax.swing.JDialog();
+        contValoresCierre = new javax.swing.JPanel();
+        contBilletes = new javax.swing.JPanel();
+        contTituloBilletes = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        contBilletesCount = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        spin2mil = new javax.swing.JSpinner();
+        jLabel15 = new javax.swing.JLabel();
+        spin5mil = new javax.swing.JSpinner();
+        jLabel16 = new javax.swing.JLabel();
+        spin10mil = new javax.swing.JSpinner();
+        jLabel17 = new javax.swing.JLabel();
+        spin20mil = new javax.swing.JSpinner();
+        jLabel18 = new javax.swing.JLabel();
+        spin50mil = new javax.swing.JSpinner();
+        jLabel19 = new javax.swing.JLabel();
+        spin100mil = new javax.swing.JSpinner();
+        contMonedas = new javax.swing.JPanel();
+        contTituloMonedas = new javax.swing.JPanel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel11 = new javax.swing.JLabel();
+        contMonedasCount = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        spin50gs = new javax.swing.JSpinner();
+        jLabel21 = new javax.swing.JLabel();
+        spin100gs = new javax.swing.JSpinner();
+        jLabel22 = new javax.swing.JLabel();
+        spin500gs = new javax.swing.JSpinner();
+        jLabel23 = new javax.swing.JLabel();
+        spin1000gs = new javax.swing.JSpinner();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        contTotal = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        btnCancelarArqueo = new javax.swing.JButton();
+        btnRemitirArqueoMuestra = new javax.swing.JButton();
+        fieldTotalMuestra = new javax.swing.JFormattedTextField();
+        dialogAbrirCaja = new javax.swing.JDialog();
+        contValoresApertura = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        btnConfirmarAbrirCaja = new javax.swing.JButton();
+        btnCancelarAbrirCaja = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        fieldSaldoInicAbrirCaja = new javax.swing.JFormattedTextField();
         sidebarMain = new javax.swing.JPanel();
         logoCont = new javax.swing.JPanel();
         mainLogo = new javax.swing.JLabel();
@@ -168,7 +220,7 @@ public class MainPage extends javax.swing.JFrame {
         labT2PrecioCosto = new javax.swing.JLabel();
         fieldT2Cod = new javax.swing.JTextField();
         fieldT2Desc = new javax.swing.JTextField();
-        fieldT2Cant = new javax.swing.JTextField();
+        fieldT2Stock = new javax.swing.JTextField();
         fieldT2PrecioCosto = new javax.swing.JTextField();
         labT2PrecioVenta = new javax.swing.JLabel();
         fieldT2PrecioVenta = new javax.swing.JTextField();
@@ -193,52 +245,616 @@ public class MainPage extends javax.swing.JFrame {
         panelConfig = new javax.swing.JPanel();
         panelInformes = new javax.swing.JPanel();
         panelCajero = new javax.swing.JPanel();
+        labelTitleCajero = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
         contBtnAbrir = new javax.swing.JPanel();
         btnAbrirCaja = new javax.swing.JButton();
-        contValoresApertura = new javax.swing.JPanel();
-        saldoInicialApertCaja = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
         contBtnCerrarCaja = new javax.swing.JPanel();
         btnCerrarCaja = new javax.swing.JButton();
-        contValoresCierre = new javax.swing.JPanel();
-        contBilletes = new javax.swing.JPanel();
-        contTituloBilletes = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        contBilletesCount = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jLabel15 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
-        jLabel16 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
-        jLabel17 = new javax.swing.JLabel();
-        jSpinner4 = new javax.swing.JSpinner();
-        jLabel18 = new javax.swing.JLabel();
-        jSpinner5 = new javax.swing.JSpinner();
-        jLabel19 = new javax.swing.JLabel();
-        jSpinner6 = new javax.swing.JSpinner();
-        contMonedas = new javax.swing.JPanel();
-        contTituloMonedas = new javax.swing.JPanel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel11 = new javax.swing.JLabel();
-        contMonedasCount = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
-        jSpinner7 = new javax.swing.JSpinner();
-        jLabel21 = new javax.swing.JLabel();
-        jSpinner9 = new javax.swing.JSpinner();
-        jLabel22 = new javax.swing.JLabel();
-        jSpinner8 = new javax.swing.JSpinner();
-        jLabel23 = new javax.swing.JLabel();
-        jSpinner10 = new javax.swing.JSpinner();
-        jPanel14 = new javax.swing.JPanel();
-        jPanel15 = new javax.swing.JPanel();
-        contTotal = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
+
+        dialogCerrarCaja.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialogCerrarCaja.setMaximumSize(new java.awt.Dimension(100, 500));
+        dialogCerrarCaja.setMinimumSize(new java.awt.Dimension(900, 400));
+        dialogCerrarCaja.setModal(true);
+        dialogCerrarCaja.setPreferredSize(new java.awt.Dimension(900, 400));
+        dialogCerrarCaja.setResizable(false);
+        dialogCerrarCaja.setSize(new java.awt.Dimension(750, 300));
+        dialogCerrarCaja.getContentPane().setLayout(new javax.swing.BoxLayout(dialogCerrarCaja.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        contValoresCierre.setBackground(new java.awt.Color(102, 102, 255));
+        contValoresCierre.setPreferredSize(new java.awt.Dimension(750, 300));
+        contValoresCierre.setLayout(new java.awt.GridBagLayout());
+
+        contBilletes.setBackground(new java.awt.Color(204, 204, 255));
+        contBilletes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        contBilletes.setMinimumSize(new java.awt.Dimension(135, 202));
+        contBilletes.setPreferredSize(new java.awt.Dimension(200, 250));
+        contBilletes.setRequestFocusEnabled(false);
+        contBilletes.setLayout(new java.awt.BorderLayout());
+
+        contTituloBilletes.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel10.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_paper_money_25px.png"))); // NOI18N
+        jLabel10.setText("Billetes");
+        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        javax.swing.GroupLayout contTituloBilletesLayout = new javax.swing.GroupLayout(contTituloBilletes);
+        contTituloBilletes.setLayout(contTituloBilletesLayout);
+        contTituloBilletesLayout.setHorizontalGroup(
+            contTituloBilletesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contTituloBilletesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contTituloBilletesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                    .addGroup(contTituloBilletesLayout.createSequentialGroup()
+                        .addComponent(jSeparator1)
+                        .addContainerGap())))
+        );
+        contTituloBilletesLayout.setVerticalGroup(
+            contTituloBilletesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contTituloBilletesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        contBilletes.add(contTituloBilletes, java.awt.BorderLayout.NORTH);
+
+        contBilletesCount.setBackground(new java.awt.Color(204, 204, 255));
+        contBilletesCount.setLayout(new java.awt.GridBagLayout());
+
+        jLabel14.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel14.setText("2.000 Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 0);
+        contBilletesCount.add(jLabel14, gridBagConstraints);
+
+        spin2mil.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        spin2mil.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spin2mil.setEditor(new javax.swing.JSpinner.NumberEditor(spin2mil, "0"));
+        spin2mil.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spin2milStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 10);
+        contBilletesCount.add(spin2mil, gridBagConstraints);
+
+        jLabel15.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel15.setText("5.000 Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 5, 0);
+        contBilletesCount.add(jLabel15, gridBagConstraints);
+
+        spin5mil.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        spin5mil.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spin5mil.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spin5milStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 10);
+        contBilletesCount.add(spin5mil, gridBagConstraints);
+
+        jLabel16.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel16.setText("10.000 Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        contBilletesCount.add(jLabel16, gridBagConstraints);
+
+        spin10mil.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        spin10mil.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spin10mil.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spin10milStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 10);
+        contBilletesCount.add(spin10mil, gridBagConstraints);
+
+        jLabel17.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel17.setText("20.000 Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        contBilletesCount.add(jLabel17, gridBagConstraints);
+
+        spin20mil.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        spin20mil.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spin20mil.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spin20milStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 10);
+        contBilletesCount.add(spin20mil, gridBagConstraints);
+
+        jLabel18.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel18.setText("50.000 Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        contBilletesCount.add(jLabel18, gridBagConstraints);
+
+        spin50mil.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        spin50mil.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spin50mil.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spin50milStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 10);
+        contBilletesCount.add(spin50mil, gridBagConstraints);
+
+        jLabel19.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel19.setText("100.000 Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 0);
+        contBilletesCount.add(jLabel19, gridBagConstraints);
+
+        spin100mil.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        spin100mil.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spin100mil.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spin100milStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 10);
+        contBilletesCount.add(spin100mil, gridBagConstraints);
+
+        contBilletes.add(contBilletesCount, java.awt.BorderLayout.CENTER);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.35;
+        gridBagConstraints.weighty = 2.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        contValoresCierre.add(contBilletes, gridBagConstraints);
+
+        contMonedas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        contMonedas.setPreferredSize(new java.awt.Dimension(200, 250));
+        contMonedas.setRequestFocusEnabled(false);
+        contMonedas.setLayout(new java.awt.BorderLayout());
+
+        contTituloMonedas.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel11.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_coins_25px_2.png"))); // NOI18N
+        jLabel11.setText("Monedas");
+        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        javax.swing.GroupLayout contTituloMonedasLayout = new javax.swing.GroupLayout(contTituloMonedas);
+        contTituloMonedas.setLayout(contTituloMonedasLayout);
+        contTituloMonedasLayout.setHorizontalGroup(
+            contTituloMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contTituloMonedasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(contTituloMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        contTituloMonedasLayout.setVerticalGroup(
+            contTituloMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contTituloMonedasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+
+        contMonedas.add(contTituloMonedas, java.awt.BorderLayout.NORTH);
+
+        contMonedasCount.setBackground(new java.awt.Color(204, 204, 255));
+        contMonedasCount.setLayout(new java.awt.GridBagLayout());
+
+        jLabel20.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel20.setText("50 Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        contMonedasCount.add(jLabel20, gridBagConstraints);
+
+        spin50gs.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        spin50gs.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spin50gs.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spin50gsStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 10);
+        contMonedasCount.add(spin50gs, gridBagConstraints);
+
+        jLabel21.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel21.setText("100 Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        contMonedasCount.add(jLabel21, gridBagConstraints);
+
+        spin100gs.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        spin100gs.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spin100gs.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spin100gsStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 10);
+        contMonedasCount.add(spin100gs, gridBagConstraints);
+
+        jLabel22.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel22.setText("500 Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        contMonedasCount.add(jLabel22, gridBagConstraints);
+
+        spin500gs.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        spin500gs.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spin500gs.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spin500gsStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 10);
+        contMonedasCount.add(spin500gs, gridBagConstraints);
+
+        jLabel23.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel23.setText("1.000 Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 0.6;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        contMonedasCount.add(jLabel23, gridBagConstraints);
+
+        spin1000gs.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        spin1000gs.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spin1000gs.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spin1000gsStateChanged(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.weightx = 0.4;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 10);
+        contMonedasCount.add(spin1000gs, gridBagConstraints);
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.weighty = 0.15;
+        contMonedasCount.add(jPanel14, gridBagConstraints);
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.weighty = 0.15;
+        contMonedasCount.add(jPanel15, gridBagConstraints);
+
+        contMonedas.add(contMonedasCount, java.awt.BorderLayout.CENTER);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.35;
+        gridBagConstraints.weighty = 2.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        contValoresCierre.add(contMonedas, gridBagConstraints);
+
+        contTotal.setBackground(new java.awt.Color(204, 204, 255));
+        contTotal.setLayout(new java.awt.GridBagLayout());
+
+        jLabel24.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel24.setText("TOTAL:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(183, 10, 0, 0);
+        contTotal.add(jLabel24, gridBagConstraints);
+
+        jLabel25.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel25.setText("Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(183, 10, 0, 10);
+        contTotal.add(jLabel25, gridBagConstraints);
+
+        jLabel26.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        jLabel26.setText("SALDO DE MUESTRA");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(38, 10, 0, 0);
+        contTotal.add(jLabel26, gridBagConstraints);
+
+        btnCancelarArqueo.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnCancelarArqueo.setText("CANCELAR");
+        btnCancelarArqueo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCancelarArqueoMouseReleased(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 38, 0);
+        contTotal.add(btnCancelarArqueo, gridBagConstraints);
+
+        btnRemitirArqueoMuestra.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnRemitirArqueoMuestra.setText("REMITIR ARQUEO");
+        btnRemitirArqueoMuestra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnRemitirArqueoMuestraMouseReleased(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 38, 0);
+        contTotal.add(btnRemitirArqueoMuestra, gridBagConstraints);
+
+        fieldTotalMuestra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
+        fieldTotalMuestra.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 103;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
+        gridBagConstraints.insets = new java.awt.Insets(176, 38, 44, 0);
+        contTotal.add(fieldTotalMuestra, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.2;
+        gridBagConstraints.weighty = 2.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        contValoresCierre.add(contTotal, gridBagConstraints);
+
+        dialogCerrarCaja.getContentPane().add(contValoresCierre);
+
+        dialogCerrarCaja.setLocationRelativeTo(null);
+
+        dialogAbrirCaja.setMinimumSize(new java.awt.Dimension(534, 200));
+        dialogAbrirCaja.setModal(true);
+        dialogAbrirCaja.setResizable(false);
+        dialogAbrirCaja.getContentPane().setLayout(new javax.swing.BoxLayout(dialogAbrirCaja.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        contValoresApertura.setBackground(new java.awt.Color(153, 153, 255));
+        contValoresApertura.setEnabled(false);
+        contValoresApertura.setLayout(new java.awt.GridBagLayout());
+
+        jLabel9.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        jLabel9.setText("Saldo Inicial:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
+        contValoresApertura.add(jLabel9, gridBagConstraints);
+
+        btnConfirmarAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnConfirmarAbrirCaja.setText("CONFIRMAR APERTURA");
+        btnConfirmarAbrirCaja.setNextFocusableComponent(btnConfirmarAbrirCaja);
+        btnConfirmarAbrirCaja.setOpaque(false);
+        btnConfirmarAbrirCaja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnConfirmarAbrirCajaMouseReleased(evt);
+            }
+        });
+        btnConfirmarAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarAbrirCajaActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 40;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
+        contValoresApertura.add(btnConfirmarAbrirCaja, gridBagConstraints);
+
+        btnCancelarAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnCancelarAbrirCaja.setText("CANCELAR");
+        btnCancelarAbrirCaja.setMaximumSize(new java.awt.Dimension(163, 23));
+        btnCancelarAbrirCaja.setMinimumSize(new java.awt.Dimension(163, 23));
+        btnCancelarAbrirCaja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCancelarAbrirCajaMouseReleased(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
+        contValoresApertura.add(btnCancelarAbrirCaja, gridBagConstraints);
+
+        jLabel27.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel27.setText("Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 20);
+        contValoresApertura.add(jLabel27, gridBagConstraints);
+
+        fieldSaldoInicAbrirCaja.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
+        fieldSaldoInicAbrirCaja.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        fieldSaldoInicAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        fieldSaldoInicAbrirCaja.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldSaldoInicAbrirCajaKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 147;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
+        contValoresApertura.add(fieldSaldoInicAbrirCaja, gridBagConstraints);
+
+        dialogAbrirCaja.getContentPane().add(contValoresApertura);
+
+        dialogAbrirCaja.setLocationRelativeTo(null);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1110, 580));
@@ -955,15 +1571,30 @@ public class MainPage extends javax.swing.JFrame {
 
         fieldT2Desc.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
 
-        fieldT2Cant.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        fieldT2Stock.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        fieldT2Stock.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldT2StockKeyTyped(evt);
+            }
+        });
 
         fieldT2PrecioCosto.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        fieldT2PrecioCosto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldT2PrecioCostoKeyTyped(evt);
+            }
+        });
 
         labT2PrecioVenta.setFont(new java.awt.Font("Roboto Black", 0, 13)); // NOI18N
         labT2PrecioVenta.setText("Precio de Venta:");
 
         fieldT2PrecioVenta.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         fieldT2PrecioVenta.setToolTipText("Recuerda usar valores redondeados para optimizar cobro.");
+        fieldT2PrecioVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldT2PrecioCostoKeyTyped(evt);
+            }
+        });
 
         labT2Categorias.setFont(new java.awt.Font("Roboto Black", 0, 13)); // NOI18N
         labT2Categorias.setText("Categorias:");
@@ -1029,7 +1660,7 @@ public class MainPage extends javax.swing.JFrame {
                     .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(fieldT2PrecioVenta, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(fieldT2PrecioCosto, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(fieldT2Cant, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(fieldT2Stock, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(fieldT2Desc, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jComboBox2Categorias, 0, 165, Short.MAX_VALUE))
                     .addComponent(fieldT2Cod, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1055,7 +1686,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labT2StockDisp)
-                    .addComponent(fieldT2Cant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldT2Stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(contInsertProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labT2PrecioCosto)
@@ -1071,6 +1702,10 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        fieldT2Stock.setTransferHandler(null);
+        fieldT2PrecioCosto.setTransferHandler(null);
+        fieldT2PrecioVenta.setTransferHandler(null);
 
         jScrollPane4.setViewportView(contInsertProd);
 
@@ -1248,536 +1883,78 @@ public class MainPage extends javax.swing.JFrame {
 
         panelCajero.setLayout(new java.awt.GridBagLayout());
 
+        labelTitleCajero.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        labelTitleCajero.setText("Herramientas para cajero");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.weighty = 0.3;
+        panelCajero.add(labelTitleCajero, gridBagConstraints);
+
+        jLabel28.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        jLabel28.setText("Aquí es tu punto de inicio y de cierre para la jornada laboral");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.weighty = 0.2;
+        panelCajero.add(jLabel28, gridBagConstraints);
+
         btnAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         btnAbrirCaja.setText("ABRIR CAJA");
+        btnAbrirCaja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAbrirCaja.setMaximumSize(new java.awt.Dimension(150, 50));
+        btnAbrirCaja.setPreferredSize(new java.awt.Dimension(150, 50));
+        btnAbrirCaja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAbrirCajaMouseReleased(evt);
+            }
+        });
         btnAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbrirCajaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout contBtnAbrirLayout = new javax.swing.GroupLayout(contBtnAbrir);
-        contBtnAbrir.setLayout(contBtnAbrirLayout);
-        contBtnAbrirLayout.setHorizontalGroup(
-            contBtnAbrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 99, Short.MAX_VALUE)
-            .addGroup(contBtnAbrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(contBtnAbrirLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnAbrirCaja)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        contBtnAbrirLayout.setVerticalGroup(
-            contBtnAbrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(contBtnAbrirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(contBtnAbrirLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnAbrirCaja)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        contBtnAbrir.add(btnAbrirCaja);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weighty = 0.3;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
         panelCajero.add(contBtnAbrir, gridBagConstraints);
 
-        contValoresApertura.setBackground(new java.awt.Color(153, 153, 255));
-        contValoresApertura.setEnabled(false);
-
-        saldoInicialApertCaja.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
-        saldoInicialApertCaja.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        saldoInicialApertCaja.setText("150.000");
-
-        jLabel9.setFont(new java.awt.Font("Roboto Medium", 0, 13)); // NOI18N
-        jLabel9.setText("Saldo Inicial:");
-
-        jButton7.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jButton7.setText("CONFIRMAR APERTURA");
-
-        javax.swing.GroupLayout contValoresAperturaLayout = new javax.swing.GroupLayout(contValoresApertura);
-        contValoresApertura.setLayout(contValoresAperturaLayout);
-        contValoresAperturaLayout.setHorizontalGroup(
-            contValoresAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contValoresAperturaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(contValoresAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contValoresAperturaLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(148, 148, 148)
-                        .addComponent(saldoInicialApertCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(235, 235, 235))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contValoresAperturaLayout.createSequentialGroup()
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(188, 188, 188))))
-        );
-        contValoresAperturaLayout.setVerticalGroup(
-            contValoresAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contValoresAperturaLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(contValoresAperturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
-                    .addComponent(saldoInicialApertCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.weighty = 0.3;
-        panelCajero.add(contValoresApertura, gridBagConstraints);
+        contBtnCerrarCaja.setLayout(new javax.swing.BoxLayout(contBtnCerrarCaja, javax.swing.BoxLayout.LINE_AXIS));
 
         btnCerrarCaja.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         btnCerrarCaja.setText("CERRAR CAJA");
-
-        javax.swing.GroupLayout contBtnCerrarCajaLayout = new javax.swing.GroupLayout(contBtnCerrarCaja);
-        contBtnCerrarCaja.setLayout(contBtnCerrarCajaLayout);
-        contBtnCerrarCajaLayout.setHorizontalGroup(
-            contBtnCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 111, Short.MAX_VALUE)
-            .addGroup(contBtnCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(contBtnCerrarCajaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnCerrarCaja)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        contBtnCerrarCajaLayout.setVerticalGroup(
-            contBtnCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(contBtnCerrarCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(contBtnCerrarCajaLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnCerrarCaja)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        btnCerrarCaja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCerrarCaja.setMaximumSize(new java.awt.Dimension(150, 50));
+        btnCerrarCaja.setMinimumSize(new java.awt.Dimension(150, 50));
+        btnCerrarCaja.setPreferredSize(new java.awt.Dimension(150, 50));
+        btnCerrarCaja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCerrarCajaMouseReleased(evt);
+            }
+        });
+        btnCerrarCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarCajaActionPerformed(evt);
+            }
+        });
+        contBtnCerrarCaja.add(btnCerrarCaja);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.weighty = 0.3;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
         panelCajero.add(contBtnCerrarCaja, gridBagConstraints);
-
-        contValoresCierre.setBackground(new java.awt.Color(102, 102, 255));
-        contValoresCierre.setLayout(new java.awt.GridBagLayout());
-
-        contBilletes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        contBilletes.setMinimumSize(new java.awt.Dimension(135, 202));
-        contBilletes.setPreferredSize(new java.awt.Dimension(200, 250));
-        contBilletes.setRequestFocusEnabled(false);
-        contBilletes.setLayout(new java.awt.BorderLayout());
-
-        jLabel10.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_paper_money_25px.png"))); // NOI18N
-        jLabel10.setText("Billetes");
-        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-
-        javax.swing.GroupLayout contTituloBilletesLayout = new javax.swing.GroupLayout(contTituloBilletes);
-        contTituloBilletes.setLayout(contTituloBilletesLayout);
-        contTituloBilletesLayout.setHorizontalGroup(
-            contTituloBilletesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contTituloBilletesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(contTituloBilletesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                    .addGroup(contTituloBilletesLayout.createSequentialGroup()
-                        .addComponent(jSeparator1)
-                        .addContainerGap())))
-        );
-        contTituloBilletesLayout.setVerticalGroup(
-            contTituloBilletesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contTituloBilletesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addGap(10, 10, 10)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        contBilletes.add(contTituloBilletes, java.awt.BorderLayout.NORTH);
-
-        contBilletesCount.setLayout(new java.awt.GridBagLayout());
-
-        jLabel14.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jLabel14.setText("2.000 Gs.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
-        contBilletesCount.add(jLabel14, gridBagConstraints);
-
-        jSpinner1.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jSpinner1.setEditor(new javax.swing.JSpinner.NumberEditor(jSpinner1, "0"));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 0.4;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        contBilletesCount.add(jSpinner1, gridBagConstraints);
-
-        jLabel15.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jLabel15.setText("5.000 Gs.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        contBilletesCount.add(jLabel15, gridBagConstraints);
-
-        jSpinner2.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 0.4;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        contBilletesCount.add(jSpinner2, gridBagConstraints);
-
-        jLabel16.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jLabel16.setText("10.000 Gs.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        contBilletesCount.add(jLabel16, gridBagConstraints);
-
-        jSpinner3.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 0.4;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        contBilletesCount.add(jSpinner3, gridBagConstraints);
-
-        jLabel17.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jLabel17.setText("20.000 Gs.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        contBilletesCount.add(jLabel17, gridBagConstraints);
-
-        jSpinner4.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 0.4;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        contBilletesCount.add(jSpinner4, gridBagConstraints);
-
-        jLabel18.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jLabel18.setText("50.000 Gs.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        contBilletesCount.add(jLabel18, gridBagConstraints);
-
-        jSpinner5.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 0.4;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        contBilletesCount.add(jSpinner5, gridBagConstraints);
-
-        jLabel19.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jLabel19.setText("100.000 Gs.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
-        contBilletesCount.add(jLabel19, gridBagConstraints);
-
-        jSpinner6.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.weightx = 0.4;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        contBilletesCount.add(jSpinner6, gridBagConstraints);
-
-        contBilletes.add(contBilletesCount, java.awt.BorderLayout.CENTER);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.15;
-        gridBagConstraints.weighty = 2.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
-        contValoresCierre.add(contBilletes, gridBagConstraints);
-
-        contMonedas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        contMonedas.setPreferredSize(new java.awt.Dimension(200, 250));
-        contMonedas.setRequestFocusEnabled(false);
-        contMonedas.setLayout(new java.awt.BorderLayout());
-
-        jLabel11.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_coins_25px_2.png"))); // NOI18N
-        jLabel11.setText("Monedas");
-        jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-
-        javax.swing.GroupLayout contTituloMonedasLayout = new javax.swing.GroupLayout(contTituloMonedas);
-        contTituloMonedas.setLayout(contTituloMonedasLayout);
-        contTituloMonedasLayout.setHorizontalGroup(
-            contTituloMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contTituloMonedasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(contTituloMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        contTituloMonedasLayout.setVerticalGroup(
-            contTituloMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contTituloMonedasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11)
-                .addGap(10, 10, 10)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-
-        contMonedas.add(contTituloMonedas, java.awt.BorderLayout.NORTH);
-
-        contMonedasCount.setLayout(new java.awt.GridBagLayout());
-
-        jLabel20.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jLabel20.setText("50 Gs.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        contMonedasCount.add(jLabel20, gridBagConstraints);
-
-        jSpinner7.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 20;
-        gridBagConstraints.weightx = 0.4;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        contMonedasCount.add(jSpinner7, gridBagConstraints);
-
-        jLabel21.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jLabel21.setText("100 Gs.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        contMonedasCount.add(jLabel21, gridBagConstraints);
-
-        jSpinner9.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 20;
-        gridBagConstraints.weightx = 0.4;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        contMonedasCount.add(jSpinner9, gridBagConstraints);
-
-        jLabel22.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jLabel22.setText("500 Gs.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        contMonedasCount.add(jLabel22, gridBagConstraints);
-
-        jSpinner8.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 20;
-        gridBagConstraints.weightx = 0.4;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        contMonedasCount.add(jSpinner8, gridBagConstraints);
-
-        jLabel23.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jLabel23.setText("1.000 Gs.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.6;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        contMonedasCount.add(jLabel23, gridBagConstraints);
-
-        jSpinner10.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 20;
-        gridBagConstraints.weightx = 0.4;
-        gridBagConstraints.weighty = 0.15;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        contMonedasCount.add(jSpinner10, gridBagConstraints);
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.weighty = 0.15;
-        contMonedasCount.add(jPanel14, gridBagConstraints);
-
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.weighty = 0.15;
-        contMonedasCount.add(jPanel15, gridBagConstraints);
-
-        contMonedas.add(contMonedasCount, java.awt.BorderLayout.CENTER);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.15;
-        gridBagConstraints.weighty = 2.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
-        contValoresCierre.add(contMonedas, gridBagConstraints);
-
-        contTotal.setPreferredSize(new java.awt.Dimension(200, 250));
-
-        jLabel24.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel24.setText("TOTAL:");
-
-        jTextField1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField1.setText("493.500");
-
-        jLabel25.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel25.setText("Gs.");
-
-        jLabel26.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel26.setText("SALDO DE MUESTRA");
-
-        javax.swing.GroupLayout contTotalLayout = new javax.swing.GroupLayout(contTotal);
-        contTotal.setLayout(contTotalLayout);
-        contTotalLayout.setHorizontalGroup(
-            contTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contTotalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(contTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contTotalLayout.createSequentialGroup()
-                        .addComponent(jLabel24)
-                        .addGap(38, 38, 38)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel25))
-                    .addComponent(jLabel26))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        contTotalLayout.setVerticalGroup(
-            contTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contTotalLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel26)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-                .addGroup(contTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25))
-                .addGap(44, 44, 44))
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 0.7;
-        gridBagConstraints.weighty = 2.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
-        contValoresCierre.add(contTotal, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 2.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        panelCajero.add(contValoresCierre, gridBagConstraints);
 
         tabsPanel.addTab("Cajero", panelCajero);
 
@@ -1860,7 +2037,7 @@ public class MainPage extends javax.swing.JFrame {
             Integer stock = null;
             String Codigo = fieldT2Cod.getText();
             String descripcion = fieldT2Desc.getText();
-            String stockStr = fieldT2Cant.getText();
+            String stockStr = fieldT2Stock.getText();
             String precioCStr = fieldT2PrecioCosto.getText();
             String precioVStr = fieldT2PrecioVenta.getText();
             Integer categoria= null;
@@ -1923,7 +2100,7 @@ public class MainPage extends javax.swing.JFrame {
         fieldT2Id.setText(jTableArticulos.getValueAt(fila, 0).toString());
         fieldT2Cod.setText(jTableArticulos.getValueAt(fila, 1).toString());
         fieldT2Desc.setText(jTableArticulos.getValueAt(fila, 2).toString());
-        fieldT2Cant.setText(jTableArticulos.getValueAt(fila, 3).toString());
+        fieldT2Stock.setText(jTableArticulos.getValueAt(fila, 3).toString());
         fieldT2PrecioCosto.setText(jTableArticulos.getValueAt(fila, 4).toString());
         fieldT2PrecioVenta.setText(jTableArticulos.getValueAt(fila, 5).toString());
         jComboBox2Categorias.setSelectedItem(jTableArticulos.getValueAt(fila, 6).toString());
@@ -1946,14 +2123,14 @@ public class MainPage extends javax.swing.JFrame {
                     ArticulosControl ac = new ArticulosControl();
                     Integer precioVenta = Integer.parseInt(fieldT2PrecioVenta.getText());;
                     Integer precioCosto = Integer.parseInt(fieldT2PrecioCosto.getText());
-                    Integer stock = Integer.parseInt(fieldT2Cant.getText());
+                    Integer stock = Integer.parseInt(fieldT2Stock.getText());
                     String Codigo = fieldT2Cod.getText();
                     String descripcion = fieldT2Desc.getText();
                     Integer categoria= jComboBox2Categorias.getSelectedIndex();;
                     Categorias cat = new CategoriasControlador().buscarId(categoria);;
                     Boolean estado = true; 
                     Date date = TimestampToDate();
-                    if (!"".equals(fieldT2PrecioVenta.getText()) && !"".equals(fieldT2Cod.getText()) && !"".equals(fieldT2Cant.getText())
+                    if (!"".equals(fieldT2PrecioVenta.getText()) && !"".equals(fieldT2Cod.getText()) && !"".equals(fieldT2Stock.getText())
                             && !"".equals(fieldT2Desc.getText()) && null!=cat){
                         Articulos a = new Articulos(idarticulo, Codigo, precioCosto, descripcion, 
                                 estado, precioVenta, stock,date, cat);
@@ -2017,7 +2194,13 @@ public class MainPage extends javax.swing.JFrame {
     
     private void fieldCantFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fieldCantFocusGained
         // TODO add your handling code here:
-        try{
+        //Agregue este if porque cuando se da clic en cantidad cuando todo el resto esta vacio entra en un loop, 
+        //  y el error ya no se puede quitar...
+        System.out.println("Field cod: "+fieldCod.getText() + "\nField id: "+fieldId.getText());
+        if (fieldCod.getText().equals("") || fieldId.getText().equals("")){
+            //nada, xd, estan vacios los codigos
+        }else{
+            try{
             int stock= Integer.parseInt(fieldStock.getText());
             String cod = fieldCod.getText();
             int id = Integer.parseInt(fieldId.getText());
@@ -2051,7 +2234,9 @@ public class MainPage extends javax.swing.JFrame {
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Eventfocus cant: "+e.getMessage());
+        } 
         }
+       
     }//GEN-LAST:event_fieldCantFocusGained
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -2102,14 +2287,162 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_btnAbrirCajaActionPerformed
-private static boolean isMaximized(int state) {
+
+    private void btnCancelarArqueoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarArqueoMouseReleased
+        // TODO add your handling code here:
+        System.out.println("Cancelado Cerrar Caja");
+        dialogCerrarCaja.dispose();
+    }//GEN-LAST:event_btnCancelarArqueoMouseReleased
+
+    private void btnRemitirArqueoMuestraMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemitirArqueoMuestraMouseReleased
+        // TODO add your handling code here:
+        System.out.println("Valor de arqueo remitido: " +fieldTotalMuestra.getValue());
+        //dialogCerrarCaja.setVisible(false);
+        dialogCerrarCaja.dispose();
+//        enable();
+    }//GEN-LAST:event_btnRemitirArqueoMuestraMouseReleased
+
+    private void btnCerrarCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarCajaMouseReleased
+        // TODO add your handling code here:
+        dialogCerrarCaja.setVisible(true);
+        
+    }//GEN-LAST:event_btnCerrarCajaMouseReleased
+
+    private void btnCerrarCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarCajaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarCajaActionPerformed
+
+    private void btnConfirmarAbrirCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarAbrirCajaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConfirmarAbrirCajaActionPerformed
+
+    private void btnAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirCajaMouseReleased
+        // TODO add your handling code here:
+           dialogAbrirCaja.setVisible(true);
+    }//GEN-LAST:event_btnAbrirCajaMouseReleased
+
+    private void btnConfirmarAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmarAbrirCajaMouseReleased
+        // TODO add your handling code here:
+          System.out.println("Caja abierta con exito\nMonto: "+fieldSaldoInicAbrirCaja.getValue());
+        dialogAbrirCaja.setVisible(false);
+    }//GEN-LAST:event_btnConfirmarAbrirCajaMouseReleased
+
+    private void btnCancelarAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarAbrirCajaMouseReleased
+        // TODO add your handling code here:
+          System.out.println("Cancelado proceso Abrir caja");
+        dialogAbrirCaja.setVisible(false);
+    }//GEN-LAST:event_btnCancelarAbrirCajaMouseReleased
+
+    private void spin2milStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spin2milStateChanged
+        // TODO add your handling code here:
+        totalMuestraCaja();
+        
+    }//GEN-LAST:event_spin2milStateChanged
+
+    private void spin5milStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spin5milStateChanged
+        // TODO add your handling code here:
+        totalMuestraCaja();
+    }//GEN-LAST:event_spin5milStateChanged
+
+    private void spin10milStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spin10milStateChanged
+        // TODO add your handling code here:
+        totalMuestraCaja();
+    }//GEN-LAST:event_spin10milStateChanged
+
+    private void spin20milStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spin20milStateChanged
+        // TODO add your handling code here:
+        totalMuestraCaja();
+    }//GEN-LAST:event_spin20milStateChanged
+
+    private void spin50milStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spin50milStateChanged
+        // TODO add your handling code here:
+        totalMuestraCaja();
+    }//GEN-LAST:event_spin50milStateChanged
+
+    private void spin100milStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spin100milStateChanged
+        // TODO add your handling code here:
+        totalMuestraCaja();
+    }//GEN-LAST:event_spin100milStateChanged
+
+    private void spin50gsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spin50gsStateChanged
+        // TODO add your handling code here:
+        totalMuestraCaja();
+    }//GEN-LAST:event_spin50gsStateChanged
+
+    private void spin100gsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spin100gsStateChanged
+        // TODO add your handling code here:
+        totalMuestraCaja();
+    }//GEN-LAST:event_spin100gsStateChanged
+
+    private void spin500gsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spin500gsStateChanged
+        // TODO add your handling code here:
+        totalMuestraCaja();
+    }//GEN-LAST:event_spin500gsStateChanged
+
+    private void spin1000gsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spin1000gsStateChanged
+        // TODO add your handling code here:
+        totalMuestraCaja();
+    }//GEN-LAST:event_spin1000gsStateChanged
+
+    private void fieldT2StockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldT2StockKeyTyped
+        // TODO add your handling code here:
+        esNumero(evt);
+    }//GEN-LAST:event_fieldT2StockKeyTyped
+
+    private void fieldT2PrecioCostoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldT2PrecioCostoKeyTyped
+        // TODO add your handling code here:
+        esNumero(evt);
+    }//GEN-LAST:event_fieldT2PrecioCostoKeyTyped
+
+    private void fieldSaldoInicAbrirCajaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldSaldoInicAbrirCajaKeyTyped
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            dialogAbrirCaja.requestFocus();
+        }else{
+        esNumero(evt);
+        }
+    }//GEN-LAST:event_fieldSaldoInicAbrirCajaKeyTyped
+    
+    private void esNumero(java.awt.event.KeyEvent evt){
+        //Rechaza el tecleo si no es un Numero
+        char TestChar = evt.getKeyChar();
+        if(!(Character.isDigit(TestChar))){
+            evt.consume();
+        }
+    }
+        private void esLetra(java.awt.event.KeyEvent evt){
+        //Rechaza el tecleo si no es una Letra 
+        //ACTUALMENTE NO ESTA EN USO ESTE METODO, PERO POR SI ACASO
+        char TestChar = evt.getKeyChar();
+        if(!(Character.isAlphabetic(TestChar))){
+            evt.consume();
+        }
+    }
+    
+    private static boolean isMaximized(int state) {
     return (state & MAXIMIZED_BOTH) == MAXIMIZED_BOTH;
+}
+private float totalMuestraCaja(){
+    float total = 0;
+    total += (Integer) spin50gs.getValue()* 50;
+    total += (Integer) spin100gs.getValue() * 100;
+    total += (Integer) spin500gs.getValue() * 500;
+    total += (Integer) spin1000gs.getValue() * 1000;
+    total += (Integer) spin2mil.getValue() * 2000;
+    total += (Integer) spin5mil.getValue() * 5000;
+    total += (Integer) spin10mil.getValue() * 10000;
+    total += (Integer) spin20mil.getValue() * 20000;
+    total += (Integer) spin50mil.getValue() * 50000;
+    total += (Integer) spin100mil.getValue() * 100000;
+    fieldTotalMuestra.setValue(total);
+    
+    return total;
 }
     private void LimpiarProd(){
         fieldT2Id.setText("");
         fieldT2Cod.setText("");
         fieldT2Desc.setText("");
-        fieldT2Cant.setText("");
+        fieldT2Stock.setText("");
         fieldT2PrecioCosto.setText("");
         fieldT2PrecioVenta.setText("");
         jComboBox2Categorias.setSelectedIndex(0);
@@ -2156,14 +2489,18 @@ private static boolean isMaximized(int state) {
     private javax.swing.JButton btnAbrirCaja;
     private javax.swing.JButton btnActualizarProductos;
     private javax.swing.JButton btnBorrarProducto;
+    private javax.swing.JButton btnCancelarAbrirCaja;
+    private javax.swing.JButton btnCancelarArqueo;
     private javax.swing.JButton btnCerrarCaja;
     private javax.swing.JButton btnConfig;
+    private javax.swing.JButton btnConfirmarAbrirCaja;
     private javax.swing.JButton btnExportProduc;
     private javax.swing.JButton btnGuardarProducto;
     private javax.swing.JButton btnInformes;
     private javax.swing.JButton btnLimpiarProd;
     private javax.swing.JButton btnNewVenta;
     private javax.swing.JButton btnProductos;
+    private javax.swing.JButton btnRemitirArqueoMuestra;
     private javax.swing.JButton btnResumenVentasDiario;
     private javax.swing.JButton btnVentas;
     private javax.swing.JPanel contBilletes;
@@ -2186,19 +2523,23 @@ private static boolean isMaximized(int state) {
     private javax.swing.JPanel contValoresApertura;
     private javax.swing.JPanel contValoresCierre;
     private javax.swing.JPanel contenedorTablat2;
+    private javax.swing.JDialog dialogAbrirCaja;
+    private javax.swing.JDialog dialogCerrarCaja;
     private javax.swing.JTextField fieldCant;
     private javax.swing.JTextField fieldCod;
     private javax.swing.JTextField fieldDesc;
     private javax.swing.JTextField fieldId;
     private javax.swing.JTextField fieldPrecTotal;
     private javax.swing.JTextField fieldPrecUnit;
+    private javax.swing.JFormattedTextField fieldSaldoInicAbrirCaja;
     private javax.swing.JTextField fieldStock;
-    private javax.swing.JTextField fieldT2Cant;
     private javax.swing.JTextField fieldT2Cod;
     private javax.swing.JTextField fieldT2Desc;
     private javax.swing.JTextField fieldT2Id;
     private javax.swing.JTextField fieldT2PrecioCosto;
     private javax.swing.JTextField fieldT2PrecioVenta;
+    private javax.swing.JTextField fieldT2Stock;
+    private javax.swing.JFormattedTextField fieldTotalMuestra;
     private javax.swing.JTextField fieldTotalPagar;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
@@ -2206,7 +2547,6 @@ private static boolean isMaximized(int state) {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox2Categorias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2227,6 +2567,8 @@ private static boolean isMaximized(int state) {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2254,21 +2596,10 @@ private static boolean isMaximized(int state) {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner10;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
-    private javax.swing.JSpinner jSpinner6;
-    private javax.swing.JSpinner jSpinner7;
-    private javax.swing.JSpinner jSpinner8;
-    private javax.swing.JSpinner jSpinner9;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTableArticulos;
     private javax.swing.JTable jTableVentaItems;
     private javax.swing.JTable jTableVentas;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labCod;
     private javax.swing.JLabel labT2Categorias;
     private javax.swing.JLabel labT2Cod;
@@ -2277,6 +2608,7 @@ private static boolean isMaximized(int state) {
     private javax.swing.JLabel labT2PrecioCosto;
     private javax.swing.JLabel labT2PrecioVenta;
     private javax.swing.JLabel labT2StockDisp;
+    private javax.swing.JLabel labelTitleCajero;
     private javax.swing.JPanel logoCont;
     private javax.swing.JLabel mainLogo;
     private javax.swing.JLabel mainTitle;
@@ -2287,8 +2619,17 @@ private static boolean isMaximized(int state) {
     private javax.swing.JPanel panelNuevaVenta;
     private javax.swing.JPanel panelProductos;
     private javax.swing.JPanel panelVentas;
-    private javax.swing.JTextField saldoInicialApertCaja;
     private javax.swing.JPanel sidebarMain;
+    private javax.swing.JSpinner spin1000gs;
+    private javax.swing.JSpinner spin100gs;
+    private javax.swing.JSpinner spin100mil;
+    private javax.swing.JSpinner spin10mil;
+    private javax.swing.JSpinner spin20mil;
+    private javax.swing.JSpinner spin2mil;
+    private javax.swing.JSpinner spin500gs;
+    private javax.swing.JSpinner spin50gs;
+    private javax.swing.JSpinner spin50mil;
+    private javax.swing.JSpinner spin5mil;
     private javax.swing.JTabbedPane tabsPanel;
     // End of variables declaration//GEN-END:variables
 

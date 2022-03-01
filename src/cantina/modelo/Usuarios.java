@@ -7,24 +7,18 @@ package cantina.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -39,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuarios.findByNombre", query = "SELECT u FROM Usuarios u WHERE u.nombre = :nombre")
     , @NamedQuery(name = "Usuarios.findByEstado", query = "SELECT u FROM Usuarios u WHERE u.estado = :estado")
     , @NamedQuery(name = "Usuarios.findByPass", query = "SELECT u FROM Usuarios u WHERE u.pass = :pass")
+    , @NamedQuery(name = "Usuarios.findByFkRoles", query = "SELECT u FROM Usuarios u WHERE u.fkRoles = :fkRoles")
     , @NamedQuery(name = "Usuarios.findByDateUser", query = "SELECT u FROM Usuarios u WHERE u.dateUser = :dateUser")})
 public class Usuarios implements Serializable {
 
@@ -56,14 +51,12 @@ public class Usuarios implements Serializable {
     private boolean estado;
     @Column(name = "pass")
     private String pass;
+    @Basic(optional = false)
+    @Column(name = "fk_roles")
+    private int fkRoles;
     @Column(name = "date_user")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateUser;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkUsuario")
-    private List<Ventas> ventasList;
-    @JoinColumn(name = "fk_roles", referencedColumnName = "idrole")
-    @ManyToOne(optional = false)
-    private Roles fkRoles;
 
     public Usuarios() {
     }
@@ -72,19 +65,20 @@ public class Usuarios implements Serializable {
         this.idusuario = idusuario;
     }
 
-    public Usuarios(Integer idusuario, String nombre, boolean estado) {
+    public Usuarios(Integer idusuario, String nombre, boolean estado, int fkRoles) {
         this.idusuario = idusuario;
         this.nombre = nombre;
         this.estado = estado;
+        this.fkRoles = fkRoles;
     }
 
-    public Usuarios(Integer idusuario, String nombre, boolean estado, String pass, Date dateUser, Roles fkRoles) {
+    public Usuarios(Integer idusuario, String nombre, boolean estado, String pass, int fkRoles, Date dateUser) {
         this.idusuario = idusuario;
         this.nombre = nombre;
         this.estado = estado;
         this.pass = pass;
-        this.dateUser = dateUser;
         this.fkRoles = fkRoles;
+        this.dateUser = dateUser;
     }
     
 
@@ -120,29 +114,20 @@ public class Usuarios implements Serializable {
         this.pass = pass;
     }
 
+    public int getFkRoles() {
+        return fkRoles;
+    }
+
+    public void setFkRoles(int fkRoles) {
+        this.fkRoles = fkRoles;
+    }
+
     public Date getDateUser() {
         return dateUser;
     }
 
     public void setDateUser(Date dateUser) {
         this.dateUser = dateUser;
-    }
-
-    @XmlTransient
-    public List<Ventas> getVentasList() {
-        return ventasList;
-    }
-
-    public void setVentasList(List<Ventas> ventasList) {
-        this.ventasList = ventasList;
-    }
-
-    public Roles getFkRoles() {
-        return fkRoles;
-    }
-
-    public void setFkRoles(Roles fkRoles) {
-        this.fkRoles = fkRoles;
     }
 
     @Override
@@ -167,7 +152,7 @@ public class Usuarios implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuarios{" + "idusuario=" + idusuario + ", nombre=" + nombre + ", estado=" + estado + ", pass=" + pass + ", dateUser=" + dateUser + ", fkRoles=" + fkRoles + '}';
+        return "Usuarios{" + "idusuario=" + idusuario + ", nombre=" + nombre + ", estado=" + estado + ", pass=" + pass + ", fkRoles=" + fkRoles + ", dateUser=" + dateUser + '}';
     }
 
     

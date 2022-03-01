@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -107,6 +108,15 @@ public class ArticulosDAO {
         a = em.find(Articulos.class, a.getCodigo());
         a.setEstado(Boolean.FALSE);
         em.merge(a);
+        em.getTransaction().commit();
+    }
+    
+    public void ActualizarStock (Integer cant, Integer id){
+        em.getTransaction().begin();
+        TypedQuery<Boolean> sql = em.createNamedQuery("Articulos.UpdateStock", Boolean.class);
+        sql.setParameter("stock", cant);
+        sql.setParameter("idarticulo", id);
+        sql.executeUpdate();
         em.getTransaction().commit();
     }
 }

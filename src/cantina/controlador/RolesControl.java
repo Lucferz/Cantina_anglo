@@ -22,6 +22,10 @@ public class RolesControl {
         return new RolesDAO().buscar(r);
     }
     
+    public Roles buscarPorid (Integer id){
+        return new RolesDAO().buscarPorid(id);
+    }
+    
     public void insertar(Roles r){
         new RolesDAO().insertar(r);
     }

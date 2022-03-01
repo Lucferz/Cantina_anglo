@@ -61,6 +61,15 @@ public class Arqueoscaja implements Serializable {
         this.idArqueo = idArqueo;
     }
 
+    public Arqueoscaja(Integer idArqueo, Integer fkVendedor, Integer fkAdmin, Date fecha, Ajustes fkAjuste) {
+        this.idArqueo = idArqueo;
+        this.fkVendedor = fkVendedor;
+        this.fkAdmin = fkAdmin;
+        this.fecha = fecha;
+        this.fkAjuste = fkAjuste;
+    }
+    
+
     public Integer getIdArqueo() {
         return idArqueo;
     }
@@ -123,7 +132,9 @@ public class Arqueoscaja implements Serializable {
 
     @Override
     public String toString() {
-        return "cantina.modelo.Arqueoscaja[ idArqueo=" + idArqueo + " ]";
+        return "Arqueoscaja{" + "idArqueo=" + idArqueo + ", fkVendedor=" + fkVendedor + ", fkAdmin=" + fkAdmin + ", fecha=" + fecha + ", fkAjuste=" + fkAjuste + '}';
     }
+
+    
     
 }

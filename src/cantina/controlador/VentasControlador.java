@@ -7,6 +7,7 @@ package cantina.controlador;
 
 import cantina.datos.VentasDAO;
 import cantina.modelo.Ventas;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,8 +18,11 @@ public class VentasControlador {
     public List<Ventas> listar(){
         return new VentasDAO().listar();
     }
-    public Ventas buscar(Ventas v){
-        return new VentasDAO().buscar(v);
+    public Ventas buscar(Integer id){
+        return new VentasDAO().buscar(id);
+    }
+    public Integer buscarMaxId(){
+        return new VentasDAO().buscarMaxId();
     }
     public void insertar(Ventas v){
         new VentasDAO().insertar(v);

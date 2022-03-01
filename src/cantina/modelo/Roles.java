@@ -7,9 +7,7 @@ package cantina.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,12 +15,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -57,8 +53,6 @@ public class Roles implements Serializable {
     @Column(name = "date_rol")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateRol;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkRoles")
-    private List<Usuarios> usuariosList;
 
     public Roles() {
     }
@@ -80,6 +74,7 @@ public class Roles implements Serializable {
         this.estado = estado;
         this.dateRol = dateRol;
     }
+    
     
 
     public Integer getIdrole() {
@@ -120,15 +115,6 @@ public class Roles implements Serializable {
 
     public void setDateRol(Date dateRol) {
         this.dateRol = dateRol;
-    }
-
-    @XmlTransient
-    public List<Usuarios> getUsuariosList() {
-        return usuariosList;
-    }
-
-    public void setUsuariosList(List<Usuarios> usuariosList) {
-        this.usuariosList = usuariosList;
     }
 
     @Override

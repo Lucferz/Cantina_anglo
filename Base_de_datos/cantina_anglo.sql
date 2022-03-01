@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2022 at 07:05 PM
+-- Generation Time: Mar 01, 2022 at 04:28 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ajustes`
+--
+
+CREATE TABLE `ajustes` (
+  `idAjuste` int(11) NOT NULL,
+  `tipo_ajuste` varchar(45) DEFAULT NULL,
+  `date_ajuste` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ajustes`
+--
+
+INSERT INTO `ajustes` (`idAjuste`, `tipo_ajuste`, `date_ajuste`) VALUES
+(1, 'Sin ajuste', '2022-02-25 20:08:51'),
+(2, 'Ajuste del sistema', '2022-02-25 20:08:51'),
+(3, 'Ajuste de caja fisica', '2022-02-25 20:10:53');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `arqueoscaja`
 --
 
@@ -32,7 +53,7 @@ CREATE TABLE `arqueoscaja` (
   `fk_vendedor` int(11) DEFAULT NULL,
   `fk_admin` int(11) DEFAULT NULL,
   `fk_ajuste` int(11) DEFAULT NULL,
-  `fecha` datetime DEFAULT current_timestamp()
+  `fecha` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -50,7 +71,7 @@ CREATE TABLE `articulos` (
   `descripcion` varchar(255) DEFAULT NULL,
   `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
   `fk_categorias` int(10) UNSIGNED NOT NULL,
-  `date_arti` datetime DEFAULT current_timestamp()
+  `date_arti` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -58,14 +79,16 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`idarticulo`, `codigo`, `precio_venta`, `costo`, `stock`, `descripcion`, `estado`, `fk_categorias`, `date_arti`) VALUES
-(1, '7842714004690', 3000, 1500, 1, 'caja', 1, 1, '2022-02-25 00:00:00'),
-(2, '3123211234', 4000, 2000, 2, 'Empanada ', 1, 1, '2022-02-25 00:00:00'),
-(3, '123456789', 2500, 4000, 5, 'Pancho con queso', 1, 3, '2022-02-25 00:00:00'),
-(4, '123654987', 200, 1000, 20, 'Turron mani', 1, 4, '2022-02-25 00:00:00'),
-(5, '321654987', 3000, 6000, 5, 'Pan dulce', 1, 3, '2022-02-25 00:00:00'),
-(6, '951874632', 5000, 500, 10, 'Empanada', 1, 2, '2022-02-25 00:00:00'),
-(8, '89632563256', 2500, 500, 2, 'Algo', 1, 4, '2022-02-25 00:00:00'),
-(9, '3216548946', 2000, 500, 2, 'Prue', 1, 3, '2022-02-25 00:00:00');
+(1, '7842714004690', 3000, 1500, 10, 'caja', 1, 1, '2022-02-25 03:00:00'),
+(2, '3123211234', 4000, 2000, 2, 'Empanada ', 1, 1, '2022-02-25 03:00:00'),
+(3, '123456789', 2500, 4000, 5, 'Pancho con queso', 1, 3, '2022-02-25 03:00:00'),
+(4, '123654987', 1000, 200, 15, 'Turron mani', 1, 4, '2022-03-01 00:02:08'),
+(5, '321654987', 3000, 6000, 5, 'Pan dulce', 1, 3, '2022-02-25 03:00:00'),
+(6, '951874632', 5000, 500, 10, 'Empanada', 1, 2, '2022-02-25 03:00:00'),
+(8, '89632563256', 2500, 500, 2, 'Algo', 1, 4, '2022-02-25 03:00:00'),
+(9, '3216548946', 2000, 500, 2, 'Prue', 1, 3, '2022-02-25 03:00:00'),
+(11, '65198416495', 5000, 2000, 5, 'Tortilla', 1, 5, NULL),
+(12, '13516849651', 6000, 2500, 5, 'Prueba5', 1, 9, '2022-02-25 20:48:35');
 
 -- --------------------------------------------------------
 
@@ -77,7 +100,7 @@ CREATE TABLE `categorias` (
   `idcategoria` int(10) UNSIGNED NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `date_categorias` datetime DEFAULT current_timestamp()
+  `date_categorias` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -85,10 +108,15 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`idcategoria`, `nombre`, `estado`, `date_categorias`) VALUES
-(1, 'categoria 1', 1, '2022-02-25 00:00:00'),
-(2, 'categoria 2', 1, '2022-02-25 00:00:00'),
-(3, 'Lacteos', 1, '2022-02-25 00:00:00'),
-(4, 'Dani', 1, '2022-02-25 00:00:00');
+(1, 'categoria 1', 1, '2022-02-25 03:00:00'),
+(2, 'categoria 2', 1, '2022-02-25 03:00:00'),
+(3, 'Lacteos', 1, '2022-02-25 03:00:00'),
+(4, 'Dani', 1, '2022-02-25 03:00:00'),
+(5, 'Frituras', 1, NULL),
+(6, 'Prueba', 1, NULL),
+(7, 'Prueba2', 1, NULL),
+(8, 'Prueba3', 1, '2022-02-25 20:42:54'),
+(9, 'Prueba4', 1, '2022-02-25 20:46:15');
 
 -- --------------------------------------------------------
 
@@ -104,8 +132,29 @@ CREATE TABLE `detalle_venta` (
   `precio` int(10) UNSIGNED DEFAULT NULL,
   `descuento` int(10) UNSIGNED DEFAULT NULL,
   `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `date_detalleVenta` datetime DEFAULT current_timestamp()
+  `date_detalleVenta` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detalle_venta`
+--
+
+INSERT INTO `detalle_venta` (`iddetalle_venta`, `fk_articulos`, `fk_venta`, `cantidad`, `precio`, `descuento`, `estado`, `date_detalleVenta`) VALUES
+(1, 1, 15, 1, 3000, NULL, 1, '2022-03-01 00:12:47'),
+(2, 4, 15, 1, 1000, NULL, 1, '2022-03-01 00:12:47'),
+(3, 4, 15, 1, 1000, NULL, 1, '2022-03-01 00:12:47'),
+(4, 4, 15, 1, 1000, NULL, 1, '2022-03-01 00:12:47'),
+(5, 4, 16, 1, 1000, NULL, 1, '2022-03-01 03:19:33'),
+(6, 4, 16, 1, 1000, NULL, 1, '2022-03-01 03:19:33'),
+(7, 4, 16, 1, 1000, NULL, 1, '2022-03-01 03:19:33'),
+(8, 4, 16, 1, 1000, NULL, 1, '2022-03-01 03:19:33'),
+(9, 4, 16, 1, 1000, NULL, 1, '2022-03-01 03:19:33'),
+(10, 4, 17, 1, 1000, NULL, 1, '2022-03-01 03:21:20'),
+(11, 4, 18, 1, 1000, NULL, 1, '2022-03-01 03:25:45'),
+(12, 4, 18, 1, 1000, NULL, 1, '2022-03-01 03:25:45'),
+(13, 4, 18, 1, 1000, NULL, 1, '2022-03-01 03:25:45'),
+(14, 4, 18, 1, 1000, NULL, 1, '2022-03-01 03:25:45'),
+(15, 4, 18, 1, 1000, NULL, 1, '2022-03-01 03:25:45');
 
 -- --------------------------------------------------------
 
@@ -118,7 +167,7 @@ CREATE TABLE `roles` (
   `rol` varchar(30) NOT NULL,
   `desc` varchar(250) DEFAULT NULL,
   `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
-  `date_rol` datetime DEFAULT current_timestamp()
+  `date_rol` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -126,8 +175,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`idrole`, `rol`, `desc`, `estado`, `date_rol`) VALUES
-(1, 'ADMIN', 'Administrador del sistema, tiene todas las opciones disponibles', 1, '2022-02-25 00:00:00'),
-(2, 'VENDEDOR', 'Puede realizar ventas, anularlas, cargar productos nuevos y acutalizar el stock', 1, '2022-02-25 00:00:00');
+(1, 'ADMIN', 'Administrador del sistema, tiene todas las opciones disponibles', 1, '2022-02-25 03:00:00'),
+(2, 'VENDEDOR', 'Puede realizar ventas, anularlas, cargar productos nuevos y acutalizar el stock', 1, '2022-02-25 03:00:00');
 
 -- --------------------------------------------------------
 
@@ -136,12 +185,12 @@ INSERT INTO `roles` (`idrole`, `rol`, `desc`, `estado`, `date_rol`) VALUES
 --
 
 CREATE TABLE `usuarios` (
-  `idusuario` int(10) UNSIGNED NOT NULL,
+  `idusuario` int(11) UNSIGNED NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
   `pass` varchar(40) DEFAULT NULL,
   `fk_roles` int(11) NOT NULL,
-  `date_user` datetime DEFAULT current_timestamp()
+  `date_user` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -149,9 +198,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idusuario`, `nombre`, `estado`, `pass`, `fk_roles`, `date_user`) VALUES
-(1, 'Lucas', 1, '1234', 1, '2022-02-25 00:00:00'),
-(2, 'Dani', 1, '1234', 1, '2022-02-25 00:00:00'),
-(3, 'Vendedor', 1, '1234', 2, '2022-02-25 00:00:00');
+(1, 'Lucas', 1, '1234', 1, '2022-02-25 03:00:00'),
+(2, 'Dani', 1, '1234', 1, '2022-02-25 03:00:00'),
+(3, 'Vendedor', 1, '1234', 2, '2022-02-25 03:00:00');
 
 -- --------------------------------------------------------
 
@@ -161,21 +210,52 @@ INSERT INTO `usuarios` (`idusuario`, `nombre`, `estado`, `pass`, `fk_roles`, `da
 
 CREATE TABLE `ventas` (
   `idventa` int(11) NOT NULL,
-  `fecha` datetime DEFAULT current_timestamp(),
+  `fecha` timestamp NULL DEFAULT current_timestamp(),
   `total` int(11) DEFAULT NULL,
   `fk_usuario` int(10) UNSIGNED NOT NULL,
   `estado` tinyint(1) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `ventas`
+--
+
+INSERT INTO `ventas` (`idventa`, `fecha`, `total`, `fk_usuario`, `estado`) VALUES
+(1, '2022-02-26 18:01:04', 3000, 1, 1),
+(2, '2022-02-26 18:13:05', 3000, 1, 1),
+(3, '2022-02-26 18:13:08', 3000, 1, 1),
+(4, '2022-02-26 18:13:37', 6000, 1, 1),
+(5, '2022-02-26 18:13:39', 6000, 1, 1),
+(6, '2022-02-26 21:17:05', 9000, 1, 1),
+(7, '2022-02-26 21:32:02', 15000, 3, 1),
+(8, '2022-02-26 21:37:27', 18000, 2, 1),
+(9, '2022-02-26 21:55:21', 12000, 3, 1),
+(10, '2022-02-27 19:59:15', 6000, 3, 1),
+(11, '2022-02-28 19:14:42', 3000, 1, 1),
+(12, '2022-02-28 23:52:12', 5700, 3, 1),
+(13, '2022-02-28 23:55:33', 3000, 2, 1),
+(14, '2022-03-01 00:08:25', 4000, 2, 1),
+(15, '2022-03-01 00:12:47', 6000, 2, 1),
+(16, '2022-03-01 03:19:33', 5000, 1, 1),
+(17, '2022-03-01 03:21:20', 1000, 1, 1),
+(18, '2022-03-01 03:25:45', 5000, 1, 1);
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `ajustes`
+--
+ALTER TABLE `ajustes`
+  ADD PRIMARY KEY (`idAjuste`);
 
 --
 -- Indexes for table `arqueoscaja`
 --
 ALTER TABLE `arqueoscaja`
-  ADD PRIMARY KEY (`id_arqueo`);
+  ADD PRIMARY KEY (`id_arqueo`),
+  ADD KEY `FK_AJUSTE_ARQUEO` (`fk_ajuste`);
 
 --
 -- Indexes for table `articulos`
@@ -210,7 +290,7 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`idusuario`),
-  ADD KEY `fk_usuarios_roles_idx` (`fk_roles`);
+  ADD UNIQUE KEY `USERS_Nombres` (`nombre`);
 
 --
 -- Indexes for table `ventas`
@@ -224,6 +304,12 @@ ALTER TABLE `ventas`
 --
 
 --
+-- AUTO_INCREMENT for table `ajustes`
+--
+ALTER TABLE `ajustes`
+  MODIFY `idAjuste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `arqueoscaja`
 --
 ALTER TABLE `arqueoscaja`
@@ -233,19 +319,19 @@ ALTER TABLE `arqueoscaja`
 -- AUTO_INCREMENT for table `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `idcategoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idcategoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `iddetalle_venta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iddetalle_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -257,17 +343,23 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuario` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idusuario` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `arqueoscaja`
+--
+ALTER TABLE `arqueoscaja`
+  ADD CONSTRAINT `FK_AJUSTE_ARQUEO` FOREIGN KEY (`fk_ajuste`) REFERENCES `ajustes` (`idAjuste`);
 
 --
 -- Constraints for table `articulos`
@@ -281,12 +373,6 @@ ALTER TABLE `articulos`
 ALTER TABLE `detalle_venta`
   ADD CONSTRAINT `fk_detalle_venta_articulos1` FOREIGN KEY (`fk_articulos`) REFERENCES `articulos` (`idarticulo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_detalle_venta_ventas1` FOREIGN KEY (`fk_venta`) REFERENCES `ventas` (`idventa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `fk_usuarios_roles` FOREIGN KEY (`fk_roles`) REFERENCES `roles` (`idrole`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `ventas`

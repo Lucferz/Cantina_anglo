@@ -5,30 +5,40 @@
  */
 package cantina.datos;
 
+import cantina.controlador.ControladorAbstract;
 import cantina.modelo.Ventas;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Lucas
  */
-public class VentasDAO {
+public class VentasDAO extends ControladorAbstract{
     EntityManagerFactory emf =Persistence.createEntityManagerFactory("CANTINA-ANGLO-SISTEMA-VENTASPU");
     EntityManager em = emf.createEntityManager();
-    
     public List<Ventas> listar(){
         TypedQuery query = em.createNamedQuery("Ventas.findAll", Ventas.class);
         List<Ventas> res = query.getResultList();
         return res;
     }
     
-    public Ventas buscar(Ventas v){
-        v = em.find(Ventas.class, v.getIdventa());
+    public Ventas buscar(Integer id){
+        Ventas v = em.find(Ventas.class, id);
         return v;
+    }
+    
+    public Integer buscarMaxId(){
+        TypedQuery<Integer> sql = em.createNamedQuery("Ventas.FindMaxId", Integer.class);
+        Integer ven = sql.getSingleResult();
+        return ven;
     }
     
     public void insertar(Ventas v){

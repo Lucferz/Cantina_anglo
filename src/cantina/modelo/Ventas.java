@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Ventas.findAll", query = "SELECT v FROM Ventas v")
+    , @NamedQuery(name = "Ventas.FindMaxId", query = "SELECT MAX(v.idventa) FROM Ventas v")
     , @NamedQuery(name = "Ventas.findByIdventa", query = "SELECT v FROM Ventas v WHERE v.idventa = :idventa")
     , @NamedQuery(name = "Ventas.findByFecha", query = "SELECT v FROM Ventas v WHERE v.fecha = :fecha")
     , @NamedQuery(name = "Ventas.findByTotal", query = "SELECT v FROM Ventas v WHERE v.total = :total")
@@ -80,6 +81,8 @@ public class Ventas implements Serializable {
         this.estado = estado;
         this.fkUsuario = fkUsuario;
     }
+    
+    
     
 
     public Integer getIdventa() {
@@ -130,6 +133,7 @@ public class Ventas implements Serializable {
     public void setFkUsuario(Usuarios fkUsuario) {
         this.fkUsuario = fkUsuario;
     }
+    
 
     @Override
     public int hashCode() {

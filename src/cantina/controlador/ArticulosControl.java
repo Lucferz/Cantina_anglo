@@ -49,4 +49,7 @@ public class ArticulosControl {
     public void eliminarCodLogico(Articulos a){
         new ArticulosDAO().eliminarCodLogico(a);
     }
+    public void ActualizarStock (Integer cant, Integer id){
+        new ArticulosDAO().ActualizarStock(cant, id);
+    }
 }

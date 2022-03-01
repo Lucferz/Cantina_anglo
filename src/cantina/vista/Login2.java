@@ -37,8 +37,9 @@ public class Login2 extends javax.swing.JFrame {
             try{     
                 if(lg.getNombre()!=null && lg.getPass()!=null){
                     MainPage main = new MainPage(lg.getFkRoles());
-                          
+                    main.setUser(lg.getNombre());
                     main.setRolActual(lg.getFkRoles());
+                    
                     //System.out.println("En validar, en la variable: "+ main.getRolActual());
                     main.setVisible(true);
                     dispose();

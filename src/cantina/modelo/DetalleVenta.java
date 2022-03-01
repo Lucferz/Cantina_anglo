@@ -76,7 +76,7 @@ public class DetalleVenta implements Serializable {
         this.estado = estado;
     }
 
-    public DetalleVenta(Integer iddetalleVenta, Integer cantidad, Integer precio, Integer descuento, boolean estado, Date datedetalleVenta, Articulos fkArticulos, Ventas fkVenta) {
+    public DetalleVenta(Integer iddetalleVenta, Articulos fkArticulos, Ventas fkVenta, Integer cantidad, Integer precio, Integer descuento, boolean estado, Date datedetalleVenta) {
         this.iddetalleVenta = iddetalleVenta;
         this.cantidad = cantidad;
         this.precio = precio;

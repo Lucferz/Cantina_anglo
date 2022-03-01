@@ -23,8 +23,8 @@ public class UsuariosControl {
         return new UsuariosDAO().buscarId(u);
     }
     
-    public Usuarios buscarNombre (Usuarios u){
-        return new UsuariosDAO().buscarNombre(u);
+    public Usuarios buscarPorNombre (String nom){
+        return new UsuariosDAO().buscarPorNombre(nom);
     }
     
     public void insertar(Usuarios u){

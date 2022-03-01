@@ -31,6 +31,13 @@ public class RolesDAO {
         return r;
     }
     
+    public Roles buscarPorid(Integer id){
+        TypedQuery<Roles> sql = em.createNamedQuery("Roles.findByIdrole", Roles.class);
+        sql.setParameter("idrole", id);
+        return sql.getSingleResult();
+        
+    }
+    
     public void insertar(Roles r){
         em.getTransaction().begin();
         em.persist(r);

@@ -7,8 +7,14 @@ package cantina.vista;
 
 import cantina.controlador.ArticulosControl;
 import cantina.controlador.CategoriasControlador;
+import cantina.controlador.DetalleVentaControl;
+import cantina.controlador.UsuariosControl;
+import cantina.controlador.VentasControlador;
 import cantina.modelo.Articulos;
 import cantina.modelo.Categorias;
+import cantina.modelo.DetalleVenta;
+import cantina.modelo.Usuarios;
+import cantina.modelo.Ventas;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.ResultSet;
@@ -29,6 +35,9 @@ import javax.swing.table.DefaultTableModel;
 public class MainPage extends javax.swing.JFrame {
     CategoriasControlador cc = new CategoriasControlador();
     ArticulosControl ac = new ArticulosControl();
+    VentasControlador vc = new VentasControlador();
+    DetalleVentaControl dvc = new DetalleVentaControl();
+    UsuariosControl uc = new UsuariosControl();
     DefaultTableModel modelo;
     int item;
     int totalPagar=0;
@@ -64,6 +73,7 @@ public class MainPage extends javax.swing.JFrame {
          if(rolLogin == 2){
             modoVendedor();
         }
+         
         MostrarComboCat();
         MostrarTabArti();
         fieldCod.requestFocus();
@@ -115,6 +125,8 @@ public class MainPage extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
         mainTitle = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        fieldUserName = new javax.swing.JTextField();
         tabsPanel = new javax.swing.JTabbedPane();
         panelNuevaVenta = new javax.swing.JPanel();
         contMainVenta = new javax.swing.JPanel();
@@ -146,7 +158,7 @@ public class MainPage extends javax.swing.JFrame {
         jTableVentaItems = new javax.swing.JTable();
         contCierreVenta = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnCerrarVenta = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         fieldTotalPagar = new javax.swing.JTextField();
@@ -430,6 +442,10 @@ public class MainPage extends javax.swing.JFrame {
         mainTitle.setForeground(new java.awt.Color(255, 255, 255));
         mainTitle.setText("CANTINA ANGLO");
 
+        jLabel27.setText("Usuario:");
+
+        fieldUserName.setEditable(false);
+
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
@@ -437,13 +453,20 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addComponent(mainTitle)
-                .addContainerGap(839, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 685, Short.MAX_VALUE)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(mainTitle)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mainTitle)
+                    .addComponent(jLabel27)
+                    .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -758,12 +781,12 @@ public class MainPage extends javax.swing.JFrame {
 
         contCierreVenta.setPreferredSize(new java.awt.Dimension(468, 80));
 
-        jButton2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_request_money_30px.png"))); // NOI18N
-        jButton2.setText("Cerrar Venta");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrarVenta.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnCerrarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_request_money_30px.png"))); // NOI18N
+        btnCerrarVenta.setText("Cerrar Venta");
+        btnCerrarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCerrarVentaActionPerformed(evt);
             }
         });
 
@@ -773,13 +796,13 @@ public class MainPage extends javax.swing.JFrame {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnCerrarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCerrarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -789,7 +812,6 @@ public class MainPage extends javax.swing.JFrame {
         fieldTotalPagar.setEditable(false);
         fieldTotalPagar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         fieldTotalPagar.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        fieldTotalPagar.setText("21.500");
         fieldTotalPagar.setPreferredSize(new java.awt.Dimension(50, 21));
 
         jLabel13.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
@@ -1616,9 +1638,16 @@ public class MainPage extends javax.swing.JFrame {
          tabsPanel.setSelectedIndex(4); 
     }//GEN-LAST:event_btnInformesMouseReleased
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnCerrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarVentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        modelo = (DefaultTableModel) jTableVentaItems.getModel();
+        RegistrarVenta();
+        RegistrarDetalle();
+        ActualizarStock();
+        LimpiarTable();
+        fieldTotalPagar.setText("");
+        fieldCod.requestFocus();
+    }//GEN-LAST:event_btnCerrarVentaActionPerformed
 
     private void jScrollPane4ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jScrollPane4ComponentResized
         // TODO add your handling code here:
@@ -1929,6 +1958,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton btnAbrirCaja;
     private javax.swing.JButton btnActualizarProductos;
     private javax.swing.JButton btnBorrarProducto;
+    private javax.swing.JButton btnCerrarVenta;
     private javax.swing.JButton btnConfig;
     private javax.swing.JButton btnExportProduc;
     private javax.swing.JButton btnGuardarProducto;
@@ -1969,9 +1999,9 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTextField fieldT2PrecioCosto;
     private javax.swing.JTextField fieldT2PrecioVenta;
     private javax.swing.JTextField fieldTotalPagar;
+    private javax.swing.JTextField fieldUserName;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1997,6 +2027,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2075,5 +2106,60 @@ public class MainPage extends javax.swing.JFrame {
         Timestamp ts = new Timestamp(System.currentTimeMillis());
         Date date = new Date(ts.getTime());
         return date;
+    }
+    
+    public void setUser(String nombre){
+        fieldUserName.setText(nombre);
+    }
+    
+    public void RegistrarVenta (){
+        try{
+            Integer id = null;
+            Boolean estado = true;
+            String nomUser = fieldUserName.getText();
+            Usuarios user = uc.buscarPorNombre(nomUser);
+            int monto = Integer.parseInt(fieldTotalPagar.getText());
+            Date fecha = TimestampToDate();
+            Ventas ven = new Ventas(id, fecha, monto, estado, user);
+            vc.insertar(ven);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error en la venta\n" +e.toString() );
+        }
+    }
+    
+    private void RegistrarDetalle(){
+        try{
+            DetalleVenta dv = null;
+            Integer iddv= null;
+            Integer descuento = null;
+            Date fecha = TimestampToDate();
+            boolean estado =true;
+            Integer idven = vc.buscarMaxId();
+            Ventas fkVenta = vc.buscar(idven);
+            for (int i = 0; i<jTableVentaItems.getRowCount(); i++){
+                Integer id = Integer.parseInt(jTableVentaItems.getValueAt(i, 1).toString());
+                Integer cant = Integer.parseInt(jTableVentaItems.getValueAt(i, 4).toString());
+                Integer precio = Integer.parseInt(jTableVentaItems.getValueAt(i, 5).toString());
+                Articulos fkArticulos = ac.buscarId(id);
+                dv = new DetalleVenta(iddv, fkArticulos, fkVenta, cant, precio, descuento, estado, fecha);
+                dvc.insertar(dv);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error en la carga de la lista de articulos de venta:\n"+e.toString());
+        }
+    }
+    
+    private void ActualizarStock(){
+        try{
+            for(int i =0 ; i<jTableVentaItems.getRowCount(); i++){
+                Integer id = Integer.parseInt(jTableVentaItems.getValueAt(i, 1).toString());
+                Integer cant = Integer.parseInt(jTableVentaItems.getValueAt(i, 4).toString());
+                Articulos arti = ac.buscarId(id);
+                Integer stock_actual = arti.getStock()-cant;
+                ac.ActualizarStock(stock_actual, id);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error en la actualizacion del stock\n"+e.toString());
+        }
     }
 }

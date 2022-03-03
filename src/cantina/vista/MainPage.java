@@ -179,6 +179,7 @@ public class MainPage extends javax.swing.JFrame {
         mainTitle = new javax.swing.JLabel();
         fieldUserName = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         tabsPanel = new javax.swing.JTabbedPane();
         panelNuevaVenta = new javax.swing.JPanel();
         contMainVenta = new javax.swing.JPanel();
@@ -1062,7 +1063,14 @@ public class MainPage extends javax.swing.JFrame {
         mainTitle.setForeground(new java.awt.Color(255, 255, 255));
         mainTitle.setText("CANTINA ANGLO");
 
+        fieldUserName.setEditable(false);
+        fieldUserName.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+
+        jLabel29.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         jLabel29.setText("Usuario:");
+
+        jButton2.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jButton2.setText("CERRAR SESION");
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
@@ -1071,21 +1079,24 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addComponent(mainTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 644, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 432, Short.MAX_VALUE)
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jButton2)
+                .addGap(63, 63, 63))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mainTitle)
                     .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29))
-                .addGap(20, 20, 20))
+                    .addComponent(jLabel29)
+                    .addComponent(jButton2))
+                .addGap(15, 15, 15))
         );
 
         getContentPane().add(header, java.awt.BorderLayout.NORTH);
@@ -1430,6 +1441,7 @@ public class MainPage extends javax.swing.JFrame {
         fieldTotalPagar.setEditable(false);
         fieldTotalPagar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         fieldTotalPagar.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        fieldTotalPagar.setText("21.500");
         fieldTotalPagar.setPreferredSize(new java.awt.Dimension(50, 21));
 
         jLabel13.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
@@ -2574,6 +2586,7 @@ private float totalMuestraCaja(){
     private javax.swing.JTextField fieldUserName;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

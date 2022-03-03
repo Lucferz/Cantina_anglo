@@ -43,10 +43,11 @@ public class MainPage extends javax.swing.JFrame {
     UsuariosControl uc = new UsuariosControl();
     CajasControl cajac = new CajasControl();
     DefaultTableModel modelo;
-    boolean estado_caja = cajac.buscarCaja(1);
+    //boolean estado_caja = cajac.buscarCaja(1);
+    boolean estado_caja = true;
     int item;
     int totalPagar=0;
-     private int rolActual = 45;
+    private int rolActual = 45;
 
     public int getRolActual() {
         return rolActual;
@@ -83,6 +84,13 @@ public class MainPage extends javax.swing.JFrame {
         if(rolLogin == 2){
             modoVendedor();
         }
+        if(!estado_caja){
+            tabsPanel.setSelectedComponent(panelCajero);
+            tabsPanel.setEnabledAt(0 , estado_caja);
+            btnNewVenta.setEnabled(false);
+            
+            btnNewVenta.setToolTipText("Recuerda abrir tu caja antes de realizar ventas");
+        }
          
         MostrarComboCat();
         MostrarTabArti();
@@ -91,8 +99,10 @@ public class MainPage extends javax.swing.JFrame {
     }
     
     public void modoVendedor(){
-        tabsPanel.removeTabAt(4);
-        tabsPanel.removeTabAt(3);
+        //Quitar tabs que no van a ser accesible
+        tabsPanel.remove(panelConfig);
+        tabsPanel.remove(panelInformes);
+        //ocultando sus botones accesores del sidebar
         btnConfig.setVisible(false);
         btnInformes.setVisible(false);
     }
@@ -163,7 +173,7 @@ public class MainPage extends javax.swing.JFrame {
         fieldTotalMuestra = new javax.swing.JFormattedTextField();
         dialogAbrirCaja = new javax.swing.JDialog();
         contValoresApertura = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        labelSaldoInicial = new javax.swing.JLabel();
         btnConfirmarAbrirCaja = new javax.swing.JButton();
         btnCancelarAbrirCaja = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
@@ -177,6 +187,7 @@ public class MainPage extends javax.swing.JFrame {
         btnConfig = new javax.swing.JButton();
         btnVentas = new javax.swing.JButton();
         btnInformes = new javax.swing.JButton();
+        btnCajero = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
@@ -796,13 +807,13 @@ public class MainPage extends javax.swing.JFrame {
         contValoresApertura.setEnabled(false);
         contValoresApertura.setLayout(new java.awt.GridBagLayout());
 
-        jLabel9.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
-        jLabel9.setText("Saldo Inicial:");
+        labelSaldoInicial.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        labelSaldoInicial.setText("Saldo Inicial:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
-        contValoresApertura.add(jLabel9, gridBagConstraints);
+        contValoresApertura.add(labelSaldoInicial, gridBagConstraints);
 
         btnConfirmarAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         btnConfirmarAbrirCaja.setText("CONFIRMAR APERTURA");
@@ -930,6 +941,11 @@ public class MainPage extends javax.swing.JFrame {
                 btnProductosMouseReleased(evt);
             }
         });
+        btnProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductosActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -950,6 +966,11 @@ public class MainPage extends javax.swing.JFrame {
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnConfigMouseReleased(evt);
+            }
+        });
+        btnConfig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfigActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -974,6 +995,11 @@ public class MainPage extends javax.swing.JFrame {
                 btnVentasMouseReleased(evt);
             }
         });
+        btnVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentasActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -996,6 +1022,11 @@ public class MainPage extends javax.swing.JFrame {
                 btnInformesMouseReleased(evt);
             }
         });
+        btnInformes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInformesActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -1005,6 +1036,30 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
         contSidebarButtons.add(btnInformes, gridBagConstraints);
+
+        btnCajero.setText("Cajero");
+        btnCajero.setMaximumSize(new java.awt.Dimension(135, 39));
+        btnCajero.setMinimumSize(new java.awt.Dimension(135, 39));
+        btnCajero.setPreferredSize(new java.awt.Dimension(111, 39));
+        btnCajero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCajeroMouseReleased(evt);
+            }
+        });
+        btnCajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCajeroActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
+        contSidebarButtons.add(btnCajero, gridBagConstraints);
 
         jPanel4.setBackground(new java.awt.Color(103, 226, 109));
 
@@ -1021,8 +1076,12 @@ public class MainPage extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.weighty = 0.25;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
         contSidebarButtons.add(jPanel4, gridBagConstraints);
 
         jPanel13.setBackground(new java.awt.Color(103, 226, 109));
@@ -2001,6 +2060,8 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnNewVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewVentaActionPerformed
         // TODO add your handling code here:
+         tabsPanel.setSelectedComponent(panelNuevaVenta);
+         fieldCod.requestFocus();
     }//GEN-LAST:event_btnNewVentaActionPerformed
 
     private void btnProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseClicked
@@ -2029,28 +2090,26 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnNewVentaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewVentaMouseReleased
         // TODO add your handling code here:
-         tabsPanel.setSelectedIndex(0);   
-         fieldCod.requestFocus();
+         //tabsPanel.setSelectedIndex(0);   
+      
     }//GEN-LAST:event_btnNewVentaMouseReleased
 
     private void btnProductosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseReleased
         // TODO add your handling code here:
-        tabsPanel.setSelectedIndex(1); 
+      
+        
     }//GEN-LAST:event_btnProductosMouseReleased
 
     private void btnVentasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentasMouseReleased
         // TODO add your handling code here:
-         tabsPanel.setSelectedIndex(2); 
     }//GEN-LAST:event_btnVentasMouseReleased
 
     private void btnConfigMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfigMouseReleased
         // TODO add your handling code here:
-         tabsPanel.setSelectedIndex(3); 
     }//GEN-LAST:event_btnConfigMouseReleased
 
     private void btnInformesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformesMouseReleased
         // TODO add your handling code here:
-         tabsPanel.setSelectedIndex(4); 
     }//GEN-LAST:event_btnInformesMouseReleased
 
     private void btnCerrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarVentaActionPerformed
@@ -2447,6 +2506,39 @@ public class MainPage extends javax.swing.JFrame {
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCerrarSesionMouseReleased
+
+    private void btnCajeroMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCajeroMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCajeroMouseReleased
+
+    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
+        // TODO add your handling code here:
+        tabsPanel.setSelectedComponent(panelProductos);
+    }//GEN-LAST:event_btnProductosActionPerformed
+
+    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
+        // TODO add your handling code here:
+        tabsPanel.setSelectedComponent(panelVentas);
+
+    }//GEN-LAST:event_btnVentasActionPerformed
+
+    private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
+        // TODO add your handling code here:
+                 tabsPanel.setSelectedComponent(panelConfig);
+
+    }//GEN-LAST:event_btnConfigActionPerformed
+
+    private void btnInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformesActionPerformed
+        // TODO add your handling code here:
+                 tabsPanel.setSelectedComponent(panelInformes);
+
+    }//GEN-LAST:event_btnInformesActionPerformed
+
+    private void btnCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCajeroActionPerformed
+        // TODO add your handling code here:
+                tabsPanel.setSelectedComponent(panelCajero);
+
+    }//GEN-LAST:event_btnCajeroActionPerformed
     
     private void esNumero(java.awt.event.KeyEvent evt){
         //Rechaza el tecleo si no es un Numero
@@ -2534,6 +2626,7 @@ private float totalMuestraCaja(){
     private javax.swing.JButton btnAbrirCaja;
     private javax.swing.JButton btnActualizarProductos;
     private javax.swing.JButton btnBorrarProducto;
+    private javax.swing.JButton btnCajero;
     private javax.swing.JButton btnCancelarAbrirCaja;
     private javax.swing.JButton btnCancelarArqueo;
     private javax.swing.JButton btnCerrarCaja;
@@ -2623,7 +2716,6 @@ private float totalMuestraCaja(){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -2656,6 +2748,7 @@ private float totalMuestraCaja(){
     private javax.swing.JLabel labT2PrecioCosto;
     private javax.swing.JLabel labT2PrecioVenta;
     private javax.swing.JLabel labT2StockDisp;
+    private javax.swing.JLabel labelSaldoInicial;
     private javax.swing.JLabel labelTitleCajero;
     private javax.swing.JPanel logoCont;
     private javax.swing.JLabel mainLogo;

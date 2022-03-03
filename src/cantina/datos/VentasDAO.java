@@ -41,6 +41,12 @@ public class VentasDAO extends ControladorAbstract{
         return ven;
     }
     
+    public Integer TotalVentasPArqueo(){
+        TypedQuery<Long> query = em.createNamedQuery("Ventas.TotalVentasPCierre", Long.class);
+        Integer totalventas = Math.toIntExact(query.getSingleResult());
+        return totalventas;
+    }
+    
     public void insertar(Ventas v){
         em.getTransaction().begin();
         em.persist(v);

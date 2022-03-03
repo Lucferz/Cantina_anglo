@@ -36,4 +36,7 @@ public class VentasControlador {
     public void eliminar(Ventas v){
         new VentasDAO().eliminar(v);
     }
+    public Integer TotalVentasPArqueo(){
+        return new VentasDAO().TotalVentasPArqueo();
+    }
 }

@@ -5,12 +5,14 @@
  */
 package cantina.vista;
 
+import cantina.controlador.ArqueoscajaControl;
 import cantina.controlador.ArticulosControl;
 import cantina.controlador.CajasControl;
 import cantina.controlador.CategoriasControlador;
 import cantina.controlador.DetalleVentaControl;
 import cantina.controlador.UsuariosControl;
 import cantina.controlador.VentasControlador;
+import cantina.modelo.Arqueoscaja;
 import cantina.modelo.Articulos;
 import cantina.modelo.Categorias;
 import cantina.modelo.DetalleVenta;
@@ -42,8 +44,8 @@ public class MainPage extends javax.swing.JFrame {
     DetalleVentaControl dvc = new DetalleVentaControl();
     UsuariosControl uc = new UsuariosControl();
     CajasControl cajac = new CajasControl();
+    ArqueoscajaControl aqcontrol = new ArqueoscajaControl();
     DefaultTableModel modelo;
-    boolean estado_caja = cajac.buscarCaja(1);
     int item;
     int totalPagar=0;
      private int rolActual = 45;
@@ -811,11 +813,6 @@ public class MainPage extends javax.swing.JFrame {
         btnConfirmarAbrirCaja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnConfirmarAbrirCajaMouseReleased(evt);
-            }
-        });
-        btnConfirmarAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmarAbrirCajaActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2335,10 +2332,28 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnRemitirArqueoMuestraMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemitirArqueoMuestraMouseReleased
         // TODO add your handling code here:
-        System.out.println("Valor de arqueo remitido: " +fieldTotalMuestra.getValue());
-        //dialogCerrarCaja.setVisible(false);
-        dialogCerrarCaja.dispose();
-//        enable();
+        try{
+            Arqueoscaja aqc = aqcontrol.UltimoElemento();
+            String userActual = fieldUserName.getText();
+            String userCaja = uc.buscarIdINT(aqc.getFkUsuario()).getNombre();
+            if (userCaja.equals(userActual)){
+                Date fechaFin = TimestampToDate();
+                Integer montofinal = Integer.parseInt(fieldTotalMuestra.getValue().toString());
+                Integer totalventas = vc.TotalVentasPArqueo();
+                aqc.setFechaFin(fechaFin);
+                aqc.setMontoFinal(montofinal);
+                aqc.setTotalVentas(totalventas);
+                aqcontrol.modificar(aqc);
+                dialogCerrarCaja.dispose();
+                JOptionPane.showMessageDialog(null,"Valor de arqueo remitido: " +fieldTotalMuestra.getValue());
+            }else{
+                JOptionPane.showMessageDialog(null, "El usuario que haga el arqueo, debe ser el mismo que hizo la apertura\n"
+                        + "El usuario que abrio la caja: "+userCaja
+                        +"\nEl usuario que intenta cerrar: "+userActual, "Error en el cierre de caja", 2);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n"+e.toString());
+        }
     }//GEN-LAST:event_btnRemitirArqueoMuestraMouseReleased
 
     private void btnCerrarCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarCajaMouseReleased
@@ -2351,10 +2366,6 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCerrarCajaActionPerformed
 
-    private void btnConfirmarAbrirCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarAbrirCajaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConfirmarAbrirCajaActionPerformed
-
     private void btnAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirCajaMouseReleased
         // TODO add your handling code here:
            dialogAbrirCaja.setVisible(true);
@@ -2362,8 +2373,23 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnConfirmarAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmarAbrirCajaMouseReleased
         // TODO add your handling code here:
-          System.out.println("Caja abierta con exito\nMonto: "+fieldSaldoInicAbrirCaja.getValue());
-        dialogAbrirCaja.setVisible(false);
+        try{
+            Integer id = null;
+            Integer fkCaja = 1;
+            Integer fkUsuario  = uc.buscarPorNombre(fieldUserName.getText()).getIdusuario();
+            Date fechaInicio = TimestampToDate();
+            Date fechaFin = null;
+            Integer montoinicial = Integer.parseInt(fieldSaldoInicAbrirCaja.getValue().toString());
+            Integer montofinal = null;
+            Integer totalventas = null;
+            boolean estado = true;
+            Arqueoscaja aqc = new Arqueoscaja(id, fkCaja, fkUsuario, fechaInicio, fechaFin, montoinicial, montofinal, totalventas, estado);
+            aqcontrol.insertar(aqc);
+            dialogAbrirCaja.setVisible(false);
+            JOptionPane.showMessageDialog(null,"Caja abierta con exito\nMonto: "+fieldSaldoInicAbrirCaja.getValue());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n"+e.toString());
+        }
     }//GEN-LAST:event_btnConfirmarAbrirCajaMouseReleased
 
     private void btnCancelarAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarAbrirCajaMouseReleased

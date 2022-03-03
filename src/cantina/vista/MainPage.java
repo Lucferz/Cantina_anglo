@@ -55,26 +55,29 @@ public class MainPage extends javax.swing.JFrame {
     /**
      * Creates new form MainPage
      */
-    public MainPage(int rolLogin) {
+    
+    public MainPage() {
+    }
 
+    public MainPage(int rolLogin) {
         initComponents();
         
         //System.out.println("Rol en mainpage: "+ rolLogin);
        
         setLocationRelativeTo(null);
-         if(rolLogin == 1){
-             //SI ES ADMINISTRADOR SE LE PREGUNTA SI QUIERE INGRESAR COMO VENDEDOR, PARA EVITAR MOSTRAR DEMASIADAS OPCIONES
-             String[] options = new String[] {"Como Administrador", "Como Vendedor"};
-             int respuesta = JOptionPane.showOptionDialog(null, "Con qué privilegios desea acceder?", "Elegir modo de priviegio",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                null, options, options[0]);
-             
-             if(respuesta == 1){
-                 
-                 modoVendedor();
-             }
-         }
-         if(rolLogin == 2){
+        if(rolLogin == 1){
+            //SI ES ADMINISTRADOR SE LE PREGUNTA SI QUIERE INGRESAR COMO VENDEDOR, PARA EVITAR MOSTRAR DEMASIADAS OPCIONES
+            String[] options = new String[] {"Como Administrador", "Como Vendedor"};
+            int respuesta = JOptionPane.showOptionDialog(null, "Con qué privilegios desea acceder?", "Elegir modo de priviegio",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, options, options[0]);
+            
+            if(respuesta == 1){
+                
+                modoVendedor();
+            }
+        }
+        if(rolLogin == 2){
             modoVendedor();
         }
          
@@ -82,8 +85,6 @@ public class MainPage extends javax.swing.JFrame {
         MostrarTabArti();
         fieldCod.requestFocus();
         ToolTipManager.sharedInstance().setInitialDelay(300);
-         
-         
     }
     
     public void modoVendedor(){
@@ -179,7 +180,7 @@ public class MainPage extends javax.swing.JFrame {
         mainTitle = new javax.swing.JLabel();
         fieldUserName = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
         tabsPanel = new javax.swing.JTabbedPane();
         panelNuevaVenta = new javax.swing.JPanel();
         contMainVenta = new javax.swing.JPanel();
@@ -1069,8 +1070,13 @@ public class MainPage extends javax.swing.JFrame {
         jLabel29.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         jLabel29.setText("Usuario:");
 
-        jButton2.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jButton2.setText("CERRAR SESION");
+        btnCerrarSesion.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnCerrarSesion.setText("CERRAR SESION");
+        btnCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCerrarSesionMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
@@ -1084,7 +1090,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(jButton2)
+                .addComponent(btnCerrarSesion)
                 .addGap(63, 63, 63))
         );
         headerLayout.setVerticalGroup(
@@ -1095,7 +1101,7 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(mainTitle)
                     .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29)
-                    .addComponent(jButton2))
+                    .addComponent(btnCerrarSesion))
                 .addGap(15, 15, 15))
         );
 
@@ -1441,7 +1447,6 @@ public class MainPage extends javax.swing.JFrame {
         fieldTotalPagar.setEditable(false);
         fieldTotalPagar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         fieldTotalPagar.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        fieldTotalPagar.setText("21.500");
         fieldTotalPagar.setPreferredSize(new java.awt.Dimension(50, 21));
 
         jLabel13.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
@@ -2443,6 +2448,12 @@ public class MainPage extends javax.swing.JFrame {
         esNumero(evt);
         }
     }//GEN-LAST:event_fieldSaldoInicAbrirCajaKeyTyped
+
+    private void btnCerrarSesionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseReleased
+        Login2 login = new Login2();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCerrarSesionMouseReleased
     
     private void esNumero(java.awt.event.KeyEvent evt){
         //Rechaza el tecleo si no es un Numero
@@ -2533,6 +2544,7 @@ private float totalMuestraCaja(){
     private javax.swing.JButton btnCancelarAbrirCaja;
     private javax.swing.JButton btnCancelarArqueo;
     private javax.swing.JButton btnCerrarCaja;
+    private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnCerrarVenta;
     private javax.swing.JButton btnConfig;
     private javax.swing.JButton btnConfirmarAbrirCaja;
@@ -2586,7 +2598,6 @@ private float totalMuestraCaja(){
     private javax.swing.JTextField fieldUserName;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

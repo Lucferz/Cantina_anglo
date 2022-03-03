@@ -85,6 +85,7 @@ nuevamente.
 
 *Pooner en funcionamiento los botones de la pestaña de stock (Listo)
 
+*Consulta que traiga monto inicial y final de arqueo de ccaja
 
 
 -- Para version 1.1
@@ -99,4 +100,5 @@ Tener en consideracion que si pasa un dia sin hacerse el cierre pq por a o b mot
 en el dia, al dia siguiente cuando vuelva tendra que hacer el cierre antes de realizar una apertura
 nuevamente
 
+-Usuarios en la base de datos para cada usuario con sus privilegios respectivos
 ----------

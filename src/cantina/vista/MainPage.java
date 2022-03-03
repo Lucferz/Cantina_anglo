@@ -6,6 +6,7 @@
 package cantina.vista;
 
 import cantina.controlador.ArticulosControl;
+import cantina.controlador.CajasControl;
 import cantina.controlador.CategoriasControlador;
 import cantina.controlador.DetalleVentaControl;
 import cantina.controlador.UsuariosControl;
@@ -40,7 +41,9 @@ public class MainPage extends javax.swing.JFrame {
     VentasControlador vc = new VentasControlador();
     DetalleVentaControl dvc = new DetalleVentaControl();
     UsuariosControl uc = new UsuariosControl();
+    CajasControl cajac = new CajasControl();
     DefaultTableModel modelo;
+    boolean estado_caja = cajac.buscarCaja(1);
     int item;
     int totalPagar=0;
      private int rolActual = 45;
@@ -1948,11 +1951,6 @@ public class MainPage extends javax.swing.JFrame {
                 btnAbrirCajaMouseReleased(evt);
             }
         });
-        btnAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAbrirCajaActionPerformed(evt);
-            }
-        });
         contBtnAbrir.add(btnAbrirCaja);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2328,11 +2326,6 @@ public class MainPage extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jLabel8MouseReleased
-
-    private void btnAbrirCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirCajaActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnAbrirCajaActionPerformed
 
     private void btnCancelarArqueoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarArqueoMouseReleased
         // TODO add your handling code here:

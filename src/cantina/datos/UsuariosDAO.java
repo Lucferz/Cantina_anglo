@@ -31,6 +31,11 @@ public class UsuariosDAO {
         return u;
     }
     
+    public Usuarios buscarIdINT (Integer id){
+        Usuarios u = em.find(Usuarios.class, id);
+        return u;
+    }
+    
     public Usuarios buscarPorNombre (String nom){
         TypedQuery<Usuarios> sql = em.createNamedQuery("Usuarios.findByNombre",Usuarios.class);
         sql.setParameter("nombre", nom);

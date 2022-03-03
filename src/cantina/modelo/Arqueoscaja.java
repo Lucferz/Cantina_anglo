@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Arqueoscaja.findAll", query = "SELECT a FROM Arqueoscaja a")
+    , @NamedQuery(name = "Arqueoscaja.findbyMaxId", query = "SELECT a FROM Arqueoscaja a WHERE a.idArqueo = (SELECT MAX(a.idArqueo) FROM Arqueoscaja a)")
     , @NamedQuery(name = "Arqueoscaja.findByIdArqueo", query = "SELECT a FROM Arqueoscaja a WHERE a.idArqueo = :idArqueo")
     , @NamedQuery(name = "Arqueoscaja.findByFkCaja", query = "SELECT a FROM Arqueoscaja a WHERE a.fkCaja = :fkCaja")
     , @NamedQuery(name = "Arqueoscaja.findByFkUsuario", query = "SELECT a FROM Arqueoscaja a WHERE a.fkUsuario = :fkUsuario")
@@ -77,6 +78,20 @@ public class Arqueoscaja implements Serializable {
         this.idArqueo = idArqueo;
         this.fkCaja = fkCaja;
     }
+
+    public Arqueoscaja(Integer idArqueo, int fkCaja, Integer fkUsuario, Date fechaInicio, Date fechaFin, Integer montoInicial, Integer montoFinal, Integer totalVentas, Boolean estado) {
+        this.idArqueo = idArqueo;
+        this.fkCaja = fkCaja;
+        this.fkUsuario = fkUsuario;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.montoInicial = montoInicial;
+        this.montoFinal = montoFinal;
+        this.totalVentas = totalVentas;
+        this.estado = estado;
+    }
+    
+    
 
     public Integer getIdArqueo() {
         return idArqueo;
@@ -172,7 +187,9 @@ public class Arqueoscaja implements Serializable {
 
     @Override
     public String toString() {
-        return "cantina.modelo.Arqueoscaja[ idArqueo=" + idArqueo + " ]";
+        return "Arqueoscaja{" + "idArqueo=" + idArqueo + ", fkCaja=" + fkCaja + ", fkUsuario=" + fkUsuario + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", montoInicial=" + montoInicial + ", montoFinal=" + montoFinal + ", totalVentas=" + totalVentas + ", estado=" + estado + '}';
     }
+
+    
     
 }

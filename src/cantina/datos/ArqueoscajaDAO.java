@@ -5,7 +5,7 @@
  */
 package cantina.datos;
 
-import cantina.modelo.Cajas;
+import cantina.modelo.Arqueoscaja;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -16,44 +16,44 @@ import javax.persistence.TypedQuery;
  *
  * @author Lucas
  */
-public class CajasDAO {
+public class ArqueoscajaDAO {
     EntityManagerFactory emf =Persistence.createEntityManagerFactory("CANTINA-ANGLO-SISTEMA-VENTASPU");
     EntityManager em = emf.createEntityManager();
     
-    public List<Cajas> listar(){
-        TypedQuery<Cajas> query = em.createNamedQuery("Cajas.findAll", Cajas.class);
-        List<Cajas> res = query.getResultList();
+    public List<Arqueoscaja> listar(){
+        TypedQuery<Arqueoscaja> query = em.createNamedQuery("Arqueoscaja.findAll", Arqueoscaja.class);
+        List<Arqueoscaja> res = query.getResultList();
         return res;
     }
-    public Boolean buscarEstadoDeCaja (Integer id){
-        TypedQuery<Cajas> query = em.createNamedQuery("Cajas.findEstadoOfCaja",Cajas.class);
-        query.setParameter("idcaja",id );
-        Cajas estado = query.getSingleResult();
-        return estado.getEstado();
+    
+    public Arqueoscaja UltimoElemento (){
+        TypedQuery<Arqueoscaja> query = em.createNamedQuery("Arqueoscaja.findbyMaxId", Arqueoscaja.class);
+        Arqueoscaja aqcaja = query.getSingleResult();
+        return aqcaja;
     }
     
-    public void insertar (Cajas a){
+    public void insertar (Arqueoscaja a){
         em.getTransaction().begin();
         em.persist(a);
         em.getTransaction().commit();
     }
     
-    public void modificar (Cajas a){
+    public void modificar (Arqueoscaja a){
         em.getTransaction().begin();
         em.merge(a);
         em.getTransaction().commit();
     }
     
-    public void eliminarId (Cajas a){
+    public void eliminarId (Arqueoscaja a){
         em.getTransaction().begin();
-        a = em.find(Cajas.class, a.getIdCaja());
+        a = em.find(Arqueoscaja.class, a.getIdArqueo());
         em.remove(a);
         em.getTransaction().commit();
     }
     
     public void eliminarIdLogico(Integer id){
         em.getTransaction().begin();
-        Cajas a = em.find(Cajas.class, id);
+        Arqueoscaja a = em.find(Arqueoscaja.class, id);
         a.setEstado(false);
         em.merge(a);
         em.getTransaction().commit();

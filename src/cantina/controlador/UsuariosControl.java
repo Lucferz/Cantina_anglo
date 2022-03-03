@@ -27,6 +27,10 @@ public class UsuariosControl {
         return new UsuariosDAO().buscarPorNombre(nom);
     }
     
+    public Usuarios buscarIdINT (Integer id){
+        return new UsuariosDAO().buscarIdINT(id);
+    }
+    
     public void insertar(Usuarios u){
         new UsuariosDAO().insertar(u);
     }

@@ -6,13 +6,30 @@
 package cantina.controlador;
 
 import cantina.datos.CajasDAO;
+import cantina.modelo.Cajas;
+import java.util.List;
 
 /**
  *
  * @author Lucas
  */
 public class CajasControl {
-    public Boolean buscarCaja (Integer id){
-        return new CajasDAO().buscarCaja(id);
+    public Boolean buscarEstadoDeCaja (Integer id){
+        return new CajasDAO().buscarEstadoDeCaja(id);
+    }
+    public List<Cajas> listar(){
+        return new CajasDAO().listar();
+    }
+    public void insertar (Cajas a){
+        new CajasDAO().insertar(a);
+    }
+    public void modificar (Cajas a){
+        new CajasDAO().modificar(a);
+    }
+    public void eliminarId (Cajas a){
+        new CajasDAO().eliminarId(a);
+    }
+    public void eliminarLogico(Integer id){
+        new CajasDAO().eliminarIdLogico(id);
     }
 }

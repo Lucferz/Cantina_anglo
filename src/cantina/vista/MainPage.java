@@ -177,8 +177,8 @@ public class MainPage extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
         mainTitle = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
         fieldUserName = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
         tabsPanel = new javax.swing.JTabbedPane();
         panelNuevaVenta = new javax.swing.JPanel();
         contMainVenta = new javax.swing.JPanel();
@@ -1062,9 +1062,7 @@ public class MainPage extends javax.swing.JFrame {
         mainTitle.setForeground(new java.awt.Color(255, 255, 255));
         mainTitle.setText("CANTINA ANGLO");
 
-        jLabel27.setText("Usuario:");
-
-        fieldUserName.setEditable(false);
+        jLabel29.setText("Usuario:");
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
@@ -1073,12 +1071,11 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addComponent(mainTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 685, Short.MAX_VALUE)
-                .addComponent(jLabel27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 644, Short.MAX_VALUE)
+                .addComponent(jLabel29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-                .addContainerGap(790, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1086,8 +1083,8 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mainTitle)
-                    .addComponent(jLabel27)
-                    .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29))
                 .addGap(20, 20, 20))
         );
 
@@ -2207,7 +2204,9 @@ public class MainPage extends javax.swing.JFrame {
                 }
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, "Hubo un error al guardar la venta:\n"+e.getMessage());
+            fieldCod.setText("");
+            fieldCod.requestFocus();
         }
     }//GEN-LAST:event_fieldCodKeyPressed
 
@@ -2519,10 +2518,10 @@ private float totalMuestraCaja(){
     private javax.swing.JButton btnAbrirCaja;
     private javax.swing.JButton btnActualizarProductos;
     private javax.swing.JButton btnBorrarProducto;
-    private javax.swing.JButton btnCerrarVenta;
     private javax.swing.JButton btnCancelarAbrirCaja;
     private javax.swing.JButton btnCancelarArqueo;
     private javax.swing.JButton btnCerrarCaja;
+    private javax.swing.JButton btnCerrarVenta;
     private javax.swing.JButton btnConfig;
     private javax.swing.JButton btnConfirmarAbrirCaja;
     private javax.swing.JButton btnExportProduc;
@@ -2599,10 +2598,8 @@ private float totalMuestraCaja(){
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-<<<<<<< HEAD
-=======
     private javax.swing.JLabel jLabel28;
->>>>>>> 0cb7e9fbc67e246dcb6a6d1078595efc8f7b3b9f
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2691,11 +2688,12 @@ private float totalMuestraCaja(){
         try{
             Integer id = null;
             Boolean estado = true;
+            Integer idcaja = 1;
             String nomUser = fieldUserName.getText();
             Usuarios user = uc.buscarPorNombre(nomUser);
             int monto = Integer.parseInt(fieldTotalPagar.getText());
             Date fecha = TimestampToDate();
-            Ventas ven = new Ventas(id, fecha, monto, estado, user);
+            Ventas ven = new Ventas(id, idcaja, fecha, monto, estado, user);
             vc.insertar(ven);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error en la venta\n" +e.toString() );

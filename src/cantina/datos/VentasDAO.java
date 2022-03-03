@@ -36,7 +36,7 @@ public class VentasDAO extends ControladorAbstract{
     }
     
     public Integer buscarMaxId(){
-        TypedQuery<Integer> sql = em.createNamedQuery("Ventas.FindMaxId", Integer.class);
+        TypedQuery<Integer> sql = em.createNamedQuery("Ventas.findMaxId", Integer.class);
         Integer ven = sql.getSingleResult();
         return ven;
     }

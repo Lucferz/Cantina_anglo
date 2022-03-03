@@ -7,9 +7,7 @@ package cantina.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,12 +17,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,8 +31,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Ventas.findAll", query = "SELECT v FROM Ventas v")
-    , @NamedQuery(name = "Ventas.FindMaxId", query = "SELECT MAX(v.idventa) FROM Ventas v")
+    , @NamedQuery(name = "Ventas.findMaxId", query = "SELECT MAX(v.idventa) FROM Ventas v")
     , @NamedQuery(name = "Ventas.findByIdventa", query = "SELECT v FROM Ventas v WHERE v.idventa = :idventa")
+    , @NamedQuery(name = "Ventas.findByIdCaja", query = "SELECT v FROM Ventas v WHERE v.idCaja = :idCaja")
     , @NamedQuery(name = "Ventas.findByFecha", query = "SELECT v FROM Ventas v WHERE v.fecha = :fecha")
     , @NamedQuery(name = "Ventas.findByTotal", query = "SELECT v FROM Ventas v WHERE v.total = :total")
     , @NamedQuery(name = "Ventas.findByEstado", query = "SELECT v FROM Ventas v WHERE v.estado = :estado")})
@@ -48,6 +45,9 @@ public class Ventas implements Serializable {
     @Basic(optional = false)
     @Column(name = "idventa")
     private Integer idventa;
+    @Basic(optional = false)
+    @Column(name = "id_caja")
+    private int idCaja;
     @Column(name = "fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
@@ -56,8 +56,6 @@ public class Ventas implements Serializable {
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fkVenta")
-    private List<DetalleVenta> detalleVentaList;
     @JoinColumn(name = "fk_usuario", referencedColumnName = "idusuario")
     @ManyToOne(optional = false)
     private Usuarios fkUsuario;
@@ -69,20 +67,20 @@ public class Ventas implements Serializable {
         this.idventa = idventa;
     }
 
-    public Ventas(Integer idventa, boolean estado) {
+    public Ventas(Integer idventa, int idCaja, boolean estado) {
         this.idventa = idventa;
+        this.idCaja = idCaja;
         this.estado = estado;
     }
 
-    public Ventas(Integer idventa, Date fecha, Integer total, boolean estado, Usuarios fkUsuario) {
+    public Ventas(Integer idventa, int idCaja, Date fecha, Integer total, boolean estado, Usuarios fkUsuario) {
         this.idventa = idventa;
+        this.idCaja = idCaja;
         this.fecha = fecha;
         this.total = total;
         this.estado = estado;
         this.fkUsuario = fkUsuario;
     }
-    
-    
     
 
     public Integer getIdventa() {
@@ -91,6 +89,14 @@ public class Ventas implements Serializable {
 
     public void setIdventa(Integer idventa) {
         this.idventa = idventa;
+    }
+
+    public int getIdCaja() {
+        return idCaja;
+    }
+
+    public void setIdCaja(int idCaja) {
+        this.idCaja = idCaja;
     }
 
     public Date getFecha() {
@@ -117,15 +123,6 @@ public class Ventas implements Serializable {
         this.estado = estado;
     }
 
-    @XmlTransient
-    public List<DetalleVenta> getDetalleVentaList() {
-        return detalleVentaList;
-    }
-
-    public void setDetalleVentaList(List<DetalleVenta> detalleVentaList) {
-        this.detalleVentaList = detalleVentaList;
-    }
-
     public Usuarios getFkUsuario() {
         return fkUsuario;
     }
@@ -133,7 +130,6 @@ public class Ventas implements Serializable {
     public void setFkUsuario(Usuarios fkUsuario) {
         this.fkUsuario = fkUsuario;
     }
-    
 
     @Override
     public int hashCode() {
@@ -157,7 +153,7 @@ public class Ventas implements Serializable {
 
     @Override
     public String toString() {
-        return "Ventas{" + "idventa=" + idventa + ", fecha=" + fecha + ", total=" + total + ", estado=" + estado + ", fkUsuario=" + fkUsuario + '}';
+        return "Ventas{" + "idventa=" + idventa + ", idCaja=" + idCaja + ", fecha=" + fecha + ", total=" + total + ", estado=" + estado + ", fkUsuario=" + fkUsuario + '}';
     }
 
     

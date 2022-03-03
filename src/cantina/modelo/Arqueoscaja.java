@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -32,9 +30,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Arqueoscaja.findAll", query = "SELECT a FROM Arqueoscaja a")
     , @NamedQuery(name = "Arqueoscaja.findByIdArqueo", query = "SELECT a FROM Arqueoscaja a WHERE a.idArqueo = :idArqueo")
-    , @NamedQuery(name = "Arqueoscaja.findByFkVendedor", query = "SELECT a FROM Arqueoscaja a WHERE a.fkVendedor = :fkVendedor")
-    , @NamedQuery(name = "Arqueoscaja.findByFkAdmin", query = "SELECT a FROM Arqueoscaja a WHERE a.fkAdmin = :fkAdmin")
-    , @NamedQuery(name = "Arqueoscaja.findByFecha", query = "SELECT a FROM Arqueoscaja a WHERE a.fecha = :fecha")})
+    , @NamedQuery(name = "Arqueoscaja.findByFkCaja", query = "SELECT a FROM Arqueoscaja a WHERE a.fkCaja = :fkCaja")
+    , @NamedQuery(name = "Arqueoscaja.findByFkUsuario", query = "SELECT a FROM Arqueoscaja a WHERE a.fkUsuario = :fkUsuario")
+    , @NamedQuery(name = "Arqueoscaja.findByFechaInicio", query = "SELECT a FROM Arqueoscaja a WHERE a.fechaInicio = :fechaInicio")
+    , @NamedQuery(name = "Arqueoscaja.findByFechaFin", query = "SELECT a FROM Arqueoscaja a WHERE a.fechaFin = :fechaFin")
+    , @NamedQuery(name = "Arqueoscaja.findByMontoInicial", query = "SELECT a FROM Arqueoscaja a WHERE a.montoInicial = :montoInicial")
+    , @NamedQuery(name = "Arqueoscaja.findByMontoFinal", query = "SELECT a FROM Arqueoscaja a WHERE a.montoFinal = :montoFinal")
+    , @NamedQuery(name = "Arqueoscaja.findByTotalVentas", query = "SELECT a FROM Arqueoscaja a WHERE a.totalVentas = :totalVentas")
+    , @NamedQuery(name = "Arqueoscaja.findByEstado", query = "SELECT a FROM Arqueoscaja a WHERE a.estado = :estado")})
 public class Arqueoscaja implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,16 +46,25 @@ public class Arqueoscaja implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_arqueo")
     private Integer idArqueo;
-    @Column(name = "fk_vendedor")
-    private Integer fkVendedor;
-    @Column(name = "fk_admin")
-    private Integer fkAdmin;
-    @Column(name = "fecha")
+    @Basic(optional = false)
+    @Column(name = "fk_caja")
+    private int fkCaja;
+    @Column(name = "fk_usuario")
+    private Integer fkUsuario;
+    @Column(name = "fecha_inicio")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fecha;
-    @JoinColumn(name = "fk_ajuste", referencedColumnName = "idAjuste")
-    @ManyToOne
-    private Ajustes fkAjuste;
+    private Date fechaInicio;
+    @Column(name = "fecha_fin")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaFin;
+    @Column(name = "monto_inicial")
+    private Integer montoInicial;
+    @Column(name = "monto_final")
+    private Integer montoFinal;
+    @Column(name = "total_ventas")
+    private Integer totalVentas;
+    @Column(name = "estado")
+    private Boolean estado;
 
     public Arqueoscaja() {
     }
@@ -61,14 +73,10 @@ public class Arqueoscaja implements Serializable {
         this.idArqueo = idArqueo;
     }
 
-    public Arqueoscaja(Integer idArqueo, Integer fkVendedor, Integer fkAdmin, Date fecha, Ajustes fkAjuste) {
+    public Arqueoscaja(Integer idArqueo, int fkCaja) {
         this.idArqueo = idArqueo;
-        this.fkVendedor = fkVendedor;
-        this.fkAdmin = fkAdmin;
-        this.fecha = fecha;
-        this.fkAjuste = fkAjuste;
+        this.fkCaja = fkCaja;
     }
-    
 
     public Integer getIdArqueo() {
         return idArqueo;
@@ -78,36 +86,68 @@ public class Arqueoscaja implements Serializable {
         this.idArqueo = idArqueo;
     }
 
-    public Integer getFkVendedor() {
-        return fkVendedor;
+    public int getFkCaja() {
+        return fkCaja;
     }
 
-    public void setFkVendedor(Integer fkVendedor) {
-        this.fkVendedor = fkVendedor;
+    public void setFkCaja(int fkCaja) {
+        this.fkCaja = fkCaja;
     }
 
-    public Integer getFkAdmin() {
-        return fkAdmin;
+    public Integer getFkUsuario() {
+        return fkUsuario;
     }
 
-    public void setFkAdmin(Integer fkAdmin) {
-        this.fkAdmin = fkAdmin;
+    public void setFkUsuario(Integer fkUsuario) {
+        this.fkUsuario = fkUsuario;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
-    public Ajustes getFkAjuste() {
-        return fkAjuste;
+    public Date getFechaFin() {
+        return fechaFin;
     }
 
-    public void setFkAjuste(Ajustes fkAjuste) {
-        this.fkAjuste = fkAjuste;
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public Integer getMontoInicial() {
+        return montoInicial;
+    }
+
+    public void setMontoInicial(Integer montoInicial) {
+        this.montoInicial = montoInicial;
+    }
+
+    public Integer getMontoFinal() {
+        return montoFinal;
+    }
+
+    public void setMontoFinal(Integer montoFinal) {
+        this.montoFinal = montoFinal;
+    }
+
+    public Integer getTotalVentas() {
+        return totalVentas;
+    }
+
+    public void setTotalVentas(Integer totalVentas) {
+        this.totalVentas = totalVentas;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
     @Override
@@ -132,9 +172,7 @@ public class Arqueoscaja implements Serializable {
 
     @Override
     public String toString() {
-        return "Arqueoscaja{" + "idArqueo=" + idArqueo + ", fkVendedor=" + fkVendedor + ", fkAdmin=" + fkAdmin + ", fecha=" + fecha + ", fkAjuste=" + fkAjuste + '}';
+        return "cantina.modelo.Arqueoscaja[ idArqueo=" + idArqueo + " ]";
     }
-
-    
     
 }

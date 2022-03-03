@@ -7,9 +7,10 @@
     <class>cantina.modelo.DetalleVenta</class>
     <class>cantina.modelo.Categorias</class>
     <class>cantina.modelo.Roles</class>
-    <class>cantina.modelo.Ventas</class>
     <class>cantina.modelo.Ajustes</class>
     <class>cantina.modelo.Arqueoscaja</class>
+    <class>cantina.modelo.Ventas</class>
+    <class>cantina.modelo.Cajas</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/cantina_anglo?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

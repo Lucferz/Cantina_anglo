@@ -92,3 +92,11 @@ nuevamente.
 en vez de agregar una fila nueva repetida.
 
 ----------
+
+--Para una futura version
+-Control de cajas como para que diferentes usuarios trabajen en cajas diferentes en la misma maquina
+Tener en consideracion que si pasa un dia sin hacerse el cierre pq por a o b motivos no pudo hacerlo
+en el dia, al dia siguiente cuando vuelva tendra que hacer el cierre antes de realizar una apertura
+nuevamente
+
+----------

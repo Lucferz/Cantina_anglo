@@ -48,7 +48,7 @@ public class MainPage extends javax.swing.JFrame {
     DefaultTableModel modelo;
 
     //boolean estado_caja = cajac.buscarCaja(1);
-    boolean estado_caja = true;
+    boolean estado_caja = false;
 
     int item;
     int totalPagar=0;
@@ -93,8 +93,14 @@ public class MainPage extends javax.swing.JFrame {
             tabsPanel.setSelectedComponent(panelCajero);
             tabsPanel.setEnabledAt(0 , estado_caja);
             btnNewVenta.setEnabled(false);
-            
-            btnNewVenta.setToolTipText("Recuerda abrir tu caja antes de realizar ventas");
+            tabsPanel.setToolTipTextAt(0, "Recuerda abrir tu caja para poder realizar ventas");
+            btnNewVenta.setToolTipText("Recuerda abrir tu caja para poder realizar ventas");
+            fieldEstadoCaja.setText("Cerrado");
+            fieldMontoInicialCaja.setText("-");
+            //field
+        }else{
+            fieldEstadoCaja.setText("Abierto");
+
         }
          
         MostrarComboCat();
@@ -279,11 +285,18 @@ public class MainPage extends javax.swing.JFrame {
         panelInformes = new javax.swing.JPanel();
         panelCajero = new javax.swing.JPanel();
         labelTitleCajero = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
+        labelDescripCajero = new javax.swing.JLabel();
         contBtnAbrir = new javax.swing.JPanel();
         btnAbrirCaja = new javax.swing.JButton();
         contBtnCerrarCaja = new javax.swing.JPanel();
         btnCerrarCaja = new javax.swing.JButton();
+        contEstadodeCaja = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        fieldEstadoCaja = new javax.swing.JTextField();
+        FieldFechaAperturaCaja = new javax.swing.JFormattedTextField();
+        fieldMontoInicialCaja = new javax.swing.JFormattedTextField();
 
         dialogCerrarCaja.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogCerrarCaja.setMaximumSize(new java.awt.Dimension(100, 500));
@@ -1037,6 +1050,7 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
         contSidebarButtons.add(btnInformes, gridBagConstraints);
 
+        btnCajero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_cash_counter_30px.png"))); // NOI18N
         btnCajero.setText("Cajero");
         btnCajero.setMaximumSize(new java.awt.Dimension(135, 39));
         btnCajero.setMinimumSize(new java.awt.Dimension(135, 39));
@@ -1986,19 +2000,19 @@ public class MainPage extends javax.swing.JFrame {
         labelTitleCajero.setText("Herramientas para cajero");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.ipady = 20;
         gridBagConstraints.weighty = 0.3;
         panelCajero.add(labelTitleCajero, gridBagConstraints);
 
-        jLabel28.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-        jLabel28.setText("Aquí es tu punto de inicio y de cierre para la jornada laboral");
+        labelDescripCajero.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        labelDescripCajero.setText("Este es tu punto de inicio y de cierre para cada jornada laboral");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.ipady = 20;
         gridBagConstraints.weighty = 0.2;
-        panelCajero.add(jLabel28, gridBagConstraints);
+        panelCajero.add(labelDescripCajero, gridBagConstraints);
 
         btnAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         btnAbrirCaja.setText("ABRIR CAJA");
@@ -2008,6 +2022,11 @@ public class MainPage extends javax.swing.JFrame {
         btnAbrirCaja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnAbrirCajaMouseReleased(evt);
+            }
+        });
+        btnAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirCajaActionPerformed(evt);
             }
         });
         contBtnAbrir.add(btnAbrirCaja);
@@ -2050,7 +2069,73 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
         panelCajero.add(contBtnCerrarCaja, gridBagConstraints);
 
-        tabsPanel.addTab("Cajero", panelCajero);
+        contEstadodeCaja.setLayout(new java.awt.GridBagLayout());
+
+        jLabel9.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel9.setText("Estado de Caja:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(18, 11, 18, 11);
+        contEstadodeCaja.add(jLabel9, gridBagConstraints);
+
+        jLabel28.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel28.setText("Monto inicial:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(18, 11, 18, 11);
+        contEstadodeCaja.add(jLabel28, gridBagConstraints);
+
+        jLabel30.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel30.setText("Fecha de Apertura:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.insets = new java.awt.Insets(18, 11, 18, 11);
+        contEstadodeCaja.add(jLabel30, gridBagConstraints);
+
+        fieldEstadoCaja.setEditable(false);
+        fieldEstadoCaja.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        fieldEstadoCaja.setText("Abierto");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.insets = new java.awt.Insets(18, 11, 18, 11);
+        contEstadodeCaja.add(fieldEstadoCaja, gridBagConstraints);
+
+        FieldFechaAperturaCaja.setEditable(false);
+        FieldFechaAperturaCaja.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.FULL))));
+        FieldFechaAperturaCaja.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.insets = new java.awt.Insets(18, 11, 18, 11);
+        contEstadodeCaja.add(FieldFechaAperturaCaja, gridBagConstraints);
+
+        fieldMontoInicialCaja.setEditable(false);
+        fieldMontoInicialCaja.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        fieldMontoInicialCaja.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.insets = new java.awt.Insets(18, 11, 18, 11);
+        contEstadodeCaja.add(fieldMontoInicialCaja, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        panelCajero.add(contEstadodeCaja, gridBagConstraints);
+
+        tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_cash_counter_30px.png")), panelCajero); // NOI18N
 
         getContentPane().add(tabsPanel, java.awt.BorderLayout.CENTER);
         tabsPanel.getAccessibleContext().setAccessibleName("");
@@ -2408,6 +2493,7 @@ public class MainPage extends javax.swing.JFrame {
                 aqcontrol.modificar(aqc);
                 dialogCerrarCaja.dispose();
                 JOptionPane.showMessageDialog(null,"Valor de arqueo remitido: " +fieldTotalMuestra.getValue());
+                estado_caja = false;
             }else{
                 JOptionPane.showMessageDialog(null, "El usuario que haga el arqueo, debe ser el mismo que hizo la apertura\n"
                         + "El usuario que abrio la caja: "+userCaja
@@ -2420,17 +2506,18 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnCerrarCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarCajaMouseReleased
         // TODO add your handling code here:
-        dialogCerrarCaja.setVisible(true);
         
     }//GEN-LAST:event_btnCerrarCajaMouseReleased
 
     private void btnCerrarCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarCajaActionPerformed
         // TODO add your handling code here:
+        dialogCerrarCaja.setVisible(true);
+
     }//GEN-LAST:event_btnCerrarCajaActionPerformed
 
     private void btnAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirCajaMouseReleased
         // TODO add your handling code here:
-           dialogAbrirCaja.setVisible(true);
+         
     }//GEN-LAST:event_btnAbrirCajaMouseReleased
 
     private void btnConfirmarAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmarAbrirCajaMouseReleased
@@ -2449,6 +2536,7 @@ public class MainPage extends javax.swing.JFrame {
             aqcontrol.insertar(aqc);
             dialogAbrirCaja.setVisible(false);
             JOptionPane.showMessageDialog(null,"Caja abierta con exito\nMonto: "+fieldSaldoInicAbrirCaja.getValue());
+            estado_caja = true;
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n"+e.toString());
         }
@@ -2568,6 +2656,11 @@ public class MainPage extends javax.swing.JFrame {
                 tabsPanel.setSelectedComponent(panelCajero);
 
     }//GEN-LAST:event_btnCajeroActionPerformed
+
+    private void btnAbrirCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirCajaActionPerformed
+        // TODO add your handling code here:
+          dialogAbrirCaja.setVisible(true);
+    }//GEN-LAST:event_btnAbrirCajaActionPerformed
     
     private void esNumero(java.awt.event.KeyEvent evt){
         //Rechaza el tecleo si no es un Numero
@@ -2652,6 +2745,7 @@ private float totalMuestraCaja(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField FieldFechaAperturaCaja;
     private javax.swing.JButton btnAbrirCaja;
     private javax.swing.JButton btnActualizarProductos;
     private javax.swing.JButton btnBorrarProducto;
@@ -2679,6 +2773,7 @@ private float totalMuestraCaja(){
     private javax.swing.JPanel contBtnCerrarCaja;
     private javax.swing.JPanel contBtnProductos;
     private javax.swing.JPanel contCierreVenta;
+    private javax.swing.JPanel contEstadodeCaja;
     private javax.swing.JPanel contInsertProd;
     private javax.swing.JPanel contMainVenta;
     private javax.swing.JPanel contMonedas;
@@ -2697,7 +2792,9 @@ private float totalMuestraCaja(){
     private javax.swing.JTextField fieldCant;
     private javax.swing.JTextField fieldCod;
     private javax.swing.JTextField fieldDesc;
+    private javax.swing.JTextField fieldEstadoCaja;
     private javax.swing.JTextField fieldId;
+    private javax.swing.JFormattedTextField fieldMontoInicialCaja;
     private javax.swing.JTextField fieldPrecTotal;
     private javax.swing.JTextField fieldPrecUnit;
     private javax.swing.JFormattedTextField fieldSaldoInicAbrirCaja;
@@ -2740,11 +2837,13 @@ private float totalMuestraCaja(){
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -2777,6 +2876,7 @@ private float totalMuestraCaja(){
     private javax.swing.JLabel labT2PrecioCosto;
     private javax.swing.JLabel labT2PrecioVenta;
     private javax.swing.JLabel labT2StockDisp;
+    private javax.swing.JLabel labelDescripCajero;
     private javax.swing.JLabel labelSaldoInicial;
     private javax.swing.JLabel labelTitleCajero;
     private javax.swing.JPanel logoCont;

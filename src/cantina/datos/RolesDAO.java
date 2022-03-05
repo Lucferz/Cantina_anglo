@@ -33,8 +33,8 @@ public class RolesDAO {
     }
     public DefaultComboBoxModel Obt_Rol(){
         DefaultComboBoxModel Lista = new DefaultComboBoxModel();
-        Lista.addElement("Seleccione una categoria");
-        TypedQuery<Roles> query = em.createNamedQuery("Roles.findAllEstadoTrue", Roles.class);
+        Lista.addElement("Seleccione un Rol");
+        TypedQuery<Roles> query = em.createNamedQuery("Roles.findRolByEstadoTrue", Roles.class);
         List<Roles> res = query.getResultList();
         for (int i=0; i< res.size();i++){
             Lista.addElement(res.get(i));

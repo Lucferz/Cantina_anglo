@@ -92,17 +92,10 @@ public class MainPage extends javax.swing.JFrame {
             modoVendedor();
         }
         if(!estado_caja){
-            tabsPanel.setSelectedComponent(panelCajero);
-            tabsPanel.setEnabledAt(0 , estado_caja);
-            btnNewVenta.setEnabled(false);
-            tabsPanel.setToolTipTextAt(0, "Recuerda abrir tu caja para poder realizar ventas");
-            btnNewVenta.setToolTipText("Recuerda abrir tu caja para poder realizar ventas");
-            fieldEstadoCaja.setText("Cerrado");
-            fieldMontoInicialCaja.setText("-");
+            cerrarCaja();
             //field
         }else{
-            fieldEstadoCaja.setText("Abierto");
-
+            abrirCaja();
         }
          
         MostrarComboCat();
@@ -139,6 +132,29 @@ public class MainPage extends javax.swing.JFrame {
            i=i-1;
        }
    }
+   
+  public void cerrarCaja(){
+      tabsPanel.setSelectedComponent(panelCajero);
+            tabsPanel.setEnabledAt(0 , estado_caja);
+            btnNewVenta.setEnabled(false);
+            tabsPanel.setToolTipTextAt(0, "Recuerda abrir tu caja para poder realizar ventas");
+            btnNewVenta.setToolTipText("Recuerda abrir tu caja para poder realizar ventas");
+            fieldEstadoCaja.setText("Cerrado");
+            fieldMontoInicialCaja.setText("-");
+  }
+  public void abrirCaja(){
+            fieldEstadoCaja.setText("Abierto");
+
+  }
+
+ 
+    public void setEstado_caja(boolean estado_caja) {
+        this.estado_caja = estado_caja;
+        
+    }
+   
+   
+   
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -859,6 +875,11 @@ public class MainPage extends javax.swing.JFrame {
         btnConfirmarAbrirCaja.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnConfirmarAbrirCajaMouseReleased(evt);
+            }
+        });
+        btnConfirmarAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarAbrirCajaActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2691,24 +2712,7 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnConfirmarAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmarAbrirCajaMouseReleased
         // TODO add your handling code here:
-        try{
-            Integer id = null;
-            Integer fkCaja = 1;
-            Integer fkUsuario  = uc.buscarPorNombre(fieldUserName.getText()).getIdusuario();
-            Date fechaInicio = TimestampToDate();
-            Date fechaFin = null;
-            Integer montoinicial = Integer.parseInt(fieldSaldoInicAbrirCaja.getValue().toString());
-            Integer montofinal = null;
-            Integer totalventas = null;
-            boolean estado = true;
-            Arqueoscaja aqc = new Arqueoscaja(id, fkCaja, fkUsuario, fechaInicio, fechaFin, montoinicial, montofinal, totalventas, estado);
-            aqcontrol.insertar(aqc);
-            dialogAbrirCaja.setVisible(false);
-            JOptionPane.showMessageDialog(null,"Caja abierta con exito\nMonto: "+fieldSaldoInicAbrirCaja.getValue());
-            estado_caja = true;
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n"+e.toString());
-        }
+       
     }//GEN-LAST:event_btnConfirmarAbrirCajaMouseReleased
 
     private void btnCancelarAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarAbrirCajaMouseReleased
@@ -2835,6 +2839,28 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dialogVerifArqueo.setVisible(true);
     }//GEN-LAST:event_btnAbrirGestorArqueoAdminActionPerformed
+
+    private void btnConfirmarAbrirCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarAbrirCajaActionPerformed
+        // TODO add your handling code here:
+         try{
+            Integer id = null;
+            Integer fkCaja = 1;
+            Integer fkUsuario  = uc.buscarPorNombre(fieldUserName.getText()).getIdusuario();
+            Date fechaInicio = TimestampToDate();
+            Date fechaFin = null;
+            Integer montoinicial = Integer.parseInt(fieldSaldoInicAbrirCaja.getValue().toString());
+            Integer montofinal = null;
+            Integer totalventas = null;
+            boolean estado = true;
+            Arqueoscaja aqc = new Arqueoscaja(id, fkCaja, fkUsuario, fechaInicio, fechaFin, montoinicial, montofinal, totalventas, estado);
+            aqcontrol.insertar(aqc);
+            dialogAbrirCaja.setVisible(false);
+            JOptionPane.showMessageDialog(null,"Caja abierta con exito\nMonto: "+fieldSaldoInicAbrirCaja.getValue());
+            estado_caja = true;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n"+e.toString());
+        }
+    }//GEN-LAST:event_btnConfirmarAbrirCajaActionPerformed
     
     private void esNumero(java.awt.event.KeyEvent evt){
         //Rechaza el tecleo si no es un Numero

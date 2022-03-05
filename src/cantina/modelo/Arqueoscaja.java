@@ -196,7 +196,9 @@ public class Arqueoscaja implements Serializable {
 
     @Override
     public String toString() {
-        return "cantina.modelo.Arqueoscaja[ idArqueo=" + idArqueo + " ]";
+        return "Arqueoscaja{" + "idArqueo=" + idArqueo + ", fkCaja=" + fkCaja + ", fkUsuario=" + fkUsuario + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", montoInicial=" + montoInicial + ", montoFinal=" + montoFinal + ", totalVentas=" + totalVentas + ", confirmado=" + confirmado + ", estado=" + estado + '}';
     }
+
+    
     
 }

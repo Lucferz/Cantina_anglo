@@ -12,6 +12,7 @@ import cantina.controlador.ArticulosControl;
 import cantina.controlador.CajasControl;
 import cantina.controlador.CategoriasControlador;
 import cantina.controlador.DetalleVentaControl;
+import cantina.controlador.RolesControl;
 import cantina.controlador.UsuariosControl;
 import cantina.controlador.VentasControlador;
 import cantina.modelo.Arqueoscaja;
@@ -46,6 +47,7 @@ public class MainPage extends javax.swing.JFrame {
     DetalleVentaControl dvc = new DetalleVentaControl();
     UsuariosControl uc = new UsuariosControl();
     CajasControl cajac = new CajasControl();
+    RolesControl rc = new RolesControl();
     ArqueoscajaControl aqcontrol = new ArqueoscajaControl();
     DefaultTableModel modelo;
     int item;
@@ -90,6 +92,8 @@ public class MainPage extends javax.swing.JFrame {
          
         MostrarComboCat();
         MostrarTabArti();
+        MostrarComboRol();
+        MostrarTabUser();
         fieldCod.requestFocus();
         ToolTipManager.sharedInstance().setInitialDelay(300);
     }
@@ -113,6 +117,13 @@ public class MainPage extends javax.swing.JFrame {
    private void MostrarTabArti(){
        ac.cargar_tabla_arti(jTableArticulos);
        modelo = (DefaultTableModel) jTableArticulos.getModel();
+   }
+   private void MostrarComboRol(){
+       this.jComboBoxRolUsers.setModel(rc.Obt_Rol());//Crear el obtROl()
+   }
+   private void MostrarTabUser(){
+       uc.cargar_tabla_user(jTableUsers);
+       modelo = (DefaultTableModel) jTableUsers.getModel();
    }
    private void LimpiarTable(){
        for (int i = 0; i < modelo.getRowCount() ; i++) {
@@ -172,6 +183,26 @@ public class MainPage extends javax.swing.JFrame {
         btnCancelarAbrirCaja = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         fieldSaldoInicAbrirCaja = new javax.swing.JFormattedTextField();
+        dialogAdmUsers = new javax.swing.JDialog();
+        jPanel5 = new javax.swing.JPanel();
+        btnAddUser = new javax.swing.JButton();
+        btnModUser = new javax.swing.JButton();
+        btnDesactivarUser = new javax.swing.JButton();
+        btnReactivarUser = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTableUsers = new javax.swing.JTable();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        fieldIdUser = new javax.swing.JTextField();
+        fieldNomUser = new javax.swing.JTextField();
+        fieldPassUser = new javax.swing.JTextField();
+        fieldEstadoUser = new javax.swing.JTextField();
+        jComboBoxRolUsers = new javax.swing.JComboBox<>();
         sidebarMain = new javax.swing.JPanel();
         logoCont = new javax.swing.JPanel();
         mainLogo = new javax.swing.JLabel();
@@ -871,6 +902,148 @@ public class MainPage extends javax.swing.JFrame {
         dialogAbrirCaja.getContentPane().add(contValoresApertura);
 
         dialogAbrirCaja.setLocationRelativeTo(null);
+
+        dialogAdmUsers.getContentPane().setLayout(new javax.swing.BoxLayout(dialogAdmUsers.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        btnAddUser.setText("Agregar");
+
+        btnModUser.setText("Modificar");
+
+        btnDesactivarUser.setText("Desactivar");
+
+        btnReactivarUser.setText("Reactivar");
+
+        jTableUsers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "NOMBRE", "CONTRASEÑA", "ROL", "ESTADO", "Fecha_Alta"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableUsers.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(jTableUsers);
+        if (jTableUsers.getColumnModel().getColumnCount() > 0) {
+            jTableUsers.getColumnModel().getColumn(0).setResizable(false);
+            jTableUsers.getColumnModel().getColumn(0).setPreferredWidth(25);
+            jTableUsers.getColumnModel().getColumn(4).setResizable(false);
+            jTableUsers.getColumnModel().getColumn(4).setPreferredWidth(50);
+        }
+
+        jLabel30.setText("ID                :");
+
+        jLabel31.setText("Nombre       :");
+
+        jLabel32.setText("Contraseña :");
+
+        jLabel33.setText("Estado         :");
+
+        jLabel34.setText("Rol               :");
+
+        jComboBoxRolUsers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(fieldNomUser)
+                    .addComponent(fieldIdUser)
+                    .addComponent(fieldPassUser)
+                    .addComponent(fieldEstadoUser)
+                    .addComponent(jComboBoxRolUsers, 0, 85, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(fieldIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(fieldNomUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(fieldPassUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(fieldEstadoUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(jComboBoxRolUsers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
+        );
+
+        jScrollPane6.setViewportView(jPanel16);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDesactivarUser))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnReactivarUser)
+                            .addComponent(btnModUser, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAddUser)
+                            .addComponent(btnModUser))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDesactivarUser)
+                            .addComponent(btnReactivarUser))
+                        .addGap(44, 44, 44))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+
+        dialogAdmUsers.getContentPane().add(jPanel5);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1110, 580));
@@ -2561,6 +2734,7 @@ private float totalMuestraCaja(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbrirCaja;
     private javax.swing.JButton btnActualizarProductos;
+    private javax.swing.JButton btnAddUser;
     private javax.swing.JButton btnBorrarProducto;
     private javax.swing.JButton btnCancelarAbrirCaja;
     private javax.swing.JButton btnCancelarArqueo;
@@ -2569,12 +2743,15 @@ private float totalMuestraCaja(){
     private javax.swing.JButton btnCerrarVenta;
     private javax.swing.JButton btnConfig;
     private javax.swing.JButton btnConfirmarAbrirCaja;
+    private javax.swing.JButton btnDesactivarUser;
     private javax.swing.JButton btnExportProduc;
     private javax.swing.JButton btnGuardarProducto;
     private javax.swing.JButton btnInformes;
     private javax.swing.JButton btnLimpiarProd;
+    private javax.swing.JButton btnModUser;
     private javax.swing.JButton btnNewVenta;
     private javax.swing.JButton btnProductos;
+    private javax.swing.JButton btnReactivarUser;
     private javax.swing.JButton btnRemitirArqueoMuestra;
     private javax.swing.JButton btnResumenVentasDiario;
     private javax.swing.JButton btnVentas;
@@ -2599,11 +2776,16 @@ private float totalMuestraCaja(){
     private javax.swing.JPanel contValoresCierre;
     private javax.swing.JPanel contenedorTablat2;
     private javax.swing.JDialog dialogAbrirCaja;
+    private javax.swing.JDialog dialogAdmUsers;
     private javax.swing.JDialog dialogCerrarCaja;
     private javax.swing.JTextField fieldCant;
     private javax.swing.JTextField fieldCod;
     private javax.swing.JTextField fieldDesc;
+    private javax.swing.JTextField fieldEstadoUser;
     private javax.swing.JTextField fieldId;
+    private javax.swing.JTextField fieldIdUser;
+    private javax.swing.JTextField fieldNomUser;
+    private javax.swing.JTextField fieldPassUser;
     private javax.swing.JTextField fieldPrecTotal;
     private javax.swing.JTextField fieldPrecUnit;
     private javax.swing.JFormattedTextField fieldSaldoInicAbrirCaja;
@@ -2623,6 +2805,7 @@ private float totalMuestraCaja(){
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox2Categorias;
+    private javax.swing.JComboBox<String> jComboBoxRolUsers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2646,6 +2829,11 @@ private float totalMuestraCaja(){
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2659,9 +2847,11 @@ private float totalMuestraCaja(){
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -2670,10 +2860,13 @@ private float totalMuestraCaja(){
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTableArticulos;
+    private javax.swing.JTable jTableUsers;
     private javax.swing.JTable jTableVentaItems;
     private javax.swing.JTable jTableVentas;
     private javax.swing.JLabel labCod;
@@ -2736,10 +2929,14 @@ private float totalMuestraCaja(){
             Integer idcaja = 1;
             String nomUser = fieldUserName.getText();
             Usuarios user = uc.buscarPorNombre(nomUser);
-            int monto = Integer.parseInt(fieldTotalPagar.getText());
+            Integer monto = Integer.parseInt(fieldTotalPagar.getText());
             Date fecha = TimestampToDate();
             Ventas ven = new Ventas(id, idcaja, fecha, monto, estado, user);
-            vc.insertar(ven);
+            if( monto != 0 && monto != null){
+                vc.insertar(ven);
+            }else{
+                JOptionPane.showMessageDialog(null, "La venta no se puede realizar sin items");
+            }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error en la venta\n" +e.toString() );
         }
@@ -2779,5 +2976,36 @@ private float totalMuestraCaja(){
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error en la actualizacion del stock\n"+e.toString());
         }
+    }
+    
+    private boolean CajaCerrada(){
+        Boolean retorno=null;
+        try{
+            Arqueoscaja aq = aqcontrol.UltimoElemento();
+            Date cajaCerrada = aq.getFechaFin();
+            if(cajaCerrada == null){//si esta nulo es pq no tiene una fecha de fin, por lo tanto no se cerro
+                retorno = false;
+            }else{
+                retorno = true;//si no es nulo es pq tiene fecha de fin, o sea se cerro
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+        return retorno;//Aca recien se retorna por el tema del try-catch
+    }
+    
+    private Integer ArqueoSistema(){
+        Integer total = null;
+        try{
+            Arqueoscaja aq = aqcontrol.UltimoElemento();
+            Date cajaCerrada = aq.getFechaFin();
+            if(cajaCerrada != null){
+                Date cajaAbierta = aq.getFechaInicio();
+                total = vc.SumTotalVenArqueo(cajaAbierta, cajaCerrada);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+        return total;
     }
 }

@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -29,6 +30,23 @@ public class RolesDAO {
     public Roles buscar(Roles r){
         r = em.find(Roles.class, r.getIdrole());
         return r;
+    }
+    public DefaultComboBoxModel Obt_Rol(){
+        DefaultComboBoxModel Lista = new DefaultComboBoxModel();
+        Lista.addElement("Seleccione un Rol");
+        TypedQuery<Roles> query = em.createNamedQuery("Roles.findRolByEstadoTrue", Roles.class);
+        List<Roles> res = query.getResultList();
+        for (int i=0; i< res.size();i++){
+            Lista.addElement(res.get(i));
+        }
+        return Lista;
+    }
+    
+    public String buscarRolPorId(Integer id){
+        TypedQuery<String> sql = em.createNamedQuery("Roles.findNombreById", String.class);
+        sql.setParameter("idrol", id);
+        String rol = sql.getSingleResult();
+        return rol;
     }
     
     public Roles buscarPorid(Integer id){

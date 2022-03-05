@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Ventas.findAll", query = "SELECT v FROM Ventas v")
     , @NamedQuery(name = "Ventas.TotalVentasPCierre", query = "SELECT COUNT(v.idventa) from Ventas v WHERE v.fecha > (SELECT aq.fechaInicio FROM Arqueoscaja aq WHERE aq.idArqueo = (SELECT MAX(aq.idArqueo) FROM Arqueoscaja aq))")
     , @NamedQuery(name = "Ventas.findMaxId", query = "SELECT MAX(v.idventa) FROM Ventas v")
+    , @NamedQuery(name = "Ventas.SumVentasXArqueo", query = "SELECT SUM(v.total) FROM Ventas v WHERE v.fecha BETWEEN :fechaInicio AND :fechaFin")
     , @NamedQuery(name = "Ventas.findByIdventa", query = "SELECT v FROM Ventas v WHERE v.idventa = :idventa")
     , @NamedQuery(name = "Ventas.findByIdCaja", query = "SELECT v FROM Ventas v WHERE v.idCaja = :idCaja")
     , @NamedQuery(name = "Ventas.findByFecha", query = "SELECT v FROM Ventas v WHERE v.fecha = :fecha")

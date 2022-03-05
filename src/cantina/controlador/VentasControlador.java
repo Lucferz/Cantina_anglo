@@ -39,4 +39,7 @@ public class VentasControlador {
     public Integer TotalVentasPArqueo(){
         return new VentasDAO().TotalVentasPArqueo();
     }
+    public Integer SumTotalVenArqueo(Date fechaInicio, Date fechaFin){
+        return new VentasDAO().SumTotalVenArqueo(fechaInicio, fechaFin);
+    }
 }

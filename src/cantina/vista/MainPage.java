@@ -218,7 +218,6 @@ public class MainPage extends javax.swing.JFrame {
         btnCancelarAbrirCaja = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         fieldSaldoInicAbrirCaja = new javax.swing.JFormattedTextField();
-        dialogVerifArqueo = new javax.swing.JDialog();
         dialogAdmUsers = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         btnAddUser = new javax.swing.JButton();
@@ -229,21 +228,11 @@ public class MainPage extends javax.swing.JFrame {
         jTableUsers = new javax.swing.JTable();
         jScrollPane6 = new javax.swing.JScrollPane();
         jPanel16 = new javax.swing.JPanel();
-        jLabel30 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        fieldEstadoCajaAdmin = new javax.swing.JTextField();
-        fieldValorRemitidoCierreCaja = new javax.swing.JFormattedTextField();
-        fieldFechaCierreCaja = new javax.swing.JFormattedTextField();
-        jLabel35 = new javax.swing.JLabel();
-        fieldValorFinalCierreCaja = new javax.swing.JFormattedTextField();
-        jLabel36 = new javax.swing.JLabel();
-        fieldValorCierreCaja2 = new javax.swing.JFormattedTextField();
-        btnConfirmarCierreCaja = new javax.swing.JButton();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
         fieldIdUser = new javax.swing.JTextField();
         fieldNomUser = new javax.swing.JTextField();
         fieldPassUser = new javax.swing.JTextField();
@@ -964,136 +953,9 @@ public class MainPage extends javax.swing.JFrame {
 
         dialogAbrirCaja.setLocationRelativeTo(null);
 
-        dialogVerifArqueo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dialogVerifArqueo.setTitle("Gestionando caja");
-        dialogVerifArqueo.setMaximumSize(new java.awt.Dimension(546, 432));
-        dialogVerifArqueo.setMinimumSize(new java.awt.Dimension(546, 432));
-        dialogVerifArqueo.setModal(true);
-        dialogVerifArqueo.setPreferredSize(new java.awt.Dimension(546, 450));
-        dialogVerifArqueo.setResizable(false);
-
-        jLabel31.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        jLabel31.setText("Gestión de Caja");
-
-        jLabel32.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel32.setText("Estado de caja:");
-
-        jLabel33.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel33.setText("Valor remitido:");
-
-        jLabel34.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel34.setText("Última remisión: ");
-
-        fieldEstadoCajaAdmin.setEditable(false);
-        fieldEstadoCajaAdmin.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        fieldEstadoCajaAdmin.setText("En espera de confirmación");
-
-        fieldValorRemitidoCierreCaja.setEditable(false);
-        fieldValorRemitidoCierreCaja.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
-        fieldValorRemitidoCierreCaja.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-
-        fieldFechaCierreCaja.setEditable(false);
-        fieldFechaCierreCaja.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.FULL))));
-        fieldFechaCierreCaja.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-
-        jLabel35.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel35.setText("Monto final:");
-
-        fieldValorFinalCierreCaja.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
-        fieldValorFinalCierreCaja.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-
-        jLabel36.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel36.setText("Total del sistema:");
-
-        fieldValorCierreCaja2.setEditable(false);
-        fieldValorCierreCaja2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
-        fieldValorCierreCaja2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-
-        btnConfirmarCierreCaja.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        btnConfirmarCierreCaja.setText("CONFIRMAR CIERRE");
-
-        jLabel37.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel37.setText("Si los montos coinciden, deja el siguiente valor sin editar,");
-
-        jLabel38.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel38.setText("ese será el valor guardado en el cierre de caja.");
-
-        javax.swing.GroupLayout dialogVerifArqueoLayout = new javax.swing.GroupLayout(dialogVerifArqueo.getContentPane());
-        dialogVerifArqueo.getContentPane().setLayout(dialogVerifArqueoLayout);
-        dialogVerifArqueoLayout.setHorizontalGroup(
-            dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dialogVerifArqueoLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dialogVerifArqueoLayout.createSequentialGroup()
-                        .addComponent(btnConfirmarCierreCaja)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(dialogVerifArqueoLayout.createSequentialGroup()
-                        .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel37)
-                            .addComponent(jLabel38)
-                            .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dialogVerifArqueoLayout.createSequentialGroup()
-                                    .addComponent(jLabel35)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(fieldValorFinalCierreCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dialogVerifArqueoLayout.createSequentialGroup()
-                                    .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel33)
-                                        .addComponent(jLabel34)
-                                        .addComponent(jLabel36)
-                                        .addComponent(jLabel32))
-                                    .addGap(54, 54, 54)
-                                    .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(fieldFechaCierreCaja, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(fieldEstadoCajaAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                                        .addComponent(fieldValorCierreCaja2, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(fieldValorRemitidoCierreCaja)))))
-                        .addGap(0, 77, Short.MAX_VALUE))))
-            .addGroup(dialogVerifArqueoLayout.createSequentialGroup()
-                .addGap(201, 201, 201)
-                .addComponent(jLabel31)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        dialogVerifArqueoLayout.setVerticalGroup(
-            dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dialogVerifArqueoLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel31)
-                .addGap(18, 18, 18)
-                .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel32)
-                    .addComponent(fieldEstadoCajaAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36)
-                    .addComponent(fieldValorCierreCaja2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dialogVerifArqueoLayout.createSequentialGroup()
-                        .addComponent(fieldFechaCierreCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(fieldValorRemitidoCierreCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel33)))
-                    .addComponent(jLabel34))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel37)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel38)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel35)
-                    .addComponent(fieldValorFinalCierreCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnConfirmarCierreCaja)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-
         dialogAdmUsers.getContentPane().setLayout(new javax.swing.BoxLayout(dialogAdmUsers.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
+        btnAddUser.setText("Agregar");
 
         btnModUser.setText("Modificar");
 
@@ -1106,27 +968,13 @@ public class MainPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NOMBRE", "CONTRASEÑA", "ROL", "ESTADO", "Fecha_Alta"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jTableUsers.getTableHeader().setReorderingAllowed(false);
         jScrollPane5.setViewportView(jTableUsers);
-        if (jTableUsers.getColumnModel().getColumnCount() > 0) {
-            jTableUsers.getColumnModel().getColumn(0).setResizable(false);
-            jTableUsers.getColumnModel().getColumn(0).setPreferredWidth(25);
-            jTableUsers.getColumnModel().getColumn(4).setResizable(false);
-            jTableUsers.getColumnModel().getColumn(4).setPreferredWidth(50);
-        }
 
-        jLabel30.setText("ID                :");
+        jLabel39.setText("ID                :");
 
         jLabel31.setText("Nombre       :");
 
@@ -1147,7 +995,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1164,7 +1012,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30)
+                    .addComponent(jLabel39)
                     .addComponent(fieldIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1235,6 +1083,7 @@ public class MainPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1110, 580));
+        setPreferredSize(new java.awt.Dimension(1110, 580));
 
         sidebarMain.setBackground(new java.awt.Color(103, 226, 109));
         sidebarMain.setPreferredSize(new java.awt.Dimension(135, 600));
@@ -2313,6 +2162,11 @@ public class MainPage extends javax.swing.JFrame {
 
         btnGestionarUsuariosAdmin.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnGestionarUsuariosAdmin.setText("GESTIONAR USUARIOS");
+        btnGestionarUsuariosAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnGestionarUsuariosAdminMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelConfigLayout = new javax.swing.GroupLayout(panelConfig);
         panelConfig.setLayout(panelConfigLayout);
@@ -3036,7 +2890,8 @@ public class MainPage extends javax.swing.JFrame {
             Integer montofinal = null;
             Integer totalventas = null;
             boolean estado = true;
-            Arqueoscaja aqc = new Arqueoscaja(id, fkCaja, fkUsuario, fechaInicio, fechaFin, montoinicial, montofinal, totalventas, estado);
+            Boolean confirmado = false;
+            Arqueoscaja aqc = new Arqueoscaja(id, fkCaja, fkUsuario, fechaInicio, fechaFin, montoinicial, montofinal, totalventas, estado, confirmado);
             aqcontrol.insertar(aqc);
             dialogAbrirCaja.setVisible(false);
             JOptionPane.showMessageDialog(null,"Caja abierta con exito\nMonto: "+fieldSaldoInicAbrirCaja.getValue());
@@ -3045,6 +2900,11 @@ public class MainPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n"+e.toString());
         }
     }//GEN-LAST:event_btnConfirmarAbrirCajaActionPerformed
+
+    private void btnGestionarUsuariosAdminMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarUsuariosAdminMouseReleased
+        // TODO add your handling code here:
+        dialogAdmUsers.setVisible(true);
+    }//GEN-LAST:event_btnGestionarUsuariosAdminMouseReleased
     
     private void esNumero(java.awt.event.KeyEvent evt){
         //Rechaza el tecleo si no es un Numero
@@ -3143,7 +3003,6 @@ private float totalMuestraCaja(){
     private javax.swing.JButton btnCerrarVenta;
     private javax.swing.JButton btnConfig;
     private javax.swing.JButton btnConfirmarAbrirCaja;
-    private javax.swing.JButton btnConfirmarCierreCaja;
     private javax.swing.JButton btnDesactivarUser;
     private javax.swing.JButton btnExportProduc;
     private javax.swing.JButton btnGestionarUsuariosAdmin;
@@ -3181,17 +3040,14 @@ private float totalMuestraCaja(){
     private javax.swing.JDialog dialogAbrirCaja;
     private javax.swing.JDialog dialogAdmUsers;
     private javax.swing.JDialog dialogCerrarCaja;
-    private javax.swing.JDialog dialogVerifArqueo;
     private javax.swing.JTextField fieldCant;
     private javax.swing.JTextField fieldCod;
     private javax.swing.JTextField fieldDesc;
     private javax.swing.JTextField fieldEstadoCaja;
-    private javax.swing.JTextField fieldEstadoCajaAdmin;
-    private javax.swing.JFormattedTextField fieldFechaCierreCaja;
-    private javax.swing.JTextField fieldId;
-    private javax.swing.JFormattedTextField fieldMontoInicialCaja;
     private javax.swing.JTextField fieldEstadoUser;
+    private javax.swing.JTextField fieldId;
     private javax.swing.JTextField fieldIdUser;
+    private javax.swing.JFormattedTextField fieldMontoInicialCaja;
     private javax.swing.JTextField fieldNomUser;
     private javax.swing.JTextField fieldPassUser;
     private javax.swing.JTextField fieldPrecTotal;
@@ -3207,9 +3063,6 @@ private float totalMuestraCaja(){
     private javax.swing.JFormattedTextField fieldTotalMuestra;
     private javax.swing.JTextField fieldTotalPagar;
     private javax.swing.JTextField fieldUserName;
-    private javax.swing.JFormattedTextField fieldValorCierreCaja2;
-    private javax.swing.JFormattedTextField fieldValorFinalCierreCaja;
-    private javax.swing.JFormattedTextField fieldValorRemitidoCierreCaja;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
@@ -3245,10 +3098,7 @@ private float totalMuestraCaja(){
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

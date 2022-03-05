@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+//Deberia funcionar ya, no se que onda
 package cantina.vista;
 
 import cantina.controlador.ArqueoscajaControl;

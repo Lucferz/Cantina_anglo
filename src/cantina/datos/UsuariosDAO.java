@@ -39,7 +39,6 @@ public class UsuariosDAO {
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
             };
-
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -51,11 +50,20 @@ public class UsuariosDAO {
         if (table.getColumnModel().getColumnCount() > 0) {
             table.getColumnModel().getColumn(0).setResizable(false);
             table.getColumnModel().getColumn(0).setPreferredWidth(25);
+            table.getColumnModel().getColumn(1).setResizable(false);
+            table.getColumnModel().getColumn(1).setPreferredWidth(70);
+            table.getColumnModel().getColumn(2).setResizable(false);
+            table.getColumnModel().getColumn(2).setPreferredWidth(80);
+            table.getColumnModel().getColumn(3).setResizable(false);
+            table.getColumnModel().getColumn(3).setPreferredWidth(65);
             table.getColumnModel().getColumn(4).setResizable(false);
             table.getColumnModel().getColumn(4).setPreferredWidth(50);
+            table.getColumnModel().getColumn(5).setResizable(false);
+            table.getColumnModel().getColumn(5).setPreferredWidth(110);
         }
+        
         try{
-           TypedQuery<Usuarios> sql =em.createNamedQuery("Usuarios.findAllEstadoTrue",Usuarios.class);
+           TypedQuery<Usuarios> sql =em.createNamedQuery("Usuarios.findAll",Usuarios.class);
            List<Usuarios> datos = sql.getResultList();
            String [] datosUser = new String[6];
           for(Usuarios tba : datos){
@@ -105,12 +113,20 @@ public class UsuariosDAO {
         em.getTransaction().commit();
     }
     
-    public void eliminarLogico(Usuarios u){
+    public void eliminarLogico(Integer id){
         em.getTransaction().begin();
-        u= em.find(Usuarios.class, u.getIdusuario());
+        Usuarios u= em.find(Usuarios.class, id);
         u.setEstado(false);
         em.merge(u);
+        em.getTransaction().commit();
+    }
+    
+    public void ReactivarUser (Integer id){
         em.getTransaction().begin();
+        Usuarios u= em.find(Usuarios.class, id);
+        u.setEstado(true);
+        em.merge(u);
+        em.getTransaction().commit();
     }
     
     public void eliminar (Usuarios u){

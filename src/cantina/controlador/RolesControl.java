@@ -24,6 +24,9 @@ public class RolesControl {
     public DefaultComboBoxModel Obt_Rol(){
         return new RolesDAO().Obt_Rol();
     }
+    public Integer buscarIdPorRol (String rol){
+        return new RolesDAO().buscarIdPorRol(rol);
+    }
     public Roles buscar(Roles r){
         return new RolesDAO().buscar(r);
     }

@@ -953,15 +953,42 @@ public class MainPage extends javax.swing.JFrame {
 
         dialogAbrirCaja.setLocationRelativeTo(null);
 
+        dialogAdmUsers.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialogAdmUsers.setTitle("Gestion de Usuarios");
+        dialogAdmUsers.setMaximumSize(new java.awt.Dimension(850, 507));
+        dialogAdmUsers.setMinimumSize(new java.awt.Dimension(658, 392));
+        dialogAdmUsers.setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
+        dialogAdmUsers.setPreferredSize(new java.awt.Dimension(850, 507));
+        dialogAdmUsers.setSize(new java.awt.Dimension(850, 507));
         dialogAdmUsers.getContentPane().setLayout(new javax.swing.BoxLayout(dialogAdmUsers.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         btnAddUser.setText("Agregar");
+        btnAddUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAddUserMouseReleased(evt);
+            }
+        });
 
         btnModUser.setText("Modificar");
+        btnModUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnModUserMouseReleased(evt);
+            }
+        });
 
         btnDesactivarUser.setText("Desactivar");
+        btnDesactivarUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnDesactivarUserMouseReleased(evt);
+            }
+        });
 
         btnReactivarUser.setText("Reactivar");
+        btnReactivarUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnReactivarUserMouseReleased(evt);
+            }
+        });
 
         jTableUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -972,6 +999,11 @@ public class MainPage extends javax.swing.JFrame {
             }
         ));
         jTableUsers.getTableHeader().setReorderingAllowed(false);
+        jTableUsers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTableUsersMousePressed(evt);
+            }
+        });
         jScrollPane5.setViewportView(jTableUsers);
 
         jLabel39.setText("ID                :");
@@ -983,6 +1015,10 @@ public class MainPage extends javax.swing.JFrame {
         jLabel33.setText("Estado         :");
 
         jLabel34.setText("Rol               :");
+
+        fieldIdUser.setEditable(false);
+
+        fieldEstadoUser.setEditable(false);
 
         jComboBoxRolUsers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -999,13 +1035,14 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(fieldNomUser)
-                    .addComponent(fieldIdUser)
-                    .addComponent(fieldPassUser)
-                    .addComponent(fieldEstadoUser)
-                    .addComponent(jComboBoxRolUsers, 0, 85, Short.MAX_VALUE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(fieldPassUser, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                        .addComponent(fieldEstadoUser)
+                        .addComponent(fieldNomUser)
+                        .addComponent(fieldIdUser))
+                    .addComponent(jComboBoxRolUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1030,7 +1067,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
                     .addComponent(jComboBoxRolUsers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
+                .addGap(20, 20, 20))
         );
 
         jScrollPane6.setViewportView(jPanel16);
@@ -1042,20 +1079,19 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(8, 8, 8)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnDesactivarUser))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnReactivarUser)
-                            .addComponent(btnModUser, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                            .addComponent(btnModUser, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -1063,9 +1099,10 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAddUser)
                             .addComponent(btnModUser))
@@ -1073,10 +1110,8 @@ public class MainPage extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDesactivarUser)
                             .addComponent(btnReactivarUser))
-                        .addGap(44, 44, 44))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         dialogAdmUsers.getContentPane().add(jPanel5);
@@ -2875,7 +2910,7 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnAbrirGestorArqueoAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirGestorArqueoAdminActionPerformed
         // TODO add your handling code here:
-        dialogVerifArqueo.setVisible(true);
+        //dialogVerifArqueo.setVisible(true);
     }//GEN-LAST:event_btnAbrirGestorArqueoAdminActionPerformed
 
     private void btnConfirmarAbrirCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarAbrirCajaActionPerformed
@@ -2905,6 +2940,139 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dialogAdmUsers.setVisible(true);
     }//GEN-LAST:event_btnGestionarUsuariosAdminMouseReleased
+
+    private void jTableUsersMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableUsersMousePressed
+        // TODO add your handling code here:
+        int fila = jTableUsers.rowAtPoint(evt.getPoint());
+        fieldIdUser.setText(jTableUsers.getValueAt(fila, 0).toString());
+        fieldNomUser.setText(jTableUsers.getValueAt(fila, 1).toString());
+        fieldPassUser.setText(jTableUsers.getValueAt(fila, 2).toString());
+        jComboBoxRolUsers.setSelectedItem(jTableUsers.getValueAt(fila, 3).toString());
+        fieldEstadoUser.setText(jTableUsers.getValueAt(fila, 4).toString());
+    }//GEN-LAST:event_jTableUsersMousePressed
+
+    private void btnAddUserMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddUserMouseReleased
+        // TODO add your handling code here:
+        boolean flag = false;
+        try{
+            Usuarios u = null;
+            Integer id = null;
+            String nom = fieldNomUser.getText();
+            String pass = fieldPassUser.getText();
+            Integer fk_rol= null;
+            if(jComboBoxRolUsers.getSelectedIndex() != 0){
+                fk_rol = jComboBoxRolUsers.getSelectedIndex();
+            }
+            boolean estado = true;
+            Date fecha = TimestampToDate();
+            if (nom.equals("") || nom.equals(null) || pass.equals("") || pass.equals(null) || fk_rol == 0){
+                JOptionPane.showMessageDialog(null, "No se pudo crear el nuevo usuario porque hay campos obligatorios sin valores asignados");
+            }else{
+                u= new Usuarios(id, nom, estado, pass, fk_rol, fecha);
+                uc.insertar(u);
+                flag = true;
+            }
+            LimpiarUser();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Hubo un problema en el registro de nuevo usuario\n"+e.toString());
+            flag = false;
+        }
+        MostrarTabUser();
+        if (flag){
+            JOptionPane.showMessageDialog(null, "Nuevo Usuario Registrado con Exito");
+        }
+    }//GEN-LAST:event_btnAddUserMouseReleased
+
+    private void btnModUserMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModUserMouseReleased
+        // TODO add your handling code here:
+        if (!"".equals(fieldIdUser.getText())){
+            
+            String[] options = new String[2];
+            options[0] = "SÍ";
+            options[1] = "NO";
+            int pregunta = JOptionPane.showOptionDialog(getContentPane(), "¿Esta seguro de que quiere MODIFICAR este USUARIO?", "Confirmar Modificación", 0, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+
+            //int pregunta = JOptionPane.showConfirmDialog(null, "¿Esta seguro de Modificar este producto?");
+            if (pregunta==0){
+                
+                try{
+                    Integer id = Integer.parseInt(fieldIdUser.getText());
+                    String nom = fieldNomUser.getText();
+                    String pass = fieldPassUser.getText();
+                    Boolean estado = null;
+                    if (fieldEstadoUser.getText().equals("Activo")){
+                        estado = true;
+                    }else{
+                        estado=false;
+                    }
+                    Date fecha = TimestampToDate();
+                    Integer rol= jComboBoxRolUsers.getSelectedIndex();
+                    if (!"".equals(nom) && !"".equals(pass) && 0!=rol){
+                        Usuarios u = new Usuarios(id, nom, estado, pass, rol, fecha);
+                        uc.modificar(u);
+                        LimpiarUser();
+                        MostrarTabUser();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Algunos de los campos obligatorios estan vacios",
+                                "Error en la Actualizacion", 1);
+                    }
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "Hubo un error en la Modificacion del Usuario, "
+                            + "por favor intente de nuevo\n"+e.getMessage(), "Error en la Modificacion",2);
+                }
+            }else{
+                LimpiarUser();
+            }
+        }
+    }//GEN-LAST:event_btnModUserMouseReleased
+
+    private void btnDesactivarUserMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDesactivarUserMouseReleased
+        // TODO add your handling code here:
+        try{
+            if (!"".equals(fieldIdUser.getText())){
+                String[] options = new String[2];
+                options[0] = "SÍ";
+                options[1] = "NO";
+                int pregunta = JOptionPane.showOptionDialog(getContentPane(), "¿Esta seguro de que quiere DESACTIVAR a este USUARIO?",
+                        "Confirmar Desactivacion", 0, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+                if (pregunta==0){
+                    int id = Integer.parseInt(fieldIdUser.getText());
+                    uc.eliminarLogico(id);
+                    LimpiarTable();
+                    LimpiarUser();
+                    MostrarTabUser();
+                }
+            }else{
+                LimpiarUser();
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: "+e.getMessage());
+        }
+    }//GEN-LAST:event_btnDesactivarUserMouseReleased
+
+    private void btnReactivarUserMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReactivarUserMouseReleased
+        // TODO add your handling code here:
+        try{
+            if (!"".equals(fieldIdUser.getText())){
+                String[] options = new String[2];
+                options[0] = "SÍ";
+                options[1] = "NO";
+                int pregunta = JOptionPane.showOptionDialog(getContentPane(), "¿Esta seguro de que quiere REACTIVAR a este USUARIO?",
+                        "Confirmar Reactivacion", 0, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+                if (pregunta==0){
+                    int id = Integer.parseInt(fieldIdUser.getText());
+                    uc.ReactivarUser(id);
+                    LimpiarTable();
+                    LimpiarUser();
+                    MostrarTabUser();
+                }
+            }else{
+                LimpiarUser();
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: "+e.getMessage());
+        }
+    }//GEN-LAST:event_btnReactivarUserMouseReleased
     
     private void esNumero(java.awt.event.KeyEvent evt){
         //Rechaza el tecleo si no es un Numero
@@ -3274,5 +3442,13 @@ private float totalMuestraCaja(){
             JOptionPane.showMessageDialog(null, e.toString());
         }
         return total;
+    }
+    
+    private void LimpiarUser(){
+        fieldIdUser.setText("");
+        fieldNomUser.setText("");
+        fieldPassUser.setText("");
+        fieldEstadoUser.setText("");
+        jComboBoxRolUsers.setSelectedIndex(0);
     }
 }

@@ -43,8 +43,12 @@ public class UsuariosControl {
         new UsuariosDAO().modificar(u);
     }
     
-    public void eliminarLogico(Usuarios u){
-        new UsuariosDAO().eliminarLogico(u);
+    public void eliminarLogico(Integer id){
+        new UsuariosDAO().eliminarLogico(id);
+    }
+    
+    public void ReactivarUser (Integer id){
+        new UsuariosDAO().ReactivarUser(id);
     }
     
     public void eliminar (Usuarios u){

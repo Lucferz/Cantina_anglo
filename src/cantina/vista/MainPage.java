@@ -208,20 +208,20 @@ public class MainPage extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         fieldSaldoInicAbrirCaja = new javax.swing.JFormattedTextField();
         dialogVerifArqueo = new javax.swing.JDialog();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
+        labelVA1 = new javax.swing.JLabel();
+        labelVA2 = new javax.swing.JLabel();
+        labelVA5 = new javax.swing.JLabel();
+        labelVA4 = new javax.swing.JLabel();
         fieldEstadoCajaAdmin = new javax.swing.JTextField();
         fieldValorRemitidoCierreCaja = new javax.swing.JFormattedTextField();
         fieldFechaCierreCaja = new javax.swing.JFormattedTextField();
-        jLabel35 = new javax.swing.JLabel();
+        labelVA8 = new javax.swing.JLabel();
         fieldValorFinalCierreCaja = new javax.swing.JFormattedTextField();
-        jLabel36 = new javax.swing.JLabel();
+        labelVA3 = new javax.swing.JLabel();
         fieldValorCierreCaja2 = new javax.swing.JFormattedTextField();
         btnConfirmarCierreCaja = new javax.swing.JButton();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
+        labelVA6 = new javax.swing.JLabel();
+        labelVA7 = new javax.swing.JLabel();
         sidebarMain = new javax.swing.JPanel();
         logoCont = new javax.swing.JPanel();
         mainLogo = new javax.swing.JLabel();
@@ -939,24 +939,23 @@ public class MainPage extends javax.swing.JFrame {
 
         dialogVerifArqueo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogVerifArqueo.setTitle("Gestionando caja");
-        dialogVerifArqueo.setLocationByPlatform(true);
         dialogVerifArqueo.setMaximumSize(new java.awt.Dimension(546, 432));
         dialogVerifArqueo.setMinimumSize(new java.awt.Dimension(546, 432));
         dialogVerifArqueo.setModal(true);
         dialogVerifArqueo.setPreferredSize(new java.awt.Dimension(546, 450));
         dialogVerifArqueo.setResizable(false);
 
-        jLabel31.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        jLabel31.setText("Gestión de Caja");
+        labelVA1.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        labelVA1.setText("Gestión de Caja");
 
-        jLabel32.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel32.setText("Estado de caja:");
+        labelVA2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelVA2.setText("Estado de caja:");
 
-        jLabel33.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel33.setText("Valor remitido:");
+        labelVA5.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelVA5.setText("Valor remitido:");
 
-        jLabel34.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel34.setText("Última remisión: ");
+        labelVA4.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelVA4.setText("Última remisión: ");
 
         fieldEstadoCajaAdmin.setEditable(false);
         fieldEstadoCajaAdmin.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -970,14 +969,14 @@ public class MainPage extends javax.swing.JFrame {
         fieldFechaCierreCaja.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.FULL))));
         fieldFechaCierreCaja.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
 
-        jLabel35.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel35.setText("Monto final:");
+        labelVA8.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelVA8.setText("Monto final:");
 
         fieldValorFinalCierreCaja.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
         fieldValorFinalCierreCaja.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
 
-        jLabel36.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel36.setText("Total del sistema:");
+        labelVA3.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelVA3.setText("Total del sistema:");
 
         fieldValorCierreCaja2.setEditable(false);
         fieldValorCierreCaja2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
@@ -986,13 +985,13 @@ public class MainPage extends javax.swing.JFrame {
         btnConfirmarCierreCaja.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnConfirmarCierreCaja.setText("CONFIRMAR CIERRE");
 
-        jLabel37.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel37.setText("Si los montos coinciden, deja el siguiente valor sin editar,");
+        labelVA6.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        labelVA6.setForeground(new java.awt.Color(102, 102, 102));
+        labelVA6.setText("Si los montos coinciden, deja el siguiente valor sin editar,");
 
-        jLabel38.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel38.setText("ese será el valor guardado en el cierre de caja.");
+        labelVA7.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        labelVA7.setForeground(new java.awt.Color(102, 102, 102));
+        labelVA7.setText("ese será el valor guardado en el cierre de caja.");
 
         javax.swing.GroupLayout dialogVerifArqueoLayout = new javax.swing.GroupLayout(dialogVerifArqueo.getContentPane());
         dialogVerifArqueo.getContentPane().setLayout(dialogVerifArqueoLayout);
@@ -1006,19 +1005,19 @@ public class MainPage extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(dialogVerifArqueoLayout.createSequentialGroup()
                         .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel37)
-                            .addComponent(jLabel38)
+                            .addComponent(labelVA6)
+                            .addComponent(labelVA7)
                             .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dialogVerifArqueoLayout.createSequentialGroup()
-                                    .addComponent(jLabel35)
+                                    .addComponent(labelVA8)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(fieldValorFinalCierreCaja, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dialogVerifArqueoLayout.createSequentialGroup()
                                     .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel33)
-                                        .addComponent(jLabel34)
-                                        .addComponent(jLabel36)
-                                        .addComponent(jLabel32))
+                                        .addComponent(labelVA5)
+                                        .addComponent(labelVA4)
+                                        .addComponent(labelVA3)
+                                        .addComponent(labelVA2))
                                     .addGap(54, 54, 54)
                                     .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(fieldFechaCierreCaja, javax.swing.GroupLayout.Alignment.LEADING)
@@ -1028,21 +1027,21 @@ public class MainPage extends javax.swing.JFrame {
                         .addGap(0, 77, Short.MAX_VALUE))))
             .addGroup(dialogVerifArqueoLayout.createSequentialGroup()
                 .addGap(201, 201, 201)
-                .addComponent(jLabel31)
+                .addComponent(labelVA1)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         dialogVerifArqueoLayout.setVerticalGroup(
             dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogVerifArqueoLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jLabel31)
+                .addComponent(labelVA1)
                 .addGap(18, 18, 18)
                 .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel32)
+                    .addComponent(labelVA2)
                     .addComponent(fieldEstadoCajaAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36)
+                    .addComponent(labelVA3)
                     .addComponent(fieldValorCierreCaja2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1051,15 +1050,15 @@ public class MainPage extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fieldValorRemitidoCierreCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel33)))
-                    .addComponent(jLabel34))
+                            .addComponent(labelVA5)))
+                    .addComponent(labelVA4))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel37)
+                .addComponent(labelVA6)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel38)
+                .addComponent(labelVA7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel35)
+                    .addComponent(labelVA8)
                     .addComponent(fieldValorFinalCierreCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnConfirmarCierreCaja)
@@ -3047,14 +3046,6 @@ private float totalMuestraCaja(){
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -3096,6 +3087,14 @@ private float totalMuestraCaja(){
     private javax.swing.JLabel labelDescripCajero;
     private javax.swing.JLabel labelSaldoInicial;
     private javax.swing.JLabel labelTitleCajero;
+    private javax.swing.JLabel labelVA1;
+    private javax.swing.JLabel labelVA2;
+    private javax.swing.JLabel labelVA3;
+    private javax.swing.JLabel labelVA4;
+    private javax.swing.JLabel labelVA5;
+    private javax.swing.JLabel labelVA6;
+    private javax.swing.JLabel labelVA7;
+    private javax.swing.JLabel labelVA8;
     private javax.swing.JPanel logoCont;
     private javax.swing.JLabel mainLogo;
     private javax.swing.JLabel mainTitle;

@@ -2558,7 +2558,8 @@ public class MainPage extends javax.swing.JFrame {
             Integer montofinal = null;
             Integer totalventas = null;
             boolean estado = true;
-            Arqueoscaja aqc = new Arqueoscaja(id, fkCaja, fkUsuario, fechaInicio, fechaFin, montoinicial, montofinal, totalventas, estado);
+            boolean confirmado = false;
+            Arqueoscaja aqc = new Arqueoscaja(id, fkCaja, fkUsuario, fechaInicio, fechaFin, montoinicial, montofinal, totalventas, estado, confirmado);
             aqcontrol.insertar(aqc);
             dialogAbrirCaja.setVisible(false);
             JOptionPane.showMessageDialog(null,"Caja abierta con exito\nMonto: "+fieldSaldoInicAbrirCaja.getValue());

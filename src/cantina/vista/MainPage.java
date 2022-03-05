@@ -893,11 +893,6 @@ public class MainPage extends javax.swing.JFrame {
                 btnConfirmarAbrirCajaMouseReleased(evt);
             }
         });
-        btnConfirmarAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmarAbrirCajaActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -2264,11 +2259,6 @@ public class MainPage extends javax.swing.JFrame {
         btnAbrirCaja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAbrirCaja.setMaximumSize(new java.awt.Dimension(150, 50));
         btnAbrirCaja.setPreferredSize(new java.awt.Dimension(150, 50));
-        btnAbrirCaja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnAbrirCajaMouseReleased(evt);
-            }
-        });
         btnAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbrirCajaActionPerformed(evt);
@@ -2760,11 +2750,6 @@ public class MainPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCerrarCajaActionPerformed
 
-    private void btnAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirCajaMouseReleased
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_btnAbrirCajaMouseReleased
-
     private void btnConfirmarAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmarAbrirCajaMouseReleased
         // TODO add your handling code here:
         try{
@@ -2912,29 +2897,6 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         //dialogVerifArqueo.setVisible(true);
     }//GEN-LAST:event_btnAbrirGestorArqueoAdminActionPerformed
-
-    private void btnConfirmarAbrirCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarAbrirCajaActionPerformed
-        // TODO add your handling code here:
-         try{
-            Integer id = null;
-            Integer fkCaja = 1;
-            Integer fkUsuario  = uc.buscarPorNombre(fieldUserName.getText()).getIdusuario();
-            Date fechaInicio = TimestampToDate();
-            Date fechaFin = null;
-            Integer montoinicial = Integer.parseInt(fieldSaldoInicAbrirCaja.getValue().toString());
-            Integer montofinal = null;
-            Integer totalventas = null;
-            boolean estado = true;
-            Boolean confirmado = false;
-            Arqueoscaja aqc = new Arqueoscaja(id, fkCaja, fkUsuario, fechaInicio, fechaFin, montoinicial, montofinal, totalventas, estado, confirmado);
-            aqcontrol.insertar(aqc);
-            dialogAbrirCaja.setVisible(false);
-            JOptionPane.showMessageDialog(null,"Caja abierta con exito\nMonto: "+fieldSaldoInicAbrirCaja.getValue());
-            estado_caja = true;
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n"+e.toString());
-        }
-    }//GEN-LAST:event_btnConfirmarAbrirCajaActionPerformed
 
     private void btnGestionarUsuariosAdminMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestionarUsuariosAdminMouseReleased
         // TODO add your handling code here:

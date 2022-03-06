@@ -7,6 +7,7 @@
 //Deberia funcionar ya, no se que onda
 package cantina.vista;
 
+import cantina.conexion.JdbcDAOFactory;
 import cantina.controlador.ArqueoscajaControl;
 import cantina.controlador.ArticulosControl;
 import cantina.controlador.CajasControl;
@@ -23,6 +24,7 @@ import cantina.modelo.Usuarios;
 import cantina.modelo.Ventas;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -35,6 +37,14 @@ import javax.swing.ToolTipManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JFormattedTextField;
 import java.text.NumberFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -384,7 +394,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(contTituloBilletesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contTituloBilletesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                     .addGroup(contTituloBilletesLayout.createSequentialGroup()
                         .addComponent(jSeparator1)
                         .addContainerGap())))
@@ -604,7 +614,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(contTituloMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator2)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
                 .addContainerGap())
         );
         contTituloMonedasLayout.setVerticalGroup(
@@ -950,10 +960,8 @@ public class MainPage extends javax.swing.JFrame {
 
         dialogAdmUsers.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogAdmUsers.setTitle("Gestion de Usuarios");
-        dialogAdmUsers.setMaximumSize(new java.awt.Dimension(850, 507));
         dialogAdmUsers.setMinimumSize(new java.awt.Dimension(658, 392));
         dialogAdmUsers.setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
-        dialogAdmUsers.setPreferredSize(new java.awt.Dimension(850, 507));
         dialogAdmUsers.setSize(new java.awt.Dimension(850, 507));
         dialogAdmUsers.getContentPane().setLayout(new javax.swing.BoxLayout(dialogAdmUsers.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
@@ -1829,6 +1837,11 @@ public class MainPage extends javax.swing.JFrame {
         btnExportProduc.setFont(new java.awt.Font("Roboto", 1, 11)); // NOI18N
         btnExportProduc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_spreadsheet_file_30px.png"))); // NOI18N
         btnExportProduc.setText("EXPORTAR");
+        btnExportProduc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnExportProducMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout contBtnProductosLayout = new javax.swing.GroupLayout(contBtnProductos);
         contBtnProductos.setLayout(contBtnProductosLayout);
@@ -3035,6 +3048,18 @@ public class MainPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error: "+e.getMessage());
         }
     }//GEN-LAST:event_btnReactivarUserMouseReleased
+
+    private void btnExportProducMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExportProducMouseReleased
+        try {
+            Connection con = JdbcDAOFactory.obtenerConeccion();
+            JasperReport reporte = JasperCompileManager.compileReport("C://reportes/Inventario.jrxml");
+            JasperPrint imprimir = JasperFillManager.fillReport(reporte, null,con);
+            JasperViewer.viewReport(imprimir,false);
+            
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(null, ex.toString());
+        }
+    }//GEN-LAST:event_btnExportProducMouseReleased
     
     private void esNumero(java.awt.event.KeyEvent evt){
         //Rechaza el tecleo si no es un Numero

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2022 at 02:13 AM
+-- Generation Time: Mar 05, 2022 at 07:43 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -36,8 +36,19 @@ CREATE TABLE `arqueoscaja` (
   `monto_inicial` int(11) DEFAULT NULL,
   `monto_final` int(11) DEFAULT NULL,
   `total_ventas` int(11) DEFAULT NULL,
+  `Confirmado` tinyint(1) UNSIGNED DEFAULT 0,
   `estado` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `arqueoscaja`
+--
+
+INSERT INTO `arqueoscaja` (`id_arqueo`, `fk_caja`, `fk_usuario`, `fecha_inicio`, `fecha_fin`, `monto_inicial`, `monto_final`, `total_ventas`, `Confirmado`, `estado`) VALUES
+(1, 1, 2, '2022-03-03 15:40:08', '2022-03-03 17:22:40', 50000, 100000, NULL, 1, 1),
+(2, 1, 1, '2022-03-03 17:24:47', '2022-03-03 17:28:44', 20000, 100000, 0, 1, 1),
+(3, 1, 2, '2022-03-03 17:49:08', '2022-03-03 17:55:22', 25000, 50000, 0, 1, 1),
+(4, 1, 2, '2022-03-03 17:55:46', '2022-03-03 20:29:04', 23000, 60000, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -251,7 +262,9 @@ INSERT INTO `ventas` (`idventa`, `id_caja`, `fecha`, `total`, `fk_usuario`, `est
 (17, 1, '2022-03-01 03:21:20', 1000, 1, 1),
 (18, 1, '2022-03-01 03:25:45', 5000, 1, 1),
 (19, 1, '2022-03-01 03:40:57', 2000, 3, 1),
-(20, 1, '2022-03-03 00:19:28', 5000, 1, 1);
+(20, 1, '2022-03-03 00:19:28', 5000, 1, 1),
+(21, 1, '2022-03-04 23:50:16', 0, 2, 1),
+(22, 1, '2022-03-04 23:55:20', 0, 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -319,7 +332,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT for table `arqueoscaja`
 --
 ALTER TABLE `arqueoscaja`
-  MODIFY `id_arqueo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_arqueo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `articulos`
@@ -361,7 +374,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idventa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables

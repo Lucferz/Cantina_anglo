@@ -8,6 +8,7 @@ package cantina.controlador;
 import cantina.datos.UsuariosDAO;
 import cantina.modelo.Usuarios;
 import java.util.List;
+import javax.swing.JTable;
 
 /**
  *
@@ -17,6 +18,9 @@ public class UsuariosControl {
     
     public List<Usuarios> listar(){
         return new UsuariosDAO().listar();
+    }
+    public void cargar_tabla_user(JTable table){
+        new UsuariosDAO().cargar_tabla_user(table);
     }
     
     public Usuarios buscarId (Usuarios u){
@@ -39,8 +43,12 @@ public class UsuariosControl {
         new UsuariosDAO().modificar(u);
     }
     
-    public void eliminarLogico(Usuarios u){
-        new UsuariosDAO().eliminarLogico(u);
+    public void eliminarLogico(Integer id){
+        new UsuariosDAO().eliminarLogico(id);
+    }
+    
+    public void ReactivarUser (Integer id){
+        new UsuariosDAO().ReactivarUser(id);
     }
     
     public void eliminar (Usuarios u){

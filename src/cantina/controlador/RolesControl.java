@@ -8,6 +8,7 @@ package cantina.controlador;
 import cantina.datos.RolesDAO;
 import cantina.modelo.Roles;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -17,7 +18,15 @@ public class RolesControl {
     public List<Roles> listar(){
         return new RolesDAO().listar();
     }
-    
+    public String buscarRolPorId(Integer id){
+        return new RolesDAO().buscarRolPorId(id);
+    }
+    public DefaultComboBoxModel Obt_Rol(){
+        return new RolesDAO().Obt_Rol();
+    }
+    public Integer buscarIdPorRol (String rol){
+        return new RolesDAO().buscarIdPorRol(rol);
+    }
     public Roles buscar(Roles r){
         return new RolesDAO().buscar(r);
     }

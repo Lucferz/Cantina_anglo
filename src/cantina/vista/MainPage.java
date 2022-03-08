@@ -899,11 +899,6 @@ public class MainPage extends javax.swing.JFrame {
 
         btnRemitirArqueoMuestra.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnRemitirArqueoMuestra.setText("REMITIR ARQUEO");
-        btnRemitirArqueoMuestra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnRemitirArqueoMuestraMouseReleased(evt);
-            }
-        });
         btnRemitirArqueoMuestra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemitirArqueoMuestraActionPerformed(evt);
@@ -2575,11 +2570,6 @@ public class MainPage extends javax.swing.JFrame {
         btnCerrarCaja.setMaximumSize(new java.awt.Dimension(150, 50));
         btnCerrarCaja.setMinimumSize(new java.awt.Dimension(150, 50));
         btnCerrarCaja.setPreferredSize(new java.awt.Dimension(150, 50));
-        btnCerrarCaja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnCerrarCajaMouseReleased(evt);
-            }
-        });
         btnCerrarCaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarCajaActionPerformed(evt);
@@ -3003,16 +2993,6 @@ public class MainPage extends javax.swing.JFrame {
         dialogCerrarCaja.dispose();
     }//GEN-LAST:event_btnCancelarArqueoMouseReleased
 
-    private void btnRemitirArqueoMuestraMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemitirArqueoMuestraMouseReleased
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnRemitirArqueoMuestraMouseReleased
-
-    private void btnCerrarCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarCajaMouseReleased
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnCerrarCajaMouseReleased
-
     private void btnCerrarCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarCajaActionPerformed
         // TODO add your handling code here:
         dialogCerrarCaja.setVisible(true);
@@ -3340,6 +3320,7 @@ public class MainPage extends javax.swing.JFrame {
                 dialogCerrarCaja.dispose();
                 JOptionPane.showMessageDialog(null, "Valor de arqueo remitido: " + fieldTotalMuestra.getValue());
                 cerrarCaja();
+                FieldFechaAperturaCaja.setText("-");
             } else {
                 JOptionPane.showMessageDialog(null, "El usuario que haga el arqueo, debe ser el mismo que hizo la apertura\n"
                         + "El usuario que abrio la caja: " + userCaja

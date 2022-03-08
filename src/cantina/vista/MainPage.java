@@ -134,10 +134,9 @@ public class MainPage extends javax.swing.JFrame {
     private void modoVendedor() {
         //Quitar tabs que no van a ser accesible
         tabsPanel.remove(panelConfig);
-        tabsPanel.remove(panelInformes);
         //ocultando sus botones accesores del sidebar
         btnConfig.setVisible(false);
-        btnInformes.setVisible(false);
+        
     }
 
     /**
@@ -186,8 +185,42 @@ public class MainPage extends javax.swing.JFrame {
         fieldEstadoCaja.setText("Cerrado");
         fieldEstadoCaja.setForeground(new Color(204,0,0));
         fieldMontoInicialCaja.setText("-");
+        
+        //botones
         btnAbrirCaja.setEnabled(true);
+        btnAbrirCaja.setToolTipText("Clic aquí para abrir caja");
         btnCerrarCaja.setEnabled(false);
+        btnCerrarCaja.setToolTipText("La caja no está abierta");
+        
+        //Ventana Confirmar arqueo
+        fieldArqTotalSistema.setValue(null);
+        fieldArqFechaRemision.setValue(null);
+        fieldArqValorRemitido.setValue(null);
+        
+        if(cajaConfirmada()){
+            fieldArqEstadoCaja.setText("CONFIRMADO");
+            btnConfirmArqueo.setEnabled(false);
+            btnConfirmArqueo.setToolTipText("No hay remisión sin confirmar");
+            fieldArqMontoFinal.setEditable(false);
+            fieldArqMontoFinal.setToolTipText("Aquí aparecerá el monto a ser guardado");
+            
+            
+            fieldArqTotalSistema.setValue(null);
+            fieldArqFechaRemision.setValue(null);
+            fieldArqValorRemitido.setValue(null);
+
+  
+        }else{
+            fieldArqEstadoCaja.setText("Aguardando Confirmación");
+            btnConfirmArqueo.setEnabled(true);
+            btnConfirmArqueo.setToolTipText(null);
+            fieldArqMontoFinal.setEditable(true);
+            fieldArqTotalSistema.setValue(ArqueoSistema());
+            fieldArqFechaRemision.setValue(fechaCierreCaja());
+            fieldArqValorRemitido.setValue(montoRemitido());
+            
+        }
+        //fieldArqEstadoCaja.setForeground(new Color(204,0,0));
         
     }
 
@@ -200,11 +233,20 @@ public class MainPage extends javax.swing.JFrame {
         btnNewVenta.setToolTipText("Registrar nueva venta");
         fieldEstadoCaja.setText("Abierto");
         fieldEstadoCaja.setForeground(new Color(0,153,0));
+        
         btnAbrirCaja.setEnabled(false);
+        btnAbrirCaja.setToolTipText("La caja ya está abierta");
         btnCerrarCaja.setEnabled(true);
+        btnCerrarCaja.setToolTipText("Cerrar caja");
+        
         fieldMontoInicialCaja.setValue((montoInicCaja()));
         FieldFechaAperturaCaja.setValue(fechaInicialCaja());
-
+        fieldArqEstadoCaja.setText("Abierta, sin remitir");
+        btnConfirmArqueo.setEnabled(false);
+        btnConfirmArqueo.setToolTipText("No hay remisión sin confirmar");
+        fieldArqMontoFinal.setEditable(false);
+        fieldArqFechaRemision.setValue(null);
+ 
     }
 
     public void setEstado_caja(boolean estado_caja) {
@@ -314,7 +356,6 @@ public class MainPage extends javax.swing.JFrame {
         btnProductos = new javax.swing.JButton();
         btnConfig = new javax.swing.JButton();
         btnVentas = new javax.swing.JButton();
-        btnInformes = new javax.swing.JButton();
         btnCajero = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
@@ -399,9 +440,19 @@ public class MainPage extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableVentas = new javax.swing.JTable();
         panelConfig = new javax.swing.JPanel();
-        btnAbrirGestorArqueoAdmin = new javax.swing.JButton();
+        panelContConfig = new javax.swing.JPanel();
         btnGestionarUsuariosAdmin = new javax.swing.JButton();
-        panelInformes = new javax.swing.JPanel();
+        btnAbrirGestorArqueoAdmin = new javax.swing.JButton();
+        panelContAcercaDe = new javax.swing.JPanel();
+        labelAcercaDE = new javax.swing.JLabel();
+        labelAD1 = new javax.swing.JLabel();
+        labelAD2 = new javax.swing.JLabel();
+        labelAD3 = new javax.swing.JLabel();
+        labelAD4 = new javax.swing.JLabel();
+        labelAD5 = new javax.swing.JLabel();
+        labelAD6 = new javax.swing.JLabel();
+        separatorAD = new javax.swing.JSeparator();
+        separatorAD1 = new javax.swing.JSeparator();
         panelCajero = new javax.swing.JPanel();
         labelTitleCajero = new javax.swing.JLabel();
         labelDescripCajero = new javax.swing.JLabel();
@@ -1039,6 +1090,7 @@ public class MainPage extends javax.swing.JFrame {
         dialogAdmUsers.setTitle("Gestion de Usuarios");
         dialogAdmUsers.setMinimumSize(new java.awt.Dimension(658, 392));
         dialogAdmUsers.setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
+        dialogAdmUsers.setResizable(false);
         dialogAdmUsers.setSize(new java.awt.Dimension(850, 507));
         dialogAdmUsers.getContentPane().setLayout(new javax.swing.BoxLayout(dialogAdmUsers.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
@@ -1293,6 +1345,9 @@ public class MainPage extends javax.swing.JFrame {
         contGestArq.add(btnConfirmArqueo, gridBagConstraints);
 
         fieldArqEstadoCaja.setEditable(false);
+        fieldArqEstadoCaja.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        fieldArqEstadoCaja.setForeground(new java.awt.Color(51, 51, 51));
+        fieldArqEstadoCaja.setText("Aguardando Confirmacion");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -1302,7 +1357,7 @@ public class MainPage extends javax.swing.JFrame {
         contGestArq.add(fieldArqEstadoCaja, gridBagConstraints);
 
         fieldArqTotalSistema.setEditable(false);
-        fieldArqTotalSistema.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        fieldArqTotalSistema.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0 Gs"))));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -1333,6 +1388,11 @@ public class MainPage extends javax.swing.JFrame {
         contGestArq.add(fieldArqValorRemitido, gridBagConstraints);
 
         fieldArqMontoFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        fieldArqMontoFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldArqMontoFinalKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
@@ -1487,33 +1547,6 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
         contSidebarButtons.add(btnVentas, gridBagConstraints);
 
-        btnInformes.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
-        btnInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_upload_link_document_30px.png"))); // NOI18N
-        btnInformes.setText("Informes");
-        btnInformes.setToolTipText("Ir a la pestaña Informes");
-        btnInformes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnInformesMouseClicked(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnInformesMouseReleased(evt);
-            }
-        });
-        btnInformes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInformesActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
-        contSidebarButtons.add(btnInformes, gridBagConstraints);
-
         btnCajero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_cash_counter_30px.png"))); // NOI18N
         btnCajero.setText("Cajero");
         btnCajero.setMaximumSize(new java.awt.Dimension(135, 39));
@@ -1593,7 +1626,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(sidebarMainLayout.createSequentialGroup()
                 .addComponent(logoCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(contSidebarButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE))
+                .addComponent(contSidebarButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
         );
 
         getContentPane().add(sidebarMain, java.awt.BorderLayout.WEST);
@@ -2329,7 +2362,7 @@ public class MainPage extends javax.swing.JFrame {
             panelContEntradaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelContEntradaProductosLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2360,7 +2393,7 @@ public class MainPage extends javax.swing.JFrame {
         contenedorTablat2Layout.setVerticalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorTablat2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2453,7 +2486,7 @@ public class MainPage extends javax.swing.JFrame {
             contBotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contBotonesVentasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel7)
                 .addGap(16, 16, 16)
@@ -2469,13 +2502,9 @@ public class MainPage extends javax.swing.JFrame {
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_list_30px.png")), panelVentas); // NOI18N
 
-        btnAbrirGestorArqueoAdmin.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        btnAbrirGestorArqueoAdmin.setText("GESTIONAR ARQUEO DE CAJA");
-        btnAbrirGestorArqueoAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAbrirGestorArqueoAdminActionPerformed(evt);
-            }
-        });
+        panelConfig.setLayout(new java.awt.BorderLayout());
+
+        panelContConfig.setLayout(new java.awt.GridBagLayout());
 
         btnGestionarUsuariosAdmin.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnGestionarUsuariosAdmin.setText("GESTIONAR USUARIOS");
@@ -2484,42 +2513,131 @@ public class MainPage extends javax.swing.JFrame {
                 btnGestionarUsuariosAdminMouseReleased(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        panelContConfig.add(btnGestionarUsuariosAdmin, gridBagConstraints);
 
-        javax.swing.GroupLayout panelConfigLayout = new javax.swing.GroupLayout(panelConfig);
-        panelConfig.setLayout(panelConfigLayout);
-        panelConfigLayout.setHorizontalGroup(
-            panelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelConfigLayout.createSequentialGroup()
-                .addGap(244, 244, 244)
-                .addGroup(panelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAbrirGestorArqueoAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGestionarUsuariosAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(518, Short.MAX_VALUE))
-        );
-        panelConfigLayout.setVerticalGroup(
-            panelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelConfigLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(btnAbrirGestorArqueoAdmin)
-                .addGap(57, 57, 57)
-                .addComponent(btnGestionarUsuariosAdmin)
-                .addContainerGap(419, Short.MAX_VALUE))
-        );
+        btnAbrirGestorArqueoAdmin.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnAbrirGestorArqueoAdmin.setText("GESTIONAR ARQUEO DE CAJA");
+        btnAbrirGestorArqueoAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirGestorArqueoAdminActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        panelContConfig.add(btnAbrirGestorArqueoAdmin, gridBagConstraints);
+
+        panelConfig.add(panelContConfig, java.awt.BorderLayout.NORTH);
+
+        panelContAcercaDe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        panelContAcercaDe.setForeground(new java.awt.Color(102, 102, 102));
+        panelContAcercaDe.setLayout(new java.awt.GridBagLayout());
+
+        labelAcercaDE.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
+        labelAcercaDE.setForeground(new java.awt.Color(102, 102, 102));
+        labelAcercaDE.setText("Acerca de este Sistema");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(50, 10, 0, 0);
+        panelContAcercaDe.add(labelAcercaDE, gridBagConstraints);
+
+        labelAD1.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        labelAD1.setForeground(new java.awt.Color(102, 102, 102));
+        labelAD1.setText("Desarrollado por: ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(44, 96, 0, 0);
+        panelContAcercaDe.add(labelAD1, gridBagConstraints);
+
+        labelAD2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelAD2.setForeground(new java.awt.Color(102, 102, 102));
+        labelAD2.setText("Lucas Frutos");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 13, 0, 0);
+        panelContAcercaDe.add(labelAD2, gridBagConstraints);
+
+        labelAD3.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelAD3.setForeground(new java.awt.Color(102, 102, 102));
+        labelAD3.setText("Daniel Maldonado");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 13, 0, 0);
+        panelContAcercaDe.add(labelAD3, gridBagConstraints);
+
+        labelAD4.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        labelAD4.setForeground(new java.awt.Color(102, 102, 102));
+        labelAD4.setText("Contactos:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(54, 96, 0, 0);
+        panelContAcercaDe.add(labelAD4, gridBagConstraints);
+
+        labelAD5.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelAD5.setForeground(new java.awt.Color(102, 102, 102));
+        labelAD5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_whatsapp_25px_1.png"))); // NOI18N
+        labelAD5.setText("+595 992 205 206");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
+        panelContAcercaDe.add(labelAD5, gridBagConstraints);
+
+        labelAD6.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelAD6.setForeground(new java.awt.Color(102, 102, 102));
+        labelAD6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_whatsapp_25px_1.png"))); // NOI18N
+        labelAD6.setText("+595 975 333 205");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 12, 90, 0);
+        panelContAcercaDe.add(labelAD6, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 833;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 96, 0, 57);
+        panelContAcercaDe.add(separatorAD, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 833;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 96, 0, 57);
+        panelContAcercaDe.add(separatorAD1, gridBagConstraints);
+
+        panelConfig.add(panelContAcercaDe, java.awt.BorderLayout.CENTER);
 
         tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_settings_30px.png")), panelConfig); // NOI18N
-
-        javax.swing.GroupLayout panelInformesLayout = new javax.swing.GroupLayout(panelInformes);
-        panelInformes.setLayout(panelInformesLayout);
-        panelInformesLayout.setHorizontalGroup(
-            panelInformesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 987, Short.MAX_VALUE)
-        );
-        panelInformesLayout.setVerticalGroup(
-            panelInformesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 583, Short.MAX_VALUE)
-        );
-
-        tabsPanel.addTab("", new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_upload_link_document_30px.png")), panelInformes); // NOI18N
 
         panelCajero.setLayout(new java.awt.GridBagLayout());
 
@@ -2688,10 +2806,6 @@ public class MainPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnConfigMouseClicked
 
-    private void btnInformesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformesMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnInformesMouseClicked
-
     private void btnNewVentaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewVentaMouseReleased
         // TODO add your handling code here:
         //tabsPanel.setSelectedIndex(0);   
@@ -2711,10 +2825,6 @@ public class MainPage extends javax.swing.JFrame {
     private void btnConfigMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfigMouseReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_btnConfigMouseReleased
-
-    private void btnInformesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInformesMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnInformesMouseReleased
 
     private void btnCerrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarVentaActionPerformed
         // TODO add your handling code here:
@@ -3107,12 +3217,6 @@ public class MainPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnConfigActionPerformed
 
-    private void btnInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformesActionPerformed
-        // TODO add your handling code here:
-        tabsPanel.setSelectedComponent(panelInformes);
-
-    }//GEN-LAST:event_btnInformesActionPerformed
-
     private void btnCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCajeroActionPerformed
         // TODO add your handling code here:
         tabsPanel.setSelectedComponent(panelCajero);
@@ -3436,6 +3540,11 @@ public class MainPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnResumenVentaAnhoMouseReleased
 
+    private void fieldArqMontoFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldArqMontoFinalKeyTyped
+        // TODO add your handling code here:
+         esNumero(evt);
+    }//GEN-LAST:event_fieldArqMontoFinalKeyTyped
+
     private void esNumero(java.awt.event.KeyEvent evt) {
         //Rechaza el tecleo si no es un Numero
         char TestChar = evt.getKeyChar();
@@ -3457,8 +3566,8 @@ public class MainPage extends javax.swing.JFrame {
         return (state & MAXIMIZED_BOTH) == MAXIMIZED_BOTH;
     }
 
-    private float totalMuestraCaja() {
-        float total = 0;
+    private int totalMuestraCaja() {
+        int total = 0;
         total += (Integer) spin50gs.getValue() * 50;
         total += (Integer) spin100gs.getValue() * 100;
         total += (Integer) spin500gs.getValue() * 500;
@@ -3541,7 +3650,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton btnExportProduc;
     private javax.swing.JButton btnGestionarUsuariosAdmin;
     private javax.swing.JButton btnGuardarProducto;
-    private javax.swing.JButton btnInformes;
     private javax.swing.JButton btnLimpiarProd;
     private javax.swing.JButton btnModUser;
     private javax.swing.JButton btnNewVenta;
@@ -3677,6 +3785,13 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel labT2PrecioCosto;
     private javax.swing.JLabel labT2PrecioVenta;
     private javax.swing.JLabel labT2StockDisp;
+    private javax.swing.JLabel labelAD1;
+    private javax.swing.JLabel labelAD2;
+    private javax.swing.JLabel labelAD3;
+    private javax.swing.JLabel labelAD4;
+    private javax.swing.JLabel labelAD5;
+    private javax.swing.JLabel labelAD6;
+    private javax.swing.JLabel labelAcercaDE;
     private javax.swing.JLabel labelDescripCajero;
     private javax.swing.JLabel labelGestArq1;
     private javax.swing.JLabel labelGestArq2;
@@ -3699,11 +3814,14 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel mainTitle;
     private javax.swing.JPanel panelCajero;
     private javax.swing.JPanel panelConfig;
+    private javax.swing.JPanel panelContAcercaDe;
+    private javax.swing.JPanel panelContConfig;
     private javax.swing.JPanel panelContEntradaProductos;
-    private javax.swing.JPanel panelInformes;
     private javax.swing.JPanel panelNuevaVenta;
     private javax.swing.JPanel panelProductos;
     private javax.swing.JPanel panelVentas;
+    private javax.swing.JSeparator separatorAD;
+    private javax.swing.JSeparator separatorAD1;
     private javax.swing.JPanel sidebarMain;
     private javax.swing.JSpinner spin1000gs;
     private javax.swing.JSpinner spin100gs;
@@ -3793,7 +3911,14 @@ public class MainPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error en la actualizacion del stock\n" + e.toString());
         }
     }
+    
+    /*
+    ****************************************************************************************************************
+                            METODOS PARA CIERRE Y APERTURA DE CAJA
+    ****************************************************************************************************************
 
+    */
+    
     private boolean CajaCerrada() {
         Boolean retorno = null;
         try {
@@ -3809,6 +3934,26 @@ public class MainPage extends javax.swing.JFrame {
         }
         return retorno;//Aca recien se retorna por el tema del try-catch
     }
+    
+    private boolean cajaConfirmada() {
+        Boolean retorno = null;
+        try {
+            Arqueoscaja aq = aqcontrol.UltimoElemento();
+            Date cajaCerrada = aq.getFechaFin();
+            if (cajaCerrada == null) {//si esta nulo es pq no tiene una fecha de fin, por lo tanto no se cerro
+                retorno = false;
+            } else{
+                retorno = aq.getConfirmado();
+                System.out.println("estado de caja: "+ retorno.toString());
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+        return retorno;//Aca recien se retorna por el tema del try-catch
+    }
+       
+       
+       
     private int montoInicCaja() {
         int retorno = 0;
         try {
@@ -3821,6 +3966,7 @@ public class MainPage extends javax.swing.JFrame {
         }
         return retorno;//Aca recien se retorna por el tema del try-catch
     }
+    
     private String fechaInicialCaja() {
         String formatFecha = null;
         DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate ( FormatStyle.FULL );
@@ -3829,7 +3975,7 @@ public class MainPage extends javax.swing.JFrame {
             Date fechaInicioCaja = aq.getFechaInicio();
             LocalDateTime ldate = fechaInicioCaja.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
             //formatFecha = fechaInicioCaja.to;
-            formatFecha = ldate.format(formatter) + " a las " +ldate.toLocalTime();
+            formatFecha = ldate.format(formatter) + " a las " + ldate.toLocalTime();
             
             
         } catch (Exception e) {
@@ -3838,6 +3984,32 @@ public class MainPage extends javax.swing.JFrame {
         return formatFecha;
     }
     
+    private String fechaCierreCaja() {
+        String formatFecha = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate ( FormatStyle.FULL );
+        try {
+            Arqueoscaja aq = aqcontrol.UltimoElemento();
+            Date fechaCierreCaja = aq.getFechaFin();
+            LocalDateTime ldate = fechaCierreCaja.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            //formatFecha = fechaInicioCaja.to;
+            formatFecha = ldate.format(formatter) + " a las " +ldate.toLocalTime();           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }   
+        return formatFecha;
+    }
+    
+    private int montoRemitido() {
+        int remitido = 0;
+        try {
+            Arqueoscaja aq = aqcontrol.UltimoElemento();
+            remitido = aq.getMontoFinal();
+                     
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }   
+        return remitido;
+    }
 
     private Integer ArqueoSistema() {
         Integer total = null;
@@ -3846,7 +4018,7 @@ public class MainPage extends javax.swing.JFrame {
             Date cajaCerrada = aq.getFechaFin();
             if (cajaCerrada != null) {
                 Date cajaAbierta = aq.getFechaInicio();
-                total = vc.SumTotalVenArqueo(cajaAbierta, cajaCerrada);
+                total = vc.SumTotalVenArqueo(cajaAbierta, cajaCerrada); 
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());

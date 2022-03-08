@@ -9,6 +9,7 @@ import cantina.datos.VentasDAO;
 import cantina.modelo.Ventas;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JTable;
 
 /**
  *
@@ -17,6 +18,9 @@ import java.util.List;
 public class VentasControlador {
     public List<Ventas> listar(){
         return new VentasDAO().listar();
+    }
+    public void cargar_tabla_venta(JTable table){
+        new VentasDAO().cargar_tabla_venta(table);
     }
     public Ventas buscar(Integer id){
         return new VentasDAO().buscar(id);

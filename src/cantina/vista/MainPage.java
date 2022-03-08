@@ -192,7 +192,6 @@ public class MainPage extends javax.swing.JFrame {
         fieldEstadoCaja.setForeground(new Color(0,153,0));
         btnAbrirCaja.setEnabled(false);
         btnCerrarCaja.setEnabled(true);
-        //fieldMontoInicialCaja.setText(fieldMontoInicialCaja.getValue().toString());
         fieldMontoInicialCaja.setValue((montoInicCaja()));
         FieldFechaAperturaCaja.setValue(fechaInicialCaja());
 

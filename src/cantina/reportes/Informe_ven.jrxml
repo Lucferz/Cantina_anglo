@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="487daf90-d2af-4dfd-9b52-7a06756fe111">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Lucas\\Documents\\NetBeansProjects\\Cantina_anglo\\src\\cantina\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_ini" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_fin" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     ventas.`idventa` AS ID,
+     ventas.`id_caja` AS CAJA,
+     ventas.`fecha` AS FECHA,
+     ventas.`total` AS TOTAL,
+     usuarios.`nombre` AS USUARIO
+FROM
+     `ventas` ventas, `usuarios` usuarios
+WHERE
+	ventas.`estado` = 1 AND
+	ventas.`fk_usuario` = usuarios.`idusuario` AND
+	ventas.`fecha` BETWEEN TIMESTAMP($P{fecha_ini}) AND TIMESTAMP($P{fecha_fin})
+ORDER BY ventas.`idventa` asc]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="CAJA" class="java.lang.Integer"/>
+	<field name="FECHA" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TOTAL" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="USUARIO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="119" splitType="Stretch">
+			<staticText>
+				<reportElement x="134" y="60" width="284" height="43" uuid="9f0bbb09-cca2-4c48-8219-b0a2ef7df7f5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORME DE VENTAS]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement x="445" y="10" width="100" height="20" uuid="24f949bb-2256-43b0-9537-f269c7ec62ab"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="10" width="100" height="20" uuid="9875c941-8780-4fe5-aa2b-3da83c5e46c2"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Cantina - Anglo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="10" width="35" height="20" uuid="ebef9bc8-7129-4c96-a050-19d143e99bb8"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="30" width="135" height="20" uuid="a8bb64a4-ff03-451a-a8c5-6c69743ca362"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Ciudad del Este, Paraguay]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="16" width="31" height="20" uuid="4fe1c8b8-48ee-414b-a41e-7d7f92920fa8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="16" width="54" height="20" uuid="1f75b7c6-252b-4307-87da-92352982dd76"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[CAJA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="16" width="100" height="20" uuid="bc20ed1b-5ad1-4f1a-9cac-ae1f5b6310c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[FECHA DE VENTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="16" width="129" height="20" uuid="2090a866-ba84-4230-9736-541b32562dae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE LA VENTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="16" width="100" height="20" uuid="7899b141-3581-438c-94a9-339ca92b07fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[USUARIO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="5" y="39" width="510" height="1" uuid="916565c2-2f4f-4fed-a63b-c6a2f27a9375"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="60" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="21" width="31" height="20" uuid="6a010bfd-5c9a-4242-9469-a224b0ae8222"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="21" width="54" height="20" uuid="003dca2b-b9b9-4e23-a1fd-c62d6f4b0836"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CAJA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="21" width="100" height="20" uuid="c1cd417a-7b16-4b8a-9ac3-715d8b2c29f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="21" width="129" height="20" uuid="06334905-4fec-452f-bb34-551c8aa0fb83"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="21" width="100" height="20" uuid="df4fb6a6-57db-4838-9498-90545b05b45a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{USUARIO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="29" width="283" height="26" uuid="975d84e5-ae04-485b-a158-e1a50c323eb6"/>
+				<text><![CDATA[Hecho y diseñado por Lucas Frutos y Daniel Maldonado.
+Numero de contacto: (0992) 205206 / (0975) 333205]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="527" y="33" width="25" height="20" uuid="da50ad3a-b316-4265-bdd9-ca1e86029e2d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="103" splitType="Stretch">
+			<subreport>
+				<reportElement x="10" y="3" width="535" height="100" uuid="420f66e3-117a-46e2-a565-f2355943740a"/>
+				<subreportParameter name="fecha_ini">
+					<subreportParameterExpression><![CDATA[$P{fecha_ini}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha_fin">
+					<subreportParameterExpression><![CDATA[$P{fecha_fin}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "Informe_ven_Total1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

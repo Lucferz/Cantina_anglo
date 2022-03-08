@@ -6,6 +6,7 @@
 package cantina.datos;
 
 import cantina.controlador.ControladorAbstract;
+import cantina.modelo.Usuarios;
 import cantina.modelo.Ventas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,6 +17,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -77,5 +80,31 @@ public class VentasDAO extends ControladorAbstract{
         v= em.find(Ventas.class, v.getIdventa());
         em.remove(v);
         em.getTransaction().commit();
+    }
+    
+    public void cargar_tabla_venta(JTable table){
+        String [] titulos = {"ID","FECHA","USUARIO","TOTAL"};
+        DefaultTableModel model = new DefaultTableModel(null, titulos){
+            @Override
+            public boolean isCellEditable(int i, int i1) {
+                return false;
+            }
+        };
+        try{
+            TypedQuery<Ventas> sql = em.createNamedQuery("Ventas.cargarTabla", Ventas.class);
+            List<Ventas> datos = sql.getResultList();
+            String [] datosVenta = new String[4];
+            for(Ventas vta : datos){
+                datosVenta[0] = vta.getIdventa()+"";
+                datosVenta[1] = vta.getFecha()+"";
+                Usuarios us = vta.getFkUsuario();
+                datosVenta[2] = us.getNombre();
+                datosVenta[3] = vta.getTotal()+"";
+                model.addRow(datosVenta);
+            }
+            table.setModel(model);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.toString(),"Error en Carga de tabla Ventas",0);
+        }
     }
 }

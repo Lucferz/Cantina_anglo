@@ -41,6 +41,10 @@ import java.text.NumberFormat;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JRException;
@@ -122,6 +126,7 @@ public class MainPage extends javax.swing.JFrame {
         MostrarTabArti();
         MostrarComboRol();
         MostrarTabUser();
+        MostrarTabVentas();
         fieldCod.requestFocus();
         ToolTipManager.sharedInstance().setInitialDelay(300);
     }
@@ -157,6 +162,11 @@ public class MainPage extends javax.swing.JFrame {
     private void MostrarTabUser() {
         uc.cargar_tabla_user(jTableUsers);
         modelo = (DefaultTableModel) jTableUsers.getModel();
+    }
+    
+    private void MostrarTabVentas(){
+        vc.cargar_tabla_venta(jTableVentas);
+        modelo = (DefaultTableModel) jTableVentas.getModel();
     }
 
     private void LimpiarTable() {
@@ -383,9 +393,9 @@ public class MainPage extends javax.swing.JFrame {
         contBotonesVentas = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         btnResumenVentasDiario = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnResumenVentaSiete = new javax.swing.JButton();
+        btnResumenVentaMes = new javax.swing.JButton();
+        btnResumenVentaAnho = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableVentas = new javax.swing.JTable();
         panelConfig = new javax.swing.JPanel();
@@ -888,11 +898,6 @@ public class MainPage extends javax.swing.JFrame {
 
         btnRemitirArqueoMuestra.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnRemitirArqueoMuestra.setText("REMITIR ARQUEO");
-        btnRemitirArqueoMuestra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnRemitirArqueoMuestraMouseReleased(evt);
-            }
-        });
         btnRemitirArqueoMuestra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemitirArqueoMuestraActionPerformed(evt);
@@ -2373,23 +2378,38 @@ public class MainPage extends javax.swing.JFrame {
         btnResumenVentasDiario.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
         btnResumenVentasDiario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_pdf_30px.png"))); // NOI18N
         btnResumenVentasDiario.setText("Hoy");
-
-        jButton3.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_pdf_30px.png"))); // NOI18N
-        jButton3.setText("Últimos 7 días");
-
-        jButton4.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_pdf_30px.png"))); // NOI18N
-        jButton4.setText("Mes Actual");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+        btnResumenVentasDiario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnResumenVentasDiarioMouseReleased(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_pdf_30px.png"))); // NOI18N
-        jButton5.setText("Año Actual");
+        btnResumenVentaSiete.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
+        btnResumenVentaSiete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_pdf_30px.png"))); // NOI18N
+        btnResumenVentaSiete.setText("Últimos 7 días");
+        btnResumenVentaSiete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnResumenVentaSieteMouseReleased(evt);
+            }
+        });
+
+        btnResumenVentaMes.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
+        btnResumenVentaMes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_pdf_30px.png"))); // NOI18N
+        btnResumenVentaMes.setText("Mes Actual");
+        btnResumenVentaMes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnResumenVentaMesMouseReleased(evt);
+            }
+        });
+
+        btnResumenVentaAnho.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
+        btnResumenVentaAnho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_pdf_30px.png"))); // NOI18N
+        btnResumenVentaAnho.setText("Año Actual");
+        btnResumenVentaAnho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnResumenVentaAnhoMouseReleased(evt);
+            }
+        });
 
         jTableVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2419,11 +2439,11 @@ public class MainPage extends javax.swing.JFrame {
                             .addGroup(contBotonesVentasLayout.createSequentialGroup()
                                 .addComponent(btnResumenVentasDiario)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3)
+                                .addComponent(btnResumenVentaSiete)
                                 .addGap(10, 10, 10)
-                                .addComponent(jButton4)
+                                .addComponent(btnResumenVentaMes)
                                 .addGap(10, 10, 10)
-                                .addComponent(jButton5)))
+                                .addComponent(btnResumenVentaAnho)))
                         .addContainerGap(381, Short.MAX_VALUE))
                     .addGroup(contBotonesVentasLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 958, Short.MAX_VALUE)
@@ -2439,9 +2459,9 @@ public class MainPage extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(contBotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                     .addComponent(btnResumenVentasDiario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnResumenVentaSiete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResumenVentaMes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResumenVentaAnho, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15))
         );
 
@@ -2549,11 +2569,6 @@ public class MainPage extends javax.swing.JFrame {
         btnCerrarCaja.setMaximumSize(new java.awt.Dimension(150, 50));
         btnCerrarCaja.setMinimumSize(new java.awt.Dimension(150, 50));
         btnCerrarCaja.setPreferredSize(new java.awt.Dimension(150, 50));
-        btnCerrarCaja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnCerrarCajaMouseReleased(evt);
-            }
-        });
         btnCerrarCaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarCajaActionPerformed(evt);
@@ -2839,10 +2854,6 @@ public class MainPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnActualizarProductosActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void fieldCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldCodKeyPressed
         // TODO add your handling code here:
         try {
@@ -2945,6 +2956,7 @@ public class MainPage extends javax.swing.JFrame {
     private void btnLimpiarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarProdActionPerformed
         // TODO add your handling code here:
         LimpiarProd();
+        
     }//GEN-LAST:event_btnLimpiarProdActionPerformed
 
     private void fieldT2IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldT2IdActionPerformed
@@ -2979,16 +2991,6 @@ public class MainPage extends javax.swing.JFrame {
         System.out.println("Cancelado Cerrar Caja");
         dialogCerrarCaja.dispose();
     }//GEN-LAST:event_btnCancelarArqueoMouseReleased
-
-    private void btnRemitirArqueoMuestraMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemitirArqueoMuestraMouseReleased
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnRemitirArqueoMuestraMouseReleased
-
-    private void btnCerrarCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarCajaMouseReleased
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnCerrarCajaMouseReleased
 
     private void btnCerrarCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarCajaActionPerformed
         // TODO add your handling code here:
@@ -3317,6 +3319,7 @@ public class MainPage extends javax.swing.JFrame {
                 dialogCerrarCaja.dispose();
                 JOptionPane.showMessageDialog(null, "Valor de arqueo remitido: " + fieldTotalMuestra.getValue());
                 cerrarCaja();
+                FieldFechaAperturaCaja.setText("-");
             } else {
                 JOptionPane.showMessageDialog(null, "El usuario que haga el arqueo, debe ser el mismo que hizo la apertura\n"
                         + "El usuario que abrio la caja: " + userCaja
@@ -3354,6 +3357,84 @@ public class MainPage extends javax.swing.JFrame {
             btnConfirmarAbrirCaja.requestFocus();
         } 
     }//GEN-LAST:event_fieldSaldoInicAbrirCajaKeyReleased
+
+    private void btnResumenVentasDiarioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResumenVentasDiarioMouseReleased
+        // TODO add your handling code here:
+        Timestamp fecha_fin = new Timestamp(System.currentTimeMillis());
+        int dia = fecha_fin.getDate();
+        int anho = fecha_fin.getYear();
+        int mes = fecha_fin.getMonth();
+        Timestamp fecha_ini = new Timestamp(anho,mes,dia,0,0,0,0);
+        
+        try{
+            Connection con = JdbcDAOFactory.obtenerConeccion();
+            Map parametros = new HashMap();
+            parametros.put("fecha_ini", fecha_ini);
+            parametros.put("fecha_fin",fecha_fin );
+            JasperReport reporte = JasperCompileManager.compileReport("c://reportes/Informe_ven.jrxml");
+            JasperPrint imprimir = JasperFillManager.fillReport(reporte, parametros, con);
+            JasperViewer.viewReport(imprimir, false);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }//GEN-LAST:event_btnResumenVentasDiarioMouseReleased
+
+    private void btnResumenVentaSieteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResumenVentaSieteMouseReleased
+        // TODO add your handling code here:
+        Timestamp fecha_fin = new Timestamp(System.currentTimeMillis());
+        Timestamp fecha_ini = new Timestamp(System.currentTimeMillis() - 604800000);
+        
+        try{
+            Connection con = JdbcDAOFactory.obtenerConeccion();
+            Map parametros = new HashMap();
+            parametros.put("fecha_ini", fecha_ini);
+            parametros.put("fecha_fin",fecha_fin );
+            JasperReport reporte = JasperCompileManager.compileReport("c://reportes/Informe_ven.jrxml");
+            JasperPrint imprimir = JasperFillManager.fillReport(reporte, parametros, con);
+            JasperViewer.viewReport(imprimir, false);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }//GEN-LAST:event_btnResumenVentaSieteMouseReleased
+
+    private void btnResumenVentaMesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResumenVentaMesMouseReleased
+        // TODO add your handling code here:
+        Timestamp fecha_fin = new Timestamp(System.currentTimeMillis());
+        int anho = fecha_fin.getYear();
+        int mes = fecha_fin.getMonth();
+        Timestamp fecha_ini = new Timestamp(anho,mes,1,0,0,0,0);
+        
+        try{
+            Connection con = JdbcDAOFactory.obtenerConeccion();
+            Map parametros = new HashMap();
+            parametros.put("fecha_ini", fecha_ini);
+            parametros.put("fecha_fin",fecha_fin );
+            JasperReport reporte = JasperCompileManager.compileReport("c://reportes/Informe_ven.jrxml");
+            JasperPrint imprimir = JasperFillManager.fillReport(reporte, parametros, con);
+            JasperViewer.viewReport(imprimir, false);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }//GEN-LAST:event_btnResumenVentaMesMouseReleased
+
+    private void btnResumenVentaAnhoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResumenVentaAnhoMouseReleased
+        // TODO add your handling code here:
+        Timestamp fecha_fin = new Timestamp(System.currentTimeMillis());
+        int anho = fecha_fin.getYear();
+        Timestamp fecha_ini = new Timestamp(anho,0,1,0,0,0,0);
+        
+        try{
+            Connection con = JdbcDAOFactory.obtenerConeccion();
+            Map parametros = new HashMap();
+            parametros.put("fecha_ini", fecha_ini);
+            parametros.put("fecha_fin",fecha_fin );
+            JasperReport reporte = JasperCompileManager.compileReport("c://reportes/Informe_ven.jrxml");
+            JasperPrint imprimir = JasperFillManager.fillReport(reporte, parametros, con);
+            JasperViewer.viewReport(imprimir, false);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }//GEN-LAST:event_btnResumenVentaAnhoMouseReleased
 
     private void esNumero(java.awt.event.KeyEvent evt) {
         //Rechaza el tecleo si no es un Numero
@@ -3467,6 +3548,9 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnReactivarUser;
     private javax.swing.JButton btnRemitirArqueoMuestra;
+    private javax.swing.JButton btnResumenVentaAnho;
+    private javax.swing.JButton btnResumenVentaMes;
+    private javax.swing.JButton btnResumenVentaSiete;
     private javax.swing.JButton btnResumenVentasDiario;
     private javax.swing.JButton btnVentas;
     private javax.swing.JPanel contBilletes;
@@ -3525,9 +3609,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTextField fieldUserName;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox2Categorias;
     private javax.swing.JComboBox<String> jComboBoxRolUsers;
     private javax.swing.JLabel jLabel1;
@@ -3779,5 +3860,9 @@ public class MainPage extends javax.swing.JFrame {
         fieldPassUser.setText("");
         fieldEstadoUser.setText("");
         jComboBoxRolUsers.setSelectedIndex(0);
+    }
+    
+    private void EsteMes(){
+        
     }
 }

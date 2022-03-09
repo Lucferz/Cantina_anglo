@@ -1299,7 +1299,6 @@ public class MainPage extends javax.swing.JFrame {
         fieldArqEstadoCaja.setText("Aguardando Confirmacion");
 
         fieldArqTotalSistema.setEditable(false);
-        fieldArqTotalSistema.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0 Gs"))));
 
         fieldArqFechaRemision.setEditable(false);
 
@@ -2828,6 +2827,8 @@ public class MainPage extends javax.swing.JFrame {
         LimpiarTable();
         fieldTotalPagar.setText("");
         fieldCod.requestFocus();
+        MostrarTabVentas();
+        MostrarTabArti();
     }//GEN-LAST:event_btnCerrarVentaActionPerformed
 
     private void jScrollPane4ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jScrollPane4ComponentResized
@@ -3391,6 +3392,7 @@ public class MainPage extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n" + e.toString(), "Error en btn Abrir Caja",0);
         }
+        fieldSaldoInicAbrirCaja.setText("");
     }//GEN-LAST:event_btnConfirmarAbrirCajaActionPerformed
 
     private void btnRemitirArqueoMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemitirArqueoMuestraActionPerformed
@@ -3419,6 +3421,7 @@ public class MainPage extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n" + e.toString());
         }
+        fieldTotalMuestra.setText("");
     }//GEN-LAST:event_btnRemitirArqueoMuestraActionPerformed
 
     private void fieldTotalMuestraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldTotalMuestraKeyPressed
@@ -3534,12 +3537,19 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnConfirmArqueoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmArqueoActionPerformed
         // TODO add your handling code here:
-        Arqueoscaja aq = aqcontrol.UltimoElemento();
-        aq.setConfirmado(true);
-        if (!fieldArqMontoFinal.equals(fieldArqValorRemitido)){
-            aq.setMontoFinal(Integer.parseInt(fieldArqMontoFinal.getText()));
+        try{
+            Arqueoscaja aq = aqcontrol.UltimoElemento();
+            aq.setConfirmado(true);
+            if (!fieldArqMontoFinal.equals(fieldArqValorRemitido)){
+                aq.setMontoFinal(Integer.parseInt( fieldArqMontoFinal.getValue().toString()));
+            }
+            aqcontrol.modificar(aq);
+            dialogVerifArqueo.dispose();
+            JOptionPane.showMessageDialog(null, "Ajuste de arqueo completado");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "btnConfirmarArqueo: \n"+e.toString());
         }
-        aqcontrol.insertar(aq);
+        cerrarCaja();
     }//GEN-LAST:event_btnConfirmArqueoActionPerformed
 
     private void esNumero(java.awt.event.KeyEvent evt) {
@@ -4011,20 +4021,23 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     private Integer ArqueoSistema() {
-        Integer total = 0;
+        Arqueoscaja aq = aqcontrol.UltimoElemento();
+        Integer total =null;
+        Date cajaAbierta=null;
+        total = aq.getMontoInicial()==null? 0 : aq.getMontoInicial();//Operador Ternario
         try {
-            Arqueoscaja aq = aqcontrol.UltimoElemento();
             Date cajaCerrada = aq.getFechaFin();
-            Date cajaAbierta;
             if (cajaCerrada != null) {
                 cajaAbierta = aq.getFechaInicio();
-                total = vc.SumTotalVenArqueo(cajaAbierta, cajaCerrada); 
+                System.out.println("Todo bien hasta abrir caja");
+                Integer suma = vc.SumTotalVenArqueo(cajaAbierta, cajaCerrada);
+                total += suma; 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en Arqueo Sistema"+e.toString());
+            JOptionPane.showMessageDialog(null,"El error fue: "+e.toString());
         }
         if(total==null){
-            total =0;
+            total = 0;
             return total;
         }else{
             return total;

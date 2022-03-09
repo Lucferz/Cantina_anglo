@@ -8,6 +8,7 @@ package cantina.controlador;
 import cantina.datos.ArqueoscajaDAO;
 import cantina.modelo.Arqueoscaja;
 import java.util.List;
+import javax.swing.JTable;
 
 /**
  *
@@ -16,6 +17,10 @@ import java.util.List;
 public class ArqueoscajaControl {
     public List<Arqueoscaja> listar(){
         return new ArqueoscajaDAO().listar();
+    }
+    
+    public void cargarTabArqueo(JTable table) {
+        new ArqueoscajaDAO().cargarTabArqueo(table);
     }
     
     public Arqueoscaja UltimoElemento (){

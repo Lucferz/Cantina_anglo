@@ -132,6 +132,7 @@ public class MainPage extends javax.swing.JFrame {
         MostrarComboRol();
         MostrarTabUser();
         MostrarTabVentas();
+        MostrarTabArqueo();
         fieldCod.requestFocus();
         ToolTipManager.sharedInstance().setInitialDelay(300);
     }
@@ -157,6 +158,11 @@ public class MainPage extends javax.swing.JFrame {
     private void MostrarTabArti() {
         ac.cargar_tabla_arti(jTableArticulos);
         modelo = (DefaultTableModel) jTableArticulos.getModel();
+    }
+    
+    private void MostrarTabArqueo(){//Cambiar el JTable por el de Arqueo
+        aqcontrol.cargarTabArqueo(jTableUsers);
+        modelo = (DefaultTableModel) jTableUsers.getModel();
     }
 
     private void MostrarComboRol() {

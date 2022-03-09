@@ -52,6 +52,8 @@ public class VentasDAO extends ControladorAbstract{
     
     public Integer SumTotalVenArqueo(Date fechaInicio, Date fechaFin){
         TypedQuery<Integer> query = em.createNamedQuery("Ventas.SumVentasXArqueo", Integer.class);
+        query.setParameter("fechaInicio", fechaInicio);
+        query.setParameter("fechaFin", fechaFin);
         return query.getSingleResult();
     }
     

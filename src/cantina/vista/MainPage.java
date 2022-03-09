@@ -216,7 +216,7 @@ public class MainPage extends javax.swing.JFrame {
             btnConfirmArqueo.setToolTipText(null);
             fieldArqMontoFinal.setEditable(true);
             fieldArqTotalSistema.setValue(ArqueoSistema());
-            fieldArqFechaRemision.setValue(fechaCierreCaja());
+            //fieldArqFechaRemision.setValue(fechaCierreCaja());
             fieldArqValorRemitido.setValue(montoRemitido());
             
         }
@@ -1626,7 +1626,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(sidebarMainLayout.createSequentialGroup()
                 .addComponent(logoCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(contSidebarButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
+                .addComponent(contSidebarButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE))
         );
 
         getContentPane().add(sidebarMain, java.awt.BorderLayout.WEST);
@@ -2362,7 +2362,7 @@ public class MainPage extends javax.swing.JFrame {
             panelContEntradaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelContEntradaProductosLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2393,7 +2393,7 @@ public class MainPage extends javax.swing.JFrame {
         contenedorTablat2Layout.setVerticalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorTablat2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2486,7 +2486,7 @@ public class MainPage extends javax.swing.JFrame {
             contBotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contBotonesVentasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel7)
                 .addGap(16, 16, 16)
@@ -4012,18 +4012,25 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     private Integer ArqueoSistema() {
-        Integer total = null;
+        Integer total = 0;
         try {
             Arqueoscaja aq = aqcontrol.UltimoElemento();
             Date cajaCerrada = aq.getFechaFin();
+            Date cajaAbierta;
             if (cajaCerrada != null) {
-                Date cajaAbierta = aq.getFechaInicio();
+                cajaAbierta = aq.getFechaInicio();
                 total = vc.SumTotalVenArqueo(cajaAbierta, cajaCerrada); 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.toString());
+            JOptionPane.showMessageDialog(null, "Error en Arqueo Sistema"+e.toString());
         }
-        return total;
+        if(total==null){
+            total =0;
+            return total;
+        }else{
+            return total;
+        }
+       
     }
 
     private void LimpiarUser() {
@@ -4032,9 +4039,5 @@ public class MainPage extends javax.swing.JFrame {
         fieldPassUser.setText("");
         fieldEstadoUser.setText("");
         jComboBoxRolUsers.setSelectedIndex(0);
-    }
-    
-    private void EsteMes(){
-        
     }
 }

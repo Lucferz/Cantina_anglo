@@ -158,8 +158,8 @@ public class MainPage extends javax.swing.JFrame {
     }
     
     private void MostrarTabArqueo(){//Cambiar el JTable por el de Arqueo
-        aqcontrol.cargarTabArqueo(jTableUsers);
-        modelo = (DefaultTableModel) jTableUsers.getModel();
+        aqcontrol.cargarTabArqueo(tableHistArq);
+        modelo = (DefaultTableModel) tableHistArq.getModel();
     }
 
     private void MostrarComboRol() {
@@ -274,6 +274,13 @@ public class MainPage extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        dialogAbrirCaja = new javax.swing.JDialog();
+        contValoresApertura = new javax.swing.JPanel();
+        labelSaldoInicial = new javax.swing.JLabel();
+        btnConfirmarAbrirCaja = new javax.swing.JButton();
+        btnCancelarAbrirCaja = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        fieldSaldoInicAbrirCaja = new javax.swing.JFormattedTextField();
         dialogCerrarCaja = new javax.swing.JDialog();
         contValoresCierre = new javax.swing.JPanel();
         contBilletes = new javax.swing.JPanel();
@@ -315,13 +322,6 @@ public class MainPage extends javax.swing.JFrame {
         btnCancelarArqueo = new javax.swing.JButton();
         btnRemitirArqueoMuestra = new javax.swing.JButton();
         fieldTotalMuestra = new javax.swing.JFormattedTextField();
-        dialogAbrirCaja = new javax.swing.JDialog();
-        contValoresApertura = new javax.swing.JPanel();
-        labelSaldoInicial = new javax.swing.JLabel();
-        btnConfirmarAbrirCaja = new javax.swing.JButton();
-        btnCancelarAbrirCaja = new javax.swing.JButton();
-        jLabel27 = new javax.swing.JLabel();
-        fieldSaldoInicAbrirCaja = new javax.swing.JFormattedTextField();
         dialogAdmUsers = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         btnAddUser = new javax.swing.JButton();
@@ -359,8 +359,9 @@ public class MainPage extends javax.swing.JFrame {
         fieldArqValorRemitido = new javax.swing.JFormattedTextField();
         fieldArqMontoFinal = new javax.swing.JFormattedTextField();
         dialogHistorialArqueo = new javax.swing.JDialog();
+        contDiagHistTitle = new javax.swing.JPanel();
         labelHistArqs = new javax.swing.JLabel();
-        jScrollPane7 = new javax.swing.JScrollPane();
+        scrollHistArq = new javax.swing.JScrollPane();
         tableHistArq = new javax.swing.JTable();
         sidebarMain = new javax.swing.JPanel();
         logoCont = new javax.swing.JPanel();
@@ -482,6 +483,90 @@ public class MainPage extends javax.swing.JFrame {
         FieldFechaAperturaCaja = new javax.swing.JFormattedTextField();
         fieldMontoInicialCaja = new javax.swing.JFormattedTextField();
         labelPanelCajero4 = new javax.swing.JLabel();
+
+        dialogAbrirCaja.setMinimumSize(new java.awt.Dimension(534, 200));
+        dialogAbrirCaja.setModal(true);
+        dialogAbrirCaja.setResizable(false);
+        dialogAbrirCaja.getContentPane().setLayout(new javax.swing.BoxLayout(dialogAbrirCaja.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        contValoresApertura.setBackground(new java.awt.Color(153, 153, 255));
+        contValoresApertura.setEnabled(false);
+        contValoresApertura.setLayout(new java.awt.GridBagLayout());
+
+        labelSaldoInicial.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        labelSaldoInicial.setText("Saldo Inicial:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
+        contValoresApertura.add(labelSaldoInicial, gridBagConstraints);
+
+        btnConfirmarAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnConfirmarAbrirCaja.setText("CONFIRMAR APERTURA");
+        btnConfirmarAbrirCaja.setNextFocusableComponent(btnConfirmarAbrirCaja);
+        btnConfirmarAbrirCaja.setOpaque(false);
+        btnConfirmarAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarAbrirCajaActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 40;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
+        contValoresApertura.add(btnConfirmarAbrirCaja, gridBagConstraints);
+
+        btnCancelarAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnCancelarAbrirCaja.setText("CANCELAR");
+        btnCancelarAbrirCaja.setMaximumSize(new java.awt.Dimension(163, 23));
+        btnCancelarAbrirCaja.setMinimumSize(new java.awt.Dimension(163, 23));
+        btnCancelarAbrirCaja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCancelarAbrirCajaMouseReleased(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
+        contValoresApertura.add(btnCancelarAbrirCaja, gridBagConstraints);
+
+        jLabel27.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        jLabel27.setText("Gs.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 20);
+        contValoresApertura.add(jLabel27, gridBagConstraints);
+
+        fieldSaldoInicAbrirCaja.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
+        fieldSaldoInicAbrirCaja.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        fieldSaldoInicAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        fieldSaldoInicAbrirCaja.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                fieldSaldoInicAbrirCajaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldSaldoInicAbrirCajaKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 147;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
+        contValoresApertura.add(fieldSaldoInicAbrirCaja, gridBagConstraints);
+
+        dialogAbrirCaja.getContentPane().add(contValoresApertura);
+
+        dialogAbrirCaja.setLocationRelativeTo(null);
 
         dialogCerrarCaja.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogCerrarCaja.setMaximumSize(new java.awt.Dimension(100, 500));
@@ -1012,90 +1097,6 @@ public class MainPage extends javax.swing.JFrame {
 
         dialogCerrarCaja.setLocationRelativeTo(null);
 
-        dialogAbrirCaja.setMinimumSize(new java.awt.Dimension(534, 200));
-        dialogAbrirCaja.setModal(true);
-        dialogAbrirCaja.setResizable(false);
-        dialogAbrirCaja.getContentPane().setLayout(new javax.swing.BoxLayout(dialogAbrirCaja.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
-
-        contValoresApertura.setBackground(new java.awt.Color(153, 153, 255));
-        contValoresApertura.setEnabled(false);
-        contValoresApertura.setLayout(new java.awt.GridBagLayout());
-
-        labelSaldoInicial.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
-        labelSaldoInicial.setText("Saldo Inicial:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
-        contValoresApertura.add(labelSaldoInicial, gridBagConstraints);
-
-        btnConfirmarAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        btnConfirmarAbrirCaja.setText("CONFIRMAR APERTURA");
-        btnConfirmarAbrirCaja.setNextFocusableComponent(btnConfirmarAbrirCaja);
-        btnConfirmarAbrirCaja.setOpaque(false);
-        btnConfirmarAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmarAbrirCajaActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 40;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
-        contValoresApertura.add(btnConfirmarAbrirCaja, gridBagConstraints);
-
-        btnCancelarAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        btnCancelarAbrirCaja.setText("CANCELAR");
-        btnCancelarAbrirCaja.setMaximumSize(new java.awt.Dimension(163, 23));
-        btnCancelarAbrirCaja.setMinimumSize(new java.awt.Dimension(163, 23));
-        btnCancelarAbrirCaja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnCancelarAbrirCajaMouseReleased(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
-        contValoresApertura.add(btnCancelarAbrirCaja, gridBagConstraints);
-
-        jLabel27.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        jLabel27.setText("Gs.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 20);
-        contValoresApertura.add(jLabel27, gridBagConstraints);
-
-        fieldSaldoInicAbrirCaja.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
-        fieldSaldoInicAbrirCaja.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        fieldSaldoInicAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        fieldSaldoInicAbrirCaja.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                fieldSaldoInicAbrirCajaKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldSaldoInicAbrirCajaKeyTyped(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 147;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 30);
-        contValoresApertura.add(fieldSaldoInicAbrirCaja, gridBagConstraints);
-
-        dialogAbrirCaja.getContentPane().add(contValoresApertura);
-
-        dialogAbrirCaja.setLocationRelativeTo(null);
-
         dialogAdmUsers.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogAdmUsers.setTitle("Gestion de Usuarios");
         dialogAdmUsers.setMinimumSize(new java.awt.Dimension(658, 392));
@@ -1424,14 +1425,41 @@ public class MainPage extends javax.swing.JFrame {
         );
 
         dialogHistorialArqueo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dialogHistorialArqueo.setMaximumSize(new java.awt.Dimension(900, 400));
-        dialogHistorialArqueo.setMinimumSize(new java.awt.Dimension(900, 400));
-        dialogHistorialArqueo.setModal(true);
-        dialogHistorialArqueo.setPreferredSize(new java.awt.Dimension(900, 400));
+        dialogHistorialArqueo.setLocationByPlatform(true);
+        dialogHistorialArqueo.setMaximumSize(new java.awt.Dimension(900, 530));
+        dialogHistorialArqueo.setMinimumSize(new java.awt.Dimension(900, 530));
+        dialogHistorialArqueo.setPreferredSize(new java.awt.Dimension(900, 530));
         dialogHistorialArqueo.setResizable(false);
+        dialogHistorialArqueo.setLocationRelativeTo(null);
+        //dialogHistorialArqueo.setSize(getBounds().height, getBounds().width);
 
         labelHistArqs.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        labelHistArqs.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelHistArqs.setText("Historial de Arqueos");
+        labelHistArqs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout contDiagHistTitleLayout = new javax.swing.GroupLayout(contDiagHistTitle);
+        contDiagHistTitle.setLayout(contDiagHistTitleLayout);
+        contDiagHistTitleLayout.setHorizontalGroup(
+            contDiagHistTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(contDiagHistTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contDiagHistTitleLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(labelHistArqs, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        contDiagHistTitleLayout.setVerticalGroup(
+            contDiagHistTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(contDiagHistTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contDiagHistTitleLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(labelHistArqs)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        dialogHistorialArqueo.getContentPane().add(contDiagHistTitle, java.awt.BorderLayout.NORTH);
 
         tableHistArq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1444,30 +1472,9 @@ public class MainPage extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane7.setViewportView(tableHistArq);
+        scrollHistArq.setViewportView(tableHistArq);
 
-        javax.swing.GroupLayout dialogHistorialArqueoLayout = new javax.swing.GroupLayout(dialogHistorialArqueo.getContentPane());
-        dialogHistorialArqueo.getContentPane().setLayout(dialogHistorialArqueoLayout);
-        dialogHistorialArqueoLayout.setHorizontalGroup(
-            dialogHistorialArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogHistorialArqueoLayout.createSequentialGroup()
-                .addContainerGap(368, Short.MAX_VALUE)
-                .addComponent(labelHistArqs)
-                .addGap(368, 368, 368))
-            .addGroup(dialogHistorialArqueoLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane7)
-                .addContainerGap())
-        );
-        dialogHistorialArqueoLayout.setVerticalGroup(
-            dialogHistorialArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dialogHistorialArqueoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelHistArqs)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        dialogHistorialArqueo.getContentPane().add(scrollHistArq, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1080, 1080));
@@ -1709,7 +1716,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addComponent(mainTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 398, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 410, Short.MAX_VALUE)
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2419,7 +2426,7 @@ public class MainPage extends javax.swing.JFrame {
             panelContEntradaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelContEntradaProductosLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
+                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2445,12 +2452,12 @@ public class MainPage extends javax.swing.JFrame {
         contenedorTablat2.setLayout(contenedorTablat2Layout);
         contenedorTablat2Layout.setHorizontalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
         );
         contenedorTablat2Layout.setVerticalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorTablat2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2534,16 +2541,16 @@ public class MainPage extends javax.swing.JFrame {
                                 .addComponent(btnResumenVentaMes)
                                 .addGap(10, 10, 10)
                                 .addComponent(btnResumenVentaAnho)))
-                        .addContainerGap(348, Short.MAX_VALUE))
+                        .addContainerGap(393, Short.MAX_VALUE))
                     .addGroup(contBotonesVentasLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 925, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
                         .addGap(19, 19, 19))))
         );
         contBotonesVentasLayout.setVerticalGroup(
             contBotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contBotonesVentasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel7)
                 .addGap(16, 16, 16)
@@ -2599,6 +2606,11 @@ public class MainPage extends javax.swing.JFrame {
 
         btnDialogHistorialArq.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnDialogHistorialArq.setText("HISTORIAL DE ARQUEOS");
+        btnDialogHistorialArq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDialogHistorialArqActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -3470,6 +3482,7 @@ public class MainPage extends javax.swing.JFrame {
             aqcontrol.insertar(aqc);
             abrirCaja(); // Este metodo se encarga de desactivar el boton Abrir y habilitar venta
             dialogAbrirCaja.setVisible(false);
+            MostrarTabArqueo();
             JOptionPane.showMessageDialog(null, "Caja abierta con exito\nMonto: " + fieldSaldoInicAbrirCaja.getText() + " Gs");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n" + e.toString(), "Error en btn Abrir Caja", 0);
@@ -3495,6 +3508,7 @@ public class MainPage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Valor de arqueo remitido: " + fieldTotalMuestra.getText() + " Gs");
                 cerrarCaja();
                 FieldFechaAperturaCaja.setText("-");
+                MostrarTabArqueo();
             } else {
                 JOptionPane.showMessageDialog(null, "El usuario que haga el arqueo, debe ser el mismo que hizo la apertura\n"
                         + "El usuario que abrio la caja: " + userCaja
@@ -3639,6 +3653,7 @@ public class MainPage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "btnConfirmarArqueo: \n" + e.toString());
             }
             cerrarCaja();
+            MostrarTabArqueo();
         } else {
             fieldArqMontoFinal.requestFocus();
         }
@@ -3652,6 +3667,11 @@ public class MainPage extends javax.swing.JFrame {
             btnConfirmArqueo.requestFocus();
         }
     }//GEN-LAST:event_fieldArqMontoFinalKeyReleased
+
+    private void btnDialogHistorialArqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDialogHistorialArqActionPerformed
+        // TODO add your handling code here:
+        dialogHistorialArqueo.setVisible(true);
+    }//GEN-LAST:event_btnDialogHistorialArqActionPerformed
 
     private void esNumero(java.awt.event.KeyEvent evt) {
         //Rechaza el tecleo si no es un Numero
@@ -3777,6 +3797,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel contBtnCerrarCaja;
     private javax.swing.JPanel contBtnProductos;
     private javax.swing.JPanel contCierreVenta;
+    private javax.swing.JPanel contDiagHistTitle;
     private javax.swing.JPanel contEstadodeCaja;
     private javax.swing.JPanel contGestArq;
     private javax.swing.JPanel contInsertProd;
@@ -3880,7 +3901,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSplitPane jSplitPane1;
@@ -3932,6 +3952,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel panelNuevaVenta;
     private javax.swing.JPanel panelProductos;
     private javax.swing.JPanel panelVentas;
+    private javax.swing.JScrollPane scrollHistArq;
     private javax.swing.JSeparator separatorAD;
     private javax.swing.JSeparator separatorAD1;
     private javax.swing.JPanel sidebarMain;

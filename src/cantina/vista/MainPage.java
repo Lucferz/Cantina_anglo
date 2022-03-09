@@ -38,21 +38,26 @@ import javax.swing.ToolTipManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JFormattedTextField;
 import java.text.NumberFormat;
+import java.time.Instant;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.TemporalAccessor;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javax.print.attribute.Size2DSyntax.MM;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  *
@@ -176,7 +181,7 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     public void cerrarCaja() {
-        estado_caja = false;
+        estado_caja = false; //al pedo
         tabsPanel.setSelectedComponent(panelCajero);
         tabsPanel.setEnabledAt(0, estado_caja);
         btnNewVenta.setEnabled(false);
@@ -216,7 +221,7 @@ public class MainPage extends javax.swing.JFrame {
             btnConfirmArqueo.setToolTipText(null);
             fieldArqMontoFinal.setEditable(true);
             fieldArqTotalSistema.setValue(ArqueoSistema());
-            //fieldArqFechaRemision.setValue(fechaCierreCaja());
+            fieldArqFechaRemision.setValue(fechaCierreCaja());
             fieldArqValorRemitido.setValue(montoRemitido());
             
         }
@@ -1247,140 +1252,51 @@ public class MainPage extends javax.swing.JFrame {
 
         dialogVerifArqueo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogVerifArqueo.setTitle("Gestionando Arqueo");
-        dialogVerifArqueo.setMinimumSize(new java.awt.Dimension(450, 480));
+        dialogVerifArqueo.setMinimumSize(new java.awt.Dimension(547, 470));
         dialogVerifArqueo.setModal(true);
         dialogVerifArqueo.setResizable(false);
 
-        contGestArq.setLayout(new java.awt.GridBagLayout());
-
         labelTitleGestArq.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         labelTitleGestArq.setText("Gestión de Caja");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
-        contGestArq.add(labelTitleGestArq, gridBagConstraints);
 
         labelGestArq1.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         labelGestArq1.setText("Estado de la caja:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        contGestArq.add(labelGestArq1, gridBagConstraints);
 
         labelGestArq2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         labelGestArq2.setText("Total del sistema (Gs.):");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        contGestArq.add(labelGestArq2, gridBagConstraints);
 
         labelGestArq3.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         labelGestArq3.setText("Última remisión:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        contGestArq.add(labelGestArq3, gridBagConstraints);
 
         labelGestArq4.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         labelGestArq4.setText("Valor remitido (Gs.):");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        contGestArq.add(labelGestArq4, gridBagConstraints);
 
         labelGestArq5.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         labelGestArq5.setForeground(new java.awt.Color(51, 51, 51));
         labelGestArq5.setText("Si los montos coinciden, deja el siguiente valor sin editar,");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 22, 0, 10);
-        contGestArq.add(labelGestArq5, gridBagConstraints);
 
         labelGestArq6.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         labelGestArq6.setText("Monto final (Gs.):");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        contGestArq.add(labelGestArq6, gridBagConstraints);
 
         labelGestArq8.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         labelGestArq8.setForeground(new java.awt.Color(51, 51, 51));
         labelGestArq8.setText("ese será el valor guardado en el cierre de caja.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 22, 0, 0);
-        contGestArq.add(labelGestArq8, gridBagConstraints);
 
         btnConfirmArqueo.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnConfirmArqueo.setText("CONFIRMAR CIERRE");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 10, 0);
-        contGestArq.add(btnConfirmArqueo, gridBagConstraints);
 
         fieldArqEstadoCaja.setEditable(false);
         fieldArqEstadoCaja.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         fieldArqEstadoCaja.setForeground(new java.awt.Color(51, 51, 51));
         fieldArqEstadoCaja.setText("Aguardando Confirmacion");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        contGestArq.add(fieldArqEstadoCaja, gridBagConstraints);
 
         fieldArqTotalSistema.setEditable(false);
         fieldArqTotalSistema.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0 Gs"))));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        contGestArq.add(fieldArqTotalSistema, gridBagConstraints);
 
         fieldArqFechaRemision.setEditable(false);
-        fieldArqFechaRemision.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.FULL))));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        contGestArq.add(fieldArqFechaRemision, gridBagConstraints);
 
         fieldArqValorRemitido.setEditable(false);
-        fieldArqValorRemitido.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        contGestArq.add(fieldArqValorRemitido, gridBagConstraints);
+        fieldArqValorRemitido.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0 Gs"))));
 
         fieldArqMontoFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
         fieldArqMontoFinal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1388,13 +1304,87 @@ public class MainPage extends javax.swing.JFrame {
                 fieldArqMontoFinalKeyTyped(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        contGestArq.add(fieldArqMontoFinal, gridBagConstraints);
+        setTransferHandler(null);
+
+        javax.swing.GroupLayout contGestArqLayout = new javax.swing.GroupLayout(contGestArq);
+        contGestArq.setLayout(contGestArqLayout);
+        contGestArqLayout.setHorizontalGroup(
+            contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contGestArqLayout.createSequentialGroup()
+                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contGestArqLayout.createSequentialGroup()
+                        .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(contGestArqLayout.createSequentialGroup()
+                                .addGap(191, 191, 191)
+                                .addComponent(labelTitleGestArq))
+                            .addGroup(contGestArqLayout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(labelGestArq5))
+                            .addGroup(contGestArqLayout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(labelGestArq8)))
+                        .addGap(0, 496, Short.MAX_VALUE))
+                    .addGroup(contGestArqLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(contGestArqLayout.createSequentialGroup()
+                                .addComponent(btnConfirmArqueo)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(contGestArqLayout.createSequentialGroup()
+                                .addComponent(labelGestArq6)
+                                .addGap(72, 72, 72)
+                                .addComponent(fieldArqMontoFinal))
+                            .addGroup(contGestArqLayout.createSequentialGroup()
+                                .addComponent(labelGestArq4)
+                                .addGap(54, 54, 54)
+                                .addComponent(fieldArqValorRemitido))
+                            .addGroup(contGestArqLayout.createSequentialGroup()
+                                .addComponent(labelGestArq3)
+                                .addGap(78, 78, 78)
+                                .addComponent(fieldArqFechaRemision))
+                            .addGroup(contGestArqLayout.createSequentialGroup()
+                                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelGestArq2)
+                                    .addComponent(labelGestArq1))
+                                .addGap(34, 34, 34)
+                                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fieldArqEstadoCaja)
+                                    .addComponent(fieldArqTotalSistema))))))
+                .addGap(38, 38, 38))
+        );
+        contGestArqLayout.setVerticalGroup(
+            contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contGestArqLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(labelTitleGestArq)
+                .addGap(30, 30, 30)
+                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelGestArq1)
+                    .addComponent(fieldArqEstadoCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelGestArq2)
+                    .addComponent(fieldArqTotalSistema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelGestArq3)
+                    .addComponent(fieldArqFechaRemision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelGestArq4)
+                    .addComponent(fieldArqValorRemitido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(labelGestArq5)
+                .addGap(6, 6, 6)
+                .addComponent(labelGestArq8)
+                .addGap(20, 20, 20)
+                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelGestArq6)
+                    .addComponent(fieldArqMontoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnConfirmArqueo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         dialogVerifArqueo.setLocationRelativeTo(null);
 
@@ -2544,7 +2534,7 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(50, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 10, 0, 0);
         panelContAcercaDe.add(labelAcercaDE, gridBagConstraints);
 
         labelAD1.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
@@ -2609,7 +2599,7 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 12, 90, 0);
+        gridBagConstraints.insets = new java.awt.Insets(18, 12, 30, 0);
         panelContAcercaDe.add(labelAD6, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -3933,7 +3923,7 @@ public class MainPage extends javax.swing.JFrame {
                 retorno = false;
             } else{
                 retorno = aq.getConfirmado();
-                System.out.println("estado de caja: "+ retorno.toString());
+                //System.out.println("estado de caja: "+ retorno.toString());
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
@@ -3973,19 +3963,21 @@ public class MainPage extends javax.swing.JFrame {
         return formatFecha;
     }
     
-    private String fechaCierreCaja() {
+
+    
+    private String fechaCierreCaja(){
         String formatFecha = null;
-        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate ( FormatStyle.FULL );
-        try {
-            Arqueoscaja aq = aqcontrol.UltimoElemento();
-            Date fechaCierreCaja = aq.getFechaFin();
-            LocalDateTime ldate = fechaCierreCaja.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-            //formatFecha = fechaInicioCaja.to;
-            formatFecha = ldate.format(formatter) + " a las " +ldate.toLocalTime();           
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-        }   
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
+        try{
+            Arqueoscaja aqc = aqcontrol.UltimoElemento();
+            Date fechaCierreCaja = aqc.getFechaFin();
+            LocalDateTime localdate = fechaCierreCaja.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            formatFecha = localdate.format(formatter1) + " a las " +  localdate.toLocalTime();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "fechaCierreCaja() "+e.toString());
+        }
         return formatFecha;
+        
     }
     
     private Integer montoRemitido() {

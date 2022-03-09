@@ -223,6 +223,7 @@ public class MainPage extends javax.swing.JFrame {
             fieldArqTotalSistema.setValue(ArqueoSistema());
             fieldArqFechaRemision.setValue(fechaCierreCaja());
             fieldArqValorRemitido.setValue(montoRemitido());
+            fieldArqMontoFinal.setValue(montoRemitido());
             
         }
         //fieldArqEstadoCaja.setForeground(new Color(204,0,0));
@@ -1305,7 +1306,7 @@ public class MainPage extends javax.swing.JFrame {
         fieldArqValorRemitido.setEditable(false);
         fieldArqValorRemitido.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0 Gs"))));
 
-        fieldArqMontoFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        fieldArqMontoFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
         fieldArqMontoFinal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldArqMontoFinalKeyTyped(evt);
@@ -1330,7 +1331,7 @@ public class MainPage extends javax.swing.JFrame {
                             .addGroup(contGestArqLayout.createSequentialGroup()
                                 .addGap(88, 88, 88)
                                 .addComponent(labelGestArq8)))
-                        .addGap(0, 496, Short.MAX_VALUE))
+                        .addGap(0, 475, Short.MAX_VALUE))
                     .addGroup(contGestArqLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

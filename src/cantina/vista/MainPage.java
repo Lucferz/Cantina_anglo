@@ -1018,11 +1018,6 @@ public class MainPage extends javax.swing.JFrame {
         btnConfirmarAbrirCaja.setText("CONFIRMAR APERTURA");
         btnConfirmarAbrirCaja.setNextFocusableComponent(btnConfirmarAbrirCaja);
         btnConfirmarAbrirCaja.setOpaque(false);
-        btnConfirmarAbrirCaja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnConfirmarAbrirCajaMouseReleased(evt);
-            }
-        });
         btnConfirmarAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmarAbrirCajaActionPerformed(evt);
@@ -3108,12 +3103,6 @@ public class MainPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCerrarCajaActionPerformed
 
-    private void btnConfirmarAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmarAbrirCajaMouseReleased
-        // TODO add your handling code here:
-       
-
-    }//GEN-LAST:event_btnConfirmarAbrirCajaMouseReleased
-
     private void btnCancelarAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarAbrirCajaMouseReleased
         // TODO add your handling code here:
         System.out.println("Cancelado proceso Abrir caja");
@@ -3402,7 +3391,7 @@ public class MainPage extends javax.swing.JFrame {
             dialogAbrirCaja.setVisible(false);
             JOptionPane.showMessageDialog(null, "Caja abierta con exito\nMonto: " + fieldSaldoInicAbrirCaja.getValue());
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n" + e.toString());
+            JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n" + e.toString(), "Error en btn Abrir Caja",0);
         }
     }//GEN-LAST:event_btnConfirmarAbrirCajaActionPerformed
 
@@ -3999,8 +3988,8 @@ public class MainPage extends javax.swing.JFrame {
         return formatFecha;
     }
     
-    private int montoRemitido() {
-        int remitido = 0;
+    private Integer montoRemitido() {
+        Integer remitido = 0;
         try {
             Arqueoscaja aq = aqcontrol.UltimoElemento();
             remitido = aq.getMontoFinal();

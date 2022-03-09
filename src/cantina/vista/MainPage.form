@@ -1372,7 +1372,7 @@
               </Group>
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="jScrollPane7" max="32767" attributes="0"/>
+                  <Component id="scrollHistArq" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -1383,7 +1383,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="labelHistArqs" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jScrollPane7" min="-2" pref="375" max="-2" attributes="0"/>
+                  <Component id="scrollHistArq" min="-2" pref="375" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -1398,7 +1398,7 @@
             <Property name="text" type="java.lang.String" value="Historial de Arqueos"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane7">
+        <Container class="javax.swing.JScrollPane" name="scrollHistArq">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>

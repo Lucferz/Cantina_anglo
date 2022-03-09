@@ -354,7 +354,7 @@ public class MainPage extends javax.swing.JFrame {
         fieldArqMontoFinal = new javax.swing.JFormattedTextField();
         dialogHistorialArqueo = new javax.swing.JDialog();
         labelHistArqs = new javax.swing.JLabel();
-        jScrollPane7 = new javax.swing.JScrollPane();
+        scrollHistArq = new javax.swing.JScrollPane();
         tableHistArq = new javax.swing.JTable();
         sidebarMain = new javax.swing.JPanel();
         logoCont = new javax.swing.JPanel();
@@ -1438,7 +1438,7 @@ public class MainPage extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane7.setViewportView(tableHistArq);
+        scrollHistArq.setViewportView(tableHistArq);
 
         javax.swing.GroupLayout dialogHistorialArqueoLayout = new javax.swing.GroupLayout(dialogHistorialArqueo.getContentPane());
         dialogHistorialArqueo.getContentPane().setLayout(dialogHistorialArqueoLayout);
@@ -1450,7 +1450,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGap(368, 368, 368))
             .addGroup(dialogHistorialArqueoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane7)
+                .addComponent(scrollHistArq)
                 .addContainerGap())
         );
         dialogHistorialArqueoLayout.setVerticalGroup(
@@ -1459,7 +1459,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(labelHistArqs)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollHistArq, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -3874,7 +3874,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSplitPane jSplitPane1;
@@ -3926,6 +3925,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel panelNuevaVenta;
     private javax.swing.JPanel panelProductos;
     private javax.swing.JPanel panelVentas;
+    private javax.swing.JScrollPane scrollHistArq;
     private javax.swing.JSeparator separatorAD;
     private javax.swing.JSeparator separatorAD1;
     private javax.swing.JPanel sidebarMain;

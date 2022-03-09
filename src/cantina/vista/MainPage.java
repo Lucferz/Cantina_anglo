@@ -3469,7 +3469,7 @@ public class MainPage extends javax.swing.JFrame {
     private void btnExportProducMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExportProducMouseReleased
         try {
             Connection con = JdbcDAOFactory.obtenerConeccion();
-            JasperReport reporte = JasperCompileManager.compileReport("C://reportes/Inventario.jrxml");
+            JasperReport reporte = JasperCompileManager.compileReport("C://Program Files (x86)/cantina_anglo/Inventario.jrxml");
             JasperPrint imprimir = JasperFillManager.fillReport(reporte, null, con);
             JasperViewer.viewReport(imprimir, false);
 
@@ -3574,7 +3574,7 @@ public class MainPage extends javax.swing.JFrame {
             Map parametros = new HashMap();
             parametros.put("fecha_ini", fecha_ini);
             parametros.put("fecha_fin", fecha_fin);
-            JasperReport reporte = JasperCompileManager.compileReport("c://reportes/Informe_ven.jrxml");
+            JasperReport reporte = JasperCompileManager.compileReport("C://Program Files (x86)/cantina_anglo/Informe_ven.jrxml");
             JasperPrint imprimir = JasperFillManager.fillReport(reporte, parametros, con);
             JasperViewer.viewReport(imprimir, false);
         } catch (Exception e) {
@@ -3592,7 +3592,7 @@ public class MainPage extends javax.swing.JFrame {
             Map parametros = new HashMap();
             parametros.put("fecha_ini", fecha_ini);
             parametros.put("fecha_fin", fecha_fin);
-            JasperReport reporte = JasperCompileManager.compileReport("c://reportes/Informe_ven.jrxml");
+            JasperReport reporte = JasperCompileManager.compileReport("C://Program Files (x86)/cantina_anglo/Informe_ven.jrxml");
             JasperPrint imprimir = JasperFillManager.fillReport(reporte, parametros, con);
             JasperViewer.viewReport(imprimir, false);
         } catch (Exception e) {
@@ -3612,7 +3612,7 @@ public class MainPage extends javax.swing.JFrame {
             Map parametros = new HashMap();
             parametros.put("fecha_ini", fecha_ini);
             parametros.put("fecha_fin", fecha_fin);
-            JasperReport reporte = JasperCompileManager.compileReport("c://reportes/Informe_ven.jrxml");
+            JasperReport reporte = JasperCompileManager.compileReport("C://Program Files (x86)/cantina_anglo/Informe_ven.jrxml");
             JasperPrint imprimir = JasperFillManager.fillReport(reporte, parametros, con);
             JasperViewer.viewReport(imprimir, false);
         } catch (Exception e) {
@@ -3631,7 +3631,7 @@ public class MainPage extends javax.swing.JFrame {
             Map parametros = new HashMap();
             parametros.put("fecha_ini", fecha_ini);
             parametros.put("fecha_fin", fecha_fin);
-            JasperReport reporte = JasperCompileManager.compileReport("c://reportes/Informe_ven.jrxml");
+            JasperReport reporte = JasperCompileManager.compileReport("C://Program Files (x86)/cantina_anglo/Informe_ven.jrxml");
             JasperPrint imprimir = JasperFillManager.fillReport(reporte, parametros, con);
             JasperViewer.viewReport(imprimir, false);
         } catch (Exception e) {

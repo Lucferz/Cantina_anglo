@@ -8,6 +8,8 @@ package cantina.vista;
 import cantina.controlador.loginDAOMySQL;
 import cantina.modelo.login;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,14 +23,23 @@ public class Login2 extends javax.swing.JFrame {
     /**
      * Creates new form Login2
      */
+    
     login lg = new login();
     loginDAOMySQL login = new loginDAOMySQL();
     public Login2() {
         initComponents();
+        try {
+           Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/iconos/shopping.png"));
+            setIconImage(image);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en icono "+e.toString());
+        }
         setLocationRelativeTo(null);
         getContentPane().requestFocusInWindow();
         
     }
+    
     public void validar(){
         String nombre = loginUsername.getText();
         String pass = String.valueOf(loginPassw.getPassword());
@@ -85,9 +96,6 @@ public class Login2 extends javax.swing.JFrame {
         passIcon = new javax.swing.JLabel();
         btnLogin = new javax.swing.JPanel();
         labelLogBtn = new javax.swing.JLabel();
-        btnNewUser = new javax.swing.JPanel();
-        labelNewUserBtn = new javax.swing.JLabel();
-        btnForgetPass = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicia Sesión en el Sistema");
@@ -289,31 +297,6 @@ public class Login2 extends javax.swing.JFrame {
         });
         btnLogin.add(labelLogBtn);
 
-        btnNewUser.setBackground(new java.awt.Color(103, 226, 109));
-        btnNewUser.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
-        btnNewUser.setAlignmentX(1.0F);
-        btnNewUser.setLayout(new java.awt.GridLayout(1, 0));
-
-        labelNewUserBtn.setFont(new java.awt.Font("Roboto", 1, 11)); // NOI18N
-        labelNewUserBtn.setForeground(new java.awt.Color(255, 255, 255));
-        labelNewUserBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelNewUserBtn.setText("Nuevo Usuario");
-        labelNewUserBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                labelNewUserBtnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                labelNewUserBtnMouseExited(evt);
-            }
-        });
-        btnNewUser.add(labelNewUserBtn);
-
-        btnForgetPass.setFont(new java.awt.Font("Roboto Medium", 1, 12)); // NOI18N
-        btnForgetPass.setForeground(new java.awt.Color(255, 255, 255));
-        btnForgetPass.setText("Contraseña olvidada?");
-        btnForgetPass.setAlignmentX(1.0F);
-        btnForgetPass.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
         javax.swing.GroupLayout rightContLayout = new javax.swing.GroupLayout(rightCont);
         rightCont.setLayout(rightContLayout);
         rightContLayout.setHorizontalGroup(
@@ -322,30 +305,27 @@ public class Login2 extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(165, 165, 165))
             .addGroup(rightContLayout.createSequentialGroup()
-                .addGroup(rightContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnForgetPass)
-                    .addGroup(rightContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(rightContLayout.createSequentialGroup()
-                            .addGap(50, 50, 50)
-                            .addComponent(userIcon)
-                            .addGap(10, 10, 10)
-                            .addComponent(loginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(rightContLayout.createSequentialGroup()
-                            .addGap(100, 100, 100)
-                            .addComponent(usrSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(rightContLayout.createSequentialGroup()
-                            .addGap(50, 50, 50)
-                            .addGroup(rightContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(rightContLayout.createSequentialGroup()
-                                    .addComponent(passIcon)
-                                    .addGap(10, 10, 10)
-                                    .addGroup(rightContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(loginPassw, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(passSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(rightContLayout.createSequentialGroup()
-                                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGroup(rightContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(rightContLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(userIcon)
+                        .addGap(10, 10, 10)
+                        .addComponent(loginUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(rightContLayout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(usrSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(rightContLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(rightContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(rightContLayout.createSequentialGroup()
+                                .addComponent(passIcon)
+                                .addGap(10, 10, 10)
+                                .addGroup(rightContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(loginPassw, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(passSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(rightContLayout.createSequentialGroup()
+                                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(124, 124, 124)))))
                 .addGap(60, 60, 60))
         );
         rightContLayout.setVerticalGroup(
@@ -367,16 +347,9 @@ public class Login2 extends javax.swing.JFrame {
                         .addComponent(loginPassw, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(passSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(rightContLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(rightContLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(btnNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rightContLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addComponent(btnForgetPass)
-                .addGap(45, 45, 45))
+                .addGap(22, 22, 22)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         getContentPane().add(rightCont);
@@ -441,14 +414,6 @@ public class Login2 extends javax.swing.JFrame {
     private void loginPasswActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPasswActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginPasswActionPerformed
-
-    private void labelNewUserBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelNewUserBtnMouseExited
-        changebgColor(btnNewUser, new Color(103,226,109));
-    }//GEN-LAST:event_labelNewUserBtnMouseExited
-
-    private void labelNewUserBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelNewUserBtnMouseEntered
-       changebgColor(btnNewUser, new Color(90,210,95));
-    }//GEN-LAST:event_labelNewUserBtnMouseEntered
 
     private void loginPasswFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginPasswFocusLost
         
@@ -543,14 +508,11 @@ public class Login2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnForgetPass;
     private javax.swing.JPanel btnLogin;
-    private javax.swing.JPanel btnNewUser;
     private javax.swing.JPanel contenedorLogo;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel labelEmpresa;
     private javax.swing.JLabel labelLogBtn;
-    private javax.swing.JLabel labelNewUserBtn;
     private javax.swing.JPanel leftCont;
     private javax.swing.JPasswordField loginPassw;
     private javax.swing.JTextField loginUsername;

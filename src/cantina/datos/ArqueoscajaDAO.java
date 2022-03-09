@@ -5,57 +5,103 @@
  */
 package cantina.datos;
 
+import cantina.controlador.UsuariosControl;
 import cantina.modelo.Arqueoscaja;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Lucas
  */
 public class ArqueoscajaDAO {
-    EntityManagerFactory emf =Persistence.createEntityManagerFactory("CANTINA-ANGLO-SISTEMA-VENTASPU");
+
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("CANTINA-ANGLO-SISTEMA-VENTASPU");
     EntityManager em = emf.createEntityManager();
-    
-    public List<Arqueoscaja> listar(){
+    UsuariosControl uc = new UsuariosControl();
+
+    public List<Arqueoscaja> listar() {
         TypedQuery<Arqueoscaja> query = em.createNamedQuery("Arqueoscaja.findAll", Arqueoscaja.class);
         List<Arqueoscaja> res = query.getResultList();
         return res;
     }
-    
-    public Arqueoscaja UltimoElemento (){
+
+    public void cargarTabArqueo(JTable table) {
+        String[] titulos = {"ID", "USUARIO", "FECHA DE APERTURA", "MONTO INICIAL", "FECHA DE CIERRE", "MONTO FINAL", "TOTAL DE VENTAS", "CONFIRMADO"};
+        DefaultTableModel model = new DefaultTableModel(null, titulos) {
+            @Override
+            public boolean isCellEditable(int i, int i1) {
+                return false;
+            }
+
+        };
+        try {
+            TypedQuery<Arqueoscaja> sql = em.createNamedQuery("Arqueoscaja.findAllOrderDesc", Arqueoscaja.class);
+            List<Arqueoscaja> datos = sql.getResultList();
+            String[] datosArq = new String[8];
+            for (Arqueoscaja tba : datos) {
+                datosArq[0] = tba.getIdArqueo()+"";
+                Integer idUsu = tba.getFkUsuario();
+                datosArq[1] = uc.buscarIdINT(idUsu).getNombre();
+                datosArq[2] = tba.getFechaInicio()+"";
+                datosArq[3] = tba.getMontoInicial()+"";
+                datosArq[4] = tba.getFechaFin()+"";
+                datosArq[5] = tba.getMontoFinal()+"";
+                datosArq[6] = tba.getTotalVentas()+"";
+                datosArq[7] = estaConfirmado(tba.getConfirmado());
+                model.addRow(datosArq);
+            }
+            table.setModel(model);
+        } catch (Exception e) {
+
+        }
+    }
+
+    public Arqueoscaja UltimoElemento() {
         TypedQuery<Arqueoscaja> query = em.createNamedQuery("Arqueoscaja.findbyMaxId", Arqueoscaja.class);
         Arqueoscaja aqcaja = query.getSingleResult();
         return aqcaja;
     }
-    
-    public void insertar (Arqueoscaja a){
+
+    public void insertar(Arqueoscaja a) {
         em.getTransaction().begin();
         em.persist(a);
         em.getTransaction().commit();
     }
-    
-    public void modificar (Arqueoscaja a){
+
+    public void modificar(Arqueoscaja a) {
         em.getTransaction().begin();
         em.merge(a);
         em.getTransaction().commit();
     }
-    
-    public void eliminarId (Arqueoscaja a){
+
+    public void eliminarId(Arqueoscaja a) {
         em.getTransaction().begin();
         a = em.find(Arqueoscaja.class, a.getIdArqueo());
         em.remove(a);
         em.getTransaction().commit();
     }
-    
-    public void eliminarIdLogico(Integer id){
+
+    public void eliminarIdLogico(Integer id) {
         em.getTransaction().begin();
         Arqueoscaja a = em.find(Arqueoscaja.class, id);
         a.setEstado(false);
         em.merge(a);
         em.getTransaction().commit();
+    }
+    
+    private String estaConfirmado(Boolean confirmado){
+        String ret = "";
+        if(confirmado){
+            ret = "Confirmado";
+        }else{
+            ret = "No Confirmado";
+        }
+        return ret;
     }
 }

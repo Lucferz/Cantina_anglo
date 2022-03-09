@@ -27,8 +27,18 @@ public class SuperSu extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jToggleButton1 = new javax.swing.JToggleButton();
+        panelContAcercaDe = new javax.swing.JPanel();
+        labelAcercaDE = new javax.swing.JLabel();
+        labelAD1 = new javax.swing.JLabel();
+        labelAD2 = new javax.swing.JLabel();
+        labelAD3 = new javax.swing.JLabel();
+        labelAD4 = new javax.swing.JLabel();
+        labelAD5 = new javax.swing.JLabel();
+        labelAD6 = new javax.swing.JLabel();
+        separatorAD = new javax.swing.JSeparator();
+        separatorAD1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -37,23 +47,122 @@ public class SuperSu extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setText("jToggleButton1");
+        panelContAcercaDe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        panelContAcercaDe.setForeground(new java.awt.Color(102, 102, 102));
+        panelContAcercaDe.setLayout(new java.awt.GridBagLayout());
+
+        labelAcercaDE.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
+        labelAcercaDE.setForeground(new java.awt.Color(102, 102, 102));
+        labelAcercaDE.setText("Acerca de este Sistema");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 10, 0, 0);
+        panelContAcercaDe.add(labelAcercaDE, gridBagConstraints);
+
+        labelAD1.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        labelAD1.setForeground(new java.awt.Color(102, 102, 102));
+        labelAD1.setText("Desarrollado por: ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 96, 0, 0);
+        panelContAcercaDe.add(labelAD1, gridBagConstraints);
+
+        labelAD2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelAD2.setForeground(new java.awt.Color(102, 102, 102));
+        labelAD2.setText("Lucas Frutos");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 13, 0, 0);
+        panelContAcercaDe.add(labelAD2, gridBagConstraints);
+
+        labelAD3.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelAD3.setForeground(new java.awt.Color(102, 102, 102));
+        labelAD3.setText("Daniel Maldonado");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 13, 0, 0);
+        panelContAcercaDe.add(labelAD3, gridBagConstraints);
+
+        labelAD4.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
+        labelAD4.setForeground(new java.awt.Color(102, 102, 102));
+        labelAD4.setText("Contactos:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 96, 0, 0);
+        panelContAcercaDe.add(labelAD4, gridBagConstraints);
+
+        labelAD5.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelAD5.setForeground(new java.awt.Color(102, 102, 102));
+        labelAD5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_whatsapp_25px_1.png"))); // NOI18N
+        labelAD5.setText("+595 992 205 206");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
+        panelContAcercaDe.add(labelAD5, gridBagConstraints);
+
+        labelAD6.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelAD6.setForeground(new java.awt.Color(102, 102, 102));
+        labelAD6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_whatsapp_25px_1.png"))); // NOI18N
+        labelAD6.setText("+595 975 333 205");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 12, 30, 0);
+        panelContAcercaDe.add(labelAD6, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 833;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 96, 0, 57);
+        panelContAcercaDe.add(separatorAD, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 833;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 96, 0, 57);
+        panelContAcercaDe.add(separatorAD1, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(157, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
-                .addGap(138, 138, 138))
+            .addGap(0, 568, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelContAcercaDe, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jToggleButton1)
-                .addContainerGap(151, Short.MAX_VALUE))
+            .addGap(0, 312, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelContAcercaDe, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -100,6 +209,15 @@ public class SuperSu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel labelAD1;
+    private javax.swing.JLabel labelAD2;
+    private javax.swing.JLabel labelAD3;
+    private javax.swing.JLabel labelAD4;
+    private javax.swing.JLabel labelAD5;
+    private javax.swing.JLabel labelAD6;
+    private javax.swing.JLabel labelAcercaDE;
+    private javax.swing.JPanel panelContAcercaDe;
+    private javax.swing.JSeparator separatorAD;
+    private javax.swing.JSeparator separatorAD1;
     // End of variables declaration//GEN-END:variables
 }

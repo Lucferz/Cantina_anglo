@@ -1,0 +1,3 @@
+
+
+* En confirmar arqueo, poner ventana de confirmacion que pregunte si esta seguro, y muestre el valor a grabar en la BD

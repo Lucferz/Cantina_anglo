@@ -3057,11 +3057,23 @@ public class MainPage extends javax.swing.JFrame {
                 if (!"".equals(fieldCod.getText())) {
                     String cod = fieldCod.getText();
                     Articulos a = ac.buscarCod(cod);
+                    Integer stockTEMP = 0;
                     if (a.getDescripcion() != null) {
                         fieldId.setText(a.getIdarticulo() + "");
                         fieldDesc.setText(a.getDescripcion());
                         fieldPrecUnit.setText(a.getPrecioVenta() + "");
-                        fieldStock.setText(a.getStock().toString());
+                        if(jTableVentaItems.getRowCount() > 0){
+                            for (int i =0; i<jTableVentaItems.getRowCount(); i++){
+                                System.out.println("Entro el for");
+                                if (jTableVentaItems.getValueAt(i, 1).toString().equals(fieldId.getText())){
+                                    stockTEMP++;
+                                    System.out.println("stockTEMP = "+stockTEMP +"\n el valor extraido es: "+jTableVentaItems.getValueAt(i, 1));
+                                }
+                            }
+                        }
+                        Integer stock = a.getStock()-stockTEMP;
+                        fieldStock.setText(stock.toString());
+                        System.out.println("El stock temporal es: "+stock);
                         fieldCant.requestFocus();
 
                     } else {
@@ -3073,7 +3085,7 @@ public class MainPage extends javax.swing.JFrame {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Hubo un error al guardar la venta:\n" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Hubo un error al guardar el articulo en la venta:\n" + e.getMessage());
             fieldCod.setText("");
             fieldCod.requestFocus();
         }
@@ -3129,6 +3141,7 @@ public class MainPage extends javax.swing.JFrame {
                     totalPagar();
                 } else {
                     JOptionPane.showMessageDialog(null, "El Stock es insuficiente");
+                    limpiarVenta();
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Eventfocus cant: " + e.getMessage());

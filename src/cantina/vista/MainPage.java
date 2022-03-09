@@ -77,8 +77,6 @@ public class MainPage extends javax.swing.JFrame {
 
     boolean estado_caja;
     //boolean estado_caja = CajaCerrada();
-    
-   
 
     int item;
     int totalPagar = 0;
@@ -125,7 +123,6 @@ public class MainPage extends javax.swing.JFrame {
         } else {
             abrirCaja();
         }
-        
 
         MostrarComboCat();
         MostrarTabArti();
@@ -141,7 +138,7 @@ public class MainPage extends javax.swing.JFrame {
         tabsPanel.remove(panelConfig);
         //ocultando sus botones accesores del sidebar
         btnConfig.setVisible(false);
-        
+
     }
 
     /**
@@ -167,8 +164,8 @@ public class MainPage extends javax.swing.JFrame {
         uc.cargar_tabla_user(jTableUsers);
         modelo = (DefaultTableModel) jTableUsers.getModel();
     }
-    
-    private void MostrarTabVentas(){
+
+    private void MostrarTabVentas() {
         vc.cargar_tabla_venta(jTableVentas);
         modelo = (DefaultTableModel) jTableVentas.getModel();
     }
@@ -188,34 +185,32 @@ public class MainPage extends javax.swing.JFrame {
         tabsPanel.setToolTipTextAt(0, "Recuerda abrir tu caja para poder realizar ventas");
         btnNewVenta.setToolTipText("Recuerda abrir tu caja para poder realizar ventas");
         fieldEstadoCaja.setText("Cerrado");
-        fieldEstadoCaja.setForeground(new Color(204,0,0));
+        fieldEstadoCaja.setForeground(new Color(204, 0, 0));
         fieldMontoInicialCaja.setText("-");
-        
+
         //botones
         btnAbrirCaja.setEnabled(true);
         btnAbrirCaja.setToolTipText("Clic aquí para abrir caja");
         btnCerrarCaja.setEnabled(false);
         btnCerrarCaja.setToolTipText("La caja no está abierta");
-        
+
         //Ventana Confirmar arqueo
         fieldArqTotalSistema.setValue(null);
         fieldArqFechaRemision.setValue(null);
         fieldArqValorRemitido.setValue(null);
-        
-        if(cajaConfirmada()){
+
+        if (cajaConfirmada()) {
             fieldArqEstadoCaja.setText("CONFIRMADO");
             btnConfirmArqueo.setEnabled(false);
             btnConfirmArqueo.setToolTipText("No hay remisión sin confirmar");
             fieldArqMontoFinal.setEditable(false);
             fieldArqMontoFinal.setToolTipText("Aquí aparecerá el monto a ser guardado");
-            
-            
+
             fieldArqTotalSistema.setValue(null);
             fieldArqFechaRemision.setValue(null);
             fieldArqValorRemitido.setValue(null);
 
-  
-        }else{
+        } else {
             fieldArqEstadoCaja.setText("Aguardando Confirmación");
             fieldEstadoCaja.setText("Cerrado, aguardando confirmación");
             btnAbrirCaja.setEnabled(false);
@@ -227,10 +222,10 @@ public class MainPage extends javax.swing.JFrame {
             fieldArqFechaRemision.setValue(fechaCierreCaja());
             fieldArqValorRemitido.setValue(montoRemitido());
             fieldArqMontoFinal.setValue(montoRemitido());
-            
+
         }
         //fieldArqEstadoCaja.setForeground(new Color(204,0,0));
-        
+
     }
 
     public void abrirCaja() {
@@ -241,13 +236,13 @@ public class MainPage extends javax.swing.JFrame {
         tabsPanel.setToolTipTextAt(0, "Registrar nueva venta");
         btnNewVenta.setToolTipText("Registrar nueva venta");
         fieldEstadoCaja.setText("Abierto");
-        fieldEstadoCaja.setForeground(new Color(0,153,0));
-        
+        fieldEstadoCaja.setForeground(new Color(0, 153, 0));
+
         btnAbrirCaja.setEnabled(false);
         btnAbrirCaja.setToolTipText("La caja ya está abierta");
         btnCerrarCaja.setEnabled(true);
         btnCerrarCaja.setToolTipText("Cerrar caja");
-        
+
         fieldMontoInicialCaja.setValue((montoInicCaja()));
         FieldFechaAperturaCaja.setValue(fechaInicialCaja());
         fieldArqEstadoCaja.setText("Abierta, sin remitir");
@@ -255,7 +250,7 @@ public class MainPage extends javax.swing.JFrame {
         btnConfirmArqueo.setToolTipText("No hay remisión sin confirmar");
         fieldArqMontoFinal.setEditable(false);
         fieldArqFechaRemision.setValue(null);
- 
+
     }
 
     public void setEstado_caja(boolean estado_caja) {
@@ -357,6 +352,10 @@ public class MainPage extends javax.swing.JFrame {
         fieldArqFechaRemision = new javax.swing.JFormattedTextField();
         fieldArqValorRemitido = new javax.swing.JFormattedTextField();
         fieldArqMontoFinal = new javax.swing.JFormattedTextField();
+        dialogHistorialArqueo = new javax.swing.JDialog();
+        labelHistArqs = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tableHistArq = new javax.swing.JTable();
         sidebarMain = new javax.swing.JPanel();
         logoCont = new javax.swing.JPanel();
         mainLogo = new javax.swing.JLabel();
@@ -452,6 +451,7 @@ public class MainPage extends javax.swing.JFrame {
         panelContConfig = new javax.swing.JPanel();
         btnGestionarUsuariosAdmin = new javax.swing.JButton();
         btnAbrirGestorArqueoAdmin = new javax.swing.JButton();
+        btnDialogHistorialArq = new javax.swing.JButton();
         panelContAcercaDe = new javax.swing.JPanel();
         labelAcercaDE = new javax.swing.JLabel();
         labelAD1 = new javax.swing.JLabel();
@@ -1308,6 +1308,9 @@ public class MainPage extends javax.swing.JFrame {
 
         fieldArqMontoFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
         fieldArqMontoFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                fieldArqMontoFinalKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldArqMontoFinalKeyTyped(evt);
             }
@@ -1331,7 +1334,7 @@ public class MainPage extends javax.swing.JFrame {
                             .addGroup(contGestArqLayout.createSequentialGroup()
                                 .addGap(88, 88, 88)
                                 .addComponent(labelGestArq8)))
-                        .addGap(0, 475, Short.MAX_VALUE))
+                        .addGap(0, 601, Short.MAX_VALUE))
                     .addGroup(contGestArqLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1395,6 +1398,7 @@ public class MainPage extends javax.swing.JFrame {
         );
 
         dialogVerifArqueo.setLocationRelativeTo(null);
+        fieldArqMontoFinal.setTransferHandler(null);
 
         javax.swing.GroupLayout dialogVerifArqueoLayout = new javax.swing.GroupLayout(dialogVerifArqueo.getContentPane());
         dialogVerifArqueo.getContentPane().setLayout(dialogVerifArqueoLayout);
@@ -1411,6 +1415,52 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(contGestArq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+        );
+
+        dialogHistorialArqueo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialogHistorialArqueo.setMaximumSize(new java.awt.Dimension(900, 400));
+        dialogHistorialArqueo.setMinimumSize(new java.awt.Dimension(900, 400));
+        dialogHistorialArqueo.setModal(true);
+        dialogHistorialArqueo.setPreferredSize(new java.awt.Dimension(900, 400));
+        dialogHistorialArqueo.setResizable(false);
+
+        labelHistArqs.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        labelHistArqs.setText("Historial de Arqueos");
+
+        tableHistArq.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane7.setViewportView(tableHistArq);
+
+        javax.swing.GroupLayout dialogHistorialArqueoLayout = new javax.swing.GroupLayout(dialogHistorialArqueo.getContentPane());
+        dialogHistorialArqueo.getContentPane().setLayout(dialogHistorialArqueoLayout);
+        dialogHistorialArqueoLayout.setHorizontalGroup(
+            dialogHistorialArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogHistorialArqueoLayout.createSequentialGroup()
+                .addContainerGap(368, Short.MAX_VALUE)
+                .addComponent(labelHistArqs)
+                .addGap(368, 368, 368))
+            .addGroup(dialogHistorialArqueoLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7)
+                .addContainerGap())
+        );
+        dialogHistorialArqueoLayout.setVerticalGroup(
+            dialogHistorialArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogHistorialArqueoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelHistArqs)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1619,7 +1669,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(sidebarMainLayout.createSequentialGroup()
                 .addComponent(logoCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(contSidebarButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE))
+                .addComponent(contSidebarButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(sidebarMain, java.awt.BorderLayout.WEST);
@@ -1653,7 +1703,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addComponent(mainTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 431, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 398, Short.MAX_VALUE)
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1968,15 +2018,23 @@ public class MainPage extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTableVentaItems.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableVentaItems);
         if (jTableVentaItems.getColumnModel().getColumnCount() > 0) {
+            jTableVentaItems.getColumnModel().getColumn(0).setMinWidth(15);
+            jTableVentaItems.getColumnModel().getColumn(0).setPreferredWidth(15);
+            jTableVentaItems.getColumnModel().getColumn(1).setMinWidth(20);
+            jTableVentaItems.getColumnModel().getColumn(1).setPreferredWidth(20);
+            jTableVentaItems.getColumnModel().getColumn(2).setResizable(false);
+            jTableVentaItems.getColumnModel().getColumn(3).setMinWidth(50);
+            jTableVentaItems.getColumnModel().getColumn(3).setPreferredWidth(50);
             jTableVentaItems.getColumnModel().getColumn(6).setPreferredWidth(40);
         }
 
@@ -2046,7 +2104,7 @@ public class MainPage extends javax.swing.JFrame {
         contCierreVentaLayout.setHorizontalGroup(
             contCierreVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contCierreVentaLayout.createSequentialGroup()
-                .addContainerGap(164, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2355,7 +2413,7 @@ public class MainPage extends javax.swing.JFrame {
             panelContEntradaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelContEntradaProductosLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2381,12 +2439,12 @@ public class MainPage extends javax.swing.JFrame {
         contenedorTablat2.setLayout(contenedorTablat2Layout);
         contenedorTablat2Layout.setHorizontalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
         contenedorTablat2Layout.setVerticalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorTablat2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2470,16 +2528,16 @@ public class MainPage extends javax.swing.JFrame {
                                 .addComponent(btnResumenVentaMes)
                                 .addGap(10, 10, 10)
                                 .addComponent(btnResumenVentaAnho)))
-                        .addContainerGap(381, Short.MAX_VALUE))
+                        .addContainerGap(348, Short.MAX_VALUE))
                     .addGroup(contBotonesVentasLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 958, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 925, Short.MAX_VALUE)
                         .addGap(19, 19, 19))))
         );
         contBotonesVentasLayout.setVerticalGroup(
             contBotonesVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contBotonesVentasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel7)
                 .addGap(16, 16, 16)
@@ -2497,6 +2555,7 @@ public class MainPage extends javax.swing.JFrame {
 
         panelConfig.setLayout(new java.awt.BorderLayout());
 
+        panelContConfig.setPreferredSize(new java.awt.Dimension(988, 200));
         panelContConfig.setLayout(new java.awt.GridBagLayout());
 
         btnGestionarUsuariosAdmin.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
@@ -2509,9 +2568,11 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 389;
         gridBagConstraints.ipady = 10;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(21, 193, 0, 227);
         panelContConfig.add(btnGestionarUsuariosAdmin, gridBagConstraints);
 
         btnAbrirGestorArqueoAdmin.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
@@ -2524,10 +2585,22 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 50;
         gridBagConstraints.ipady = 10;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(29, 193, 21, 0);
         panelContConfig.add(btnAbrirGestorArqueoAdmin, gridBagConstraints);
+
+        btnDialogHistorialArq.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        btnDialogHistorialArq.setText("HISTORIAL DE ARQUEOS");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 86;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(29, 18, 21, 227);
+        panelContConfig.add(btnDialogHistorialArq, gridBagConstraints);
 
         panelConfig.add(panelContConfig, java.awt.BorderLayout.NORTH);
 
@@ -2552,7 +2625,7 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(44, 96, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 96, 0, 0);
         panelContAcercaDe.add(labelAD1, gridBagConstraints);
 
         labelAD2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
@@ -2583,7 +2656,7 @@ public class MainPage extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(54, 96, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 96, 0, 0);
         panelContAcercaDe.add(labelAD4, gridBagConstraints);
 
         labelAD5.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
@@ -3061,7 +3134,7 @@ public class MainPage extends javax.swing.JFrame {
     private void btnLimpiarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarProdActionPerformed
         // TODO add your handling code here:
         LimpiarProd();
-        
+
     }//GEN-LAST:event_btnLimpiarProdActionPerformed
 
     private void fieldT2IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldT2IdActionPerformed
@@ -3376,7 +3449,7 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnConfirmarAbrirCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarAbrirCajaActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
             Integer id = null;
             Integer fkCaja = 1;
             Integer fkUsuario = uc.buscarPorNombre(fieldUserName.getText()).getIdusuario();
@@ -3391,9 +3464,9 @@ public class MainPage extends javax.swing.JFrame {
             aqcontrol.insertar(aqc);
             abrirCaja(); // Este metodo se encarga de desactivar el boton Abrir y habilitar venta
             dialogAbrirCaja.setVisible(false);
-            JOptionPane.showMessageDialog(null, "Caja abierta con exito\nMonto: " + fieldSaldoInicAbrirCaja.getValue());
+            JOptionPane.showMessageDialog(null, "Caja abierta con exito\nMonto: " + fieldSaldoInicAbrirCaja.getText() + " Gs");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n" + e.toString(), "Error en btn Abrir Caja",0);
+            JOptionPane.showMessageDialog(null, "Hubo el siguiente error\n" + e.toString(), "Error en btn Abrir Caja", 0);
         }
         fieldSaldoInicAbrirCaja.setText("");
     }//GEN-LAST:event_btnConfirmarAbrirCajaActionPerformed
@@ -3413,7 +3486,7 @@ public class MainPage extends javax.swing.JFrame {
                 aqc.setTotalVentas(totalventas);
                 aqcontrol.modificar(aqc);
                 dialogCerrarCaja.dispose();
-                JOptionPane.showMessageDialog(null, "Valor de arqueo remitido: " + fieldTotalMuestra.getValue());
+                JOptionPane.showMessageDialog(null, "Valor de arqueo remitido: " + fieldTotalMuestra.getText() + " Gs");
                 cerrarCaja();
                 FieldFechaAperturaCaja.setText("-");
             } else {
@@ -3429,7 +3502,7 @@ public class MainPage extends javax.swing.JFrame {
 
     private void fieldTotalMuestraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldTotalMuestraKeyPressed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_fieldTotalMuestraKeyPressed
 
     private void fieldTotalMuestraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldTotalMuestraKeyTyped
@@ -3443,16 +3516,16 @@ public class MainPage extends javax.swing.JFrame {
 
     private void fieldTotalMuestraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldTotalMuestraKeyReleased
         // TODO add your handling code here:
-        if ( evt.getKeyCode() == KeyEvent.VK_ENTER ) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnRemitirArqueoMuestra.requestFocus();
-        } 
+        }
     }//GEN-LAST:event_fieldTotalMuestraKeyReleased
 
     private void fieldSaldoInicAbrirCajaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldSaldoInicAbrirCajaKeyReleased
         // TODO add your handling code here:
-        if ( evt.getKeyCode() == KeyEvent.VK_ENTER ) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnConfirmarAbrirCaja.requestFocus();
-        } 
+        }
     }//GEN-LAST:event_fieldSaldoInicAbrirCajaKeyReleased
 
     private void btnResumenVentasDiarioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResumenVentasDiarioMouseReleased
@@ -3461,17 +3534,17 @@ public class MainPage extends javax.swing.JFrame {
         int dia = fecha_fin.getDate();
         int anho = fecha_fin.getYear();
         int mes = fecha_fin.getMonth();
-        Timestamp fecha_ini = new Timestamp(anho,mes,dia,0,0,0,0);
-        
-        try{
+        Timestamp fecha_ini = new Timestamp(anho, mes, dia, 0, 0, 0, 0);
+
+        try {
             Connection con = JdbcDAOFactory.obtenerConeccion();
             Map parametros = new HashMap();
             parametros.put("fecha_ini", fecha_ini);
-            parametros.put("fecha_fin",fecha_fin );
+            parametros.put("fecha_fin", fecha_fin);
             JasperReport reporte = JasperCompileManager.compileReport("c://reportes/Informe_ven.jrxml");
             JasperPrint imprimir = JasperFillManager.fillReport(reporte, parametros, con);
             JasperViewer.viewReport(imprimir, false);
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
         }
     }//GEN-LAST:event_btnResumenVentasDiarioMouseReleased
@@ -3480,16 +3553,16 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         Timestamp fecha_fin = new Timestamp(System.currentTimeMillis());
         Timestamp fecha_ini = new Timestamp(System.currentTimeMillis() - 604800000);
-        
-        try{
+
+        try {
             Connection con = JdbcDAOFactory.obtenerConeccion();
             Map parametros = new HashMap();
             parametros.put("fecha_ini", fecha_ini);
-            parametros.put("fecha_fin",fecha_fin );
+            parametros.put("fecha_fin", fecha_fin);
             JasperReport reporte = JasperCompileManager.compileReport("c://reportes/Informe_ven.jrxml");
             JasperPrint imprimir = JasperFillManager.fillReport(reporte, parametros, con);
             JasperViewer.viewReport(imprimir, false);
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
         }
     }//GEN-LAST:event_btnResumenVentaSieteMouseReleased
@@ -3499,17 +3572,17 @@ public class MainPage extends javax.swing.JFrame {
         Timestamp fecha_fin = new Timestamp(System.currentTimeMillis());
         int anho = fecha_fin.getYear();
         int mes = fecha_fin.getMonth();
-        Timestamp fecha_ini = new Timestamp(anho,mes,1,0,0,0,0);
-        
-        try{
+        Timestamp fecha_ini = new Timestamp(anho, mes, 1, 0, 0, 0, 0);
+
+        try {
             Connection con = JdbcDAOFactory.obtenerConeccion();
             Map parametros = new HashMap();
             parametros.put("fecha_ini", fecha_ini);
-            parametros.put("fecha_fin",fecha_fin );
+            parametros.put("fecha_fin", fecha_fin);
             JasperReport reporte = JasperCompileManager.compileReport("c://reportes/Informe_ven.jrxml");
             JasperPrint imprimir = JasperFillManager.fillReport(reporte, parametros, con);
             JasperViewer.viewReport(imprimir, false);
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
         }
     }//GEN-LAST:event_btnResumenVentaMesMouseReleased
@@ -3518,42 +3591,61 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         Timestamp fecha_fin = new Timestamp(System.currentTimeMillis());
         int anho = fecha_fin.getYear();
-        Timestamp fecha_ini = new Timestamp(anho,0,1,0,0,0,0);
-        
-        try{
+        Timestamp fecha_ini = new Timestamp(anho, 0, 1, 0, 0, 0, 0);
+
+        try {
             Connection con = JdbcDAOFactory.obtenerConeccion();
             Map parametros = new HashMap();
             parametros.put("fecha_ini", fecha_ini);
-            parametros.put("fecha_fin",fecha_fin );
+            parametros.put("fecha_fin", fecha_fin);
             JasperReport reporte = JasperCompileManager.compileReport("c://reportes/Informe_ven.jrxml");
             JasperPrint imprimir = JasperFillManager.fillReport(reporte, parametros, con);
             JasperViewer.viewReport(imprimir, false);
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
         }
     }//GEN-LAST:event_btnResumenVentaAnhoMouseReleased
 
     private void fieldArqMontoFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldArqMontoFinalKeyTyped
-        // TODO add your handling code here:
-         esNumero(evt);
+        // TODO add your handling code here
+        esNumero(evt);
+
     }//GEN-LAST:event_fieldArqMontoFinalKeyTyped
 
     private void btnConfirmArqueoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmArqueoActionPerformed
         // TODO add your handling code here:
-        try{
-            Arqueoscaja aq = aqcontrol.UltimoElemento();
-            aq.setConfirmado(true);
-            if (!fieldArqMontoFinal.equals(fieldArqValorRemitido)){
-                aq.setMontoFinal(Integer.parseInt( fieldArqMontoFinal.getValue().toString()));
+        String[] opciones = new String[]{"Sí, Confirmar", "Cancelar"};
+        int answer = JOptionPane.showOptionDialog(null,
+                "Está seguro de que confirma el siguiente valor?\n" + fieldArqMontoFinal.getText() + " Gs", "Elegir modo de priviegio",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, opciones, opciones[0]);
+        if (answer == 0) {
+            try {
+                Arqueoscaja aq = aqcontrol.UltimoElemento();
+                aq.setConfirmado(true);
+                if (!fieldArqMontoFinal.equals(fieldArqValorRemitido)) {
+                    aq.setMontoFinal(Integer.parseInt(fieldArqMontoFinal.getValue().toString()));
+                }
+                aqcontrol.modificar(aq);
+                dialogVerifArqueo.dispose();
+                JOptionPane.showMessageDialog(null, "Ajuste de arqueo completado");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "btnConfirmarArqueo: \n" + e.toString());
             }
-            aqcontrol.modificar(aq);
-            dialogVerifArqueo.dispose();
-            JOptionPane.showMessageDialog(null, "Ajuste de arqueo completado");
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "btnConfirmarArqueo: \n"+e.toString());
+            cerrarCaja();
+        } else {
+            fieldArqMontoFinal.requestFocus();
         }
-        cerrarCaja();
+        //
+
     }//GEN-LAST:event_btnConfirmArqueoActionPerformed
+
+    private void fieldArqMontoFinalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldArqMontoFinalKeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnConfirmArqueo.requestFocus();
+        }
+    }//GEN-LAST:event_fieldArqMontoFinalKeyReleased
 
     private void esNumero(java.awt.event.KeyEvent evt) {
         //Rechaza el tecleo si no es un Numero
@@ -3637,7 +3729,7 @@ public class MainPage extends javax.swing.JFrame {
                 new MainPage(0).setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -3657,6 +3749,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton btnConfirmArqueo;
     private javax.swing.JButton btnConfirmarAbrirCaja;
     private javax.swing.JButton btnDesactivarUser;
+    private javax.swing.JButton btnDialogHistorialArq;
     private javax.swing.JButton btnExportProduc;
     private javax.swing.JButton btnGestionarUsuariosAdmin;
     private javax.swing.JButton btnGuardarProducto;
@@ -3696,6 +3789,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JDialog dialogAbrirCaja;
     private javax.swing.JDialog dialogAdmUsers;
     private javax.swing.JDialog dialogCerrarCaja;
+    private javax.swing.JDialog dialogHistorialArqueo;
     private javax.swing.JDialog dialogVerifArqueo;
     private javax.swing.JTextField fieldArqEstadoCaja;
     private javax.swing.JFormattedTextField fieldArqFechaRemision;
@@ -3780,6 +3874,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSplitPane jSplitPane1;
@@ -3810,6 +3905,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel labelGestArq5;
     private javax.swing.JLabel labelGestArq6;
     private javax.swing.JLabel labelGestArq8;
+    private javax.swing.JLabel labelHistArqs;
     private javax.swing.JLabel labelPanelCajero1;
     private javax.swing.JLabel labelPanelCajero2;
     private javax.swing.JLabel labelPanelCajero4;
@@ -3843,6 +3939,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JSpinner spin50gs;
     private javax.swing.JSpinner spin50mil;
     private javax.swing.JSpinner spin5mil;
+    private javax.swing.JTable tableHistArq;
     private javax.swing.JTabbedPane tabsPanel;
     // End of variables declaration//GEN-END:variables
 
@@ -3921,14 +4018,13 @@ public class MainPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error en la actualizacion del stock\n" + e.toString());
         }
     }
-    
+
     /*
     ****************************************************************************************************************
                             METODOS PARA CIERRE Y APERTURA DE CAJA
     ****************************************************************************************************************
 
-    */
-    
+     */
     private boolean CajaCerrada() {
         Boolean retorno = null;
         try {
@@ -3944,7 +4040,7 @@ public class MainPage extends javax.swing.JFrame {
         }
         return retorno;//Aca recien se retorna por el tema del try-catch
     }
-    
+
     private boolean cajaConfirmada() {
         Boolean retorno = null;
         try {
@@ -3952,7 +4048,7 @@ public class MainPage extends javax.swing.JFrame {
             Date cajaCerrada = aq.getFechaFin();
             if (cajaCerrada == null) {//si esta nulo es pq no tiene una fecha de fin, por lo tanto no se cerro
                 retorno = false;
-            } else{
+            } else {
                 retorno = aq.getConfirmado();
                 //System.out.println("estado de caja: "+ retorno.toString());
             }
@@ -3961,90 +4057,85 @@ public class MainPage extends javax.swing.JFrame {
         }
         return retorno;//Aca recien se retorna por el tema del try-catch
     }
-       
-       
-       
+
     private int montoInicCaja() {
         int retorno = 0;
         try {
             Arqueoscaja aq = aqcontrol.UltimoElemento();
 //            Date cajaCerrada = aq.getFechaFin();
             retorno = aq.getMontoInicial();
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
         }
         return retorno;//Aca recien se retorna por el tema del try-catch
     }
-    
+
     private String fechaInicialCaja() {
         String formatFecha = null;
-        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate ( FormatStyle.FULL );
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
         try {
             Arqueoscaja aq = aqcontrol.UltimoElemento();
             Date fechaInicioCaja = aq.getFechaInicio();
             LocalDateTime ldate = fechaInicioCaja.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
             //formatFecha = fechaInicioCaja.to;
             formatFecha = ldate.format(formatter) + " a las " + ldate.toLocalTime();
-            
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
-        }   
+        }
         return formatFecha;
     }
-    
 
-    
-    private String fechaCierreCaja(){
+    private String fechaCierreCaja() {
         String formatFecha = null;
         DateTimeFormatter formatter1 = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
-        try{
+        try {
             Arqueoscaja aqc = aqcontrol.UltimoElemento();
             Date fechaCierreCaja = aqc.getFechaFin();
             LocalDateTime localdate = fechaCierreCaja.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-            formatFecha = localdate.format(formatter1) + " a las " +  localdate.toLocalTime();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "fechaCierreCaja() "+e.toString());
+            formatFecha = localdate.format(formatter1) + " a las " + localdate.toLocalTime();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "fechaCierreCaja() " + e.toString());
         }
         return formatFecha;
-        
+
     }
-    
+
     private Integer montoRemitido() {
         Integer remitido = 0;
         try {
             Arqueoscaja aq = aqcontrol.UltimoElemento();
             remitido = aq.getMontoFinal();
-                     
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());
-        }   
+        }
         return remitido;
     }
 
     private Integer ArqueoSistema() {
         Arqueoscaja aq = aqcontrol.UltimoElemento();
-        Integer total =null;
-        Date cajaAbierta=null;
-        total = aq.getMontoInicial()==null? 0 : aq.getMontoInicial();//Operador Ternario
+        Integer total = null;
+        Date cajaAbierta = null;
+        total = aq.getMontoInicial() == null ? 0 : aq.getMontoInicial();//Operador Ternario
         try {
             Date cajaCerrada = aq.getFechaFin();
             if (cajaCerrada != null) {
                 cajaAbierta = aq.getFechaInicio();
                 Integer suma = vc.SumTotalVenArqueo(cajaAbierta, cajaCerrada);
-                total = Integer.sum(total, suma); 
+                total = Integer.sum(total, suma);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"El error fue: "+e.toString());
+            JOptionPane.showMessageDialog(null, "El error fue: " + e.toString());
         }
-        if(total==null){
+        if (total == null) {
             total = 0;
             return total;
-        }else{
+        } else {
             return total;
         }
-       
+
     }
 
     private void LimpiarUser() {

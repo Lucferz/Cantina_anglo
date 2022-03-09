@@ -54,7 +54,9 @@ public class VentasDAO extends ControladorAbstract{
         TypedQuery<Long> query = em.createNamedQuery("Ventas.SumVentasXArqueo", Long.class);
         query.setParameter("fechaInicio", fechaInicio);
         query.setParameter("fechaFin", fechaFin);
-        Integer sumVen = Math.toIntExact(query.getSingleResult());
+        Long sumlong = query.getSingleResult()==null? 0 :query.getSingleResult() ;
+        System.out.println("Hasta aca todo bien SumLong = "+sumlong);
+        Integer sumVen = Math.toIntExact(sumlong);
         return sumVen;
     }
     

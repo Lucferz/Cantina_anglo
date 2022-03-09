@@ -217,6 +217,9 @@ public class MainPage extends javax.swing.JFrame {
   
         }else{
             fieldArqEstadoCaja.setText("Aguardando Confirmación");
+            fieldEstadoCaja.setText("Cerrado, aguardando confirmación");
+            btnAbrirCaja.setEnabled(false);
+            btnAbrirCaja.setToolTipText("La caja debe primero ser confirmada");
             btnConfirmArqueo.setEnabled(true);
             btnConfirmArqueo.setToolTipText(null);
             fieldArqMontoFinal.setEditable(true);
@@ -1253,10 +1256,8 @@ public class MainPage extends javax.swing.JFrame {
 
         dialogVerifArqueo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogVerifArqueo.setTitle("Gestionando Arqueo");
-        dialogVerifArqueo.setMaximumSize(new java.awt.Dimension(1000, 1000));
         dialogVerifArqueo.setMinimumSize(new java.awt.Dimension(547, 470));
         dialogVerifArqueo.setModal(true);
-        dialogVerifArqueo.setPreferredSize(new java.awt.Dimension(547, 470));
         dialogVerifArqueo.setResizable(false);
 
         labelTitleGestArq.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
@@ -3093,6 +3094,7 @@ public class MainPage extends javax.swing.JFrame {
     private void btnCancelarArqueoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarArqueoMouseReleased
         // TODO add your handling code here:
         System.out.println("Cancelado Cerrar Caja");
+        fieldTotalMuestra.setValue(null);
         dialogCerrarCaja.dispose();
     }//GEN-LAST:event_btnCancelarArqueoMouseReleased
 
@@ -3105,6 +3107,7 @@ public class MainPage extends javax.swing.JFrame {
     private void btnCancelarAbrirCajaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarAbrirCajaMouseReleased
         // TODO add your handling code here:
         System.out.println("Cancelado proceso Abrir caja");
+        fieldSaldoInicAbrirCaja.setText("");
         dialogAbrirCaja.setVisible(false);
     }//GEN-LAST:event_btnCancelarAbrirCajaMouseReleased
 
@@ -4029,9 +4032,8 @@ public class MainPage extends javax.swing.JFrame {
             Date cajaCerrada = aq.getFechaFin();
             if (cajaCerrada != null) {
                 cajaAbierta = aq.getFechaInicio();
-                System.out.println("Todo bien hasta abrir caja");
                 Integer suma = vc.SumTotalVenArqueo(cajaAbierta, cajaCerrada);
-                total += suma; 
+                total = Integer.sum(total, suma); 
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"El error fue: "+e.toString());

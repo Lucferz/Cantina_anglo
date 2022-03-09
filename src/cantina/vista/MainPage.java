@@ -1252,8 +1252,10 @@ public class MainPage extends javax.swing.JFrame {
 
         dialogVerifArqueo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogVerifArqueo.setTitle("Gestionando Arqueo");
+        dialogVerifArqueo.setMaximumSize(new java.awt.Dimension(1000, 1000));
         dialogVerifArqueo.setMinimumSize(new java.awt.Dimension(547, 470));
         dialogVerifArqueo.setModal(true);
+        dialogVerifArqueo.setPreferredSize(new java.awt.Dimension(547, 470));
         dialogVerifArqueo.setResizable(false);
 
         labelTitleGestArq.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
@@ -1284,6 +1286,11 @@ public class MainPage extends javax.swing.JFrame {
 
         btnConfirmArqueo.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnConfirmArqueo.setText("CONFIRMAR CIERRE");
+        btnConfirmArqueo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmArqueoActionPerformed(evt);
+            }
+        });
 
         fieldArqEstadoCaja.setEditable(false);
         fieldArqEstadoCaja.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
@@ -3523,6 +3530,16 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
          esNumero(evt);
     }//GEN-LAST:event_fieldArqMontoFinalKeyTyped
+
+    private void btnConfirmArqueoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmArqueoActionPerformed
+        // TODO add your handling code here:
+        Arqueoscaja aq = aqcontrol.UltimoElemento();
+        aq.setConfirmado(true);
+        if (!fieldArqMontoFinal.equals(fieldArqValorRemitido)){
+            aq.setMontoFinal(Integer.parseInt(fieldArqMontoFinal.getText()));
+        }
+        aqcontrol.insertar(aq);
+    }//GEN-LAST:event_btnConfirmArqueoActionPerformed
 
     private void esNumero(java.awt.event.KeyEvent evt) {
         //Rechaza el tecleo si no es un Numero

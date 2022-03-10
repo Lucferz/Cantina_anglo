@@ -1228,10 +1228,8 @@ public class MainPage extends javax.swing.JFrame {
 
         dialogAdmUsers.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogAdmUsers.setTitle("Gestion de Usuarios");
-        dialogAdmUsers.setMaximumSize(new java.awt.Dimension(950, 468));
         dialogAdmUsers.setMinimumSize(new java.awt.Dimension(950, 468));
         dialogAdmUsers.setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
-        dialogAdmUsers.setPreferredSize(new java.awt.Dimension(950, 468));
         dialogAdmUsers.setResizable(false);
         dialogAdmUsers.setSize(new java.awt.Dimension(950, 468));
 
@@ -1593,9 +1591,7 @@ public class MainPage extends javax.swing.JFrame {
 
         dialogHistorialArqueo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogHistorialArqueo.setLocationByPlatform(true);
-        dialogHistorialArqueo.setMaximumSize(new java.awt.Dimension(980, 502));
         dialogHistorialArqueo.setMinimumSize(new java.awt.Dimension(980, 502));
-        dialogHistorialArqueo.setPreferredSize(new java.awt.Dimension(980, 502));
         dialogHistorialArqueo.setResizable(false);
         dialogHistorialArqueo.setLocationRelativeTo(null);
         //dialogHistorialArqueo.setSize(getBounds().height, getBounds().width);

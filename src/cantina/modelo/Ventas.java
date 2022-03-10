@@ -39,7 +39,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Ventas.findByIdCaja", query = "SELECT v FROM Ventas v WHERE v.idCaja = :idCaja")
     , @NamedQuery(name = "Ventas.findByFecha", query = "SELECT v FROM Ventas v WHERE v.fecha = :fecha")
     , @NamedQuery(name = "Ventas.findByTotal", query = "SELECT v FROM Ventas v WHERE v.total = :total")
-    , @NamedQuery(name = "Ventas.findByEstado", query = "SELECT v FROM Ventas v WHERE v.estado = :estado")})
+    , @NamedQuery(name = "Ventas.findByEstado", query = "SELECT v FROM Ventas v WHERE v.estado = :estado")
+    , @NamedQuery(name = "Ventas.findByAjuste", query = "SELECT v FROM Ventas v WHERE v.ajuste = :ajuste")})
 public class Ventas implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,6 +60,8 @@ public class Ventas implements Serializable {
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
+    @Column(name = "ajuste")
+    private Boolean ajuste;
     @JoinColumn(name = "fk_usuario", referencedColumnName = "idusuario")
     @ManyToOne(optional = false)
     private Usuarios fkUsuario;
@@ -76,12 +79,13 @@ public class Ventas implements Serializable {
         this.estado = estado;
     }
 
-    public Ventas(Integer idventa, int idCaja, Date fecha, Integer total, boolean estado, Usuarios fkUsuario) {
+    public Ventas(Integer idventa, int idCaja, Date fecha, Integer total, boolean estado, Boolean ajuste, Usuarios fkUsuario) {
         this.idventa = idventa;
         this.idCaja = idCaja;
         this.fecha = fecha;
         this.total = total;
         this.estado = estado;
+        this.ajuste = ajuste;
         this.fkUsuario = fkUsuario;
     }
     
@@ -126,6 +130,14 @@ public class Ventas implements Serializable {
         this.estado = estado;
     }
 
+    public Boolean getAjuste() {
+        return ajuste;
+    }
+
+    public void setAjuste(Boolean ajuste) {
+        this.ajuste = ajuste;
+    }
+
     public Usuarios getFkUsuario() {
         return fkUsuario;
     }
@@ -156,7 +168,7 @@ public class Ventas implements Serializable {
 
     @Override
     public String toString() {
-        return "Ventas{" + "idventa=" + idventa + ", idCaja=" + idCaja + ", fecha=" + fecha + ", total=" + total + ", estado=" + estado + ", fkUsuario=" + fkUsuario + '}';
+        return "Ventas{" + "idventa=" + idventa + ", idCaja=" + idCaja + ", fecha=" + fecha + ", total=" + total + ", estado=" + estado + ", ajuste=" + ajuste + ", fkUsuario=" + fkUsuario + '}';
     }
 
     

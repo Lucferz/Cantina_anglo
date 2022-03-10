@@ -51,6 +51,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -3823,10 +3824,15 @@ public class MainPage extends javax.swing.JFrame {
                 null, opciones, opciones[0]);
         if (answer == 0) {
             try {
+                Integer mntSis =ArqueoSistema();
+                Integer mntConfirmado = (Integer) fieldArqMontoFinal.getValue();
                 Arqueoscaja aq = aqcontrol.UltimoElemento();
                 aq.setConfirmado(true);
                 if (!fieldArqMontoFinal.equals(fieldArqValorRemitido)) {
                     aq.setMontoFinal(Integer.parseInt(fieldArqMontoFinal.getValue().toString()));
+                }
+                if(!Objects.equals(mntConfirmado, mntSis)){
+                    InsertarAjuste(mntConfirmado,mntSis);
                 }
                 aqcontrol.modificar(aq);
                 dialogVerifArqueo.dispose();
@@ -4182,7 +4188,8 @@ public class MainPage extends javax.swing.JFrame {
             Usuarios user = uc.buscarPorNombre(nomUser);
             Integer monto = Integer.parseInt(fieldTotalPagar.getText());
             Date fecha = TimestampToDate();
-            Ventas ven = new Ventas(id, idcaja, fecha, monto, estado, user);
+            Boolean ajuste = false;
+            Ventas ven = new Ventas(id, idcaja, fecha, monto, estado,ajuste, user);
             if (monto != 0 && monto != null) {
                 vc.insertar(ven);
             } else {
@@ -4354,5 +4361,25 @@ public class MainPage extends javax.swing.JFrame {
         fieldPassUser.setText("");
         fieldEstadoUser.setText("");
         jComboBoxRolUsers.setSelectedIndex(0);
+    }
+    
+    private void InsertarAjuste(Integer mntConfirmado, Integer mntSis){
+        try{
+            //Calculo de la venta "ajuste"
+            Integer mntAjuste = mntConfirmado - mntSis;//Este vendria siendo el total en el constructor
+            //Resto de los parametros
+            Integer id = null;
+            Boolean estado = true;
+            Integer idcaja = 1;
+            String nomUser = fieldUserName.getText();
+            Usuarios user = uc.buscarPorNombre(nomUser);
+            Date fecha = TimestampToDate();
+            Boolean ajuste = true;//Campo que indica que es un ajuste
+            Ventas ven = new Ventas(id, idcaja, fecha, mntAjuste, estado,ajuste, user);
+            vc.insertar(ven);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error en insercion de ajuste: \n"+e.toString());
+        }
+        
     }
 }

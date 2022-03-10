@@ -5,6 +5,10 @@
  */
 package cantina.vista;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author danie
@@ -16,6 +20,13 @@ public class SuperSu extends javax.swing.JFrame {
      */
     public SuperSu() {
         initComponents();
+          try {
+           Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/iconos/shopping.png"));
+            setIconImage(image);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en icono "+e.toString());
+        }
         setLocationRelativeTo(null);
     }
 
@@ -27,7 +38,6 @@ public class SuperSu extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         panelContAcercaDe = new javax.swing.JPanel();
         labelAcercaDE = new javax.swing.JLabel();
@@ -41,6 +51,10 @@ public class SuperSu extends javax.swing.JFrame {
         separatorAD1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(568, 312));
+        setMinimumSize(new java.awt.Dimension(568, 312));
+        setName("Acerca de"); // NOI18N
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -49,100 +63,87 @@ public class SuperSu extends javax.swing.JFrame {
 
         panelContAcercaDe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         panelContAcercaDe.setForeground(new java.awt.Color(102, 102, 102));
-        panelContAcercaDe.setLayout(new java.awt.GridBagLayout());
 
         labelAcercaDE.setFont(new java.awt.Font("Roboto Medium", 0, 20)); // NOI18N
         labelAcercaDE.setForeground(new java.awt.Color(102, 102, 102));
         labelAcercaDE.setText("Acerca de este Sistema");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 10, 0, 0);
-        panelContAcercaDe.add(labelAcercaDE, gridBagConstraints);
 
         labelAD1.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         labelAD1.setForeground(new java.awt.Color(102, 102, 102));
         labelAD1.setText("Desarrollado por: ");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 96, 0, 0);
-        panelContAcercaDe.add(labelAD1, gridBagConstraints);
 
-        labelAD2.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelAD2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         labelAD2.setForeground(new java.awt.Color(102, 102, 102));
         labelAD2.setText("Lucas Frutos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 13, 0, 0);
-        panelContAcercaDe.add(labelAD2, gridBagConstraints);
 
-        labelAD3.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelAD3.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         labelAD3.setForeground(new java.awt.Color(102, 102, 102));
         labelAD3.setText("Daniel Maldonado");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 13, 0, 0);
-        panelContAcercaDe.add(labelAD3, gridBagConstraints);
 
         labelAD4.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         labelAD4.setForeground(new java.awt.Color(102, 102, 102));
         labelAD4.setText("Contactos:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 96, 0, 0);
-        panelContAcercaDe.add(labelAD4, gridBagConstraints);
 
         labelAD5.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         labelAD5.setForeground(new java.awt.Color(102, 102, 102));
         labelAD5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_whatsapp_25px_1.png"))); // NOI18N
         labelAD5.setText("+595 992 205 206");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
-        panelContAcercaDe.add(labelAD5, gridBagConstraints);
 
         labelAD6.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         labelAD6.setForeground(new java.awt.Color(102, 102, 102));
         labelAD6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_whatsapp_25px_1.png"))); // NOI18N
         labelAD6.setText("+595 975 333 205");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 12, 30, 0);
-        panelContAcercaDe.add(labelAD6, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 833;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 96, 0, 57);
-        panelContAcercaDe.add(separatorAD, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 833;
-        gridBagConstraints.ipady = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 96, 0, 57);
-        panelContAcercaDe.add(separatorAD1, gridBagConstraints);
+
+        javax.swing.GroupLayout panelContAcercaDeLayout = new javax.swing.GroupLayout(panelContAcercaDe);
+        panelContAcercaDe.setLayout(panelContAcercaDeLayout);
+        panelContAcercaDeLayout.setHorizontalGroup(
+            panelContAcercaDeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContAcercaDeLayout.createSequentialGroup()
+                .addGap(169, 169, 169)
+                .addComponent(labelAcercaDE))
+            .addComponent(separatorAD, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(separatorAD1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelContAcercaDeLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(labelAD5))
+            .addGroup(panelContAcercaDeLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(labelAD6))
+            .addGroup(panelContAcercaDeLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panelContAcercaDeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelAD2)
+                    .addComponent(labelAD3)))
+            .addGroup(panelContAcercaDeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelAD1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelContAcercaDeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelAD4))
+        );
+        panelContAcercaDeLayout.setVerticalGroup(
+            panelContAcercaDeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContAcercaDeLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(labelAcercaDE)
+                .addGap(27, 27, 27)
+                .addComponent(labelAD1)
+                .addGap(6, 6, 6)
+                .addComponent(separatorAD, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelAD2)
+                .addGap(11, 11, 11)
+                .addComponent(labelAD3)
+                .addGap(27, 27, 27)
+                .addComponent(labelAD4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(separatorAD1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(labelAD5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelAD6)
+                .addGap(8, 8, 8))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,11 +158,11 @@ public class SuperSu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelContAcercaDe, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelContAcercaDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 

@@ -147,10 +147,12 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     private void modoVendedor() {
-        //Quitar tabs que no van a ser accesible
+        //Quitar tabs que no van a ser accesibles
         tabsPanel.remove(panelConfig);
+        tabsPanel.remove(panelVentas);
         //ocultando sus botones accesores del sidebar
         btnConfig.setVisible(false);
+        btnVentas.setVisible(false);
 
     }
 
@@ -387,7 +389,41 @@ public class MainPage extends javax.swing.JFrame {
         fieldArqFechaRemision.setValue(null);
 
     }
-
+    
+    //**********************************************************
+    //              FORMATEAR FECHA PARA LEER MEJOR EN PANTALLA
+    //**********************************************************
+     //Cuando usa fecha y hora
+        //formato---> miércoles 9 de marzo de 2022 a las 12:39:07
+    private String prettyFechaHora(Date uglyFecha){
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
+        String fechaRetorno = "";
+        LocalDateTime localdatet = uglyFecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        
+        fechaRetorno = localdatet.format(formatter) + " a las " + localdatet.toLocalTime();
+        return fechaRetorno;
+    }
+        //Formato---> 9/03/2022 a las 12:39:07
+       private String prettyFechaHoraCorto(Date uglyFecha){
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
+        String fechaRetorno = "";
+        LocalDateTime localdatet = uglyFecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        
+        fechaRetorno = localdatet.format(formatter) + " a las " + localdatet.toLocalTime();
+        return fechaRetorno;
+    }
+        //Formato---> 9/03/2022 
+      private String prettyFechaCorto(Date uglyFecha){
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
+        String fechaRetorno = "";
+        LocalDateTime localdatet = uglyFecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        
+        fechaRetorno = localdatet.format(formatter);
+        return fechaRetorno;
+    }
+     
+    
+    //******************************************
     public void setEstado_caja(boolean estado_caja) {
         this.estado_caja = estado_caja;
         if (estado_caja) {
@@ -543,8 +579,8 @@ public class MainPage extends javax.swing.JFrame {
         btnCerrarVenta = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        fieldTotalPagar = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        fieldTotalPagar = new javax.swing.JFormattedTextField();
         panelProductos = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         panelContEntradaProductos = new javax.swing.JPanel();
@@ -2247,13 +2283,13 @@ public class MainPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         jLabel1.setText("Total a Cobrar:");
 
-        fieldTotalPagar.setEditable(false);
-        fieldTotalPagar.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
-        fieldTotalPagar.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        fieldTotalPagar.setPreferredSize(new java.awt.Dimension(50, 21));
-
         jLabel13.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         jLabel13.setText("Gs.");
+
+        fieldTotalPagar.setEditable(false);
+        fieldTotalPagar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        fieldTotalPagar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        fieldTotalPagar.setPreferredSize(new java.awt.Dimension(50, 21));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -2263,17 +2299,22 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addComponent(fieldTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel13)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(fieldTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel13))
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(fieldTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout contCierreVentaLayout = new javax.swing.GroupLayout(contCierreVenta);
@@ -2281,7 +2322,7 @@ public class MainPage extends javax.swing.JFrame {
         contCierreVentaLayout.setHorizontalGroup(
             contCierreVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contCierreVentaLayout.createSequentialGroup()
-                .addContainerGap(719, Short.MAX_VALUE)
+                .addContainerGap(638, Short.MAX_VALUE)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3087,7 +3128,7 @@ public class MainPage extends javax.swing.JFrame {
         RegistrarDetalle();
         ActualizarStock();
         LimpiarTable();
-        fieldTotalPagar.setText("");
+        fieldTotalPagar.setValue(null);
         fieldCod.requestFocus();
         MostrarTabVentas();
         MostrarTabArti();
@@ -4035,7 +4076,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTextField fieldT2PrecioVenta;
     private javax.swing.JTextField fieldT2Stock;
     private javax.swing.JFormattedTextField fieldTotalMuestra;
-    private javax.swing.JTextField fieldTotalPagar;
+    private javax.swing.JFormattedTextField fieldTotalPagar;
     private javax.swing.JTextField fieldUserName;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
@@ -4166,7 +4207,7 @@ public class MainPage extends javax.swing.JFrame {
             int cal = Integer.parseInt(String.valueOf(jTableVentaItems.getModel().getValueAt(i, 6)));
             totalPagar += cal;
         }
-        fieldTotalPagar.setText(String.valueOf(totalPagar));
+        fieldTotalPagar.setValue(totalPagar);
     }
 
     private Date TimestampToDate() {
@@ -4186,7 +4227,7 @@ public class MainPage extends javax.swing.JFrame {
             Integer idcaja = 1;
             String nomUser = fieldUserName.getText();
             Usuarios user = uc.buscarPorNombre(nomUser);
-            Integer monto = Integer.parseInt(fieldTotalPagar.getText());
+            Integer monto = Integer.parseInt(fieldTotalPagar.getValue().toString());
             Date fecha = TimestampToDate();
             Boolean ajuste = false;
             Ventas ven = new Ventas(id, idcaja, fecha, monto, estado,ajuste, user);
@@ -4290,13 +4331,17 @@ public class MainPage extends javax.swing.JFrame {
 
     private String fechaInicialCaja() {
         String formatFecha = null;
-        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
+        
         try {
             Arqueoscaja aq = aqcontrol.UltimoElemento();
             Date fechaInicioCaja = aq.getFechaInicio();
-            LocalDateTime ldate = fechaInicioCaja.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-            //formatFecha = fechaInicioCaja.to;
-            formatFecha = ldate.format(formatter) + " a las " + ldate.toLocalTime();
+            
+            formatFecha = prettyFechaHora(fechaInicioCaja);
+            
+                    //recuerdos del metodo anterior, antes de crear una funcion
+            //DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);        
+            //LocalDateTime ldate = fechaInicioCaja.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime(); 
+            //formatFecha = ldate.format(formatter) + " a las " + ldate.toLocalTime();
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.toString());

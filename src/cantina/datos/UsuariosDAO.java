@@ -8,6 +8,11 @@ package cantina.datos;
 import cantina.controlador.RolesControl;
 import cantina.modelo.Roles;
 import cantina.modelo.Usuarios;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -72,7 +77,7 @@ public class UsuariosDAO {
               datosUser[2]=tba.getPass()+"";
               datosUser[3]=rc.buscarRolPorId(tba.getFkRoles());
               datosUser[4]=setEstado(tba.getEstado());
-              datosUser[5]=tba.getDateUser()+"";
+              datosUser[5]=prettyFechaHoraCorto(tba.getDateUser());
               model.addRow(datosUser);
            }
           table.setModel(model);
@@ -144,5 +149,14 @@ public class UsuariosDAO {
             est = "Inactivo";
         }
         return est;
+    }
+    //Formato---> 9/03/2022 a las 12:39:07
+    private String prettyFechaHoraCorto(Date uglyFecha){
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
+        String fechaRetorno = "";
+        LocalDateTime localdatet = uglyFecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        
+        fechaRetorno = localdatet.format(formatter) + " a las " + localdatet.toLocalTime();
+        return fechaRetorno;
     }
 }

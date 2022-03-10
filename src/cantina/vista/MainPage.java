@@ -405,8 +405,8 @@ public class MainPage extends javax.swing.JFrame {
         fechaRetorno = localdatet.format(formatter) + " a las " + localdatet.toLocalTime();
         return fechaRetorno;
     }
-        //Formato---> 9/03/2022 a las 12:39:07
-       private String prettyFechaHoraCorto(Date uglyFecha){
+    //Formato---> 9/03/2022 a las 12:39:07
+    private String prettyFechaHoraCorto(Date uglyFecha){
         DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
         String fechaRetorno = "";
         LocalDateTime localdatet = uglyFecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();

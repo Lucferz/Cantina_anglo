@@ -10,6 +10,10 @@ import cantina.modelo.Usuarios;
 import cantina.modelo.Ventas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -102,7 +106,7 @@ public class VentasDAO extends ControladorAbstract{
             String [] datosVenta = new String[4];
             for(Ventas vta : datos){
                 datosVenta[0] = vta.getIdventa()+"";
-                datosVenta[1] = vta.getFecha()+"";
+                datosVenta[1] = prettyFechaHoraCorto(vta.getFecha());
                 Usuarios us = vta.getFkUsuario();
                 datosVenta[2] = us.getNombre();
                 datosVenta[3] = vta.getTotal()+"";
@@ -112,5 +116,14 @@ public class VentasDAO extends ControladorAbstract{
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.toString(),"Error en Carga de tabla Ventas",0);
         }
+    }
+    //Formato---> 9/03/2022 a las 12:39:07
+    private String prettyFechaHoraCorto(Date uglyFecha){
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
+        String fechaRetorno = "";
+        LocalDateTime localdatet = uglyFecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        
+        fechaRetorno = localdatet.format(formatter) + " a las " + localdatet.toLocalTime();
+        return fechaRetorno;
     }
 }

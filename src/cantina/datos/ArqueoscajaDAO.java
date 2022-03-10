@@ -7,6 +7,11 @@ package cantina.datos;
 
 import cantina.controlador.UsuariosControl;
 import cantina.modelo.Arqueoscaja;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -48,9 +53,9 @@ public class ArqueoscajaDAO {
                 datosArq[0] = tba.getIdArqueo()+"";
                 Integer idUsu = tba.getFkUsuario();
                 datosArq[1] = uc.buscarIdINT(idUsu).getNombre();
-                datosArq[2] = tba.getFechaInicio()+"";
+                datosArq[2] = prettyFechaHoraCorto(tba.getFechaInicio());
                 datosArq[3] = tba.getMontoInicial()+"";
-                datosArq[4] = tba.getFechaFin()+"";
+                datosArq[4] = tba.getFechaFin() != null? prettyFechaHoraCorto(tba.getFechaFin()) : tba.getFechaFin()+"";
                 datosArq[5] = tba.getMontoFinal()+"";
                 datosArq[6] = tba.getTotalVentas()+"";
                 datosArq[7] = estaConfirmado(tba.getConfirmado());
@@ -103,5 +108,14 @@ public class ArqueoscajaDAO {
             ret = "No Confirmado";
         }
         return ret;
+    }
+    //Formato---> 9/03/2022 a las 12:39:07
+    private String prettyFechaHoraCorto(Date uglyFecha){
+        DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
+        String fechaRetorno = "";
+        LocalDateTime localdatet = uglyFecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        
+        fechaRetorno = localdatet.format(formatter) + " a las " + localdatet.toLocalTime();
+        return fechaRetorno;
     }
 }

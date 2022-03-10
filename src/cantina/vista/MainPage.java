@@ -152,6 +152,8 @@ public class MainPage extends javax.swing.JFrame {
         //ocultando sus botones accesores del sidebar
         btnConfig.setVisible(false);
         btnVentas.setVisible(false);
+        btnActualizarProductos.setEnabled(false);
+        btnBorrarProducto.setEnabled(false);
 
     }
 
@@ -502,6 +504,7 @@ public class MainPage extends javax.swing.JFrame {
         fieldPassUser = new javax.swing.JTextField();
         fieldEstadoUser = new javax.swing.JTextField();
         jComboBoxRolUsers = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
         contAdmUser = new javax.swing.JPanel();
         btnReactivarUser = new javax.swing.JButton();
         btnDesactivarUser = new javax.swing.JButton();
@@ -668,6 +671,7 @@ public class MainPage extends javax.swing.JFrame {
 
         btnConfirmarAbrirCaja.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         btnConfirmarAbrirCaja.setText("CONFIRMAR APERTURA");
+        btnConfirmarAbrirCaja.setToolTipText("Confirmar apertura de caja");
         btnConfirmarAbrirCaja.setNextFocusableComponent(btnConfirmarAbrirCaja);
         btnConfirmarAbrirCaja.setOpaque(false);
         btnConfirmarAbrirCaja.addActionListener(new java.awt.event.ActionListener() {
@@ -1198,6 +1202,7 @@ public class MainPage extends javax.swing.JFrame {
 
         btnCancelarArqueo.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnCancelarArqueo.setText("CANCELAR");
+        btnCancelarArqueo.setToolTipText("Cancelar cierre de caja");
         btnCancelarArqueo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnCancelarArqueoMouseReleased(evt);
@@ -1214,6 +1219,7 @@ public class MainPage extends javax.swing.JFrame {
 
         btnRemitirArqueoMuestra.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnRemitirArqueoMuestra.setText("REMITIR ARQUEO");
+        btnRemitirArqueoMuestra.setToolTipText("Enviar valor para su revisión");
         btnRemitirArqueoMuestra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemitirArqueoMuestraActionPerformed(evt);
@@ -1304,45 +1310,60 @@ public class MainPage extends javax.swing.JFrame {
 
         fieldIdUser.setEditable(false);
         fieldIdUser.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+        fieldIdUser.setToolTipText("Código único identificador del usuario.");
 
         fieldNomUser.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+        fieldNomUser.setToolTipText("Nombre de usuario");
 
         fieldPassUser.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+        fieldPassUser.setToolTipText("Contraseña de acceso del usuario");
 
         fieldEstadoUser.setEditable(false);
         fieldEstadoUser.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+        fieldEstadoUser.setToolTipText("Si el usuario puede o no iniciar sesión.");
 
         jComboBoxRolUsers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxRolUsers.setToolTipText("Nivel de privilegio que posee el usuario.");
+
+        jLabel7.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        jLabel7.setText("Usuarios");
 
         javax.swing.GroupLayout contAdmUsr1Layout = new javax.swing.GroupLayout(contAdmUsr1);
         contAdmUsr1.setLayout(contAdmUsr1Layout);
         contAdmUsr1Layout.setHorizontalGroup(
             contAdmUsr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contAdmUsr1Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(contAdmUsr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(contAdmUsr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contAdmUsr1Layout.createSequentialGroup()
-                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jComboBoxRolUsers, 0, 145, Short.MAX_VALUE))
+                        .addGap(11, 11, 11)
+                        .addGroup(contAdmUsr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(contAdmUsr1Layout.createSequentialGroup()
+                                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jComboBoxRolUsers, 0, 145, Short.MAX_VALUE))
+                            .addGroup(contAdmUsr1Layout.createSequentialGroup()
+                                .addGroup(contAdmUsr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel32)
+                                    .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addGroup(contAdmUsr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fieldEstadoUser)
+                                    .addComponent(fieldIdUser)
+                                    .addComponent(fieldNomUser)
+                                    .addComponent(fieldPassUser)))))
                     .addGroup(contAdmUsr1Layout.createSequentialGroup()
-                        .addGroup(contAdmUsr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel32)
-                            .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(contAdmUsr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldEstadoUser)
-                            .addComponent(fieldIdUser)
-                            .addComponent(fieldNomUser)
-                            .addComponent(fieldPassUser))))
+                        .addContainerGap()
+                        .addComponent(jLabel7)))
                 .addContainerGap())
         );
         contAdmUsr1Layout.setVerticalGroup(
             contAdmUsr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contAdmUsr1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
                 .addGroup(contAdmUsr1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contAdmUsr1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -1376,32 +1397,36 @@ public class MainPage extends javax.swing.JFrame {
 
         scroll1AdmUsr.setViewportView(contAdmUsr1);
 
-        btnReactivarUser.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnReactivarUser.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnReactivarUser.setText("Reactivar");
+        btnReactivarUser.setToolTipText("Al reactivar un usuario desactivado, podrá volver a iniciar sesión.");
         btnReactivarUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnReactivarUserMouseReleased(evt);
             }
         });
 
-        btnDesactivarUser.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnDesactivarUser.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnDesactivarUser.setText("Desactivar");
+        btnDesactivarUser.setToolTipText("Desactivar usuario (no podrá iniciar sesión).");
         btnDesactivarUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnDesactivarUserMouseReleased(evt);
             }
         });
 
-        btnAddUser.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnAddUser.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnAddUser.setText("Agregar");
+        btnAddUser.setToolTipText("Agregar nuevo usuario con los datos proporcionados");
         btnAddUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnAddUserMouseReleased(evt);
             }
         });
 
-        btnModUser.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnModUser.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnModUser.setText("Modificar");
+        btnModUser.setToolTipText("Guardar modificación a los datos del usuario.");
         btnModUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnModUserMouseReleased(evt);
@@ -1413,14 +1438,14 @@ public class MainPage extends javax.swing.JFrame {
         contAdmUserLayout.setHorizontalGroup(
             contAdmUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contAdmUserLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(17, 17, 17)
                 .addGroup(contAdmUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnDesactivarUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAddUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(contAdmUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnReactivarUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnModUser, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnModUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReactivarUser, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         contAdmUserLayout.setVerticalGroup(
@@ -1496,6 +1521,7 @@ public class MainPage extends javax.swing.JFrame {
 
         btnConfirmArqueo.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnConfirmArqueo.setText("CONFIRMAR CIERRE");
+        btnConfirmArqueo.setToolTipText("Clic aquí para confirmar los valores de arqueo.");
         btnConfirmArqueo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmArqueoActionPerformed(evt);
@@ -1508,13 +1534,17 @@ public class MainPage extends javax.swing.JFrame {
         fieldArqEstadoCaja.setText("Aguardando Confirmacion");
 
         fieldArqTotalSistema.setEditable(false);
+        fieldArqTotalSistema.setToolTipText("Cuánto debe haber en caja según los registros.");
 
         fieldArqFechaRemision.setEditable(false);
+        fieldArqFechaRemision.setToolTipText("Fecha y hora de remisión de saldo de muestra.");
 
         fieldArqValorRemitido.setEditable(false);
         fieldArqValorRemitido.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0 Gs"))));
+        fieldArqValorRemitido.setToolTipText("Saldo de muestra remitido por cajero.");
 
         fieldArqMontoFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
+        fieldArqMontoFinal.setToolTipText("Monto a ser guardado como arqueo final.");
         fieldArqMontoFinal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fieldArqMontoFinalKeyReleased(evt);
@@ -1697,7 +1727,7 @@ public class MainPage extends javax.swing.JFrame {
         btnNewVenta.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
         btnNewVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_receive_cash_30px.png"))); // NOI18N
         btnNewVenta.setText("Nueva Venta");
-        btnNewVenta.setToolTipText("Ir a la pestaña Nueva Venta");
+        btnNewVenta.setToolTipText("Registrar nueva venta");
         btnNewVenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnNewVentaMouseClicked(evt);
@@ -1915,7 +1945,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addComponent(mainTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 846, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 706, Short.MAX_VALUE)
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2188,7 +2218,7 @@ public class MainPage extends javax.swing.JFrame {
         contPanelEntrada.add(jPanel9, gridBagConstraints);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_clear_symbol_30px.png"))); // NOI18N
-        jButton1.setToolTipText("Limpiar los campos");
+        jButton1.setToolTipText("Eliminar de esta venta");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -2321,7 +2351,7 @@ public class MainPage extends javax.swing.JFrame {
         contCierreVentaLayout.setHorizontalGroup(
             contCierreVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contCierreVentaLayout.createSequentialGroup()
-                .addContainerGap(638, Short.MAX_VALUE)
+                .addContainerGap(498, Short.MAX_VALUE)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2355,6 +2385,7 @@ public class MainPage extends javax.swing.JFrame {
         btnActualizarProductos.setFont(new java.awt.Font("Roboto", 1, 11)); // NOI18N
         btnActualizarProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_edit_property_30px.png"))); // NOI18N
         btnActualizarProductos.setText("MODIFICAR");
+        btnActualizarProductos.setToolTipText("Guarda las modificaciones hechas");
         btnActualizarProductos.setMaximumSize(new java.awt.Dimension(400, 400));
         btnActualizarProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2375,6 +2406,7 @@ public class MainPage extends javax.swing.JFrame {
         btnBorrarProducto.setFont(new java.awt.Font("Roboto", 1, 11)); // NOI18N
         btnBorrarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_eraser_30px.png"))); // NOI18N
         btnBorrarProducto.setText("BORRAR");
+        btnBorrarProducto.setToolTipText("Elimina el producto seleccionado del inventario");
         btnBorrarProducto.setMaximumSize(new java.awt.Dimension(400, 400));
         btnBorrarProducto.setMinimumSize(new java.awt.Dimension(123, 39));
         btnBorrarProducto.setPreferredSize(new java.awt.Dimension(123, 39));
@@ -2419,6 +2451,7 @@ public class MainPage extends javax.swing.JFrame {
         btnExportProduc.setFont(new java.awt.Font("Roboto", 1, 11)); // NOI18N
         btnExportProduc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_spreadsheet_file_30px.png"))); // NOI18N
         btnExportProduc.setText("EXPORTAR");
+        btnExportProduc.setToolTipText("Exportar inventario");
         btnExportProduc.setMaximumSize(new java.awt.Dimension(400, 400));
         btnExportProduc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -2468,10 +2501,12 @@ public class MainPage extends javax.swing.JFrame {
         labT2PrecioCosto.setText("Precio de Costo:");
 
         fieldT2Cod.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        fieldT2Cod.setToolTipText("Código de barras del producto");
 
         fieldT2Desc.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
 
         fieldT2Stock.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        fieldT2Stock.setToolTipText("Unidades en existencia");
         fieldT2Stock.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldT2StockKeyTyped(evt);
@@ -2630,7 +2665,7 @@ public class MainPage extends javax.swing.JFrame {
             panelContEntradaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelContEntradaProductosLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 955, Short.MAX_VALUE)
+                .addComponent(contSidebarT2, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2656,12 +2691,12 @@ public class MainPage extends javax.swing.JFrame {
         contenedorTablat2.setLayout(contenedorTablat2Layout);
         contenedorTablat2Layout.setHorizontalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
         );
         contenedorTablat2Layout.setVerticalGroup(
             contenedorTablat2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorTablat2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2679,6 +2714,7 @@ public class MainPage extends javax.swing.JFrame {
         btnResumenVentasDiario.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
         btnResumenVentasDiario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_pdf_30px.png"))); // NOI18N
         btnResumenVentasDiario.setText("Hoy");
+        btnResumenVentasDiario.setToolTipText("Ventas hechas hoy");
         btnResumenVentasDiario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnResumenVentasDiario.setMaximumSize(new java.awt.Dimension(183, 39));
         btnResumenVentasDiario.setMinimumSize(new java.awt.Dimension(183, 39));
@@ -2691,6 +2727,7 @@ public class MainPage extends javax.swing.JFrame {
         btnResumenVentaSiete.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
         btnResumenVentaSiete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_pdf_30px.png"))); // NOI18N
         btnResumenVentaSiete.setText("Últimos 7 días");
+        btnResumenVentaSiete.setToolTipText("Ventas de los últimos 7 días ");
         btnResumenVentaSiete.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnResumenVentaSiete.setMaximumSize(new java.awt.Dimension(183, 39));
         btnResumenVentaSiete.setMinimumSize(new java.awt.Dimension(183, 39));
@@ -2703,6 +2740,7 @@ public class MainPage extends javax.swing.JFrame {
         btnResumenVentaMes.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
         btnResumenVentaMes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_pdf_30px.png"))); // NOI18N
         btnResumenVentaMes.setText("Mes Actual");
+        btnResumenVentaMes.setToolTipText("Ventas de este mes");
         btnResumenVentaMes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnResumenVentaMes.setMaximumSize(new java.awt.Dimension(183, 39));
         btnResumenVentaMes.setMinimumSize(new java.awt.Dimension(183, 39));
@@ -2715,6 +2753,7 @@ public class MainPage extends javax.swing.JFrame {
         btnResumenVentaAnho.setFont(new java.awt.Font("Roboto Light", 1, 15)); // NOI18N
         btnResumenVentaAnho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_pdf_30px.png"))); // NOI18N
         btnResumenVentaAnho.setText("Año Actual");
+        btnResumenVentaAnho.setToolTipText("Ventas de este año");
         btnResumenVentaAnho.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnResumenVentaAnho.setMaximumSize(new java.awt.Dimension(183, 39));
         btnResumenVentaAnho.setMinimumSize(new java.awt.Dimension(183, 39));
@@ -2783,6 +2822,7 @@ public class MainPage extends javax.swing.JFrame {
 
         btnGestionarUsuariosAdmin.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnGestionarUsuariosAdmin.setText("GESTIONAR USUARIOS");
+        btnGestionarUsuariosAdmin.setToolTipText("Agrega, edita, desactiva usuarios");
         btnGestionarUsuariosAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnGestionarUsuariosAdminMouseReleased(evt);
@@ -2800,6 +2840,7 @@ public class MainPage extends javax.swing.JFrame {
 
         btnAbrirGestorArqueoAdmin.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnAbrirGestorArqueoAdmin.setText("GESTIONAR ARQUEO DE CAJA");
+        btnAbrirGestorArqueoAdmin.setToolTipText("Revisa, modifica, confirma arqueo de caja.");
         btnAbrirGestorArqueoAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbrirGestorArqueoAdminActionPerformed(evt);
@@ -2816,6 +2857,7 @@ public class MainPage extends javax.swing.JFrame {
 
         btnDialogHistorialArq.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         btnDialogHistorialArq.setText("HISTORIAL DE ARQUEOS");
+        btnDialogHistorialArq.setToolTipText("Revisa el histórico de arqueos");
         btnDialogHistorialArq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDialogHistorialArqActionPerformed(evt);
@@ -4103,6 +4145,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;

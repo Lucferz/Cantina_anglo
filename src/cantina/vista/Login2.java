@@ -200,6 +200,7 @@ public class Login2 extends javax.swing.JFrame {
         rightCont.setPreferredSize(new java.awt.Dimension(350, 400));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cantina/vista/imgs/icons8_user_locked_50px.png"))); // NOI18N
+        jLabel4.setToolTipText("Inicia sesión para empezar a usar el sistema");
 
         loginUsername.setBackground(new java.awt.Color(103, 226, 109));
         loginUsername.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
@@ -280,7 +281,7 @@ public class Login2 extends javax.swing.JFrame {
         });
         btnLogin.setLayout(new java.awt.GridLayout(1, 0));
 
-        labelLogBtn.setFont(new java.awt.Font("Roboto", 1, 11)); // NOI18N
+        labelLogBtn.setFont(new java.awt.Font("Roboto", 1, 13)); // NOI18N
         labelLogBtn.setForeground(new java.awt.Color(255, 255, 255));
         labelLogBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelLogBtn.setText("Ingresar");

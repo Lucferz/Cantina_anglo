@@ -7,4 +7,5 @@ a quien verga confirmo para bajarle la caña cualquier cosa, hice los cambios co
 tambien cambie la estructura y presentacion de las tablas de ventas e historial de arqueo, y por ultimo edite el dialog
 de confirmacion de arqueo, para poner esos campos que te habia mencionado y ahora ya esta vivo. ya hace lo que debe
 Y como plus hice que cada vez que se haga un ajuste se muestre eso en las ventas, no actualizaba al hacer eso, pero ahora
-si.<fin del comunicado>
+si e hice cambios esteticos, centre algunas columnas en la tabla para que me digas que te parece
+por que se me hizo mas ordenado.<fin del comunicado>

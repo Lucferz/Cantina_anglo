@@ -37,7 +37,7 @@ public class ArqueoscajaDAO {
     }
 
     public void cargarTabArqueo(JTable table) {
-        String[] titulos = {"ID", "USUARIO", "FECHA DE APERTURA", "MONTO INICIAL", "FECHA DE CIERRE", "MONTO FINAL", "TOTAL DE VENTAS", "CONFIRMADO"};
+        String[] titulos = {"ID", "USUARIO", "FECHA DE APERTURA", "MONTO INICIAL", "FECHA DE CIERRE", "MONTO FINAL", "TOTAL DE VENTAS", "CONFIRMADO","ADMIN"};
         DefaultTableModel model = new DefaultTableModel(null, titulos) {
             @Override
             public boolean isCellEditable(int i, int i1) {
@@ -48,7 +48,7 @@ public class ArqueoscajaDAO {
         try {
             TypedQuery<Arqueoscaja> sql = em.createNamedQuery("Arqueoscaja.findAllOrderDesc", Arqueoscaja.class);
             List<Arqueoscaja> datos = sql.getResultList();
-            String[] datosArq = new String[8];
+            String[] datosArq = new String[9];
             for (Arqueoscaja tba : datos) {
                 datosArq[0] = tba.getIdArqueo()+"";
                 Integer idUsu = tba.getFkUsuario();
@@ -59,6 +59,7 @@ public class ArqueoscajaDAO {
                 datosArq[5] = tba.getMontoFinal()+"";
                 datosArq[6] = tba.getTotalVentas()+"";
                 datosArq[7] = estaConfirmado(tba.getConfirmado());
+                datosArq[8] = nomAdmin(tba.getFkAdmin());
                 model.addRow(datosArq);
             }
             table.setModel(model);
@@ -103,11 +104,19 @@ public class ArqueoscajaDAO {
     private String estaConfirmado(Boolean confirmado){
         String ret = "";
         if(confirmado){
-            ret = "Confirmado";
+            ret = "Confirmado por:";
         }else{
             ret = "No Confirmado";
         }
         return ret;
+    }
+    
+    private String nomAdmin (Integer idAdmin){
+        String nomAdmin = "null";
+        if (idAdmin != null){
+            nomAdmin =  uc.buscarIdINT(idAdmin).getNombre();
+        }
+        return nomAdmin;
     }
     //Formato---> 9/03/2022 a las 12:39:07
     private String prettyFechaHoraCorto(Date uglyFecha){

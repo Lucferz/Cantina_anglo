@@ -57,6 +57,8 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import static javax.print.attribute.Size2DSyntax.MM;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -227,7 +229,7 @@ public class MainPage extends javax.swing.JFrame {
         tableHistArq.getColumnModel().getColumn(2).setMaxWidth(200);
         
             //Columna MONTO INICIAL
-        tableHistArq.getColumnModel().getColumn(3).setMinWidth(70);
+        tableHistArq.getColumnModel().getColumn(3).setMinWidth(80);
         tableHistArq.getColumnModel().getColumn(3).setMaxWidth(100);
 
         
@@ -236,7 +238,7 @@ public class MainPage extends javax.swing.JFrame {
         tableHistArq.getColumnModel().getColumn(4).setMaxWidth(200);  
         
         //Columna  MONTO FINAL  
-        tableHistArq.getColumnModel().getColumn(5).setMinWidth(70);
+        tableHistArq.getColumnModel().getColumn(5).setMinWidth(80);
         tableHistArq.getColumnModel().getColumn(5).setMaxWidth(100);  
         
         //Columna  TOTAL DE VENTAS
@@ -245,8 +247,11 @@ public class MainPage extends javax.swing.JFrame {
         
         //Columna  CONFIRMADO
         tableHistArq.getColumnModel().getColumn(7).setMinWidth(100);
-        tableHistArq.getColumnModel().getColumn(7).setMaxWidth(120);  
+        tableHistArq.getColumnModel().getColumn(7).setMaxWidth(120);
         
+        //Columna ADMIN
+        tableHistArq.getColumnModel().getColumn(8).setMinWidth(60);
+        tableHistArq.getColumnModel().getColumn(8).setMaxWidth(80);
         
     }
 
@@ -289,22 +294,34 @@ public class MainPage extends javax.swing.JFrame {
         vc.cargar_tabla_venta(jTableVentas);
         modelo = (DefaultTableModel) jTableVentas.getModel();
         //TRATAMIENTO ESTETICO A COLUMNAS
+        DefaultTableCellRenderer AlinearCenter = new DefaultTableCellRenderer();//Para alinear xd
+        AlinearCenter.setHorizontalAlignment(SwingConstants.CENTER);//.LEFT .RIGHT .CENTER
+        
+        //Alineacion de titulos
+        ((DefaultTableCellRenderer) jTableVentas.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         
         //Dejar tamaño fijo a columna ID
+        jTableVentas.getColumnModel().getColumn(0).setMinWidth(60);
         jTableVentas.getColumnModel().getColumn(0).setMaxWidth(100);
-        jTableVentas.getColumnModel().getColumn(0).setMinWidth(300);
         
             //Rango de tamaños para columna FECHA
-        jTableVentas.getColumnModel().getColumn(1).setMinWidth(220);
-        jTableVentas.getColumnModel().getColumn(1).setMaxWidth(420);
+        jTableVentas.getColumnModel().getColumn(1).setMinWidth(200);
+        jTableVentas.getColumnModel().getColumn(1).setMaxWidth(250);
         
             //Columna USUARIO
-        jTableVentas.getColumnModel().getColumn(2).setMinWidth(200);
-        jTableVentas.getColumnModel().getColumn(2).setMaxWidth(250);
+        jTableVentas.getColumnModel().getColumn(2).setMinWidth(100);
+        jTableVentas.getColumnModel().getColumn(2).setMaxWidth(150);
+        jTableVentas.getColumnModel().getColumn(2).setCellRenderer(AlinearCenter);
         
             //Columna TOTAL
-        jTableVentas.getColumnModel().getColumn(3).setMinWidth(200);
-        jTableVentas.getColumnModel().getColumn(3).setMaxWidth(240);
+        jTableVentas.getColumnModel().getColumn(3).setMinWidth(130);
+        jTableVentas.getColumnModel().getColumn(3).setMaxWidth(170);
+        jTableVentas.getColumnModel().getColumn(3).setCellRenderer(AlinearCenter);
+        
+            //Columna de Monto de Ajuste
+        jTableVentas.getColumnModel().getColumn(4).setCellRenderer(AlinearCenter);
+        jTableVentas.getColumnModel().getColumn(4).setMinWidth(100);
+        jTableVentas.getColumnModel().getColumn(4).setMinWidth(150);
             
         
     }
@@ -345,6 +362,8 @@ public class MainPage extends javax.swing.JFrame {
             fieldArqMontoFinal.setEditable(false);
             fieldArqMontoFinal.setToolTipText("Aquí aparecerá el monto a ser guardado");
 
+            fieldArqMontoAper.setValue(null);
+            fieldArqTotalIngresos.setValue(null);
             fieldArqTotalSistema.setValue(null);
             fieldArqFechaRemision.setValue(null);
             fieldArqValorRemitido.setValue(null);
@@ -357,6 +376,8 @@ public class MainPage extends javax.swing.JFrame {
             btnConfirmArqueo.setEnabled(true);
             btnConfirmArqueo.setToolTipText(null);
             fieldArqMontoFinal.setEditable(true);
+            fieldArqMontoAper.setValue(montoInicCaja());
+            fieldArqTotalIngresos.setValue((ArqueoSistema() - montoInicCaja()));
             fieldArqTotalSistema.setValue(ArqueoSistema());
             fieldArqFechaRemision.setValue(fechaCierreCaja());
             fieldArqValorRemitido.setValue(montoRemitido());
@@ -383,6 +404,7 @@ public class MainPage extends javax.swing.JFrame {
         btnCerrarCaja.setToolTipText("Cerrar caja");
 
         fieldMontoInicialCaja.setValue((montoInicCaja()));
+        fieldArqMontoAper.setValue(montoInicCaja());
         FieldFechaAperturaCaja.setValue(fechaInicialCaja());
         fieldArqEstadoCaja.setText("Abierta, sin remitir");
         btnConfirmArqueo.setEnabled(false);
@@ -527,6 +549,10 @@ public class MainPage extends javax.swing.JFrame {
         fieldArqFechaRemision = new javax.swing.JFormattedTextField();
         fieldArqValorRemitido = new javax.swing.JFormattedTextField();
         fieldArqMontoFinal = new javax.swing.JFormattedTextField();
+        labelMontoInicial = new javax.swing.JLabel();
+        fieldArqMontoAper = new javax.swing.JFormattedTextField();
+        labelTotalVentas = new javax.swing.JLabel();
+        fieldArqTotalIngresos = new javax.swing.JFormattedTextField();
         dialogHistorialArqueo = new javax.swing.JDialog();
         contDiagHistTitle = new javax.swing.JPanel();
         labelHistArqs = new javax.swing.JLabel();
@@ -1490,9 +1516,12 @@ public class MainPage extends javax.swing.JFrame {
 
         dialogVerifArqueo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogVerifArqueo.setTitle("Gestionando Arqueo");
-        dialogVerifArqueo.setMinimumSize(new java.awt.Dimension(547, 470));
+        dialogVerifArqueo.setMinimumSize(new java.awt.Dimension(547, 565));
         dialogVerifArqueo.setModal(true);
+        dialogVerifArqueo.setPreferredSize(new java.awt.Dimension(1402, 650));
         dialogVerifArqueo.setResizable(false);
+
+        contGestArq.setPreferredSize(new java.awt.Dimension(1402, 650));
 
         labelTitleGestArq.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         labelTitleGestArq.setText("Gestión de Caja");
@@ -1556,6 +1585,18 @@ public class MainPage extends javax.swing.JFrame {
         });
         setTransferHandler(null);
 
+        labelMontoInicial.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelMontoInicial.setText("Monto de Apertura:");
+
+        fieldArqMontoAper.setEditable(false);
+        fieldArqMontoAper.setToolTipText("Con cuanto dinero se abrio la caja.");
+
+        labelTotalVentas.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        labelTotalVentas.setText("Total Ingresos (Gs.):");
+
+        fieldArqTotalIngresos.setEditable(false);
+        fieldArqTotalIngresos.setToolTipText("Monto total de los ingresos recopilados en el sistema.");
+
         javax.swing.GroupLayout contGestArqLayout = new javax.swing.GroupLayout(contGestArq);
         contGestArq.setLayout(contGestArqLayout);
         contGestArqLayout.setHorizontalGroup(
@@ -1563,23 +1604,12 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(contGestArqLayout.createSequentialGroup()
                 .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contGestArqLayout.createSequentialGroup()
-                        .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(contGestArqLayout.createSequentialGroup()
-                                .addGap(191, 191, 191)
-                                .addComponent(labelTitleGestArq))
-                            .addGroup(contGestArqLayout.createSequentialGroup()
-                                .addGap(88, 88, 88)
-                                .addComponent(labelGestArq5))
-                            .addGroup(contGestArqLayout.createSequentialGroup()
-                                .addGap(88, 88, 88)
-                                .addComponent(labelGestArq8)))
-                        .addGap(0, 601, Short.MAX_VALUE))
+                        .addGap(191, 191, 191)
+                        .addComponent(labelTitleGestArq)
+                        .addGap(0, 1023, Short.MAX_VALUE))
                     .addGroup(contGestArqLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(contGestArqLayout.createSequentialGroup()
-                                .addComponent(btnConfirmArqueo)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(contGestArqLayout.createSequentialGroup()
                                 .addComponent(labelGestArq6)
                                 .addGap(72, 72, 72)
@@ -1590,50 +1620,75 @@ public class MainPage extends javax.swing.JFrame {
                                 .addComponent(fieldArqValorRemitido))
                             .addGroup(contGestArqLayout.createSequentialGroup()
                                 .addComponent(labelGestArq3)
-                                .addGap(78, 78, 78)
+                                .addGap(82, 82, 82)
                                 .addComponent(fieldArqFechaRemision))
                             .addGroup(contGestArqLayout.createSequentialGroup()
-                                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelGestArq2)
-                                    .addComponent(labelGestArq1))
+                                .addComponent(labelGestArq2)
                                 .addGap(34, 34, 34)
-                                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fieldArqEstadoCaja)
-                                    .addComponent(fieldArqTotalSistema))))))
+                                .addComponent(fieldArqTotalSistema))
+                            .addGroup(contGestArqLayout.createSequentialGroup()
+                                .addComponent(labelGestArq1)
+                                .addGap(68, 68, 68)
+                                .addComponent(fieldArqEstadoCaja))
+                            .addGroup(contGestArqLayout.createSequentialGroup()
+                                .addComponent(labelMontoInicial)
+                                .addGap(59, 59, 59)
+                                .addComponent(fieldArqMontoAper))
+                            .addGroup(contGestArqLayout.createSequentialGroup()
+                                .addComponent(btnConfirmArqueo)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(contGestArqLayout.createSequentialGroup()
+                                .addComponent(labelTotalVentas)
+                                .addGap(51, 51, 51)
+                                .addComponent(fieldArqTotalIngresos)))))
                 .addGap(38, 38, 38))
+            .addGroup(contGestArqLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelGestArq5)
+                    .addComponent(labelGestArq8))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         contGestArqLayout.setVerticalGroup(
             contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contGestArqLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(labelTitleGestArq)
-                .addGap(30, 30, 30)
-                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(29, 29, 29)
+                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelGestArq1)
                     .addComponent(fieldArqEstadoCaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelGestArq2)
-                    .addComponent(fieldArqTotalSistema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelMontoInicial)
+                    .addComponent(fieldArqMontoAper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTotalVentas)
+                    .addComponent(fieldArqTotalIngresos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelGestArq2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(fieldArqTotalSistema, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelGestArq3)
                     .addComponent(fieldArqFechaRemision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelGestArq4)
-                    .addComponent(fieldArqValorRemitido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addComponent(labelGestArq4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(fieldArqValorRemitido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(labelGestArq5)
                 .addGap(6, 6, 6)
                 .addComponent(labelGestArq8)
-                .addGap(20, 20, 20)
-                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelGestArq6)
-                    .addComponent(fieldArqMontoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(contGestArqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelGestArq6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(fieldArqMontoFinal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addComponent(btnConfirmArqueo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(99, 99, 99))
         );
 
         dialogVerifArqueo.setLocationRelativeTo(null);
@@ -1645,14 +1700,14 @@ public class MainPage extends javax.swing.JFrame {
             dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogVerifArqueoLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addComponent(contGestArq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contGestArq, javax.swing.GroupLayout.DEFAULT_SIZE, 1381, Short.MAX_VALUE)
                 .addContainerGap())
         );
         dialogVerifArqueoLayout.setVerticalGroup(
             dialogVerifArqueoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogVerifArqueoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(contGestArq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contGestArq, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -3742,9 +3797,11 @@ public class MainPage extends javax.swing.JFrame {
             Integer montoinicial = Integer.parseInt(fieldSaldoInicAbrirCaja.getValue().toString());
             Integer montofinal = null;
             Integer totalventas = null;
-            boolean estado = true;
             boolean confirmado = false;
-            Arqueoscaja aqc = new Arqueoscaja(id, fkCaja, fkUsuario, fechaInicio, fechaFin, montoinicial, montofinal, totalventas, estado, confirmado);
+            Integer fk_admin = null;
+            boolean estado = true;
+            Arqueoscaja aqc = new Arqueoscaja(id, fkCaja, fkUsuario, fechaInicio, 
+                    fechaFin, montoinicial, montofinal, totalventas, confirmado,fk_admin ,estado);
             aqcontrol.insertar(aqc);
             abrirCaja(); // Este metodo se encarga de desactivar el boton Abrir y habilitar venta
             dialogAbrirCaja.setVisible(false);
@@ -3911,11 +3968,14 @@ public class MainPage extends javax.swing.JFrame {
                 Integer mntConfirmado = (Integer) fieldArqMontoFinal.getValue();
                 Arqueoscaja aq = aqcontrol.UltimoElemento();
                 aq.setConfirmado(true);
+                Integer fk_admin = uc.buscarPorNombre(fieldUserName.getText()).getIdusuario();
+                aq.setFkAdmin(fk_admin);
                 if (!fieldArqMontoFinal.equals(fieldArqValorRemitido)) {
                     aq.setMontoFinal(Integer.parseInt(fieldArqMontoFinal.getValue().toString()));
                 }
                 if(!Objects.equals(mntConfirmado, mntSis)){
                     InsertarAjuste(mntConfirmado,mntSis);
+                    MostrarTabVentas();
                 }
                 aqcontrol.modificar(aq);
                 dialogVerifArqueo.dispose();
@@ -4094,7 +4154,9 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JDialog dialogVerifArqueo;
     private javax.swing.JTextField fieldArqEstadoCaja;
     private javax.swing.JFormattedTextField fieldArqFechaRemision;
+    private javax.swing.JFormattedTextField fieldArqMontoAper;
     private javax.swing.JFormattedTextField fieldArqMontoFinal;
+    private javax.swing.JFormattedTextField fieldArqTotalIngresos;
     private javax.swing.JFormattedTextField fieldArqTotalSistema;
     private javax.swing.JFormattedTextField fieldArqValorRemitido;
     private javax.swing.JTextField fieldCant;
@@ -4202,6 +4264,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel labelGestArq6;
     private javax.swing.JLabel labelGestArq8;
     private javax.swing.JLabel labelHistArqs;
+    private javax.swing.JLabel labelMontoInicial;
     private javax.swing.JLabel labelPanelCajero1;
     private javax.swing.JLabel labelPanelCajero2;
     private javax.swing.JLabel labelPanelCajero4;
@@ -4212,6 +4275,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel labelSaldoInicial;
     private javax.swing.JLabel labelTitleCajero;
     private javax.swing.JLabel labelTitleGestArq;
+    private javax.swing.JLabel labelTotalVentas;
     private javax.swing.JPanel logoCont;
     private javax.swing.JLabel mainLogo;
     private javax.swing.JLabel mainTitle;

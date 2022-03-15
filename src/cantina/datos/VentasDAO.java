@@ -93,7 +93,7 @@ public class VentasDAO extends ControladorAbstract{
     }
     
     public void cargar_tabla_venta(JTable table){
-        String [] titulos = {"ID","FECHA","USUARIO","TOTAL"};
+        String [] titulos = {"ID","FECHA","USUARIO","TOTAL", "MONTO DE AJUSTE"};
         DefaultTableModel model = new DefaultTableModel(null, titulos){
             @Override
             public boolean isCellEditable(int i, int i1) {
@@ -103,19 +103,30 @@ public class VentasDAO extends ControladorAbstract{
         try{
             TypedQuery<Ventas> sql = em.createNamedQuery("Ventas.cargarTabla", Ventas.class);
             List<Ventas> datos = sql.getResultList();
-            String [] datosVenta = new String[4];
+            String [] datosVenta = new String[5];
             for(Ventas vta : datos){
                 datosVenta[0] = vta.getIdventa()+"";
                 datosVenta[1] = prettyFechaHoraCorto(vta.getFecha());
                 Usuarios us = vta.getFkUsuario();
                 datosVenta[2] = us.getNombre();
                 datosVenta[3] = vta.getTotal()+"";
+                datosVenta[4] = Ajuste(vta.getAjuste());
                 model.addRow(datosVenta);
             }
             table.setModel(model);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.toString(),"Error en Carga de tabla Ventas",0);
         }
+    }
+    
+    private String Ajuste (boolean ajuste){
+        String var = null;
+        if (ajuste){
+            var = "SI";
+        }else{
+            var = "NO";
+        }
+        return var;
     }
     //Formato---> 9/03/2022 a las 12:39:07
     private String prettyFechaHoraCorto(Date uglyFecha){

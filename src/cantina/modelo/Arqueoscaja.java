@@ -27,8 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "arqueoscaja")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Arqueoscaja.findAll", query = "SELECT a FROM Arqueoscaja a WHERE a.estado = true")
+@NamedQueries({@NamedQuery(name = "Arqueoscaja.findAll", query = "SELECT a FROM Arqueoscaja a WHERE a.estado = true")
     , @NamedQuery(name = "Arqueoscaja.findAllOrderDesc", query = "SELECT a FROM Arqueoscaja a WHERE a.estado = true ORDER BY a.idArqueo desc")
     , @NamedQuery(name = "Arqueoscaja.findbyMaxId", query = "SELECT a FROM Arqueoscaja a WHERE a.idArqueo = (SELECT MAX(a.idArqueo) FROM Arqueoscaja a)")
     , @NamedQuery(name = "Arqueoscaja.findByIdArqueo", query = "SELECT a FROM Arqueoscaja a WHERE a.idArqueo = :idArqueo")
@@ -40,6 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Arqueoscaja.findByMontoFinal", query = "SELECT a FROM Arqueoscaja a WHERE a.montoFinal = :montoFinal")
     , @NamedQuery(name = "Arqueoscaja.findByTotalVentas", query = "SELECT a FROM Arqueoscaja a WHERE a.totalVentas = :totalVentas")
     , @NamedQuery(name = "Arqueoscaja.findByConfirmado", query = "SELECT a FROM Arqueoscaja a WHERE a.confirmado = :confirmado")
+    , @NamedQuery(name = "Arqueoscaja.findByFkAdmin", query = "SELECT a FROM Arqueoscaja a WHERE a.fkAdmin = :fkAdmin")
     , @NamedQuery(name = "Arqueoscaja.findByEstado", query = "SELECT a FROM Arqueoscaja a WHERE a.estado = :estado")})
 public class Arqueoscaja implements Serializable {
 
@@ -68,6 +68,8 @@ public class Arqueoscaja implements Serializable {
     private Integer totalVentas;
     @Column(name = "Confirmado")
     private Boolean confirmado;
+    @Column(name = "fk_admin")
+    private Integer fkAdmin;
     @Column(name = "estado")
     private Boolean estado;
 
@@ -82,7 +84,8 @@ public class Arqueoscaja implements Serializable {
         this.idArqueo = idArqueo;
         this.fkCaja = fkCaja;
     }
-    public Arqueoscaja(Integer idArqueo, int fkCaja, Integer fkUsuario, Date fechaInicio, Date fechaFin, Integer montoInicial, Integer montoFinal, Integer totalVentas, Boolean estado, Boolean confirmado) {
+
+    public Arqueoscaja(Integer idArqueo, int fkCaja, Integer fkUsuario, Date fechaInicio, Date fechaFin, Integer montoInicial, Integer montoFinal, Integer totalVentas, Boolean confirmado, Integer fkAdmin, Boolean estado) {
         this.idArqueo = idArqueo;
         this.fkCaja = fkCaja;
         this.fkUsuario = fkUsuario;
@@ -91,9 +94,11 @@ public class Arqueoscaja implements Serializable {
         this.montoInicial = montoInicial;
         this.montoFinal = montoFinal;
         this.totalVentas = totalVentas;
-        this.estado = estado;
         this.confirmado = confirmado;
+        this.fkAdmin = fkAdmin;
+        this.estado = estado;
     }
+    
 
     public Integer getIdArqueo() {
         return idArqueo;
@@ -167,6 +172,14 @@ public class Arqueoscaja implements Serializable {
         this.confirmado = confirmado;
     }
 
+    public Integer getFkAdmin() {
+        return fkAdmin;
+    }
+
+    public void setFkAdmin(Integer fkAdmin) {
+        this.fkAdmin = fkAdmin;
+    }
+
     public Boolean getEstado() {
         return estado;
     }
@@ -197,7 +210,7 @@ public class Arqueoscaja implements Serializable {
 
     @Override
     public String toString() {
-        return "Arqueoscaja{" + "idArqueo=" + idArqueo + ", fkCaja=" + fkCaja + ", fkUsuario=" + fkUsuario + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", montoInicial=" + montoInicial + ", montoFinal=" + montoFinal + ", totalVentas=" + totalVentas + ", confirmado=" + confirmado + ", estado=" + estado + '}';
+        return "Arqueoscaja{" + "idArqueo=" + idArqueo + ", fkCaja=" + fkCaja + ", fkUsuario=" + fkUsuario + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", montoInicial=" + montoInicial + ", montoFinal=" + montoFinal + ", totalVentas=" + totalVentas + ", confirmado=" + confirmado + ", fkAdmin=" + fkAdmin + ", estado=" + estado + '}';
     }
 
     
